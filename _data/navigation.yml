@@ -1,0 +1,23 @@
+- name: Le MakerSpace
+  link: 
+  dropdown:
+    - name: Informations
+      link: /informations/
+    - name: Materiel
+      link: /equipment/
+    - name: ✨Nouveaux Laboratoires✨
+      link: /pages/new-lab
+    - name: 🎉Journée des projets🎉
+      link: /pages/journee-des-projets
+- name: Blog
+  link: /blog/
+- name: Rubriques
+  link: 
+  dropdown: 
+    - name: Documentation
+      link: /docs/
+    - name: Ressources
+      link: /ressources/
+    - name: Projets
+      link: /projects/
+    

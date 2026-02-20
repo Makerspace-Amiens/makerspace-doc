@@ -1,0 +1,68 @@
+---
+---
+/* Importation des polices Google */
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+/* Définition des polices personnalisées */
+@font-face {
+    font-family: "Indivisa Text Sans-Regular";
+    src: url("../fonts/Indivisa Text Sans-Regular.ttf");
+}
+
+/* Variables */
+$family-primary: "Indivisa Text Sans-Regular", sans-serif;
+$primary: #ef2e31;
+$link: #ef2e31;
+$footer-padding: 2rem 1.5rem 2rem;
+/* Import du fichier CSS principal du thème */
+@import "main";
+
+/* Styles personnalisés */
+.navbar-burger {
+    color: #ffffff; // Remplacez par la couleur de votre choix
+}
+
+.divider {
+    border-top: 2px solid #dbdbdb;
+    margin: 2rem 0;
+    position: relative;
+    text-align: center;
+    font-weight: bold; 
+    
+
+    &.is-right a {
+        position: absolute;
+        right: 0;
+        top: -0.8rem;
+        background: #fff;
+        padding: 0 0.5rem;
+        color: #ef2e31;
+        font-weight: bold;
+    }
+}
+
+.rounded-corners {
+    border-radius: 0.75rem;
+}
+
+.rounded-large-corners {
+    border-radius: 1.00rem;
+}
+
+.fixed-image {
+    height: 300px; /* Ajuste cette valeur à la hauteur désirée */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.fixed-image img {
+    object-fit: cover; /* Rogne l'image pour remplir l'espace */
+    width: 100%;
+    height: 100%;
+}
+  
+
+/* Styles personnalisés pour model-viewer */
+@import "model-viewer";

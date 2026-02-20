@@ -1,0 +1,63 @@
+<div class="columns is-vcentered mb-5 rounded-large-corners {% if include.greyBackground %}has-background-white-ter{% endif %}">
+    
+      <!-- Colonne image -->
+        {% if include.image %}
+          <div class="column is-4">
+              {% include image_modal.html image=include.image %}
+                  {% if include.image_2 or include.image_3 or include.image_4 %}
+                      <div class="columns is-mobile mt-2">
+                            {% for i in (2..4) %}
+                                    {% assign img = include["image_" | append: i] %}
+                                            {% if img %}
+                                                      <div class="column">
+                                                                  {% include image_modal.html image=img %}
+                                                                            </div>
+                                                                                    {% endif %}
+                                                                                          {% endfor %}
+                                                                                              </div>
+                                                                                                  {% endif %}
+                                                                                                    </div>
+                                                                                                      {% endif %}
+                                                                                                      
+                                                                                                        <!-- Colonne contenu -->
+                                                                                                          <div class="column {% if include.image %}is-8{% else %}is-12{% endif %}">
+                                                                                                              {% if include.title %}
+                                                                                                                    <h3 class="title is-5">{{ include.title }}</h3>
+                                                                                                                        {% endif %}
+                                                                                                                            
+                                                                                                                                {% if include.difficulty %}
+                                                                                                                                    <p>Difficulté :
+                                                                                                                                          {% for i in (1..include.difficulty) %}★{% endfor %}
+                                                                                                                                              </p>
+                                                                                                                                                  {% endif %}
+                                                                                                                                                      
+                                                                                                                                                          {% if include.tags %}
+                                                                                                                                                              <div class="tags">
+                                                                                                                                                                    {% assign tag_list = include.tags | split: ',' %}
+                                                                                                                                                                          {% for tag in tag_list %}
+                                                                                                                                                                                  <span class="tag is-light">{{ tag | strip }}</span>
+                                                                                                                                                                                        {% endfor %}
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                                {% endif %}
+                                                                                                                                                                                                    
+                                                                                                                                                                                                        {% if include.content %}
+                                                                                                                                                                                                              <div class="content">{{ include.content | markdownify }}</div>
+                                                                                                                                                                                                                  {% endif %}
+                                                                                                                                                                                                                      
+                                                                                                                                                                                                                          {% if include.files %}
+                                                                                                                                                                                                                                <div class="mt-3">
+                                                                                                                                                                                                                                        <strong>Fichiers disponibles :</strong>
+                                                                                                                                                                                                                                                <ul>
+                                                                                                                                                                                                                                                          {% assign file_list = include.files | split: ',' %}
+                                                                                                                                                                                                                                                                    {% for file in file_list %}
+                                                                                                                                                                                                                                                                                {% assign file_trim = file | strip %}
+                                                                                                                                                                                                                                                                                            <li><a href="{{ file_trim }}" download>{{ file_trim | split: '/' | last }}</a></li>
+                                                                                                                                                                                                                                                                                                      {% endfor %}
+                                                                                                                                                                                                                                                                                                              </ul>
+                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                        {% endif %}
+                                                                                                                                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                          <div class="divider is-right"><a href="#">Top ↑</a></div>
+                                                                                                                                                                                                                                                                                                                          >

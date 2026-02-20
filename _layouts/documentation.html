@@ -1,0 +1,390 @@
+---
+layout: default
+---
+<head>
+    {% include model-viewer-include.html %}
+    {% include kicanvas-include.html %}
+</head>
+
+<div class="columns is-multiline">
+    
+    {% if page.doc_header==true %}
+        <div class="column is-1-desktop is-1-tablet is-hidden-mobile"></div>
+
+        <div class="column is-5-desktop is-5-tablet">
+            <figure class="image is-fullwidth ">
+                <img class="has-ratio is-fullwidth rounded-corners" src="{{ page.image }}" />
+            </figure>
+        </div>
+
+        <div class="column is-5-desktop is-5-tablet">
+            <div class="panel is-primary">
+                <!-- Panel heading -->
+                {% if page.title %}
+                <p class="panel-heading">
+                    {{ page.title }}
+                </p>
+                {% endif %}
+            
+                <!-- Panel block for description -->
+                {% if page.description %}
+                <div class="panel-block">
+                    <div class="content">
+                        <p class="subtitle is-6">{{ page.description }}</p>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Panel block for manufacturer -->
+                {% if page.manufacturer %}
+                <div class="panel-block">
+                <span class="panel-icon">
+                    <i class="fas fa-industry" aria-hidden="true"></i>
+                </span> 
+                <b>Fabricant :&nbsp;</b> 
+                {% for manufacturer in page.manufacturer %}
+                    <a href="{{ manufacturer.link }}" target="_blank" class="has-text-link">{{ manufacturer.name }}</a>
+                {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Panel block for working area -->
+                {% if page.working_area %}
+                <a class="panel-block">
+                    <span class="panel-icon">
+                      <i class="fas fa-ruler-combined" aria-hidden="true"></i>
+                    </span>
+                    <b>Zone de travail :&nbsp;</b>{{ page.working_area }}
+                  </a>
+                {% endif %}
+
+                <!-- Panel block for precision -->
+                {% if page.precision %}
+                <a class="panel-block">
+                    <span class="panel-icon">
+                      <i class="fas fa-crosshairs" aria-hidden="true"></i>
+                    </span>
+                    <b>Précision :&nbsp;</b> {{ page.precision }}
+                  </a>
+                {% endif %}
+
+
+                <!-- Panel block for materials -->
+                {% if page.materials %}
+                <div class="panel-block">
+                <span class="panel-icon">
+                    <i class="fas fa-stream" aria-hidden="true"></i>
+                </span>
+                <span>
+                    <b>Matériaux : </b>
+                </span>
+                <span class="tags ml-3">
+                    {% for material in page.materials %}
+                    <a href="{{ material.link }}" class="tag is-info has-text-white is-rounded">
+                        {{ material.name }}
+                    </a>
+                    {% endfor %}
+                </span>
+                </div>
+                {% endif %}
+
+                <!-- Panel block for materials -->
+                {% if page.file_extensions %}
+                <div class="panel-block">
+                <span class="panel-icon">
+                    <i class="fas fa-file" aria-hidden="true"></i>
+                </span>
+                <span>
+                    <b>Types de fichiers : </b>
+                </span>
+                <span class="tags ml-3">
+                    {% for file_extension in page.file_extensions %}
+                    <a href="{{ file_extension.link }}" class="tag is-info has-text-white is-rounded">
+                        {{ file_extension.name }}
+                    </a>
+                    {% endfor %}
+                </span>
+                </div>
+                {% endif %}
+
+                <!-- Panel block for speed -->
+                {% if page.speed %}
+                    <div class="panel-block">
+                        <span class="panel-icon">
+                            <i class="fas fa-tachometer-alt" aria-hidden="true"></i>
+                        </span>
+                        {% include rating.html
+                            title="Temps de production"
+                            rating=page.speed 
+                            icon="fa-clock"
+                            align="has-text-left"
+                        %}
+                    </div>
+                {% endif %}
+
+                <!-- Panel block for time -->
+                {% if page.time %}
+                    <div class="panel-block">
+                        {% include rating.html
+                            title="Durée"
+                            rating=page.time 
+                            icon="fa-clock"
+                            align="has-text-left"
+                        %}
+                    </div>
+                {% endif %}
+
+                <!-- Panel block for access level -->
+                {% if page.access_level %}
+                <div class="panel-block">
+                {% if page.access_level == 0 %}
+                    <span class="panel-icon has-text-success">
+                    <i class="fas fa-user-check" aria-hidden="true"></i>
+                    </span> 
+                    <b>Utilisation en autonomie</b>
+                {% elsif page.access_level == 1 %}
+                    <span class="panel-icon has-text-warning">
+                    <i class="fas fa-user-friends" aria-hidden="true"></i>
+                    </span> 
+                    <b>Utilisation encadrée</b> 
+                {% elsif page.access_level == 2 %}
+                    <span class="panel-icon has-text-danger">
+                    <i class="fas fa-user-shield" aria-hidden="true"></i>
+                    </span> 
+                    <b>Utilisation par un opérateur</b>
+                {% endif %}
+                </div>
+                {% endif %}
+            
+                <!-- Panel block for difficulty -->
+                {% if page.difficulty %}
+                    <div class="panel-block">
+                        {% include rating.html
+                            title="Difficulté" 
+                            rating=page.difficulty 
+                            icon="fa-star"
+                            align="has-text-left"
+                        %}
+                    </div>
+                {% endif %}
+            
+                <!-- Panel block for compatibilities -->
+                {% if page.compatibilities %}
+                    <div class="panel-block">
+                        <div class="content has-text-left is-flex align-items-center">
+                            <!-- Texte Compatibilité avec icônes alignées sur la même ligne -->
+                            <p class="is-size-6 has-text-weight-semibold mr-2">Compatibilité :</p>
+                            {% if page.compatibilities-os contains 'win' %}
+                                <span class="icon mr-1"><i class="fab fa-windows"></i></span>
+                            {% endif %}
+                            {% if page.compatibilities-os contains 'mac' %}
+                                <span class="icon mr-1"><i class="fab fa-apple"></i></span>
+                            {% endif %}
+                            {% if page.compatibilities-os contains 'lin' %}
+                                <span class="icon mr-1"><i class="fab fa-linux"></i></span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+                
+            
+                <!-- Panel block for prerequisites -->
+                {% if page.prerequisites %}
+                    <div class="panel-block">
+                        <div class="content">
+                            <p class="is-size-6 has-text-weight-semibold mb-0">Pré-requis :</p>
+                            <ul class="mt-1">
+                                {% for prerequisite in page.prerequisites %}
+                                    {% if prerequisite.link %}
+                                        <li><a href="{{ prerequisite.link }}" target="_blank">{{ prerequisite.label }}</a></li>
+                                    {% else %}
+                                        <li>{{ prerequisite.label }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            
+                <!-- Panel block for softwares -->
+                {% if page.softwares %}
+                    <div class="panel-block">
+                        <div class="content">
+                            <p class="is-size-6 has-text-weight-semibold mb-0">Logiciels :</p>
+                            <ul class="mt-1">
+                                {% for software in page.softwares %}
+                                    {% if software.link %}
+                                        <li><a href="{{ software.link }}" target="_blank">{{ software.label }}</a></li>
+                                    {% else %}
+                                        <li>{{ software.label }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <!-- Panel block for hardwares -->
+                {% if page.hardwares %}
+                    <div class="panel-block">
+                        <div class="content">
+                            <p class="is-size-6 has-text-weight-semibold mb-0">Machines/Outils :</p>
+                            <ul class="mt-1">
+                                {% for hardware in page.hardwares %}
+                                    {% if hardware.link %}
+                                        <li><a href="{{ hardware.link }}" target="_blank">{{ hardware.label }}</a></li>
+                                    {% else %}
+                                        <li>{{ hardware.label }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <!-- Panel block for responsible -->
+                {% if page.responsible %}
+                    <div class="panel-block">
+                        <div class="content">
+                            <p class="is-size-6 has-text-weight-semibold mb-0">Responsable(s) :</p>
+                            <ul class="mt-1">
+                                {% for person in page.responsible %}
+                                    {% if person.link %}
+                                        <li><a href="{{ person.link }}">{{ person.name }}</a></li>
+                                    {% else %}
+                                        <li>{{ person.name }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <!-- Panel block for capacity -->
+                {% if page.capacity %}
+                <a class="panel-block">
+                <span class="panel-icon">
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                </span>
+                <b>Capacité d’accueil :&nbsp;</b>{{ page.capacity }} personne{% if page.capacity > 1 %}s{% endif %}
+                </a>
+                {% endif %}
+
+                <!-- Panel block for access conditions -->
+                {% if page.access_conditions %}
+                <div class="panel-block is-block">
+                <div class="content">
+                    <p class="is-size-6 has-text-weight-semibold mb-1">
+                    <span class="icon"><i class="fas fa-door-open" aria-hidden="true"></i></span>
+                    Conditions d’accès :
+                    </p>
+                    <p class="mb-0">{{ page.access_conditions }}</p>
+                </div>
+                </div>
+                {% endif %}
+
+                <!-- Panel block for safety rules -->
+                {% if page.safety_rules %}
+                <div class="panel-block is-block">
+                <div class="content">
+                    <p class="is-size-6 has-text-weight-semibold mb-1">
+                    <span class="icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></span>
+                    Règles de sécurité :
+                    </p>
+                    <p class="mb-0">{{ page.safety_rules }}</p>
+                </div>
+                </div>
+                {% endif %}
+
+                <!-- Panel block for opening hours -->
+                {% if page.opening_hours %}
+                <a class="panel-block">
+                <span class="panel-icon">
+                    <i class="fas fa-clock" aria-hidden="true"></i>
+                </span>
+                <b>Horaires :&nbsp;</b>{{ page.opening_hours }}
+                </a>
+                {% endif %}
+
+                <!-- Panel block for typical activities -->
+                {% if page.typical_activities %}
+                <div class="panel-block is-block">
+                <div class="content">
+                    <p class="is-size-6 has-text-weight-semibold mb-1">
+                    <span class="icon"><i class="fas fa-cogs" aria-hidden="true"></i></span>
+                    Activités typiques :
+                    </p>
+                    <ul class="mt-1 mb-0">
+                    {% for activity in page.typical_activities %}
+                        <li>{{ activity }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                </div>
+                {% endif %}
+
+                <!-- Panel block for virtual tour -->
+                {% if page.virtual_tour %}
+                <div class="panel-block is-block has-text-centered">
+                <a href="{{ page.virtual_tour }}" target="_blank" class="button is-primary is-outlined is-small">
+                    <span class="icon"><i class="fas fa-vr-cardboard" aria-hidden="true"></i></span>
+                    <span>Visite virtuelle</span>
+                </a>
+                </div>
+                {% endif %}
+
+            
+                <!-- Panel block for progress bar (documentation completion) -->
+                {% if page.todo %}
+                    <div class="panel-block">
+                        <span class="is-size-6 has-text-weight-semibold mb-1">
+                            Documentation réalisée à {{ page.todo }}%
+                        </span>
+                            {% if page.todo <= 25 %}
+                                <progress class="progress is-danger is-medium" value="{{ page.todo }}" max="100">{{ page.todo }}</progress>
+                            {% elsif page.todo <= 85 %}
+                                <progress class="progress is-warning is-medium" value="{{ page.todo }}" max="100">{{ page.todo }}</progress>
+                            {% else %}
+                                <progress class="progress is-success is-medium" value="{{ page.todo }}" max="100">{{ page.todo }}</progress>
+                            {% endif %}
+                    </div>
+                {% endif %}
+
+                <!-- Panel block for authors -->
+                {% if page.author %}
+                <div class="panel-block">
+                    <div class="content">
+                        <b>Créée par :&nbsp;</b> {{ page.author }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="column is-1-desktop is-1-tablet is-hidden-mobile"></div>
+    {% endif %}
+
+    <div class="columns is-multiline mt-6">
+
+        <div class="column is-1-desktop is-1-tablet is-hidden-mobile"></div>
+
+        {% if page.component_toc %}
+        <div class="column is-8-desktop is-8-tablet">
+        {% else %}
+        <div class="column is-10-desktop is-8-tablet">
+        {% endif %}
+            <div class="content">
+                {{ content }}
+            </div>
+        </div>
+
+        {% if page.component_toc %}
+            <div class="column is-3-desktop is-3-tablet is-hidden-mobile mt-6" style="height:90vh; position: sticky; top: 3.2rem; overflow: auto;">
+                {% assign contentsTitle = page.toc_title | default: 'Contents' %}
+                {% include toc.html html=content class='menu-list' h_min=2 h_max=4 contents_title=contentsTitle %}
+            </div>
+        {% else %}
+            <div class="column is-1-desktop is-1-tablet"></div>
+        {% endif %}
+    </div>
+</div>

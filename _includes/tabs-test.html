@@ -1,0 +1,51 @@
+{% assign tab_titles = "" | split: "," %}
+{% if include.tab_title1 %}{% assign tab_titles = tab_titles | push: include.tab_title1 %}{% endif %}
+{% if include.tab_title2 %}{% assign tab_titles = tab_titles | push: include.tab_title2 %}{% endif %}
+{% if include.tab_title3 %}{% assign tab_titles = tab_titles | push: include.tab_title3 %}{% endif %}
+{% if include.tab_title4 %}{% assign tab_titles = tab_titles | push: include.tab_title4 %}{% endif %}
+{% if include.tab_title5 %}{% assign tab_titles = tab_titles | push: include.tab_title5 %}{% endif %}
+
+<div class="tab-group" id="{{ include.id | default: 'tabs' }}">
+  <div class="tabs is-boxed">
+    <ul>
+      {% for title in tab_titles %}
+        <li class="{% if forloop.first %}is-active{% endif %}" data-tab-index="{{ forloop.index0 }}">
+          <a>{{ title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="tab-contents">
+    {% for title in tab_titles %}
+      {% assign var_name = 'tab' | append: forloop.index %}
+      {% assign content = include[var_name] %}
+      <div class="tab-content {% if forloop.first %}is-active{% endif %}" data-tab-index="{{ forloop.index0 }}">
+        {{ content | markdownify }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".tab-group").forEach(group => {
+    const tabs = group.querySelectorAll(".tabs li");
+    const contents = group.querySelectorAll(".tab-content");
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        const index = tab.dataset.tabIndex;
+        tabs.forEach(t => t.classList.remove("is-active"));
+        contents.forEach(c => c.classList.remove("is-active"));
+        tab.classList.add("is-active");
+        group.querySelector(`.tab-content[data-tab-index="${index}"]`).classList.add("is-active");
+      });
+    });
+  });
+});
+</script>
+
+<style>
+.tab-content { display: none; padding-top: 1rem; }
+.tab-content.is-active { display: block; }
+</style>

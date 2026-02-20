@@ -1,0 +1,176 @@
+{% comment %}
+  === Cards Include ===
+  Génère une grille de cartes à partir d'une collection Jekyll (docs, projects, ressources…),
+  avec la possibilité de filtrer ou de composer manuellement des sélections spécifiques.
+
+  ===================================
+  🧭 UTILISATION GÉNÉRALE
+  ===================================
+
+  {% include card_collections.html %}
+    → Affiche toutes les cartes de la collection courante (ou "docs" par défaut).
+
+  {% include card_collections.html collection="projects" %}
+    → Force l'utilisation d'une autre collection.
+
+  {% include card_collections.html sort="title" %}
+    → Trie par un champ particulier (ex. title, date, order…).
+
+  {% include card_collections.html type="tutorial,howto" %}
+    → Filtre les items selon leur type (OU logique).
+
+  {% include card_collections.html tag="fabrication-additive,modelisation-3d" %}
+    → Filtre selon des tags (ET logique).
+
+  {% include card_collections.html type="tutorial" tag="fabrication-additive" %}
+    → Combine les deux (type OU, tag ET).
+
+  ===================================
+  🧩 NOUVEAUTÉ : COMPOSITION MANUELLE
+  ===================================
+
+  {% include card_collections.html
+      items="/projects/otto,/docs/impression-3d,/ressources/laser-settings"
+      title="Sélection du MakerSpace"
+      description="Quelques ressources mises en avant"
+  %}
+
+  → Affiche uniquement les pages listées dans "items", dans l’ordre exact fourni.
+  → Peut piocher dans n’importe quelle collection.
+  → Ignore totalement les filtres type/tag quand "items" est utilisé.
+
+  ===================================
+  ⚙️ PRIORITÉ DES PARAMÈTRES
+  ===================================
+    1️⃣ include.items       → sélection manuelle (ordre strict)
+    2️⃣ include.collection  → collection forcée
+    3️⃣ page.collection     → collection déduite de la page
+    4️⃣ "docs"              → collection par défaut
+{% endcomment %}
+
+{% assign collection_name = include.collection | default: page.collection | default: "docs" %}
+{% assign raw_items = site[collection_name] %}
+{% assign sorted_items = "" %}
+
+{%- comment -%}
+  === 1. Sélection manuelle explicite (prioritaire) ===
+{%- endcomment -%}
+{% if include.items %}
+  {% assign manual_items = include.items | split: "," %}
+  {% assign selected_items = "" | split: "" %}
+
+  {% for path in manual_items %}
+    {% assign path = path | strip %}
+    {% assign doc = site.pages | where: "url", path | first %}
+    {% if doc == nil %}
+      {% assign doc = site.docs | where: "url", path | first %}
+    {% endif %}
+    {% if doc == nil %}
+      {% assign doc = site.projects | where: "url", path | first %}
+    {% endif %}
+    {% if doc == nil %}
+      {% assign doc = site.ressources | where: "url", path | first %}
+    {% endif %}
+    {% if doc %}
+      {% assign selected_items = selected_items | push: doc %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign sorted_items = selected_items %}
+{% elsif raw_items %}
+  {% assign sorted_items = raw_items | sort: include.sort %}
+{% endif %}
+
+<div class="column is-fullwidth">
+  <div class="content">
+    {% if include.title %}
+      <h2 class="title is-3 mb-2">{{ include.title }}</h2>
+    {% endif %}
+    {% if include.description %}
+      <p class="subtitle is-5 has-text-grey">{{ include.description }}</p>
+    {% endif %}
+  </div>
+</div>
+
+<hr class="has-background-grey-lighter my-5" style="height: 2px; border: none;">
+
+<div class="columns is-multiline">
+
+  {% assign filter_types = include.type | default: "" | split: "," %}
+  {% assign filter_tags = include.tag | default: "" | split: "," %}
+
+  {% for item in sorted_items %}
+    {% assign type_match = false %}
+    {% assign tag_match = true %}
+
+    {%- comment -%}
+      === 2. Filtrage TYPE (OU logique)
+      Si aucun type spécifié → tout passe
+    {%- endcomment -%}
+    {% if filter_types == empty or include.type == nil %}
+      {% assign type_match = true %}
+    {% else %}
+      {% for t in filter_types %}
+        {% assign t = t | strip %}
+        {% if item.type contains t %}
+          {% assign type_match = true %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {%- comment -%}
+      === 3. Filtrage TAG (ET logique)
+      Si aucun tag spécifié → tout passe
+    {%- endcomment -%}
+    {% if filter_tags == empty or include.tag == nil %}
+      {% assign tag_match = true %}
+    {% else %}
+      {% for tag in filter_tags %}
+        {% assign tag = tag | strip %}
+        {% unless item.tags contains tag %}
+          {% assign tag_match = false %}
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
+
+    {%- comment -%}
+      === 4. Affichage de la carte ===
+      - Si "include.items" est utilisé → type/tag sont ignorés
+      - Sinon, on vérifie les filtres logiques
+    {%- endcomment -%}
+    {% if include.items or (type_match and tag_match) %}
+      <div class="column is-4-desktop is-6-tablet">
+        {% if item.external_link %}
+          <a href="{{ item.external_link }}">
+        {% else %}
+          <a href="{{ item.url | relative_url }}">
+        {% endif %}
+          <div class="card">
+            {% if item.image %}
+              {% capture image-url %}{{ site.baseurl }}{{ item.url }}{{ item.image }}{% endcapture %}
+              <div class="card-image">
+                <figure class="image is-fullwidth fixed-image">
+                  <img src="{{ image-url }}" alt="{{ item.title }}" />
+                </figure>
+              </div>
+            {% endif %}
+            <div class="card-content" style="background-color: {{ item.background_color | default: '#FFFFFF' }}">
+              <p class="title is-5">{{ item.title }}</p>
+              <p class="subtitle is-6">{{ item.subtitle | truncate: 60 }}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  {% if sorted_items == "" %}
+    <div class="column is-12">
+      <p><em>Aucune collection trouvée pour "{{ collection_name }}".</em></p>
+    </div>
+  {% endif %}
+</div>
+
+<div>
+  <div class="divider is-right"><a href="#">Top ↑</a></div>
+</div>

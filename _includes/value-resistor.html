@@ -1,0 +1,196 @@
+<h3 class="title is-4">Choisir les couleurs des bagues</h3>
+
+<form class="form-horizontal box">
+  <!-- Bande 1 -->
+  <div class="field is-horizontal">
+    <div class="field-label is-normal is-3">
+      <label class="label" for="band1">Bande 1</label>
+    </div>
+    <div class="field-body">
+      <div class="select is-fullwidth">
+        <select id="band1" onchange="updateFromColors()" class="color-select">
+          <option value="0" data-color="black" style="background:black; color:white;">Noir (0)</option>
+          <option value="1" data-color="brown" style="background:brown; color:white;">Marron (1)</option>
+          <option value="2" data-color="red" style="background:red; color:white;">Rouge (2)</option>
+          <option value="3" data-color="orange" style="background:orange; color:black;">Orange (3)</option>
+          <option value="4" data-color="yellow" style="background:yellow; color:black;">Jaune (4)</option>
+          <option value="5" data-color="green" style="background:green; color:white;">Vert (5)</option>
+          <option value="6" data-color="blue" style="background:blue; color:white;">Bleu (6)</option>
+          <option value="7" data-color="violet" style="background:violet; color:white;">Violet (7)</option>
+          <option value="8" data-color="gray" style="background:gray; color:white;">Gris (8)</option>
+          <option value="9" data-color="white" style="background:white; color:black;">Blanc (9)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bande 2 -->
+  <div class="field is-horizontal">
+    <div class="field-label is-normal is-3">
+      <label class="label" for="band2">Bande 2</label>
+    </div>
+    <div class="field-body">
+      <div class="select is-fullwidth">
+        <select id="band2" onchange="updateFromColors()" class="color-select">
+          <option value="0" data-color="black" style="background:black; color:white;">Noir (0)</option>
+          <option value="1" data-color="brown" style="background:brown; color:white;">Marron (1)</option>
+          <option value="2" data-color="red" style="background:red; color:white;">Rouge (2)</option>
+          <option value="3" data-color="orange" style="background:orange; color:black;">Orange (3)</option>
+          <option value="4" data-color="yellow" style="background:yellow; color:black;">Jaune (4)</option>
+          <option value="5" data-color="green" style="background:green; color:white;">Vert (5)</option>
+          <option value="6" data-color="blue" style="background:blue; color:white;">Bleu (6)</option>
+          <option value="7" data-color="violet" style="background:violet; color:white;">Violet (7)</option>
+          <option value="8" data-color="gray" style="background:gray; color:white;">Gris (8)</option>
+          <option value="9" data-color="white" style="background:white; color:black;">Blanc (9)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bande 3 -->
+  <div class="field is-horizontal">
+    <div class="field-label is-normal is-3">
+      <label class="label" for="band3">Bande 3</label>
+    </div>
+    <div class="field-body">
+      <div class="select is-fullwidth">
+        <select id="band3" onchange="updateFromColors()" class="color-select">
+          <option value="0" data-color="black" style="background:black; color:white;">Noir (0)</option>
+          <option value="1" data-color="brown" style="background:brown; color:white;">Marron (1)</option>
+          <option value="2" data-color="red" style="background:red; color:white;">Rouge (2)</option>
+          <option value="3" data-color="orange" style="background:orange; color:black;">Orange (3)</option>
+          <option value="4" data-color="yellow" style="background:yellow; color:black;">Jaune (4)</option>
+          <option value="5" data-color="green" style="background:green; color:white;">Vert (5)</option>
+          <option value="6" data-color="blue" style="background:blue; color:white;">Bleu (6)</option>
+          <option value="7" data-color="violet" style="background:violet; color:white;">Violet (7)</option>
+          <option value="8" data-color="gray" style="background:gray; color:white;">Gris (8)</option>
+          <option value="9" data-color="white" style="background:white; color:black;">Blanc (9)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multiplicateur -->
+  <div class="field is-horizontal">
+    <div class="field-label is-normal is-3">
+      <label class="label" for="multiplier">Multiplicateur</label>
+    </div>
+    <div class="field-body">
+      <div class="select is-fullwidth">
+        <select id="multiplier" onchange="updateFromColors()" class="color-select">
+          <option value="1" data-color="black" style="background:black; color:white;">Noir (x1)</option>
+          <option value="10" data-color="brown" style="background:brown; color:white;">Marron (x10)</option>
+          <option value="100" data-color="red" style="background:red; color:white;">Rouge (x100)</option>
+          <option value="1000" data-color="orange" style="background:orange; color:black;">Orange (x1k)</option>
+          <option value="10000" data-color="yellow" style="background:yellow; color:black;">Jaune (x10k)</option>
+          <option value="100000" data-color="green" style="background:green; color:white;">Vert (x100k)</option>
+          <option value="1000000" data-color="blue" style="background:blue; color:white;">Bleu (x1M)</option>
+          <option value="10000000" data-color="violet" style="background:violet; color:white;">Violet (x10M)</option>
+          <option value="0.1" data-color="gold" style="background:gold; color:black;">Or (x0.1)</option>
+          <option value="0.01" data-color="silver" style="background:silver; color:black;">Argent (x0.01)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tolérance -->
+  <div class="field is-horizontal">
+    <div class="field-label is-normal is-3">
+      <label class="label" for="tolerance">Tolérance</label>
+    </div>
+    <div class="field-body">
+      <div class="select is-fullwidth">
+        <select id="tolerance" onchange="updateFromColors()" class="color-select">
+          <option value="±1%" data-color="brown" style="background:brown; color:white;">Marron (±1%)</option>
+          <option value="±2%" data-color="red" style="background:red; color:white;">Rouge (±2%)</option>
+          <option value="±0.5%" data-color="green" style="background:green; color:white;">Vert (±0.5%)</option>
+          <option value="±0.25%" data-color="blue" style="background:blue; color:white;">Bleu (±0.25%)</option>
+          <option value="±0.1%" data-color="violet" style="background:violet; color:white;">Violet (±0.1%)</option>
+          <option value="±5%" data-color="gold" style="background:gold; color:black;">Or (±5%)</option>
+          <option value="±10%" data-color="silver" style="background:silver; color:black;">Argent (±10%)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</form>
+
+<h3 class="title is-4">Saisir une valeur</h3>
+<form class="form-horizontal box">
+  <div class="field is-horizontal">
+    <div class="field-label is-normal is-3">
+      <label class="label" for="resValue">Valeur</label>
+    </div>
+    <div class="field-body">
+      <div class="control is-3">
+        <input id="resValue" class="input" type="number" onkeyup="updateFromValue()">
+      </div>
+      <div class="control"><a class="button is-static">Ω</a></div>
+      <div class="control"><a id="tolDisplay" class="button is-static">±%</a></div>
+    </div>
+  </div>
+</form>
+
+<!-- STYLE -->
+<style>
+  .field { margin-bottom: 1rem; }
+  .input { max-width: 150px; }
+  .select select { max-width: 200px; font-weight: bold; }
+  .field-label { flex: 0 0 200px; }
+  .color-select { font-weight: bold; }
+</style>
+
+<!-- SCRIPT -->
+<script>
+  function applySelectColors() {
+    document.querySelectorAll(".color-select").forEach(sel => {
+      let selected = sel.options[sel.selectedIndex];
+      let color = selected.getAttribute("data-color");
+      sel.style.background = color;
+      sel.style.color = (["yellow", "white", "silver", "gold"].includes(color)) ? "black" : "white";
+    });
+  }
+
+  function updateFromColors() {
+    let b1 = parseInt(document.getElementById("band1").value);
+    let b2 = parseInt(document.getElementById("band2").value);
+    let b3 = parseInt(document.getElementById("band3").value);
+    let mult = parseFloat(document.getElementById("multiplier").value);
+    let tol = document.getElementById("tolerance").value;
+
+    let value = (b1 * 100 + b2 * 10 + b3) * mult;
+    document.getElementById("resValue").value = value;
+    document.getElementById("tolDisplay").innerText = tol;
+
+    applySelectColors();
+  }
+
+  function updateFromValue() {
+    let val = parseFloat(document.getElementById("resValue").value);
+    if (isNaN(val) || val <= 0) return;
+
+    // 3 chiffres significatifs + multiplicateur
+    let exp = Math.floor(Math.log10(val));
+    let mult = Math.pow(10, exp - 2);
+    let digits = Math.round(val / mult);
+
+    if (digits > 999) return;
+
+    let b1 = Math.floor(digits / 100);
+    let b2 = Math.floor((digits % 100) / 10);
+    let b3 = digits % 10;
+
+    document.getElementById("band1").value = b1;
+    document.getElementById("band2").value = b2;
+    document.getElementById("band3").value = b3;
+    document.getElementById("multiplier").value = mult;
+
+    let tol = document.getElementById("tolerance").value;
+    document.getElementById("tolDisplay").innerText = tol;
+
+    applySelectColors();
+  }
+
+  // init
+  applySelectColors();
+  updateFromColors();
+</script>

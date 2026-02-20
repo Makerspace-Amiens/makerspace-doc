@@ -1,0 +1,97 @@
+<!-- _includes/graph3d-base.html -->
+<div class="graph3d-container"
+     id="graph3d-container-{{ include.id | default: 'default' }}"
+     style="position: relative; width: 100%; max-width: 100%; height: {{ include.height | default: '600px' }}; margin: 0 auto; background: transparent; overflow: hidden;">
+  <div id="graph3d-{{ include.id | default: 'default' }}" 
+       style="width:100%; height:100%; background:transparent;"></div>
+</div>
+
+<!-- Librairies -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three-spritetext@1.6.5/dist/three-spritetext.min.js"></script>
+<script src="https://unpkg.com/3d-force-graph"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const container = document.getElementById("graph3d-container-{{ include.id | default: 'default' }}");
+  const elem = document.getElementById("graph3d-{{ include.id | default: 'default' }}");
+  const data = {{ include.data | jsonify }};
+
+  const Graph = ForceGraph3D()(elem)
+    .graphData(data)
+    .backgroundColor("{{ include.transparent | default: false | jsonify }}" === "true"
+                      ? "rgba(0,0,0,0)"
+                      : "{{ include.background | default: '#0a0a0a' }}")
+    // Nœuds : point + texte
+    .nodeThreeObject(node => {
+      const group = new THREE.Group();
+
+      const pointGeometry = new THREE.SphereGeometry((node.point_size || 6) / 10, 16, 16);
+      const pointMaterial = new THREE.MeshBasicMaterial({
+        color: node.point_color || node.color || '#88ccff',
+        transparent: true,
+        opacity: 0.9
+      });
+      const sphere = new THREE.Mesh(pointGeometry, pointMaterial);
+      group.add(sphere);
+
+      const sprite = new window.SpriteText(node.id);
+      sprite.material.depthWrite = false;
+      sprite.color = node.color || 'rgba(120,180,255,0.9)';
+      sprite.textHeight = node.text_size || 8;
+      sprite.position.set(0, (node.point_size || 6) / 10 + 2, 0);
+      group.add(sprite);
+
+      return group;
+    })
+    .nodeAutoColorBy('group')
+    .linkColor(() => 'rgba(255,255,255,0.3)')
+    .linkWidth(() => 0.5)
+    .linkOpacity(0.6)
+    .onNodeClick(node => {
+      if (node.url) window.open(node.url, "_self");
+    })
+    .showNavInfo(false);
+
+  // Fond transparent ou coloré
+  const renderer = Graph.renderer();
+  {% if include.transparent == true %}
+    renderer.setClearColor(0x000000, 0);
+  {% else %}
+    renderer.setClearColor("{{ include.background | default: '#0a0a0a' }}", 1);
+  {% endif %}
+
+  // Responsive
+  function resizeGraph() {
+    Graph.width(container.clientWidth);
+    Graph.height(container.clientHeight);
+  }
+  window.addEventListener('resize', resizeGraph);
+  resizeGraph();
+
+  // --- Zoom adaptatif optionnel (post-stabilisation) ---
+  {% if include.zoom %}
+  Graph.onEngineStop(() => {
+    const camera = Graph.camera();
+    const { x, y, z } = camera.position;
+    const targetDist = {{ include.zoom }};
+    const currentDist = Math.sqrt(x*x + y*y + z*z);
+    const factor = targetDist / currentDist;
+
+    Graph.cameraPosition(
+      { x: x * factor, y: y * factor, z: z * factor },
+      { x: 0, y: 0, z: 0 },
+      1000 // animation douce (ms)
+    );
+  });
+  {% endif %}
+});
+</script>
+
+<style>
+.graph3d-container {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+</style>

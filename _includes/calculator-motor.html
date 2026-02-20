@@ -1,0 +1,333 @@
+
+<h3>Données d'entrée pour votre système</h3>
+
+<form class="form-horizontal">
+<!-- MASSE TOTALE -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="va">Masse totale</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="va" class="input" type="text" onkeyup="DTMotorCalculate()" value="1">
+                </div>
+                <div class="select is-2">
+                    <select id="cva" onclick="DTMotorCalculate()">
+                        <option selected="selected" value="cva1">Kg</option>
+                        <option value="cva2">lbs</option>
+                        <option value="cva3">g</option>
+                    </select>
+                </div> 
+            </div>
+        </div>
+    </div>
+<!-- NBR DE MOTEURS D'ENTRAINEMENT -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="vb">Nombre de moteurs</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="vb" class="input" type="text" onkeyup="DTMotorCalculate()" value="2"> 
+                </div>
+                <div class="control"><a class="button is-static" for="vb">[#]</a></div> 
+            </div>
+        </div>
+    </div>
+<!-- RAYON DE ROUE MOTRICE -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="vc">Rayon de roue motrice</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="vc" class="input" type="text" onkeyup="DTMotorCalculate()" value="0.03">
+                </div>
+                <div class="select">
+                    <select id="cvc" onclick="DTMotorCalculate()">
+                        <option selected="selected" value="cvc1">m</option>
+                        <option value="cvc2">in</option>
+                        <option value="cvc3">ft</option>
+                        <option value="cvc4">mm</option>
+                    </select>
+                </div> 
+            </div>
+        </div>
+    </div>
+<!-- VITESSE DU ROBOT -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="vd">Vitesse du robot</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="vd" class="input" type="text" onkeyup="DTMotorCalculate()" value="2">
+                </div>
+                <div class="select">
+                    <select id="cvd" onclick="DTMotorCalculate()">
+                        <option selected="selected" value="cvd1">m/s</option>
+                        <option value="cvd2">ft/s</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- INCLINAISON DU ROBOT -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="ve">Inclinaison maximum</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="ve" class="input" type="text" onkeyup="DTMotorCalculate()" value="20">
+                </div>
+                <div class="control"><a class="button is-static" for="ve">[deg]</a></div>
+            </div>
+        </div>
+    </div>
+<!-- TENSION D'ALIMENTATION -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="vf">Tension d'alimentation</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="vf" class="input" type="text" onkeyup="DTMotorCalculate()" value="12">
+                </div>
+                <div class="control"><a class="button is-static" for="vf">[V]</a></div>
+            </div>
+        </div>
+    </div>
+<!-- ACCELERATION SOUHAITEE -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="vg">Accélération souhaitée</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="vg" class="input" type="text" onkeyup="DTMotorCalculate()" value="0.2">
+                </div>
+                <div class="select">
+                    <select id="cvg" onclick="DTMotorCalculate()">
+                        <option selected="selected" value="cvg1">m/s2</option>
+                        <option value="cvg2">ft/s2</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- TEMPS DE FONCTIONNEMENT -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="vh">Temps de fonctionnement</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="vh" class="input" type="text" onkeyup="DTMotorCalculate()" value="1">
+                </div>
+                <div class="select">
+                    <select id="cvh" onclick="DTMotorCalculate()">
+                        <option selected="selected" value="cvh1">min</option>
+                        <option value="cvh2">h</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- EFFICACITE TOTALE -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="vi">Efficacité totale</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="vi" class="input" type="text" onkeyup="DTMotorCalculate()" value="65">
+                </div>
+                <div class="control"><a class="button is-static" for="vi">[%]</a></div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<h3>Sortie (pour chaque moteur d'entrainement)</h3>
+
+<form class="form-horizontal">
+<!-- VITESSE ANGULAIRE -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="vj">Vitesse angulaire</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="vj" class="input" type="text" onkeyup="DTMotorCalculate()" value="66.667">
+                </div>
+                <div class="select">
+                    <select id="cvj" onclick="DTMotorCalculate()">
+                        <option selected="selected" value="cvj1">rad/s</option>
+                        <option value="cvj2">rev/min</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- COUPLE -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="vk">Couple</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="vk" class="input" type="text" onkeyup="DTMotorCalculate()" value="0.082043">
+                </div>
+                <div class="select">
+                    <select id="cvk" onclick="DTMotorCalculate()">
+                        <option selected="selected" value="cvk1">Nm</option>
+                        <option value="cvk2">kgf-cm</option>
+                        <option value="cvk3">ozf-in</option>
+                        <option value="cvk4">Ncm</option>
+                        <option value="cvk5">gf-cm</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- PUISSANCE TOTALE -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="vl">Puissance totale</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="vl" class="input" type="text" onkeyup="DTMotorCalculate()" value="5.4696">
+                </div>
+                <div class="select is-2">
+                    <select id="cvl" onclick="DTMotorCalculate()">
+                        <option selected="selected" value="cvl1">W</option>
+                        <option value="cvl2">hp</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- COURANT MAXIMUM -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="vm">Courant maximum</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="vm" class="input" type="text" onkeyup="DTMotorCalculate()" value="0.45580">
+                </div>
+                <div class="control"><a class="button is-static" for="vm">[A]</a></div>
+            </div>
+        </div>
+    </div>
+<!-- BATTERIE -->
+    <div class="field is-horizontal">
+        <div class="field-label is-normal is-3">
+            <label class="label" for="vn">Batterie</label>
+        </div>
+        <div class="field-body">
+            <div class="field has-addons">
+                <div class="control is-2">
+                    <input id="vn" class="input" type="text" onkeyup="DTMotorCalculate()" value="0.015193">
+                </div>
+                <div class="control"><a class="button is-static" for="vn">[Ah]</a></div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- STYLE POUR LA GESTION DU FORMULAIRE -->
+<style>
+  .field {
+    margin-bottom: 1rem; /* espace entre chaque champ */
+  }
+  .input {
+    max-width: 150px; /* largeur des inputs */
+  }
+  .select select {
+    max-width: 100px; /* largeur des select */
+  }
+  .field-label {
+  flex: 0 0 200px; /* largeur fixe */
+  }
+</style>
+
+<!-- SCRIPT JS DE CALCUL -->
+<script language="JavaScript" type="text/javascript">
+    function DTMotorCalculate() {
+        VA = document.getElementById("va").value;
+        CVA = document.getElementById("cva").value;
+        VB = document.getElementById("vb").value;
+        VC = document.getElementById("vc").value;
+        CVC = document.getElementById("cvc").value;
+        VD = document.getElementById("vd").value;
+        CVD = document.getElementById("cvd").value;
+        VE = document.getElementById("ve").value;
+        VF = document.getElementById("vf").value;
+        VG = document.getElementById("vg").value;
+        CVG = document.getElementById("cvg").value;
+        VH = document.getElementById("vh").value;
+        CVH = document.getElementById("cvh").value;
+        VI = document.getElementById("vi").value;
+        CVJ = document.getElementById("cvj").value;
+        CVK = document.getElementById("cvk").value;
+        CVL = document.getElementById("cvl").value;
+
+        VA = Number(VA)
+        VB = Number(VB)
+        VC = Number(VC)
+        VD = Number(VD)
+        VE = Number(VE)
+        VF = Number(VF)
+        VG = Number(VG)
+        VH = Number(VH)
+        VI = Number(VI)
+
+        if (CVA == "cva2") { VA = VA * 0.45359237; }
+        if (CVA == "cva3") { VA = VA * 0.001; }
+        if (CVC == "cvc2") { VC = VC / 39.3700787; }
+        if (CVC == "cvc3") { VC = VC * 0.3048; }
+        if (CVC == "cvc4") { VC = VC * 0.001; }
+        if (CVD == "cvd2") { VD = VD * 0.3048; }
+        if (CVH == "cvh1") { VH = VH / 60; }
+        if (CVG == "cvg2") { VG = VG * 0.3048; }
+
+        //calculations performed in metric
+        VJ = (VD / VC);
+        VK = (100 / VI) * (VG + 9.81 * (Math.sin(3.1415926 * VE / 180))) * VA * VC / VB;
+        VL = VJ * VK;
+        VM = VL / VF;
+        VN = VM * VH * VB;
+
+        if (CVJ == "cvj1") { VJ = VJ; }
+        if (CVJ == "cvj2") { VJ = VJ * 60 / (2 * 3.14); }
+        if (CVK == "cvk1") { VK = VK; }
+        if (CVK == "cvk2") { VK = VK * 100 / 9.81; }
+        if (CVK == "cvk3") { VK = VK * 141.593; }
+        if (CVK == "cvk4") { VK = VK / 0.01; } //Ncm
+        if (CVK == "cvk5") { VK = VK * 100000 / 9.81; } //gf-cm
+        if (CVL == "cvl1") { VL = VL; }
+        if (CVL == "cvl2") { VL = VL * 0.00134102209; }
+
+        document.getElementById("vj").value = VJ.toPrecision(5);
+        document.getElementById("vk").value = VK.toPrecision(5);
+        document.getElementById("vl").value = VL.toPrecision(5);
+        document.getElementById("vm").value = VM.toPrecision(5);
+        document.getElementById("vn").value = VN.toPrecision(5);
+    }
+</script>

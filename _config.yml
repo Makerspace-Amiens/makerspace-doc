@@ -1,0 +1,42 @@
+title: MakerSpace 
+description: Craft your docs for the MakerSpace Amiens
+theme: bulma-clean-theme
+url: https://makerspace-amiens.fr
+
+force_theme: light
+permalink: pretty
+footer_menu: footer_navigation
+lang: fr
+theme_color: '#ef2e31'
+fixed_navbar: top
+favicon: favicon.png
+
+paginate: 5
+paginate_path: "/blog/page:num"
+
+collections:
+  docs:
+    output: true
+    layout: documentation
+    image: https://via.placeholder.com/800x600
+    show_sidebar: false
+  ressources:
+    output: true
+    layout: documentation
+    image: https://via.placeholder.com/800x600
+    show_sidebar: false
+  projects:
+    output: true
+    layout: documentation
+    image: https://via.placeholder.com/800x600
+    show_sidebar: false
+  workshops:
+    output: true
+    layout: documentation
+    image: https://via.placeholder.com/800x600
+    show_sidebar: false
+  spaces:
+    output: true
+    layout: documentation
+    image: https://via.placeholder.com/800x600
+    show_sidebar: false

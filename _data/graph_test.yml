@@ -1,0 +1,65 @@
+nodes:
+  - id: "MakerSpace"
+    url: ""
+    group: "Lieu"
+    color: "#4fa3ff"          # couleur du texte
+    point_color: "#4fa3ff"    # couleur du point
+    point_size: 10            # taille du point
+    text_size: 2              # taille du texte (nouveau)
+    desc: "Espace de prototypage de UniLaSalle Amiens"
+
+  - id: "Concepts"
+    url: ""
+    point_color: "#ffcc00"
+    point_size: 12
+    text_size: 2
+    desc: "Technologie de fabrication additive"
+
+  - id: "Tutoriels"
+    url: ""
+    point_color: "#ff6600"
+    point_size: 9
+    text_size: 2
+    desc: "Découpe et gravure de matériaux"
+
+  - id: "Guides pratiques"
+    url: ""
+    point_color: "#33ff99"
+    point_size: 10
+    text_size: 2
+    desc: "Cours et atelier autour des machines à dessiner"
+
+  - id: "Références techniques"
+    url: ""
+    point_color: "#cc66ff"
+    point_size: 10
+    text_size: 2
+    desc: "Robot traceur réalisé par les étudiants I2"
+
+  - id: "Introduction à l'impression 3D"
+    url: "/ressources/cao/"
+    point_color: "#00e0ff"
+    point_size: 8
+    text_size: 2
+    desc: "Conception assistée par ordinateur"
+
+  - id: "Les technologies d'impression 3D"
+    url: "/ressources/cao/"
+    point_color: "#00e0ff"
+    point_size: 8
+    text_size: 2
+    desc: "Conception assistée par ordinateur"
+
+links:
+  - source: "MakerSpace"
+    target: "Concepts"
+  - source: "MakerSpace"
+    target: "Tutoriels"
+  - source: "MakerSpace"
+    target: "Guides pratiques"
+  - source: "MakerSpace"
+    target: "Références techniques"
+  - source: "Concepts"
+    target: "Introduction à l'impression 3D"
+  - source: "Concepts"
+    target: "Les technologies d'impression 3D"

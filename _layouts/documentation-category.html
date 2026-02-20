@@ -1,0 +1,14 @@
+---
+layout: default
+show_sidebar: false
+---
+
+<div class="column is-12">
+  {{ page.content }}
+</div>
+
+{% 
+  include card_collections.html 
+  collection=page.collection 
+  type=page.type 
+%}

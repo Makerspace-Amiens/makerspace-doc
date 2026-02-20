@@ -1,0 +1,20 @@
+<article class="message {{ include.status | default: 'is-warning' }} mb-5">
+    {% if include.title %}
+        <div class="message-header">
+                <div class="media-left">
+                    {% if include.icon %}
+                    <span class="icon"><i class="{{ include.icon | default: 'fas fa-exclamation-circle' }} fa-lg"></i></span>
+                    {% endif %}
+                    <span>&nbsp;&nbsp;{{ include.title }}</span>
+                </div>
+            {% if include.dismissable %}
+                <button class="delete" x-on:click="visible = false"></button>
+            {% endif %}
+        </div>
+    {% endif %}
+    {% if include.message %}
+    <div class="message-body">
+        {{ include.message | markdownify }}
+    </div>
+    {% endif %}
+</article>

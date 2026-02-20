@@ -1,0 +1,55 @@
+<!-- Extrait le nom du fichier de l'image pour l'utiliser comme ID -->
+{% assign image_id = include.image | split: '/' | last | split: '.' | first %}
+{% assign image_2_id = include.image_2 | split: '/' | last | split: '.' | first %}
+{% assign image_3_id = include.image_3 | split: '/' | last | split: '.' | first %}
+{% assign image_4_id = include.image_4 | split: '/' | last | split: '.' | first %}
+
+
+<div class="content">
+    {% if include.title %}
+        <h3>{{ include.title }}</h3>
+    {% endif %}
+</div>
+<div class="columns rounded-large-corners {% if include.greyBackground %} has-background-white-ter {% endif %}">
+    {% if include.image %}
+    <div class="column is-4 mb-4">
+            {% include image_modal.html image=include.image %}
+        <div class="columns is-mobile">
+            {% if include.image_2 %}
+            <div class="column">
+                {% include image_modal.html image=include.image_2 %}
+            </div>
+            {% endif %}
+            {% if include.image_3 %}
+            <div class="column">
+                {% include image_modal.html image=include.image_3 %}
+            </div>
+            {% endif %}
+            {% if include.image_4 %}
+            <div class="column">
+                {% include image_modal.html image=include.image_4 %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% elsif include.video %}
+    <div class="column is-4 mb-4">
+        <figure class="image is-16by9"> 
+            <iframe class="has-ratio" 
+                src="https://www.youtube.com/embed/{{ include.video }}?start={{ include.time | default: 0 }}&showinfo=0" 
+                frameborder="0" 
+                allowfullscreen
+                >
+            </iframe>
+        </figure>
+    </div>
+    {% endif %}
+
+    {% if include.image %}<div class="column is-8"> {% else %}<div class="column is-12">{% endif %}
+        {{include.content | markdownify }}
+    </div>
+</div>
+<div>
+    <div class="divider is-right"><a href="#">Top ↑</a></div>
+</div>

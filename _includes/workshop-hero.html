@@ -1,0 +1,214 @@
+{% if page.workshop-content %}
+
+{% assign raw = page.content %}
+{% assign all_tabs = "presentation,concepts,tutoriels,guides,reference" | split: "," %}
+{% assign available_tabs = "" %}
+{% for tab in all_tabs %}
+  {% capture marker %}<!-- tab:{{ tab }} -->{% endcapture %}
+  {% if raw contains marker %}
+    {% assign available_tabs = available_tabs | append: tab | append: "," %}
+  {% endif %}
+{% endfor %}
+{% assign tabs = available_tabs | split: "," %}
+
+<section
+  class="hero {% if page.hero_height %}{{ page.hero_height }}{% else %}is-medium{% endif %} is-bold is-primary is-fullwidth"
+  {% if page.hero_image %}
+    style="background: url('{{ page.hero_image }}') no-repeat center center; background-size: cover;"
+  {% endif %}
+>
+  <div class="hero-body {% if page.hero_darken %}hero-darken{% endif %}">
+    <div class="container has-text-centered">
+      <h1 class="title is-2">{{ page.title }}</h1>
+      {% if page.subtitle %}
+        <p class="subtitle is-3">{{ page.subtitle }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="hero-foot {% if page.hero_darken %}hero-darken{% endif %}">
+
+    <!-- Onglets Desktop -->
+    <nav class="tabs is-boxed is-fullwidth is-hidden-touch">
+      <div class="container">
+        <ul id="workshop-tabs">
+          {% assign first = true %}
+          {% for tab in tabs %}
+            {% if tab != "" %}
+              <li class="{% if first %}is-active{% endif %}" data-tab="{{ tab }}">
+                <a class="subtitle is-5 has-text-weight-bold">
+                  {% case tab %}
+                    {% when "presentation" %}PRÉSENTATION
+                    {% when "concepts" %}CONCEPTS
+                    {% when "tutoriels" %}TUTORIELS
+                    {% when "guides" %}GUIDES PRATIQUES
+                    {% when "reference" %}RÉFÉRENCES TECHNIQUES
+                  {% endcase %}
+                </a>
+              </li>
+              {% assign first = false %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div class="is-hidden-desktop has-text-centered py-3">
+      <div class="dropdown" id="mobile-dropdown">
+        <div class="dropdown-trigger">
+          <button class="button is-primary is-medium" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span id="mobile-current-tab">
+              {% assign first_tab = tabs | first %}
+              {% case first_tab %}
+                {% when "presentation" %}PRÉSENTATION
+                {% when "concepts" %}CONCEPTS
+                {% when "tutoriels" %}TUTORIELS
+                {% when "guides" %}GUIDES PRATIQUES
+                {% when "reference" %}RÉFÉRENCES TECHNIQUES
+              {% endcase %}
+            </span>
+            <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            {% for tab in tabs %}
+              {% if tab != "" %}
+                <a href="#" class="dropdown-item" data-tab="{{ tab }}">
+                  {% case tab %}
+                    {% when "presentation" %}PRÉSENTATION
+                    {% when "concepts" %}CONCEPTS
+                    {% when "tutoriels" %}TUTORIELS
+                    {% when "guides" %}GUIDES PRATIQUES
+                    {% when "reference" %}RÉFÉRENCES TECHNIQUES
+                  {% endcase %}
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contenu des onglets -->
+<div id="workshop-tab-contents" class="section">
+  {% assign first = true %}
+  {% for tab in tabs %}
+    {% if tab != "" %}
+      {% capture start_marker %}<!-- tab:{{ tab }} -->{% endcapture %}
+      {% capture end_marker %}<!-- /tab:{{ tab }} -->{% endcapture %}
+      {% assign block = raw | split: start_marker | last | split: end_marker | first %}
+      {% if block %}
+        <div class="tab-content {% if first %}is-active{% endif %}" data-tab="{{ tab }}">
+          <div class="columns is-variable is-1-mobile is-2-tablet is-3-desktop">
+            <div class="column is-1-desktop is-1-tablet is-hidden-mobile"></div>
+            <div class="column is-10-desktop is-10-tablet is-12-mobile">
+              <div class="content">
+                {{ block | markdownify }}
+              </div>
+            </div>
+            <div class="column is-1-desktop is-1-tablet is-hidden-mobile"></div>
+          </div>
+        </div>
+        {% assign first = false %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll("#workshop-tabs li");
+  const contents = document.querySelectorAll("#workshop-tab-contents .tab-content");
+  const dropdown = document.querySelector("#mobile-dropdown");
+  const dropdownBtn = dropdown?.querySelector(".button");
+  const dropdownItems = dropdown?.querySelectorAll(".dropdown-item") || [];
+  const currentLabel = document.querySelector("#mobile-current-tab");
+
+  // ---- Fonction commune : activer un onglet ----
+  function activateTab(target) {
+    if (!target) return;
+    tabs.forEach(t => t.classList.toggle("is-active", t.dataset.tab === target));
+    contents.forEach(c => c.classList.toggle("is-active", c.dataset.tab === target));
+    dropdownItems.forEach(i => i.classList.toggle("is-active", i.dataset.tab === target));
+
+    const activeText = [...tabs].find(t => t.dataset.tab === target)?.textContent?.trim();
+    if (activeText && currentLabel) currentLabel.textContent = activeText;
+
+    // Met à jour l'ancre dans l'URL sans recharger la page
+    history.replaceState(null, "", `#${target}`);
+  }
+
+  // ---- Desktop tabs ----
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      activateTab(tab.dataset.tab);
+    });
+  });
+
+  // ---- Mobile dropdown ----
+  if (dropdown && dropdownBtn) {
+    dropdownBtn.addEventListener("click", () => {
+      dropdown.classList.toggle("is-active");
+    });
+
+    dropdownItems.forEach(item => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        activateTab(item.dataset.tab);
+        dropdown.classList.remove("is-active");
+      });
+    });
+
+    // Ferme le menu si clic ailleurs
+    document.addEventListener("click", (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("is-active");
+      }
+    });
+  }
+
+  // ---- Lecture de l'ancre à l'ouverture ----
+  const hash = window.location.hash.replace("#", "");
+  if (hash) {
+    activateTab(hash);
+  } else {
+    // sinon, active le premier onglet par défaut
+    const first = tabs[0]?.dataset.tab;
+    activateTab(first);
+  }
+});
+</script>
+
+<style>
+.tab-content { display: none; }
+.tab-content.is-active { display: block; }
+
+.tabs a {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Ajustement du dropdown mobile */
+.dropdown.is-active .dropdown-menu {
+  display: block;
+}
+
+.hero-foot {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.hero-foot .tabs {
+  margin: 0 !important;
+  border-bottom: none; /* optionnel, selon le rendu souhaité */
+}
+
+
+</style>
+
+{% endif %}

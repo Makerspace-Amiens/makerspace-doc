@@ -1,0 +1,30 @@
+<!-- _includes/graph3d-banner.html -->
+<section class="graph3d-banner has-background-dark py-6" style="overflow: hidden; color: white;">
+  <div class="container has-text-centered mb-5">
+    {% if include.title %}
+      <h1 class="title has-text-white">{{ include.title }}</h1>
+    {% endif %}
+    {% if include.subtitle %}
+      <h2 class="subtitle has-text-white">{{ include.subtitle }}</h2>
+    {% endif %}
+  </div>
+
+  <div class="graph3d-wrapper" style="position: relative; width: 100%; height: {{ include.height | default: '400px' }};">
+    {% include graph3d-base.html 
+       id=include.id
+       data=include.data
+       height="100%"
+       transparent=true
+    %}
+  </div>
+</section>
+
+<style>
+.graph3d-banner {
+  width: 100%;
+}
+
+.graph3d-banner .graph3d-container canvas {
+  filter: brightness(0.85);
+}
+</style>

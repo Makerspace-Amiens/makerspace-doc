@@ -1,0 +1,31 @@
+style: is-dark
+height: is-medium
+items:
+  - title: Informations générales
+    icon: fa-info-circle
+    description: >
+      Retrouvez l'ensemble des informations permettant l'accés au makerspace
+      (fonctionnement, philsophie, accès, horaires...)
+    call_to_action_name: Informations
+    call_to_action_link: /pages/informations
+
+  - title: Le materiel
+    icon: fa-toolbox
+    description: >
+      Une description et une documentation de l'ensembles des machines et du materiel est disponible ici.
+    call_to_action_name: Voir le materiel
+    call_to_action_link: /pages/machines
+
+  - title: Les projets
+    description: >
+      La présentation et les sources des différents projets réalisés au sein du Makerspace.
+    icon: fa-cogs
+    call_to_action_name: Voir les projets
+    call_to_action_link: /pages/projets/projets
+
+  - title: Visite virtuelle
+    description: >
+      Découvrez le MakerSpace depuis chez vous !
+    icon: fa-vr-cardboard
+    call_to_action_name: Visite virtuelle
+    call_to_action_link: /img/vr/vr-makerspace

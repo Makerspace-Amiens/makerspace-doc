@@ -1,0 +1,19 @@
+{% assign image_id = include.image | split: '/' | last | split: '.' | first %}
+
+<div class="image-modal-container">
+    <!-- Image cliquable pour ouvrir la modale -->
+    <a href="javascript:void(0);" onclick="document.getElementById('modal-{{ image_id }}').classList.add('is-active')">
+        <img class="rounded-corners" src="{{ include.image }}" alt="{{ include.alt | default: 'Image' }}" title="{{ include.title | default: 'Cliquez pour agrandir' }}" />
+    </a>
+
+    <!-- Modale Bulma -->
+    <div id="modal-{{ image_id }}" class="modal">
+        <div class="modal-background" onclick="document.getElementById('modal-{{ image_id }}').classList.remove('is-active')"></div>
+        <div class="modal-content">
+            <p class="image">
+                <img src="{{ include.image }}" alt="{{ include.alt | default: 'Image agrandie' }}">
+            </p>
+        </div>
+        <button class="modal-close is-large" aria-label="close" onclick="document.getElementById('modal-{{ image_id }}').classList.remove('is-active')"></button>
+    </div>
+</div>

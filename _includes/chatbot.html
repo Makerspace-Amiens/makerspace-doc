@@ -1,0 +1,84 @@
+<!-- _includes/chatbot.html -->
+<div class="chatbot-button" id="chatbotButton">
+  <img src="{{ include.icon | default: '/assets/img/chat-icon.png' }}" alt="Chatbot">
+</div>
+
+<div class="chatbot-window" id="chatbotWindow">
+  <div class="chatbot-header">
+    <span>{{ include.title | default: 'Chatbot' }}</span>
+    <button class="delete" id="closeChatbot"></button>
+  </div>
+  <iframe 
+    src="https://copilotstudio.microsoft.com/environments/Default-b5cdd443-5a28-4ab2-8018-814333d4018f/bots/cr412_makerSpace/webchat?__version__=2" 
+    frameborder="0">
+  </iframe>
+</div>
+
+<style>
+  .chatbot-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--bulma-primary, #00d1b2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+  }
+  .chatbot-button img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+  }
+  .chatbot-window {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    z-index: 9998;
+    background: white;
+  }
+  .chatbot-window iframe {
+    flex: 1;
+    border: none;
+    width: 100%;
+    height: 100%;
+  }
+  .chatbot-window.is-active {
+    display: flex;
+  }
+  .chatbot-header {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("chatbotButton");
+    const win = document.getElementById("chatbotWindow");
+    const closeBtn = document.getElementById("closeChatbot");
+
+    if (btn && win && closeBtn) {
+      btn.addEventListener("click", () => {
+        win.classList.toggle("is-active");
+      });
+      closeBtn.addEventListener("click", () => {
+        win.classList.remove("is-active");
+      });
+    }
+  });
+</script>

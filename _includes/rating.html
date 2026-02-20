@@ -1,0 +1,21 @@
+{% if include.icon %}
+    {% assign icon-selected = include.icon %}
+{% else %}
+    {% assign icon-selected = "fa-heart" %}
+{% endif %}
+    <div class="content {% if include.align %} {{ include.align }} {% else %} has-text-centered {% endif %}">
+        <span class="is-size-6 has-text-weight-semibold">{{ include.title }} : </span>
+        {% for num in (1..include.rating) %}
+        <span class="icon">
+            <i class="{{ icon-selected | prepend: "fas " }}"></i>
+        </span>
+        {% endfor %}
+
+        {% assign remainder = 5 | minus: include.rating %}
+
+        {% for num in (1..remainder) %}
+        <span class="icon">
+            <i class="{{ icon-selected | prepend: "far " }}"></i>
+        </span>
+        {% endfor %}
+    </div>
