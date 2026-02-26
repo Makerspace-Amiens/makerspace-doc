@@ -32,7 +32,7 @@ collections:
     show_sidebar: false
   workshops:
     output: true
-    layout: documentation
+    layout: collection
     image: https://via.placeholder.com/800x600
     show_sidebar: false
   spaces:
