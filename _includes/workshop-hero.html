@@ -1,7 +1,7 @@
 {% if page.workshop-content %}
 
 {% assign raw = page.content %}
-{% assign all_tabs = "presentation,concepts,tutoriels,guides,reference" | split: "," %}
+{% assign all_tabs = "presentation,concepts,tutoriels,guides,reference,equipments" | split: "," %}
 {% assign available_tabs = "" %}
 {% for tab in all_tabs %}
   {% capture marker %}<!-- tab:{{ tab }} -->{% endcapture %}
@@ -43,6 +43,7 @@
                     {% when "tutoriels" %}TUTORIELS
                     {% when "guides" %}GUIDES PRATIQUES
                     {% when "reference" %}RÉFÉRENCES TECHNIQUES
+                    {% when "equipments" %}ÉQUIPEMENTS
                   {% endcase %}
                 </a>
               </li>
@@ -66,6 +67,7 @@
                 {% when "tutoriels" %}TUTORIELS
                 {% when "guides" %}GUIDES PRATIQUES
                 {% when "reference" %}RÉFÉRENCES TECHNIQUES
+                {% when "equipments" %}ÉQUIPEMENTS
               {% endcase %}
             </span>
             <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
@@ -82,6 +84,7 @@
                     {% when "tutoriels" %}TUTORIELS
                     {% when "guides" %}GUIDES PRATIQUES
                     {% when "reference" %}RÉFÉRENCES TECHNIQUES
+                    {% when "equipments" %}ÉQUIPEMENTS
                   {% endcase %}
                 </a>
               {% endif %}
