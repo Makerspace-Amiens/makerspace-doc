@@ -7,7 +7,7 @@ hero_darken: true
 component_toc: true
 doc_header: true
 type: doc, how-to
-tag: additive-manufacturing
+tags: additive-manufacturing, otto-mks
 
 title: Assemblage, quel vis choisir ?
 subtitle: Guide de sélection des vis pour le prototypage mécanique

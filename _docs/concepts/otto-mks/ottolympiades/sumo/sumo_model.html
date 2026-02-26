@@ -1,0 +1,264 @@
+<div class="model-viewer-container">
+  <model-viewer id="dimension-model" src="OTTO_SUMO_SCENE.glb" ar ar-modes="webxr scene-viewer quick-look"
+    camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
+
+    <!-- Hotspots -->
+    <button slot="hotspot-dot-A" class="dot" data-position="0.0 0.01 -0.05"></button>
+    <button slot="hotspot-dot-B" class="dot" data-position="0.0 0.01 0.05"></button>
+    <button slot="hotspot-dot-C" class="dot" data-position="0.250 0.01 0.225"></button>
+    <button slot="hotspot-dot-D" class="dot" data-position="0.250 -0.06 0.225"></button>
+    <button slot="hotspot-dot-E" class="dot" data-position="0.250 0.01 -0.225"></button>
+
+    <button slot="hotspot-dim-A-B" class="dim">--</button>
+    <button slot="hotspot-dim-C-D" class="dim">--</button>
+    <button slot="hotspot-dim-C-E" class="dim">--</button>
+
+    <svg id="dimLines" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+      class="dimensionLineContainer"></svg>
+
+    <div class="progress-bar hide" slot="progress-bar">
+      <div class="update-bar"></div>
+    </div>
+  </model-viewer>
+
+  <button class="open-modal-btn" onclick="openModelModal('OTTO_SUMO_SCENE.glb')">🔍 Agrandir</button>
+
+  <div id="model-modal" class="modal">
+    <div class="modal-background" onclick="closeModelModal()"></div>
+    <div class="modal-content">
+      <model-viewer id="modal-model-viewer" camera-controls ar tone-mapping="neutral" shadow-intensity="1">
+      </model-viewer>
+    </div>
+    <button class="modal-close is-large" aria-label="close" onclick="closeModelModal()">✖</button>
+  </div>
+</div>
+
+<script>
+  function onProgress(event) {
+    const progressBar = event.target.querySelector('.progress-bar');
+    const updatingBar = event.target.querySelector('.update-bar');
+    if (!progressBar || !updatingBar) return;
+    updatingBar.style.width = `${event.detail.totalProgress * 100}%`;
+    progressBar.classList.toggle('hide', event.detail.totalProgress === 1);
+  }
+
+  function setupDimensioning(viewer) {
+    const dimensionPairs = [
+      { from: 'hotspot-dot-A', to: 'hotspot-dot-B', label: 'hotspot-dim-A-B' },
+      { from: 'hotspot-dot-C', to: 'hotspot-dot-D', label: 'hotspot-dim-C-D' },
+      { from: 'hotspot-dot-C', to: 'hotspot-dot-E', label: 'hotspot-dim-C-E' }
+    ];
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("id", "dimLines");
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+    svg.classList.add("dimensionLineContainer");
+    viewer.parentNode.appendChild(svg);
+
+    const lines = {};
+    dimensionPairs.forEach(pair => {
+      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      line.classList.add("dimensionLine");
+      svg.appendChild(line);
+      lines[`${pair.from}-${pair.to}`] = line;
+    });
+
+    function drawLine(line, ha, hb) {
+      if (ha?.canvasPosition && hb?.canvasPosition) {
+        line.setAttribute("x1", ha.canvasPosition.x);
+        line.setAttribute("y1", ha.canvasPosition.y);
+        line.setAttribute("x2", hb.canvasPosition.x);
+        line.setAttribute("y2", hb.canvasPosition.y);
+      }
+    }
+
+    function updateLabel(labelSlot, ha, hb) {
+      if (!ha || !hb || !ha.position || !hb.position) return;
+      const btn = viewer.querySelector(`button[slot="${labelSlot}"]`);
+      const dx = ha.position.x - hb.position.x;
+      const dy = ha.position.y - hb.position.y;
+      const dz = ha.position.z - hb.position.z;
+      const d = Math.sqrt(dx * dx + dy * dy + dz * dz) * 100;
+      if (btn) btn.textContent = `${d.toFixed(1)} cm`;
+
+      const mx = (ha.position.x + hb.position.x) / 2;
+      const my = (ha.position.y + hb.position.y) / 2;
+      const mz = (ha.position.z + hb.position.z) / 2;
+      viewer.updateHotspot({ name: labelSlot, position: `${mx} ${my} ${mz}` });
+    }
+
+    function renderAll() {
+      dimensionPairs.forEach(pair => {
+        const ha = viewer.queryHotspot(pair.from);
+        const hb = viewer.queryHotspot(pair.to);
+        drawLine(lines[`${pair.from}-${pair.to}`], ha, hb);
+        updateLabel(pair.label, ha, hb);
+      });
+    }
+
+    viewer.addEventListener('load', () => {
+      renderAll();
+      svg.classList.add('visible'); // n’affiche les lignes qu’après le chargement
+    });
+    viewer.addEventListener('camera-change', renderAll);
+  }
+
+  function openModelModal(modelSrc) {
+    const modal = document.getElementById("model-modal");
+    const modalViewer = document.getElementById("modal-model-viewer");
+    const mainViewer = document.getElementById("dimension-model");
+
+    modalViewer.innerHTML = ''; // clean up
+    modalViewer.setAttribute("src", modelSrc);
+
+    // Clone hotspots + labels
+    mainViewer.querySelectorAll("button[slot]").forEach(btn => {
+      modalViewer.appendChild(btn.cloneNode(true));
+    });
+
+    // Setup dimensioning
+    setupDimensioning(modalViewer);
+
+    modal.classList.add("is-active");
+  }
+
+  function closeModelModal() {
+    document.getElementById("model-modal").classList.remove("is-active");
+  }
+
+  const mainViewer = document.getElementById("dimension-model");
+  mainViewer.addEventListener('progress', onProgress);
+  setupDimensioning(mainViewer);
+</script>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .model-viewer-container {
+    height: 50vh;
+    position: relative;
+  }
+
+  model-viewer {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+  }
+
+  .dot {
+    display: none;
+  }
+
+  .dim {
+    position: absolute;
+    transform: translate3d(-50%, -50%, 0);
+    pointer-events: none;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.2em 0.5em;
+    border-radius: 6px;
+    font-size: 0.9em;
+  }
+
+  .dimensionLineContainer {
+    display: none;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+  }
+
+  .dimensionLineContainer.visible {
+    display: block;
+  }
+
+  .dimensionLine {
+    stroke: #16a5e6;
+    stroke-width: 2;
+    stroke-dasharray: 4;
+  }
+
+  .progress-bar {
+    display: block;
+    width: 33%;
+    height: 10%;
+    max-height: 2%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    border-radius: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .progress-bar.hide {
+    visibility: hidden;
+    transition: visibility 0.3s;
+  }
+
+  .update-bar {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 0%;
+    height: 100%;
+    border-radius: 25px;
+    transition: width 0.3s;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+
+  .modal.is-active {
+    display: flex;
+  }
+
+  .modal-content {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal model-viewer {
+    width: 100%;
+    height: 100%;
+  }
+
+  .open-modal-btn {
+    margin: 10px auto;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #ef2e31;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    display: block;
+  }
+
+  .open-modal-btn:hover {
+    background-color: #be2628;
+  }
+</style>

@@ -7,7 +7,7 @@ hero_darken: true
 component_toc: true
 doc_header: true
 type: doc, how-to
-tag: additive-manufacturing
+tags: additive-manufacturing, otto-mks
 
 title: Utiliser des inserts taraudés
 subtitle: Comment intégrer des inserts taraudés dans votre conception
