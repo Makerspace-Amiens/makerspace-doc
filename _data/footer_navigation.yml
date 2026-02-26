@@ -1,6 +1,8 @@
-- name: Blog
-  link: /blog/
 - name: About
   link: /about/
-- name: Github
-  link: https://github.com/Makerspace-Amiens/craft-the-docs
+- name: Infos
+  link: /informations/
+- name: MakerSpace Amiens
+  link: https://makerspace-amiens.fr
+- name: Sources
+  link: https://github.com/Makerspace-Amiens/makerspace-doc
