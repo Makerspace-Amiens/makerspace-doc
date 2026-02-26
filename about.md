@@ -3,39 +3,51 @@ layout: documentation
 hide_hero: false
 doc_header: false
 component_toc: false
-hero_image: /assets/img/placeholder.png
-hero_darken: true
-title: À propos du Projet
-subtitle: Informations générales sur ce projet
+hero_height: is-small
+title: A propos
+subtitle: A propos du site de documentation du MakerSpace
 ---
 
-## À propos du projet
+## 🇫🇷 MakerSpace Amiens – Documentation & Ressources
 
-Ce projet vise à [décrire l’objectif principal du projet ici, par exemple : "développer une machine de dessin automatisée" ou "mettre en place un système de suivi pour les étudiants"]. Il s'agit d'une initiative qui combine innovation et apprentissage technique.
+Ce site regroupe la documentation technique officielle et les ressources pédagogiques du MakerSpace d’UniLaSalle Amiens.
 
-Ce site de documentation est conçu pour fournir toutes les informations nécessaires pour comprendre, utiliser, et développer ce projet. Vous y trouverez des guides, des tutoriels, des ressources techniques, et des liens vers des supports utiles.
+Son objectif principal est de rendre accessibles nos outils, nos méthodes et nos pratiques projet à travers des contenus structurés, ouverts et réutilisables.
 
-## Objectifs
+La plateforme rassemble :
 
-- **Objectif 1** : Décrire les fonctionnalités principales de ce projet.
-- **Objectif 2** : Faciliter la prise en main pour les utilisateurs et les contributeurs.
-- **Objectif 3** : Encourager la collaboration et le partage d'idées.
+- Des fiches techniques machines et équipements  
+- Des tutoriels et guides pratiques  
+- Des ressources de méthodologie projet  
+- Des références en conception mécanique, électronique et logicielle  
+- Des workflows orientés prototypage rapide  
+- La documentation publique de certains projets étudiants  
 
-## Équipe du projet
+L’ensemble des ressources est partagé dans une démarche ouverte et transparente, afin de permettre à chacun de concevoir, prototyper et itérer efficacement — de l’idée au prototype fonctionnel.
 
-Ce projet est géré et développé par une équipe d’étudiants et de professionnels engagés. 
+Ce site s’adresse en priorité aux étudiants et associations techniques d’UniLaSalle, tout en restant accessible aux enseignants, partenaires, industriels et à toute personne souhaitant comprendre nos pratiques d’ingénierie.
 
-- **Nom de l'Équipe 1** - Rôle principal (ex : Responsable technique)
-- **Nom de l'Équipe 2** - Rôle secondaire (ex : Documentation et support)
-
-## Ressources
-
-Pour en savoir plus sur ce projet, consultez les sections suivantes :
-
-- [Documentation technique](#)
-- [Tutoriels](#)
-- [FAQ](#)
+Le MakerSpace défend une approche fondée sur l’autonomie, la culture de la documentation et le partage des connaissances.
 
 ---
 
-_Note : Cette page peut être enrichie avec des informations spécifiques au projet au fur et à mesure de son développement._
+## 🇬🇧 MakerSpace Amiens – Documentation & Resources
+
+This website provides the official technical documentation and educational resources of the MakerSpace at UniLaSalle Amiens.
+
+Its primary objective is to make our tools, methods and project practices accessible through structured, open and reusable content.
+
+The platform gathers:
+
+- Technical sheets for machines and equipment  
+- Tutorials and practical guides  
+- Project methodology resources  
+- Mechanical, electronic and software design references  
+- Rapid prototyping workflows  
+- Public documentation of selected student projects  
+
+All resources are shared in an open and transparent approach, enabling users to design, prototype and iterate efficiently — from concept to functional prototype.
+
+This site is primarily intended for UniLaSalle students and technical associations, while remaining accessible to teachers, partners, industrial collaborators and external audiences interested in our engineering practices.
+
+The MakerSpace promotes autonomy, documentation culture and open knowledge as core principles of its pedagogical approach.
