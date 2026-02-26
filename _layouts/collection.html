@@ -1,0 +1,77 @@
+<!doctype html>
+{% if page.menubar or page.menubar_toc %}
+    {% assign has_left_sidebar = true %}
+{% endif %}
+
+{% if page.show_sidebar and page.menubar %}
+    {% assign content_width = 'is-7' %}
+{% elsif page.menubar_toc and page.menubar %}
+    {% assign content_width = 'is-7' %}
+{% elsif page.show_sidebar or page.menubar or page.menubar_toc %}
+    {% assign content_width = 'is-9' %}
+{% else %}
+    {% assign content_width = 'is-12' %}
+{% endif %}
+
+<html
+    dir="{{ site.direction | default: 'ltr' }}"
+    lang="{{ site.lang | default: 'en' }}"
+    class="{% if site.fixed_navbar %} has-navbar-fixed-{{ site.fixed_navbar }} {% endif %} {% if site.force_theme %} theme-{{ site.force_theme }} {% endif %}"
+>
+    {% include head.html %}
+    <body>
+        {% if site.cookie_policy %}
+            {% include cookie-banner.html %}
+        {% endif %}
+        {% include header.html %}
+        {% include workshop-hero.html %}
+        {% unless page.hide_hero %}
+            {% include hero.html %}
+        {% endunless %}
+        {% if page.graph3d-hero %}
+            {% assign graph_data = site.data[page.graph3d-data] %}
+            {% include graph3d-hero.html
+                id=page.graph3d-id
+                data=graph_data
+                title=page.graph3d-title
+                subtitle=page.graph3d-subtitle
+            %}
+        {% endif %}
+        {% include callouts.html %}
+        <section class="section">
+            <div class="container">
+                <div class="columns is-multiline">
+                    {% if page.menubar_toc %}
+                        <div class="column is-2-desktop is-2-tablet">
+                            {% assign contentsTitle = page.toc_title | default: 'Contents' %}
+                            {% include toc.html html=content class='menu-list' h_min=2 h_max=3 contents_title=contentsTitle %}
+                        </div>
+                    {% elsif page.menubar %}
+                        <div class="column is-2-desktop is-2-tablet">
+                            {% include menubar.html %}
+                        </div>
+                    {% endif %}
+                    <div class="column {{ content_width }}">
+                        {% include tabs.html %}
+                        {% include showcase.html %}
+                        {% include sponsors.html %}
+                        {% include gallery.html %}
+                        {% unless page.hide_content %}
+                            {{ content }}
+                        {% endunless %}
+                    </div>
+                    {% if site.posts and page.show_sidebar %}
+                        <div class="column is-3-desktop is-3-tablet is-hidden-mobile">
+                            {% include latest-posts.html %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        {% unless page.hide_footer %}
+            {% include footer.html %}
+        {% endunless %}
+        <script src="{{ site.baseurl }}/assets/js/app.js" type="text/javascript"></script>
+        {%- include footer-scripts.html -%}
+    </body>
+</html>
