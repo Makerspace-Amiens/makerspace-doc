@@ -9,6 +9,7 @@ hero_height: is-large
 hero_darken: true
 hero_image: fab-additive.jpg
 about_image: fab-additive.jpg
+image: fab-additive.jpg
 
 show_sidebar: false
 hide_footer: false
@@ -16,6 +17,8 @@ component_toc: false
 
 workshop-content: true
 hide_content: true
+
+type: workshop
 
 graph3d-hero: true
 graph3d-id: graph-makerspace
