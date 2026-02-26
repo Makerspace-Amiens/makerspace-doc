@@ -1,7 +1,7 @@
-title: MakerSpace 
-description: Craft your docs for the MakerSpace Amiens
+title: Doc-MakerSpace 
+description: Le site de documentation du MakerSpace d'Amiens
 theme: bulma-clean-theme
-url: https://makerspace-amiens.fr
+url: https://doc.makerspace-amiens.fr
 
 force_theme: light
 permalink: pretty
