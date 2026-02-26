@@ -2,11 +2,13 @@
   link: /informations/
 - name: Materiel
   link: /equipment/
-- name: Workshops
+- name: Thématiques
   link: /workshops/
   dropdown:
     - name: Découvrez la Fabrication Additive
       link: /workshops/fab-additive/
+    - name: Projet Otto
+      link: /workshops/otto-mks/
 - name: Documentation
   link: /docs/
   dropdown: 
@@ -20,7 +22,7 @@
       link: /references/
 - name: Ressources
   link: /ressources/
-- name: Projets
+- name: Projets étudiants
   link:
   dropdown: 
     - name: 2023-24
