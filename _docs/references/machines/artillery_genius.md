@@ -7,6 +7,7 @@ image: "artillery_genius.jpg"
 component_toc: true
 doc_header: true
 type: doc, equipment
+tag: additive-manufacturing
 
 title: Artillery Genius Pro
 subtitle: Imprimante 3D FDM
@@ -61,5 +62,5 @@ Ces améliorations font de l'Artillery Genius Pro une option intéressante pour 
   include card_collections.html
   title="Nos autres machines"
   description="Découvrez les autres machines du MakerSpace"
-  type="machine"
+  type="equipment"
 %}

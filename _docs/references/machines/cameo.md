@@ -7,6 +7,7 @@ image: "cameo.jpg"
 component_toc: true
 doc_header: true
 type: doc, equipment
+tag: 
 
 title: Silhouette Cameo 4
 subtitle: Découpeuse vinyle numérique
@@ -38,3 +39,12 @@ Les matériaux peuvent faire jusqu'à 30 centimètres de large et 3 mètres de l
 ## Notes :
 
 [^1]: [Silhouette](http://silhouettefr.fr/silhouette_cameo4.html)
+
+---
+
+{%
+  include card_collections.html
+  title="Nos autres machines"
+  description="Découvrez les autres machines du MakerSpace"
+  type="equipment"
+%}

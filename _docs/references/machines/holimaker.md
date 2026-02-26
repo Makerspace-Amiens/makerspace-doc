@@ -7,6 +7,7 @@ image: "holipress.jpg"
 component_toc: true
 doc_header: true
 type: doc, equipment
+tag: 
 
 title: HoliPress
 subtitle: Presse à injection manuelle
@@ -37,3 +38,12 @@ todo: 100
 ## Notes :
 
 [^1]: [HoliMaker](https://holimaker.fr/)
+
+---
+
+{%
+  include card_collections.html
+  title="Nos autres machines"
+  description="Découvrez les autres machines du MakerSpace"
+  type="equipment"
+%}

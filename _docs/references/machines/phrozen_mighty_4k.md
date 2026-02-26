@@ -51,5 +51,5 @@ La Sonic Mighty 4K est particulièrement adaptée aux utilisateurs cherchant à 
   include card_collections.html
   title="Nos autres machines"
   description="Découvrez les autres machines du MakerSpace"
-  type="machine"
+  type="equipment"
 %}

@@ -7,6 +7,7 @@ image: "bambulab_a1_mini.png"
 component_toc: true
 doc_header: true
 type: doc, equipment
+tag: additive-manufacturing
 
 title: Bambulab A1 Mini
 subtitle: Imprimante 3D FDM compacte
@@ -55,5 +56,5 @@ La A1 Mini est idéale pour les créateurs ayant besoin d'une machine compacte s
   include card_collections.html
   title="Nos autres machines"
   description="Découvrez les autres machines du MakerSpace"
-  type="machine"
+  type="equipment"
 %}

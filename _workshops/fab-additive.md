@@ -91,3 +91,12 @@ Ce module regroupe l’ensemble des ressources pédagogiques autour de l’impre
 %}
 <!-- /tab:reference -->
 
+<!-- tab:equipments -->
+{% include card_collections.html
+  title="Les équipements"
+  description="Le matériel du MakerSpace utilisable pour ce workshop"
+  collection="docs"
+  type="equipment"
+  tag="additive-manufacturing"
+%}
+<!-- /tab:equipments -->

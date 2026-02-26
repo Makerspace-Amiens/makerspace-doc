@@ -7,6 +7,7 @@ image: "bambulab_x1c.png"
 component_toc: true
 doc_header: true
 type: doc, equipment
+tag: additive-manufacturing
 
 title: Bambulab X1C
 subtitle: Imprimante 3D FDM de haute qualité
@@ -57,5 +58,5 @@ La X1C est parfaite pour les utilisateurs cherchant une imprimante polyvalente e
   include card_collections.html
   title="Nos autres machines"
   description="Découvrez les autres machines du MakerSpace"
-  type="machine"
+  type="equipment"
 %}

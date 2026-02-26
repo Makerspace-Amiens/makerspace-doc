@@ -7,6 +7,7 @@ image: "ultimaker_2_plus.jpg"
 component_toc: true
 doc_header: true
 type: doc, equipment
+tag: additive-manufacturing
 
 title: Ultimaker 2+
 subtitle: Imprimante 3D FDM
@@ -58,5 +59,5 @@ Ces caractéristiques font de l'Ultimaker 2+ une imprimante 3D polyvalente et pe
   include card_collections.html
   title="Nos autres machines"
   description="Découvrez les autres machines du MakerSpace"
-  type="machine"
+  type="equipment"
 %}

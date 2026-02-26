@@ -7,6 +7,7 @@ image: "bambulab_p1p.png"
 component_toc: true
 doc_header: true
 type: doc, equipment
+tag: additive-manufacturing
 
 title: Bambulab P1P
 subtitle: Imprimante 3D FDM rapide
@@ -55,5 +56,5 @@ La P1P est idéale pour ceux qui ont besoin d'une imprimante rapide pour des pro
   include card_collections.html
   title="Nos autres machines"
   description="Découvrez les autres machines du MakerSpace"
-  type="machine"
+  type="equipment"
 %}

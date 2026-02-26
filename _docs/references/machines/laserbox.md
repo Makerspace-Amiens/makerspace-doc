@@ -7,6 +7,7 @@ image: "2022-09-27-11-01-47.png"
 component_toc: true
 doc_header: true
 type: doc, equipment
+tag: 
 
 title: Laserbox
 subtitle: Découpeuse laser CO2
@@ -31,3 +32,12 @@ todo: 100
 ## Techniques & tutos :
 
 ## Notes :
+
+---
+
+{%
+  include card_collections.html
+  title="Nos autres machines"
+  description="Découvrez les autres machines du MakerSpace"
+  type="equipment"
+%}
