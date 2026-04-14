@@ -2,6 +2,7 @@ backend:
   name: github
   repo: Makerspace-Amiens/makerspace-doc
   branch: main
+  site_domain: makerspace-doc.netlify.app
 
 local_backend: true
 
