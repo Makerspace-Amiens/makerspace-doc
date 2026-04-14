@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration | Doc MakerSpace</title>
+    <style>
+      /* Tighten Decap's nested rich-text objects, like the built-in IMAGE block. */
+      [class*="ObjectControl"],
+      [class*="ListControl"] {
+        padding: 8px !important;
+      }
+
+      [class*="ObjectControl"] [class*="ControlContainer"],
+      [class*="ListControl"] [class*="ControlContainer"] {
+        margin-bottom: 8px !important;
+      }
+
+      [class*="ObjectControl"] [class*="ImageControl"],
+      [class*="ObjectControl"] [class*="FileControl"] {
+        padding: 8px !important;
+      }
+
+      [class*="ControlContainer"] {
+        padding: 5px !important;
+      }
+
+      [class*="ControlContainer"]:first-of-type {
+        margin-top: 12px !important;
+      }
+
+      [class*="TopBarContainer"] {
+        padding: 5px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      const escapeLiquidValue = (value) =>
+        String(value || "")
+          .replace(/\\/g, "\\\\")
+          .replace(/"/g, '\\"')
+          .replace(/\r\n/g, "\n");
+
+      const readLiquidValue = (block, name) => {
+        const quoted = block.match(new RegExp(`${name}\\s*=\\s*"([\\s\\S]*?)"`, "m"));
+        if (quoted) {
+          return quoted[1].replace(/\\"/g, '"').replace(/\\\\/g, "\\");
+        }
+
+        const raw = block.match(new RegExp(`${name}\\s*=\\s*([^\\s%]+)`, "m"));
+        return raw ? raw[1] : "";
+      };
+
+      const line = (name, value, options = {}) => {
+        if (value === undefined || value === null || value === "") {
+          return "";
+        }
+
+        if (options.boolean) {
+          return `${name} = ${value ? "true" : "false"}\n`;
+        }
+
+        return `${name}="${escapeLiquidValue(value)}"\n`;
+      };
+
+      const collectionPublicRoots = {
+        docs_concepts: "docs/concepts",
+        docs_guides: "docs/how-to-guides",
+        docs_tutorials_build_otto: "docs/tutorials/build-otto-mks",
+        docs_tutorials_design: "docs/tutorials/design",
+        docs_tutorials_production: "docs/tutorials/production",
+        docs_references_hardware: "docs/references/hardware",
+        docs_references_machines: "docs/references/machines",
+        docs_references_others: "docs/references/others",
+        docs_references_plans: "docs/references/plans",
+        docs_references_software: "docs/references/software",
+        ressources: "ressources",
+        workshops: "workshops",
+        spaces: "spaces",
+      };
+
+      const getCurrentEntryPublicBase = () => {
+        const match = window.location.hash.match(
+          /#\/collections\/([^/]+)\/entries\/(.+)$/
+        );
+
+        if (!match) {
+          return "";
+        }
+
+        const root = collectionPublicRoots[decodeURIComponent(match[1])];
+        if (!root) {
+          return "";
+        }
+
+        const entryPath = decodeURIComponent(match[2]).replace(/\/$/, "");
+        return `/${root}/${entryPath}/`;
+      };
+
+      const resolveEntryImage = (value) => {
+        if (!value || /^[a-z]+:\/\//i.test(value) || value.startsWith("/")) {
+          return value || "";
+        }
+
+        if (value.includes("/")) {
+          return value;
+        }
+
+        return `${getCurrentEntryPublicBase()}${value}`;
+      };
+
+      const fixRelativeImagePreviews = () => {
+        const base = getCurrentEntryPublicBase();
+        if (!base) {
+          return;
+        }
+
+        document.querySelectorAll("img").forEach((image) => {
+          const raw = image.getAttribute("src");
+          if (
+            !raw ||
+            raw.startsWith("/") ||
+            /^[a-z]+:\/\//i.test(raw) ||
+            raw.startsWith("data:") ||
+            raw.includes("/")
+          ) {
+            return;
+          }
+
+          image.setAttribute("src", `${base}${raw}`);
+        });
+      };
+
+      window.addEventListener("hashchange", () => {
+        window.setTimeout(fixRelativeImagePreviews, 250);
+      });
+
+      window.setInterval(fixRelativeImagePreviews, 1000);
+
+      CMS.registerEditorComponent({
+        id: "step-tuto",
+        label: "Etape tuto",
+        fields: [
+          {
+            name: "title",
+            label: "Titre",
+            widget: "string",
+            required: false,
+          },
+          {
+            name: "content",
+            label: "Contenu",
+            widget: "markdown",
+            required: true,
+          },
+          {
+            name: "greyBackground",
+            label: "Fond gris",
+            widget: "boolean",
+            required: false,
+            default: true,
+          },
+          {
+            name: "image",
+            label: "Image principale",
+            widget: "image",
+            required: false,
+            hint: "Prioritaire sur la video si les deux sont renseignes, comme dans l'include Liquid.",
+          },
+          {
+            name: "image_2",
+            label: "Image secondaire 1",
+            widget: "image",
+            required: false,
+          },
+          {
+            name: "image_3",
+            label: "Image secondaire 2",
+            widget: "image",
+            required: false,
+          },
+          {
+            name: "image_4",
+            label: "Image secondaire 3",
+            widget: "image",
+            required: false,
+          },
+          {
+            name: "video",
+            label: "ID video YouTube",
+            widget: "string",
+            required: false,
+            hint: "Exemple : dQw4w9WgXcQ. Utilise uniquement si aucune image principale n'est renseignee.",
+          },
+          {
+            name: "time",
+            label: "Debut video en secondes",
+            widget: "number",
+            value_type: "int",
+            required: false,
+            min: 0,
+          },
+        ],
+        pattern: /{%\s*include\s+step-tuto\.html\s+([\s\S]*?)%}/m,
+        fromBlock: (match) => {
+          const block = match[0];
+
+          return {
+            title: readLiquidValue(block, "title"),
+            content: readLiquidValue(block, "content"),
+            greyBackground: readLiquidValue(block, "greyBackground") !== "false",
+            image: readLiquidValue(block, "image"),
+            image_2: readLiquidValue(block, "image_2"),
+            image_3: readLiquidValue(block, "image_3"),
+            image_4: readLiquidValue(block, "image_4"),
+            video: readLiquidValue(block, "video"),
+            time: readLiquidValue(block, "time"),
+          };
+        },
+        toBlock: (data) => {
+          const hasGreyBackground = data.greyBackground !== false;
+          const parts = [
+            "{% include step-tuto.html \n",
+            line("greyBackground", hasGreyBackground, { boolean: true }),
+            line("title", data.title),
+            line("content", data.content),
+            line("image", data.image),
+            line("image_2", data.image_2),
+            line("image_3", data.image_3),
+            line("image_4", data.image_4),
+            line("video", data.video),
+            line("time", data.time),
+            "%}",
+          ];
+
+          return parts.join("");
+        },
+        toPreview: (data) => {
+          const title = data.title ? `<h3>${data.title}</h3>` : "";
+          const media = data.image
+            ? `<img src="${resolveEntryImage(data.image)}" alt="" style="max-width: 220px; border-radius: 6px;">`
+            : data.video
+              ? `<div style="aspect-ratio: 16 / 9; width: 220px; background: #eee; display: grid; place-items: center; border-radius: 6px;">YouTube: ${data.video}</div>`
+              : "";
+
+          return `
+            <div style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem; background: ${data.greyBackground === false ? "transparent" : "#f5f5f5"}; border: 1px solid #ddd; border-radius: 6px;">
+              ${media}
+              <div>
+                ${title}
+                <div>${data.content || ""}</div>
+              </div>
+            </div>
+          `;
+        },
+      });
+
+      CMS.registerEditorComponent({
+        id: "message",
+        label: "Message",
+        fields: [
+          {
+            name: "title",
+            label: "Titre",
+            widget: "string",
+            required: false,
+          },
+          {
+            name: "message",
+            label: "Message",
+            widget: "markdown",
+            required: true,
+          },
+          {
+            name: "status",
+            label: "Style",
+            widget: "select",
+            required: false,
+            default: "is-warning",
+            options: [
+              { label: "Information", value: "is-info" },
+              { label: "Succes", value: "is-success" },
+              { label: "Avertissement", value: "is-warning" },
+              { label: "Danger", value: "is-danger" },
+              { label: "Simple", value: "" },
+            ],
+          },
+          {
+            name: "icon",
+            label: "Icone Font Awesome",
+            widget: "select",
+            required: false,
+            default: "fas fa-exclamation-triangle",
+            options: [
+              { label: "Information", value: "fas fa-info-circle" },
+              { label: "Attention", value: "fas fa-exclamation-triangle" },
+              { label: "Triangle", value: "fas fa-triangle-exclamation" },
+              { label: "Danger", value: "fas fa-solid fa-skull-crossbones" },
+              { label: "Validation", value: "fas fa-check-circle" },
+              { label: "Idee", value: "fas fa-lightbulb" },
+              { label: "Aucune", value: "" },
+            ],
+          },
+          {
+            name: "dismissable",
+            label: "Fermable",
+            widget: "boolean",
+            required: false,
+            default: false,
+          },
+        ],
+        pattern: /{%\s*include\s+message\.html\s+([\s\S]*?)%}/m,
+        fromBlock: (match) => {
+          const block = match[0];
+          const dismissable = readLiquidValue(block, "dismissable");
+
+          return {
+            title: readLiquidValue(block, "title"),
+            message: readLiquidValue(block, "message"),
+            status: readLiquidValue(block, "status") || "is-warning",
+            icon: readLiquidValue(block, "icon") || "fas fa-exclamation-triangle",
+            dismissable: dismissable === "true",
+          };
+        },
+        toBlock: (data) => {
+          const parts = [
+            "{% include message.html \n",
+            line("title", data.title),
+            line("message", data.message),
+            line("status", data.status || "is-warning"),
+            data.dismissable ? line("dismissable", true) : "",
+            line("icon", data.icon),
+            "%}",
+          ];
+
+          return parts.join("");
+        },
+        toPreview: (data) => {
+          const styles = {
+            "is-info": {
+              border: "#3e8ed0",
+              background: "#eff5fb",
+              header: "#3e8ed0",
+            },
+            "is-success": {
+              border: "#48c78e",
+              background: "#effaf5",
+              header: "#48c78e",
+            },
+            "is-warning": {
+              border: "#ffe08a",
+              background: "#fffbeb",
+              header: "#946c00",
+            },
+            "is-danger": {
+              border: "#f14668",
+              background: "#feecf0",
+              header: "#f14668",
+            },
+            "": {
+              border: "#dbdbdb",
+              background: "#f5f5f5",
+              header: "#4a4a4a",
+            },
+          };
+          const style = styles[data.status || "is-warning"] || styles["is-warning"];
+          const title = data.title
+            ? `<div style="padding: .5rem .75rem; background: ${style.header}; color: white; font-weight: 700; border-radius: 6px 6px 0 0;">${data.icon ? `<code style="margin-right: .5rem; color: inherit; background: transparent;">${data.icon}</code>` : ""}${data.title}${data.dismissable ? `<span style="float: right;">x</span>` : ""}</div>`
+            : "";
+          const bodyRadius = data.title ? "0 0 6px 6px" : "6px";
+
+          return `
+            <article style="border: 1px solid ${style.border}; background: ${style.background}; border-radius: 6px; overflow: hidden;">
+              ${title}
+              <div style="padding: .75rem; border-radius: ${bodyRadius};">${data.message || ""}</div>
+            </article>
+          `;
+        },
+      });
+    </script>
+  </body>
+</html>

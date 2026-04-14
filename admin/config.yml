@@ -1,0 +1,321 @@
+backend:
+  name: github
+  repo: Makerspace-Amiens/makerspace-doc
+  branch: main
+
+local_backend: true
+
+locale: fr
+publish_mode: editorial_workflow
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+site_url: https://doc.makerspace-amiens.fr
+display_url: https://doc.makerspace-amiens.fr
+logo_url: /favicon.png
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: pages
+    label: Pages principales
+    editor:
+      preview: false
+    files:
+      - name: accueil
+        label: Accueil
+        file: index.md
+        fields: &page_fields
+          - {label: Titre, name: title, widget: string}
+          - {label: Sous-titre, name: subtitle, widget: string, required: false}
+          - {label: Layout, name: layout, widget: hidden, default: page}
+          - {label: Hauteur du hero, name: hero_height, widget: string, required: false}
+          - {label: Image du hero, name: hero_image, widget: image, required: false}
+          - {label: Assombrir le hero, name: hero_darken, widget: boolean, required: false, default: true}
+          - {label: Callouts, name: callouts, widget: string, required: false}
+          - {label: Masquer la barre laterale, name: show_sidebar, widget: boolean, required: false, default: false}
+          - {label: Masquer le contenu, name: hide_content, widget: boolean, required: false, default: false}
+          - {label: Masquer le footer, name: hide_footer, widget: boolean, required: false, default: false}
+          - {label: Contenu, name: body, widget: markdown, required: false}
+      - name: informations
+        label: Informations
+        file: informations.md
+        fields: &documentation_page_fields
+          - {label: Titre, name: title, widget: string}
+          - {label: Sous-titre, name: subtitle, widget: string, required: false}
+          - {label: Layout, name: layout, widget: hidden, default: documentation}
+          - {label: Image du hero, name: hero_image, widget: image, required: false}
+          - {label: Assombrir le hero, name: hero_darken, widget: boolean, required: false, default: true}
+          - {label: Masquer le hero, name: hide_hero, widget: boolean, required: false, default: false}
+          - {label: En-tete document, name: doc_header, widget: boolean, required: false, default: false}
+          - {label: Table des matieres, name: component_toc, widget: boolean, required: false, default: true}
+          - {label: Contenu, name: body, widget: markdown, required: false}
+      - name: about
+        label: A propos
+        file: about.md
+        fields: *documentation_page_fields
+      - name: materiel
+        label: Materiel
+        file: equipment.md
+        fields: *documentation_page_fields
+      - name: docs
+        label: Documentation
+        file: docs.md
+        fields: *documentation_page_fields
+      - name: tutoriels
+        label: Tutoriels
+        file: tutorials.md
+        fields: *documentation_page_fields
+      - name: guides
+        label: Guides pratiques
+        file: how-to-guides.md
+        fields: *documentation_page_fields
+      - name: concepts
+        label: Concepts
+        file: concepts.md
+        fields: *documentation_page_fields
+      - name: references
+        label: References
+        file: references.md
+        fields: *documentation_page_fields
+      - name: ressources
+        label: Ressources
+        file: ressources.md
+        fields: *documentation_page_fields
+      - name: ateliers
+        label: Ateliers
+        file: workshops.md
+        fields: *documentation_page_fields
+      - name: projets
+        label: Projets
+        file: projects.md
+        fields: *documentation_page_fields
+
+  - name: docs_concepts
+    label: Concepts
+    label_singular: Document
+    folder: _docs/concepts
+    media_folder: "{{dirname}}/{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields: &content_fields
+      - {label: Titre, name: title, widget: string}
+      - {label: Sous-titre, name: subtitle, widget: string, required: false}
+      - {label: Description, name: description, widget: text, required: false}
+      - {label: Auteur, name: author, widget: string, required: false}
+      - {label: Layout, name: layout, widget: hidden, default: documentation}
+      - {label: Type, name: type, widget: string, required: false, hint: "Exemples : doc, tutorial, how-to, concept, reference"}
+      - {label: Tags, name: tags, widget: string, required: false, hint: "Separateur conseille : virgule"}
+      - {label: Tag, name: tag, widget: string, required: false}
+      - {label: Image, name: image, widget: image, required: false}
+      - {label: Image du hero, name: hero_image, widget: image, required: false}
+      - {label: Assombrir le hero, name: hero_darken, widget: boolean, required: false, default: true}
+      - {label: Masquer le hero, name: hide_hero, widget: boolean, required: false, default: false}
+      - {label: En-tete document, name: doc_header, widget: boolean, required: false, default: true}
+      - {label: Table des matieres, name: component_toc, widget: boolean, required: false, default: true}
+      - {label: Temps, name: time, widget: number, required: false, value_type: int, min: 0}
+      - {label: Difficulte, name: difficulty, widget: number, required: false, value_type: int, min: 0, max: 5}
+      - {label: Avancement, name: todo, widget: number, required: false, value_type: int, min: 0, max: 100}
+      - label: Prerequis
+        name: prerequisites
+        widget: list
+        required: false
+        fields: &label_link_fields
+          - {label: Libelle, name: label, widget: string}
+          - {label: Lien, name: link, widget: string, required: false}
+      - label: Logiciels
+        name: softwares
+        widget: list
+        required: false
+        fields: *label_link_fields
+      - label: Materiels
+        name: hardwares
+        widget: list
+        required: false
+        fields: *label_link_fields
+      - {label: Contenu, name: body, widget: markdown, required: false}
+
+  - name: docs_guides
+    label: Guides pratiques
+    label_singular: Document
+    folder: _docs/how-to-guides
+    media_folder: "{{dirname}}/{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields: *content_fields
+
+  - name: docs_tutorials_build_otto
+    label: Tutoriels - Otto
+    label_singular: Document
+    folder: _docs/tutorials/build-otto-mks
+    media_folder: "{{dirname}}/{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields: *content_fields
+
+  - name: docs_tutorials_design
+    label: Tutoriels - Design
+    label_singular: Document
+    folder: _docs/tutorials/design
+    media_folder: "{{dirname}}/{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields: *content_fields
+
+  - name: docs_tutorials_production
+    label: Tutoriels - Production
+    label_singular: Document
+    folder: _docs/tutorials/production
+    media_folder: "{{dirname}}/{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields: *content_fields
+
+  - name: docs_references_hardware
+    label: References - Hardware
+    label_singular: Document
+    folder: _docs/references/hardware
+    media_folder: "{{dirname}}/{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields: *content_fields
+
+  - name: docs_references_machines
+    label: References - Machines
+    label_singular: Document
+    folder: _docs/references/machines
+    media_folder: "{{dirname}}/{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields: *content_fields
+
+  - name: docs_references_others
+    label: References - Autres
+    label_singular: Document
+    folder: _docs/references/others
+    media_folder: "{{dirname}}/{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields: *content_fields
+
+  - name: docs_references_plans
+    label: References - Plans
+    label_singular: Document
+    folder: _docs/references/plans
+    media_folder: "{{dirname}}/{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields: *content_fields
+
+  - name: docs_references_software
+    label: References - Logiciels
+    label_singular: Document
+    folder: _docs/references/software
+    media_folder: "{{dirname}}/{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields: *content_fields
+
+  - name: ressources
+    label: Ressources
+    label_singular: Ressource
+    folder: _ressources
+    media_folder: "{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    nested:
+      depth: 3
+      summary: "{{title}}"
+    editor:
+      preview: false
+    fields: *content_fields
+
+  - name: workshops
+    label: Ateliers
+    label_singular: Atelier
+    folder: _workshops
+    media_folder: "{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    nested:
+      depth: 2
+      summary: "{{title}}"
+    editor:
+      preview: false
+    fields:
+      - {label: Titre, name: title, widget: string}
+      - {label: Sous-titre, name: subtitle, widget: string, required: false}
+      - {label: Layout, name: layout, widget: hidden, default: collection}
+      - {label: Type, name: type, widget: hidden, default: workshop}
+      - {label: Image, name: image, widget: image, required: false}
+      - {label: Image du hero, name: hero_image, widget: image, required: false}
+      - {label: Image de presentation, name: about_image, widget: image, required: false}
+      - {label: Hauteur du hero, name: hero_height, widget: string, required: false}
+      - {label: Assombrir le hero, name: hero_darken, widget: boolean, required: false, default: true}
+      - {label: Masquer le hero, name: hide_hero, widget: boolean, required: false, default: true}
+      - {label: Masquer la barre laterale, name: show_sidebar, widget: boolean, required: false, default: false}
+      - {label: Masquer le footer, name: hide_footer, widget: boolean, required: false, default: false}
+      - {label: Table des matieres, name: component_toc, widget: boolean, required: false, default: false}
+      - {label: Contenu atelier, name: workshop-content, widget: boolean, required: false, default: true}
+      - {label: Masquer le contenu brut, name: hide_content, widget: boolean, required: false, default: true}
+      - {label: Contenu, name: body, widget: markdown, required: false}
+
+  - name: spaces
+    label: Espaces
+    label_singular: Espace
+    folder: _spaces
+    media_folder: "{{filename}}"
+    public_folder: ""
+    create: true
+    extension: md
+    format: frontmatter
+    editor:
+      preview: false
+    fields: *content_fields
