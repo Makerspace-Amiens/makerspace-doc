@@ -173,10 +173,13 @@
 
 .home-stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 48rem;
+  margin: 0 auto;
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
   }
 }
 
@@ -256,6 +259,10 @@
 }
 
 // ── Feature cards ─────────────────────────────────────────────────────────────
+
+.home-feature-grid {
+  justify-content: center;
+}
 
 .home-features {
   background: var(--bg-subtle);
