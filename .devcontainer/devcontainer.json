@@ -1,0 +1,38 @@
+{
+  "name": "doc.makerspace-amiens.fr-devcontainer",
+  "image": "mcr.microsoft.com/devcontainers/ruby:3.3",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+  },
+  "postCreateCommand": "bundle install && npm install -g decap-server",
+  "forwardPorts": [4000, 8081],
+  "portsAttributes": {
+    "4000": {
+      "label": "Jekyll",
+      "onAutoForward": "openPreview"
+    },
+    "8081": {
+      "label": "Decap CMS proxy",
+      "onAutoForward": "silent"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "yzhang.markdown-all-in-one",
+        "DavidAnson.vscode-markdownlint",
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+        "[markdown]": {
+          "editor.wordWrap": "on"
+        }
+      }
+    }
+  }
+}
