@@ -40,3 +40,20 @@ collections:
     layout: documentation
     image: https://via.placeholder.com/800x600
     show_sidebar: false
+
+excerpt_separator: "<!--more-->"
+
+sass:
+  silence_deprecations:
+    - import
+    - if-function
+    - global-builtin
+
+exclude:
+  - documentation-website/
+  - Gemfile
+  - Gemfile.lock
+  - Makefile
+  - CONTRIBUTING.md
+  - "*.sh"
+  - scripts/
