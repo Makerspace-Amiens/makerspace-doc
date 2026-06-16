@@ -308,15 +308,3 @@ collections:
       - {label: Masquer le contenu brut, name: hide_content, widget: boolean, required: false, default: true}
       - {label: Contenu, name: body, widget: markdown, required: false}
 
-  - name: spaces
-    label: Espaces
-    label_singular: Espace
-    folder: _spaces
-    media_folder: "{{filename}}"
-    public_folder: ""
-    create: true
-    extension: md
-    format: frontmatter
-    editor:
-      preview: false
-    fields: *content_fields

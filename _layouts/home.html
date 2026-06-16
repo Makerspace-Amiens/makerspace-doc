@@ -2,7 +2,6 @@
 ---
 {%- assign total_docs      = site.docs      | size -%}
 {%- assign total_workshops = site.workshops  | size -%}
-{%- assign total_spaces    = site.spaces     | size -%}
 {%- assign total_ressources = site.ressources | size -%}
 {%- assign gallery = site.data.home_gallery -%}
 
@@ -47,10 +46,6 @@
           <div class="home-stat">
             <div class="home-stat-value">{{ total_workshops }}</div>
             <div class="home-stat-label">Ateliers disponibles</div>
-          </div>
-          <div class="home-stat">
-            <div class="home-stat-value">{{ total_spaces }}</div>
-            <div class="home-stat-label">Espaces thématiques</div>
           </div>
           <div class="home-stat">
             <div class="home-stat-value">{{ total_ressources }}</div>
@@ -102,16 +97,6 @@
             </a>
           </div>
 
-          <div class="column is-6-tablet is-3-desktop">
-            <a href="{{ '/spaces' | relative_url }}" class="home-feature-card">
-              <div class="home-feature-icon">
-                <i class="fas fa-door-open"></i>
-              </div>
-              <h3 class="home-feature-title">Les espaces</h3>
-              <p class="home-feature-desc">CreativeLab, RobotLab, MecaLab, PrinterLab, RepairSpace — cinq zones spécialisées.</p>
-              <span class="home-feature-link">Explorer <i class="fas fa-arrow-right"></i></span>
-            </a>
-          </div>
 
         </div>
       </div>

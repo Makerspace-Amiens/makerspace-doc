@@ -35,12 +35,6 @@ collections:
     layout: collection
     image: https://via.placeholder.com/800x600
     show_sidebar: false
-  spaces:
-    output: true
-    layout: documentation
-    image: https://via.placeholder.com/800x600
-    show_sidebar: false
-
 excerpt_separator: "<!--more-->"
 
 sass:

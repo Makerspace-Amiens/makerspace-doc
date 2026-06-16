@@ -36,7 +36,6 @@ Le CMS est alors accessible sur `http://localhost:4000/admin`.
 | `_docs/tutorials/` | Tutoriels pas à pas |
 | `_docs/references/` | Fiches de référence (machines, hardware, logiciels, plans) |
 | `_workshops/` | Ateliers (collections avec sous-pages) |
-| `_spaces/` | Présentation des espaces du MakerSpace |
 | `_ressources/` | Ressources diverses |
 | `assets/uploads/` | Images et fichiers uploadés |
 
@@ -105,7 +104,6 @@ type(scope): description courte
 |-------|-----|
 | `docs` | Contenu dans `_docs/` |
 | `workshop` | Ateliers dans `_workshops/` |
-| `space` | Espaces dans `_spaces/` |
 | `ressource` | Ressources dans `_ressources/` |
 | `cms` | Configuration Decap (`admin/config.yml`) |
 | `theme` | Layouts, includes, assets CSS/JS |
