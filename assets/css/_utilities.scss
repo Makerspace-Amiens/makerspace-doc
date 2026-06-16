@@ -2,6 +2,29 @@
 // _utilities.scss — Section, footer, boutons, tags, progress, web components
 // =============================================================================
 
+// ── Card & Box ────────────────────────────────────────────────────────────────
+
+.card {
+  border: 1px solid $border;
+  box-shadow: 0 0 0 1px $border, 0 2px 6px rgba(0, 0, 0, 0.06);
+
+  .card-header {
+    border-bottom: 1px solid $border;
+    box-shadow: none;
+  }
+
+  .card-footer {
+    border-top: 1px solid $border;
+
+    .card-footer-item { border-right: 1px solid $border; }
+  }
+}
+
+.box {
+  border: 1px solid $border;
+  box-shadow: 0 0 0 1px $border, 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
 // ── Section ───────────────────────────────────────────────────────────────────
 
 section.section { padding: 2.5rem 1.5rem; }
