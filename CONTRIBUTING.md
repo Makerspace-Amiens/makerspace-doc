@@ -82,14 +82,14 @@ Les images propres à un document se placent dans un sous-dossier du même nom q
 
 ## Convention de commits
 
-```
+```text
 type(scope): description courte
 ```
 
 ### Types
 
 | Type | Usage |
-|---|---|
+|------|-------|
 | `feat` | Nouveau contenu ou nouvelle fonctionnalité |
 | `fix` | Correction (contenu erroné, lien cassé, mise en page) |
 | `refactor` | Réorganisation sans changement de fond |
@@ -102,7 +102,7 @@ type(scope): description courte
 ### Scopes
 
 | Scope | Zone |
-|---|---|
+|-------|-----|
 | `docs` | Contenu dans `_docs/` |
 | `workshop` | Ateliers dans `_workshops/` |
 | `space` | Espaces dans `_spaces/` |
@@ -114,7 +114,7 @@ type(scope): description courte
 
 ### Exemples
 
-```
+```text
 feat(docs): ajouter le tutoriel découpe laser Ruida
 fix(workshop): corriger les prérequis de l'atelier Otto
 refactor(ressource): reorganiser les fiches composants
