@@ -1,0 +1,163 @@
+// =============================================================================
+// _navbar.scss — Navbar blanche à la place du rouge Bulma is-primary
+// !important nécessaire pour écraser les règles couleur générées par Bulma
+// =============================================================================
+
+.navbar.is-primary {
+  background-color: var(--navbar-bg) !important;
+  border-bottom: 1px solid var(--border);
+  box-shadow: none;
+
+  .navbar-brand {
+    > .navbar-item,
+    > a.navbar-item {
+      color: var(--fg) !important;
+      font-weight: 600;
+
+      &:hover,
+      &:focus {
+        background-color: transparent !important;
+        color: var(--fg) !important;
+      }
+    }
+  }
+
+  .navbar-burger {
+    color: var(--fg-muted) !important;
+
+    span { background-color: var(--fg-muted) !important; }
+
+    &:hover {
+      background-color: var(--bg-subtle) !important;
+      color: var(--fg) !important;
+
+      span { background-color: var(--fg) !important; }
+    }
+
+    &.is-active span { background-color: var(--fg) !important; }
+  }
+
+  .navbar-start > .navbar-item,
+  .navbar-end > .navbar-item {
+    color: var(--fg-strong) !important;
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    &:hover,
+    &:focus {
+      background-color: var(--bg-subtle) !important;
+      color: var(--fg) !important;
+    }
+
+    &.is-active {
+      background-color: transparent !important;
+      color: $primary !important;
+      font-weight: 600;
+    }
+  }
+
+  .navbar-start .navbar-link,
+  .navbar-end .navbar-link {
+    color: var(--fg-strong) !important;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: transparent !important;
+
+    &::after { border-color: var(--fg-muted) !important; }
+
+    &:hover,
+    &:focus {
+      background-color: var(--bg-subtle) !important;
+      color: var(--fg) !important;
+    }
+  }
+
+  .navbar-item.has-dropdown {
+    &:focus .navbar-link,
+    &:hover .navbar-link,
+    &.is-active .navbar-link,
+    &:focus-within .navbar-link {
+      background-color: var(--bg-subtle) !important;
+      color: var(--fg) !important;
+    }
+  }
+
+  .navbar-dropdown {
+    border-radius: $radius-large;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.07);
+    padding: 0.25rem;
+    background-color: var(--card-bg) !important;
+    top: 100%;
+    position: absolute;
+
+    // Pont invisible pour maintenir le hover lors du passage vers le dropdown
+    &::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 0;
+      right: 0;
+      height: 8px;
+    }
+
+    .navbar-item {
+      border-radius: $radius;
+      color: var(--fg-strong) !important;
+      font-size: 0.875rem;
+      font-weight: 400;
+      padding: 0.4rem 0.75rem;
+
+      &:hover,
+      &:focus {
+        background-color: var(--bg-subtle) !important;
+        color: var(--fg) !important;
+      }
+
+      &.is-active {
+        background-color: var(--bg-subtle) !important;
+        color: $primary !important;
+        font-weight: 500;
+      }
+    }
+
+    .navbar-divider {
+      background-color: var(--border);
+      margin: 0.25rem 0;
+    }
+  }
+}
+
+@include touch {
+  .navbar.is-primary {
+    .navbar-menu {
+      background-color: var(--navbar-bg) !important;
+      border-top: 1px solid var(--border);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      padding: 0.5rem;
+
+      .navbar-item {
+        border-radius: $radius;
+        color: var(--fg-strong) !important;
+        font-size: 0.875rem;
+        font-weight: 500;
+
+        &:hover {
+          background-color: var(--bg-subtle) !important;
+          color: var(--fg) !important;
+        }
+
+        &.is-active {
+          background-color: transparent !important;
+          color: $primary !important;
+        }
+      }
+
+      .navbar-link {
+        color: var(--fg-strong) !important;
+
+        &::after { border-color: var(--fg-muted) !important; }
+      }
+    }
+  }
+}

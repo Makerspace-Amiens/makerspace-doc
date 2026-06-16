@@ -1,0 +1,46 @@
+// =============================================================================
+// _hero.scss — Surcharges du hero Bulma
+// =============================================================================
+
+// Hero primary sans image → fond gris clair (muted)
+.hero.is-primary:not(.has-bg-image) {
+  background-color: $grey-lightest;
+  background-image: none;
+
+  .hero-body { padding: $hero-body-padding; }
+
+  .title    { color: $black; }
+  .subtitle { color: $grey; }
+
+  .navbar-menu { background-color: $grey-lightest; }
+}
+
+// Hero avec image de fond — overlay d'assombrissement
+.hero.has-bg-image {
+  position: relative;
+
+  .hero-darken {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65));
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-body {
+    position: relative;
+    z-index: 1;
+  }
+
+  .title,
+  .subtitle {
+    color: $white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+
+// Supprime le dégradé is-bold de Bulma
+.hero.is-bold { background-image: none !important; }
+
+.hero.is-small  .hero-body { padding: 2rem 1.5rem; }
+.hero.is-medium .hero-body { padding: 6rem 1.5rem; }
+.hero.is-large  .hero-body { padding: 9rem 1.5rem; }

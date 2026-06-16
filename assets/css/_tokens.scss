@@ -1,0 +1,141 @@
+// =============================================================================
+// _tokens.scss — Design tokens & Bulma variable overrides
+// Toutes les variables Bulma doivent être définies AVANT @import "main"
+// =============================================================================
+
+// CSS Custom Properties (fond blanc uniquement)
+:root {
+  --bg:           #ffffff;
+  --bg-subtle:    #f4f4f5;
+  --card-bg:      #ffffff;
+  --fg:           #09090b;
+  --fg-muted:     #71717a;
+  --fg-strong:    #27272a;
+  --border:       #e4e4e7;
+  --border-hover: #a1a1aa;
+  --navbar-bg:    #ffffff;
+  --code-bg:      #18181b;
+  --radius:       6px;
+  --primary:      #ef2e31;
+}
+
+// -----------------------------------------------------------------------------
+// Typographie
+// -----------------------------------------------------------------------------
+$family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$family-primary:    $family-sans-serif;
+$family-code:       'JetBrains Mono', 'Fira Code', monospace;
+
+// -----------------------------------------------------------------------------
+// Palette zinc (shadcn/ui)
+// -----------------------------------------------------------------------------
+$white:         #ffffff;
+$black:         #09090b;
+$grey-darker:   #18181b;
+$grey-dark:     #27272a;
+$grey:          #71717a;
+$grey-light:    #a1a1aa;
+$grey-lighter:  #d4d4d8;
+$grey-lightest: #f4f4f5;
+
+// -----------------------------------------------------------------------------
+// Bordures
+// -----------------------------------------------------------------------------
+$border:        #e4e4e7;
+$border-hover:  #a1a1aa;
+
+// -----------------------------------------------------------------------------
+// Texte
+// -----------------------------------------------------------------------------
+$text:        $black;
+$text-light:  $grey;
+$text-strong: $black;
+
+// -----------------------------------------------------------------------------
+// Couleurs de marque et sémantiques
+// -----------------------------------------------------------------------------
+$primary:       #ef2e31;
+$primary-dark:  #c5222a;   // ~darken($primary, 8-10%)
+$primary-light: #fcc7c8;   // ~lighten($primary, 40%)
+$link:          #ef2e31;
+$info:    #0ea5e9;
+$success: #22c55e;
+$warning: #f59e0b;
+$danger:  #ef4444;
+
+// -----------------------------------------------------------------------------
+// Corps
+// -----------------------------------------------------------------------------
+$body-size:        16px;
+$body-weight:      400;
+$body-line-height: 1.6;
+
+// -----------------------------------------------------------------------------
+// Titres
+// -----------------------------------------------------------------------------
+$title-weight:    600;
+$subtitle-weight: 400;
+$subtitle-color:  $grey;
+
+// -----------------------------------------------------------------------------
+// Rayons
+// -----------------------------------------------------------------------------
+$radius:         6px;
+$radius-small:   4px;
+$radius-large:   8px;
+$radius-rounded: 9999px;
+
+// -----------------------------------------------------------------------------
+// Navbar
+// -----------------------------------------------------------------------------
+$navbar-background-color:             $white;
+$navbar-height:                       3.5rem;
+$navbar-item-color:                   $grey;
+$navbar-item-hover-color:             $black;
+$navbar-item-hover-background-color:  $grey-lightest;
+$navbar-item-active-color:            $black;
+$navbar-item-active-background-color: transparent;
+$navbar-dropdown-arrow:               $grey;
+$navbar-divider-background-color:     $border;
+$navbar-dropdown-background-color:    $white;
+$navbar-dropdown-radius:              $radius-large;
+$navbar-box-shadow-size:              0;
+$navbar-box-shadow-color:             transparent;
+
+// -----------------------------------------------------------------------------
+// Card
+// -----------------------------------------------------------------------------
+$card-shadow:           0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$card-radius:           $radius-large;
+$card-content-padding:  1.5rem;
+$card-header-shadow:    0 1px 0 $border;
+$card-background-color: $white;
+
+// -----------------------------------------------------------------------------
+// Box
+// -----------------------------------------------------------------------------
+$box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+$box-radius: $radius-large;
+
+// -----------------------------------------------------------------------------
+// Footer
+// -----------------------------------------------------------------------------
+$footer-background-color: $grey-lightest;
+$footer-color:            $grey;
+$footer-padding:          2.5rem 1.5rem;
+
+// -----------------------------------------------------------------------------
+// Hero
+// -----------------------------------------------------------------------------
+$hero-body-padding: 4rem 1.5rem;
+
+// -----------------------------------------------------------------------------
+// Tag
+// -----------------------------------------------------------------------------
+$tag-background-color: $grey-lightest;
+
+// -----------------------------------------------------------------------------
+// Panel
+// -----------------------------------------------------------------------------
+$panel-heading-background-color: $grey-lightest;
+$panel-heading-color:            $black;
