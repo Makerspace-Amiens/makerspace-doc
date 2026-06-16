@@ -1,0 +1,220 @@
+---
+---
+{%- assign total_docs      = site.docs      | size -%}
+{%- assign total_workshops = site.workshops  | size -%}
+{%- assign total_spaces    = site.spaces     | size -%}
+{%- assign total_ressources = site.ressources | size -%}
+{%- assign gallery = site.data.home_gallery -%}
+
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'fr' }}"{% if site.fixed_navbar %} class="has-navbar-fixed-{{ site.fixed_navbar }}"{% endif %}>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+
+    <!-- ═══════════════════════════════════════════════════════ HERO -->
+    <section class="home-hero">
+      {% if page.hero_image %}
+      <div class="home-hero-media" style="background-image:url('{{ page.hero_image | relative_url }}')">
+        <div class="home-hero-overlay"></div>
+      </div>
+      {% endif %}
+      <div class="home-hero-body">
+        <div class="container">
+          <span class="home-hero-badge">UniLaSalle Amiens</span>
+          <h1 class="home-hero-title">{{ page.hero_title | default: "L'atelier ouvert aux étudiants UniLaSalle." }}</h1>
+          <p class="home-hero-sub">{{ page.hero_subtitle | default: "Imprimante 3D, découpe laser, électronique, programmation les machines et la documentation pour aller de l'idée à l'objet." }}</p>
+          <div class="home-hero-actions">
+            <a href="{{ '/docs' | relative_url }}" class="button is-medium home-btn-primary">
+              Voir la documentation
+            </a>
+            <a href="{{ '/informations' | relative_url }}" class="button is-medium home-btn-ghost">
+              Accès &amp; horaires
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ STATS -->
+    <section class="home-stats-bar">
+      <div class="container">
+        <div class="home-stats-grid">
+          <div class="home-stat">
+            <div class="home-stat-value">{{ total_docs }}+</div>
+            <div class="home-stat-label">Pages de documentation</div>
+          </div>
+          <div class="home-stat">
+            <div class="home-stat-value">{{ total_workshops }}</div>
+            <div class="home-stat-label">Ateliers disponibles</div>
+          </div>
+          <div class="home-stat">
+            <div class="home-stat-value">{{ total_spaces }}</div>
+            <div class="home-stat-label">Espaces thématiques</div>
+          </div>
+          <div class="home-stat">
+            <div class="home-stat-value">{{ total_ressources }}</div>
+            <div class="home-stat-label">Ressources & outils</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ FEATURES -->
+    <section class="home-section home-features">
+      <div class="container">
+        <div class="home-section-header">
+          <h2 class="home-section-title">Par où commencer ?</h2>
+          <p class="home-section-sub">Fiches machines, tutoriels pas-à-pas, ateliers encadrés — tout est documenté et accessible.</p>
+        </div>
+        <div class="columns is-multiline home-feature-grid">
+
+          <div class="column is-6-tablet is-3-desktop">
+            <a href="{{ '/docs' | relative_url }}" class="home-feature-card">
+              <div class="home-feature-icon">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <h3 class="home-feature-title">Documentation</h3>
+              <p class="home-feature-desc">Tutoriels, guides pratiques, références et concepts classés par thème.</p>
+              <span class="home-feature-link">Consulter <i class="fas fa-arrow-right"></i></span>
+            </a>
+          </div>
+
+          <div class="column is-6-tablet is-3-desktop">
+            <a href="{{ '/workshops' | relative_url }}" class="home-feature-card">
+              <div class="home-feature-icon">
+                <i class="fas fa-hammer"></i>
+              </div>
+              <h3 class="home-feature-title">Ateliers</h3>
+              <p class="home-feature-desc">Fabrication additive, robot Otto MKS — des projets guidés du début à la fin.</p>
+              <span class="home-feature-link">Voir les ateliers <i class="fas fa-arrow-right"></i></span>
+            </a>
+          </div>
+
+          <div class="column is-6-tablet is-3-desktop">
+            <a href="{{ '/equipment' | relative_url }}" class="home-feature-card">
+              <div class="home-feature-icon">
+                <i class="fas fa-print"></i>
+              </div>
+              <h3 class="home-feature-title">Équipements</h3>
+              <p class="home-feature-desc">Imprimantes 3D, découpe laser, fraiseuse PCB, oscilloscopes, fers à souder.</p>
+              <span class="home-feature-link">Voir le matériel <i class="fas fa-arrow-right"></i></span>
+            </a>
+          </div>
+
+          <div class="column is-6-tablet is-3-desktop">
+            <a href="{{ '/spaces' | relative_url }}" class="home-feature-card">
+              <div class="home-feature-icon">
+                <i class="fas fa-door-open"></i>
+              </div>
+              <h3 class="home-feature-title">Les espaces</h3>
+              <p class="home-feature-desc">CreativeLab, RobotLab, MecaLab, PrinterLab, RepairSpace — cinq zones spécialisées.</p>
+              <span class="home-feature-link">Explorer <i class="fas fa-arrow-right"></i></span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ GALERIE -->
+    {% if gallery and gallery.size > 0 %}
+    <section class="home-section home-gallery-section">
+      <div class="container">
+        <div class="home-section-header">
+          <h2 class="home-section-title">Le MakerSpace en images</h2>
+          <p class="home-section-sub">Fabrication, projets, événements — la vie du MakerSpace.</p>
+        </div>
+        <div class="home-gallery">
+          {% for photo in gallery %}
+          <div class="home-gallery-item">
+            <img src="{{ photo | relative_url }}" alt="MakerSpace UniLaSalle Amiens" loading="lazy">
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ═══════════════════════════════════════════════════════ ACTUALITÉS -->
+    {% assign visible_posts = site.posts | where: "published", true | sort: "date" | reverse %}
+    {% if visible_posts.size > 0 %}
+    <section class="home-section home-news-section">
+      <div class="container">
+        <div class="home-section-header home-section-header--row">
+          <div>
+            <h2 class="home-section-title">Dernières actualités</h2>
+            <p class="home-section-sub">Projets, événements et vie du MakerSpace.</p>
+          </div>
+          <a href="{{ '/blog' | relative_url }}" class="button home-btn-outline">Toutes les actualités</a>
+        </div>
+        <div class="columns is-multiline">
+          {% for post in visible_posts limit:3 %}
+          <div class="column is-12-tablet is-4-desktop">
+            <a href="{{ post.url | relative_url }}" class="home-news-card">
+              {% if post.image %}
+              <div class="home-news-img">
+                <img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy">
+              </div>
+              {% endif %}
+              <div class="home-news-body">
+                <time class="home-news-date">{{ post.date | date: "%d %B %Y" }}</time>
+                <h3 class="home-news-title">{{ post.title }}</h3>
+                {% if post.subtitle %}
+                <p class="home-news-excerpt">{{ post.subtitle | truncate: 100 }}</p>
+                {% endif %}
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ═══════════════════════════════════════════════════════ CTA BAND -->
+    <section class="home-cta-band">
+      <div class="container">
+        <div class="home-cta-content">
+          <h2 class="home-cta-title">Ouvert le mercredi de 18h à 21h et le jeudi de 13h30 à 18h.</h2>
+          <p class="home-cta-sub">Accessible à tous les étudiants et personnels du campus, sans inscription préalable. Chacun est responsable du matériel qu'il utilise.</p>
+          <div class="home-cta-actions">
+            <a href="{{ '/informations' | relative_url }}" class="button is-medium home-btn-primary">Informations pratiques</a>
+            <a href="{{ '/workshops' | relative_url }}" class="button is-medium home-btn-ghost-dark">Voir les ateliers</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ PARTNERS -->
+    {% if page.partners %}
+    {% assign partners = site.data[page.partners] %}
+    {% if partners.items.size > 0 %}
+    <section class="home-partners-section">
+      <div class="container">
+        <p class="home-partners-label">Avec le soutien de</p>
+        <div class="home-partners-grid">
+          {% for partner in partners.items %}
+          <a href="{{ partner.link }}" target="_blank" rel="noopener" class="home-partner">
+            {% if partner.image %}
+            <img src="{{ partner.image | relative_url }}" alt="{{ partner.title }}">
+            {% endif %}
+            {% if partner.subtitle %}
+            <p class="home-partner-caption">{{ partner.subtitle }}</p>
+            {% endif %}
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+    {% endif %}
+
+    {% unless page.hide_footer %}
+      {% include footer.html %}
+    {% endunless %}
+
+    {% include footer-scripts.html %}
+    <script src="{{ '/assets/js/script-3d-viewer.js' | relative_url }}"></script>
+  </body>
+</html>
