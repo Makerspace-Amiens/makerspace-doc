@@ -8,7 +8,7 @@ component_toc: true
 doc_header: true
 type: doc, equipment
 
-title: Weller wtha
+title: Weller WTHA
 subtitle: Station à air chaud
 description: 
 author: Adrien Bracq

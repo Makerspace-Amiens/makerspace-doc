@@ -364,7 +364,7 @@ layout: default
         <div class="column is-1-desktop is-1-tablet is-hidden-mobile"></div>
     {% endif %}
 
-    <div class="columns is-multiline mt-6">
+    <div class="columns is-multiline {% if page.doc_header %}mt-6{% endif %}">
 
         {% if page.component_toc %}
         <div class="column is-9-desktop is-9-tablet">
