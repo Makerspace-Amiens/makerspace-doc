@@ -379,7 +379,7 @@ layout: default
         </div>
 
         {% if page.component_toc %}
-            <div class="column is-3-desktop is-3-tablet is-hidden-mobile mt-6" style="height:90vh; position: sticky; top: 3.2rem; overflow: auto;">
+            <div class="column is-3-desktop is-3-tablet is-hidden-mobile toc-column">
                 {% assign contentsTitle = page.toc_title | default: 'Contents' %}
                 {% include toc.html html=content class='menu-list' h_min=2 h_max=4 contents_title=contentsTitle %}
             </div>

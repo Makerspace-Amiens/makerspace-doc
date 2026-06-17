@@ -3,7 +3,7 @@ layout: documentation
 hide_hero: false
 doc_header: false
 component_toc: true
-hero_image: /assets/img/informations.jpg
+hero_image: /assets/img/printer.jpg
 hero_darken: true
 title: Informations
 subtitle: fonctionnement, philosophie, accès, horaires...

@@ -38,8 +38,8 @@
   }
 }
 
-// Supprime le dégradé is-bold de Bulma
-.hero.is-bold { background-image: none !important; }
+// Supprime le dégradé is-bold de Bulma (sauf quand une image de fond est définie)
+.hero.is-bold:not(.has-bg-image) { background-image: none !important; }
 
 .hero.is-small  .hero-body { padding: 2rem 1.5rem; }
 .hero.is-medium .hero-body { padding: 6rem 1.5rem; }
