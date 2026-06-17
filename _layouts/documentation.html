@@ -366,12 +366,10 @@ layout: default
 
     <div class="columns is-multiline mt-6">
 
-        <div class="column is-1-desktop is-1-tablet is-hidden-mobile"></div>
-
         {% if page.component_toc %}
-        <div class="column is-8-desktop is-8-tablet">
+        <div class="column is-9-desktop is-9-tablet">
         {% else %}
-        <div class="column is-10-desktop is-8-tablet">
+        <div class="column is-12-desktop is-12-tablet">
         {% endif %}
             <div class="content">
                 {{ content }}
@@ -383,8 +381,6 @@ layout: default
                 {% assign contentsTitle = page.toc_title | default: 'Contents' %}
                 {% include toc.html html=content class='menu-list' h_min=2 h_max=4 contents_title=contentsTitle %}
             </div>
-        {% else %}
-            <div class="column is-1-desktop is-1-tablet"></div>
         {% endif %}
     </div>
 </div>
