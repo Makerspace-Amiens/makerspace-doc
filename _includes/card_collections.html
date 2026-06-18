@@ -141,15 +141,15 @@
     {% if include.items or (type_match and tag_match) %}
       <div class="column is-4-desktop is-6-tablet">
         {% if item.external_link %}
-          <a href="{{ item.external_link }}">
+          <a href="{{ item.external_link }}" class="card-link">
         {% else %}
-          <a href="{{ item.url | relative_url }}">
+          <a href="{{ item.url | relative_url }}" class="card-link">
         {% endif %}
           <div class="card">
             {% if item.image %}
               {% capture image-url %}{{ site.baseurl }}{{ item.url }}{{ item.image }}{% endcapture %}
               <div class="card-image">
-                <figure class="image is-fullwidth fixed-image">
+                <figure class="image is-fullwidth fixed-image {% if include.image_fit == 'contain' %}is-contain{% endif %}">
                   <img src="{{ image-url }}" alt="{{ item.title }}" />
                 </figure>
               </div>

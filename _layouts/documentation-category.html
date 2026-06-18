@@ -7,8 +7,9 @@ show_sidebar: false
   {{ page.content }}
 </div>
 
-{% 
-  include card_collections.html 
-  collection=page.collection 
-  type=page.type 
+{%
+  include card_collections.html
+  collection=page.collection
+  type=page.type
+  image_fit=page.image_fit
 %}
