@@ -1,0 +1,295 @@
+---
+---
+{%- comment %} Collect all docs for this project {% endcomment -%}
+{%- assign tutos     = '' | split: '' -%}
+{%- assign howtos    = '' | split: '' -%}
+{%- assign ressources= '' | split: '' -%}
+{%- assign hardware  = '' | split: '' -%}
+{%- assign software  = '' | split: '' -%}
+{%- assign specials  = '' | split: '' -%}
+
+{%- comment %} Tutoriels : liste ordonnée depuis le frontmatter du projet ─── {% endcomment -%}
+{%- for tuto_url in page.tutorials -%}
+  {%- assign found = site.docs | where: 'url', tuto_url | first -%}
+  {%- if found -%}{%- assign tutos = tutos | push: found -%}{%- endif -%}
+{%- endfor -%}
+
+{%- comment %} How-to guides : liste ordonnée depuis le frontmatter du projet {% endcomment -%}
+{%- for howto_url in page.how_to_guides -%}
+  {%- assign found = site.docs | where: 'url', howto_url | first -%}
+  {%- if found -%}{%- assign howtos = howtos | push: found -%}{%- endif -%}
+{%- endfor -%}
+
+{%- comment %} Matériel & composants : liste depuis le frontmatter du projet ─── {% endcomment -%}
+{%- for url in page.hardware -%}
+  {%- assign found = site.docs | where: 'url', url | first -%}
+  {%- if found -%}{%- assign hardware = hardware | push: found -%}{%- endif -%}
+{%- endfor -%}
+
+{%- comment %} Logiciels & outils : liste depuis le frontmatter du projet ─── {% endcomment -%}
+{%- for url in page.software -%}
+  {%- assign found = site.docs | where: 'url', url | first -%}
+  {%- if found -%}{%- assign software = software | push: found -%}{%- endif -%}
+{%- endfor -%}
+
+{%- comment %} Autres références : liste depuis le frontmatter du projet ─── {% endcomment -%}
+{%- for url in page.ressources -%}
+  {%- assign found = site.docs | where: 'url', url | first -%}
+  {%- if found -%}{%- assign ressources = ressources | push: found -%}{%- endif -%}
+{%- endfor -%}
+
+{%- comment %} Section spéciale (ex: ottolympiades) : liste depuis le frontmatter du projet ─── {% endcomment -%}
+{%- for url in page.specials -%}
+  {%- assign found = site.docs | where: 'url', url | first -%}
+  {%- if found -%}{%- assign specials = specials | push: found -%}{%- endif -%}
+{%- endfor -%}
+
+{%- assign total_time = 0 -%}
+{%- for t in tutos -%}{%- if t.time -%}{%- assign total_time = total_time | plus: t.time -%}{%- endif -%}{%- endfor -%}
+
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'fr' }}"{% if site.fixed_navbar %} class="has-navbar-fixed-{{ site.fixed_navbar }}"{% endif %}>
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+
+    <!-- ══ HERO PROJECT ═════════════════════════════════════════════════════ -->
+    <header class="ph-hero">
+      <div class="container">
+        <a href="{{ '/workshops/' | relative_url }}" class="ph-back">
+          <i class="fas fa-arrow-left"></i> Toutes les thématiques
+        </a>
+        <div class="ph-hero-inner">
+          {% if page.project_image %}
+          <div class="ph-hero-img">
+            <img src="{{ page.project_image | relative_url }}" alt="{{ page.title }}" loading="lazy">
+          </div>
+          {% endif %}
+          <div class="ph-hero-body">
+            <div class="ph-hero-tags">
+              {% for tag in page.project_tags %}
+              <span class="project-tag">{{ tag }}</span>
+              {% endfor %}
+            </div>
+            <h1 class="ph-hero-title">{{ page.title }}</h1>
+            <p class="ph-hero-desc">{{ page.description }}</p>
+            <div class="ph-hero-stats">
+              <span class="ph-stat"><i class="fas fa-list-ol"></i> {{ tutos.size }} tutoriels</span>
+              {% if total_time > 0 %}<span class="ph-stat"><i class="fas fa-clock"></i> ~{{ total_time }}h</span>{% endif %}
+              {% if hardware.size > 0 %}<span class="ph-stat"><i class="fas fa-microchip"></i> {{ hardware.size }} composants</span>{% endif %}
+              {% if software.size > 0 or ressources.size > 0 %}
+              <span class="ph-stat"><i class="fas fa-code"></i> {{ software.size | plus: ressources.size }} ressources</span>
+              {% endif %}
+            </div>
+            {% if tutos.size > 0 %}
+            <a href="{{ tutos.first.url | relative_url }}?project={{ page.project_slug }}" class="button is-primary home-btn-primary mt-4" style="display:inline-flex;align-items:center;gap:.5rem;">
+              Commencer <i class="fas fa-arrow-right"></i>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══ PRÉSENTATION ════════════════════════════════════════════════════ -->
+    {% if content and content != '' %}
+    <section class="ph-section">
+      <div class="container">
+        <div class="ph-section-header">
+          <h2 class="ph-section-title">
+            <i class="fas fa-info-circle"></i> Présentation
+          </h2>
+        </div>
+        <div class="content ph-presentation">
+          {{ content }}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ══ TUTORIELS ════════════════════════════════════════════════════════ -->
+    {% if tutos.size > 0 %}
+    <section class="ph-section">
+      <div class="container">
+        <div class="ph-section-header">
+          <div>
+            <h2 class="ph-section-title">
+              <i class="fas fa-graduation-cap"></i> Tutoriels
+            </h2>
+            <p class="ph-section-sub">Suivez les étapes dans l'ordre pour réaliser le projet de A à Z.</p>
+          </div>
+        </div>
+        <div class="ph-tuto-list">
+          {% for tuto in tutos %}
+          {% assign step_n = forloop.index %}
+          <a href="{{ tuto.url | relative_url }}?project={{ page.project_slug }}" class="ph-tuto-item">
+            <span class="ph-tuto-num">{{ step_n }}</span>
+            <div class="ph-tuto-body">
+              <span class="ph-tuto-title">{{ tuto.title }}</span>
+              {% if tuto.subtitle %}<span class="ph-tuto-sub">{{ tuto.subtitle }}</span>{% endif %}
+            </div>
+            <div class="ph-tuto-meta">
+              {% if tuto.time %}<span class="ph-tuto-time"><i class="fas fa-clock"></i> {{ tuto.time }}h</span>{% endif %}
+              {% if tuto.difficulty %}
+              <span class="ph-tuto-diff">
+                {% for i in (1..tuto.difficulty) %}<i class="fas fa-circle"></i>{% endfor %}
+                {% assign rem = 3 | minus: tuto.difficulty %}
+                {% if rem > 0 %}{% for i in (1..rem) %}<i class="far fa-circle"></i>{% endfor %}{% endif %}
+              </span>
+              {% endif %}
+            </div>
+            <i class="fas fa-chevron-right ph-tuto-arrow"></i>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ══ GUIDES PRATIQUES ════════════════════════════════════════════════ -->
+    {% if howtos.size > 0 %}
+    <section class="ph-section ph-section--alt">
+      <div class="container">
+        <div class="ph-section-header">
+          <div>
+            <h2 class="ph-section-title">
+              <i class="fas fa-tools"></i> Guides pratiques
+            </h2>
+            <p class="ph-section-sub">Résolvez un problème précis, étape par étape.</p>
+          </div>
+        </div>
+        <div class="ph-tuto-list">
+          {% for howto in howtos %}
+          <a href="{{ howto.url | relative_url }}" class="ph-tuto-item">
+            <span class="ph-tuto-num"><i class="fas fa-wrench"></i></span>
+            <div class="ph-tuto-body">
+              <span class="ph-tuto-title">{{ howto.title }}</span>
+              {% if howto.subtitle %}<span class="ph-tuto-sub">{{ howto.subtitle }}</span>{% endif %}
+            </div>
+            <div class="ph-tuto-meta">
+              {% if howto.time %}<span class="ph-tuto-time"><i class="fas fa-clock"></i> {{ howto.time }}h</span>{% endif %}
+              {% if howto.difficulty %}
+              <span class="ph-tuto-diff">
+                {% for i in (1..howto.difficulty) %}<i class="fas fa-circle"></i>{% endfor %}
+                {% assign rem = 3 | minus: howto.difficulty %}
+                {% if rem > 0 %}{% for i in (1..rem) %}<i class="far fa-circle"></i>{% endfor %}{% endif %}
+              </span>
+              {% endif %}
+            </div>
+            <i class="fas fa-chevron-right ph-tuto-arrow"></i>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ══ RESSOURCES ═══════════════════════════════════════════════════════ -->
+    {% assign has_resources = false %}
+    {% if hardware.size > 0 or software.size > 0 or ressources.size > 0 %}{% assign has_resources = true %}{% endif %}
+
+    {% if has_resources %}
+    <section class="ph-section ph-section--alt">
+      <div class="container">
+        <div class="ph-section-header">
+          <div>
+            <h2 class="ph-section-title">
+              <i class="fas fa-book-open"></i> Ressources
+            </h2>
+            <p class="ph-section-sub">Fiches de référence matériel, logiciels et outils pour mener le projet.</p>
+          </div>
+        </div>
+
+        {% if hardware.size > 0 %}
+        <p class="ph-resource-group-label">Matériel & Composants</p>
+        <div class="ph-resource-grid">
+          {% for doc in hardware %}
+          <a href="{{ doc.url | relative_url }}" class="ph-resource-card">
+            <div class="ph-resource-icon"><i class="fas fa-microchip"></i></div>
+            <div class="ph-resource-body">
+              <span class="ph-resource-title">{{ doc.title }}</span>
+              {% if doc.subtitle %}<span class="ph-resource-sub">{{ doc.subtitle }}</span>{% endif %}
+            </div>
+            {% if doc.external_link %}<i class="fas fa-external-link-alt ph-resource-ext"></i>{% endif %}
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if software.size > 0 %}
+        <p class="ph-resource-group-label" {% if hardware.size > 0 %}style="margin-top:1.5rem"{% endif %}>Logiciels & Outils</p>
+        <div class="ph-resource-grid">
+          {% for doc in software %}
+          <a href="{{ doc.url | relative_url }}" class="ph-resource-card">
+            <div class="ph-resource-icon"><i class="fas fa-code"></i></div>
+            <div class="ph-resource-body">
+              <span class="ph-resource-title">{{ doc.title }}</span>
+              {% if doc.subtitle %}<span class="ph-resource-sub">{{ doc.subtitle }}</span>{% endif %}
+            </div>
+            {% if doc.external_link %}<i class="fas fa-external-link-alt ph-resource-ext"></i>{% endif %}
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if ressources.size > 0 %}
+        <p class="ph-resource-group-label" {% if hardware.size > 0 or software.size > 0 %}style="margin-top:1.5rem"{% endif %}>Références</p>
+        <div class="ph-resource-grid">
+          {% for doc in ressources %}
+          <a href="{{ doc.url | relative_url }}" class="ph-resource-card">
+            <div class="ph-resource-icon"><i class="fas fa-file-alt"></i></div>
+            <div class="ph-resource-body">
+              <span class="ph-resource-title">{{ doc.title }}</span>
+              {% if doc.subtitle %}<span class="ph-resource-sub">{{ doc.subtitle }}</span>{% endif %}
+            </div>
+            {% if doc.external_link %}<i class="fas fa-external-link-alt ph-resource-ext"></i>{% endif %}
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ══ SECTION SPÉCIFIQUE ════════════════════════════════════════════════ -->
+    {% if specials.size > 0 and page.special_section_label %}
+    <section class="ph-section">
+      <div class="container">
+        <div class="ph-section-header">
+          <div>
+            <h2 class="ph-section-title">
+              <i class="{{ page.special_section_icon | default: 'fas fa-star' }}"></i>
+              {{ page.special_section_label }}
+            </h2>
+            {% if page.special_section_desc %}
+            <p class="ph-section-sub">{{ page.special_section_desc }}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="columns is-multiline">
+          {% for doc in specials %}
+          <div class="column is-4-desktop is-6-tablet">
+            <a href="{{ doc.url | relative_url }}" class="ph-special-card">
+              {% if doc.image %}
+              <div class="ph-special-card-img">
+                <img src="{{ doc.url | relative_url }}{{ doc.image }}" alt="{{ doc.title }}" loading="lazy">
+              </div>
+              {% endif %}
+              <div class="ph-special-card-body">
+                <h3 class="ph-special-card-title">{{ doc.title }}</h3>
+                {% if doc.description %}<p class="ph-special-card-desc">{{ doc.description }}</p>{% endif %}
+                <span class="ph-special-card-link">Découvrir <i class="fas fa-arrow-right"></i></span>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% unless page.hide_footer %}{% include footer.html %}{% endunless %}
+    {%- include footer-scripts.html -%}
+  </body>
+</html>

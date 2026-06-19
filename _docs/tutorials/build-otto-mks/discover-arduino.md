@@ -9,7 +9,7 @@ doc_header: true
 type: tutorial
 tag: otto-mks
 
-title: 05 - Démarrer avec Arduino !
+title: Démarrer avec Arduino !
 subtitle: Présentation du contexte et installation des outils
 description: Cette page va vous accompagner dans la découverte d'Arduino et l'installation des différents outils.
 

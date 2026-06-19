@@ -9,7 +9,7 @@ doc_header: true
 type: tutorial
 tag: otto-mks
 
-title: 02 - Démarrer avec OnShape
+title: Démarrer avec OnShape
 subtitle: Créer votre compte, créez votre projet, etc...
 description: Cette page détaille les différentes étapes pour commencer avec OnShape
 

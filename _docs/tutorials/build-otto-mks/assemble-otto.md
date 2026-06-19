@@ -9,7 +9,7 @@ doc_header: true
 type: tutorial
 tag: otto-mks
 
-title: 09 - Assemblez votre Otto-MKS
+title: Assemblez votre Otto-MKS
 subtitle: Guide d'assemblage d'Otto-MKS
 description: Suivez ces étapes pour assembler votre Otto-MKS !
 

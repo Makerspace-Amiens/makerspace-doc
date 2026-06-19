@@ -9,7 +9,7 @@ doc_header: true
 type: tutorial
 tag: otto-mks
 
-title: 10 - RemoteXY
+title: RemoteXY
 subtitle: Piloter son microcontroleur à distance
 description: Cette page va vous accompagner dans l'utilisation de RemoteXY vous permettant de piloter votre robot à distance.
 

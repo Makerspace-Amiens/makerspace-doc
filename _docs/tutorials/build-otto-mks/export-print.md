@@ -9,7 +9,7 @@ doc_header: true
 type: tutorial
 tag: otto-mks
 
-title: 03 - Exportez et imprimez Otto !
+title: Exportez et imprimez Otto !
 subtitle: Exportez et imprimez les pièces d'Otto
 description: Cette page détaille la structure du fichier d'assemblage, comment exporter une pièce et l'imprimer
 

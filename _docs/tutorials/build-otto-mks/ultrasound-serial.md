@@ -9,7 +9,7 @@ doc_header: true
 type: tutorial
 tag: otto-mks
 
-title: 07 - Capteur ultrason et liaison série
+title: Capteur ultrason et liaison série
 subtitle: Récupérer une information et l'afficher
 description: Cette page va vous accompagner dans l'utilisation de la liaison série et du capteur ultrason.
 

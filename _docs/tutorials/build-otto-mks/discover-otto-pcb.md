@@ -9,7 +9,7 @@ doc_header: true
 type: tutorial
 tag: otto-mks
 
-title: 04 - Découvrez la carte du Otto !
+title: Découvrez la carte du Otto !
 subtitle: Les composants, son fonctionnement, ses capacités...
 description: Vous découvrerez ici la carte électronique qui pilote le robot OttoMks
 
