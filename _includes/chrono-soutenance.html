@@ -1,0 +1,355 @@
+<div id="chrono-app" class="box">
+
+  <!-- ECRAN DE PARAMETRAGE -->
+  <div id="chrono-setup">
+    <div class="field is-horizontal">
+      <div class="field-label is-normal is-3">
+        <label class="label" for="chronoMinutes">Durée de soutenance</label>
+      </div>
+      <div class="field-body">
+        <div class="field has-addons">
+          <div class="control">
+            <input id="chronoMinutes" class="input" type="number" min="1" step="1" value="20">
+          </div>
+          <div class="control"><a class="button is-static">minutes</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal is-3">
+        <label class="label">Tiers temps</label>
+      </div>
+      <div class="field-body">
+        <div class="control">
+          <label class="checkbox">
+            <input type="checkbox" id="chronoTiersTemps">
+            Activer le tiers temps (durée x 1,33)
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal is-3"></div>
+      <div class="field-body">
+        <div class="control">
+          <button class="button is-primary" id="chronoSetupStart" onclick="chronoInit()">Démarrer le chronomètre</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ECRAN DU CHRONOMETRE -->
+  <div id="chrono-display" style="display:none;">
+    <div id="chronoTime" class="chrono-time has-text-centered">20:00</div>
+
+    <div class="buttons is-centered chrono-controls">
+      <button class="button is-success" id="chronoPlayPause" onclick="chronoToggle()">Démarrer</button>
+      <button class="button is-warning" onclick="chronoReset()">Réinitialiser</button>
+      <button class="button is-link" id="chronoFullscreenBtn" onclick="chronoFullscreen()">Plein écran</button>
+      <button class="button" onclick="chronoBackToSetup()">Changer la durée</button>
+    </div>
+  </div>
+</div>
+
+<!-- STYLE -->
+<style>
+  #chrono-app .field { margin-bottom: 1rem; }
+  #chrono-app .field-label { flex: 0 0 200px; }
+
+  .chrono-time {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: clamp(6rem, 20vw, 18rem);
+    line-height: 1;
+    margin: 2rem 0;
+    transition: color 0.3s;
+  }
+
+  .chrono-time.chrono-zone-green { color: #2ecc71; }
+  .chrono-time.chrono-zone-yellow { color: #f5c542; }
+  .chrono-time.chrono-zone-red { color: #ef2e31; }
+
+  .chrono-controls { margin-bottom: 1rem; }
+
+  #chrono-display.chrono-fullscreen,
+  #chrono-display:fullscreen,
+  #chrono-display:-webkit-full-screen {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background: #ffffff !important;
+    color-scheme: light;
+    forced-color-adjust: none;
+    z-index: 1000;
+  }
+
+  #chrono-display.chrono-fullscreen .chrono-time,
+  #chrono-display:fullscreen .chrono-time,
+  #chrono-display:-webkit-full-screen .chrono-time {
+    color: #1a1a1a !important;
+    font-size: 30vw;
+    margin: 0 0 3vh 0;
+  }
+
+  #chrono-display.chrono-fullscreen .chrono-time.chrono-zone-green,
+  #chrono-display:fullscreen .chrono-time.chrono-zone-green,
+  #chrono-display:-webkit-full-screen .chrono-time.chrono-zone-green {
+    color: #2ecc71 !important;
+  }
+
+  #chrono-display.chrono-fullscreen .chrono-time.chrono-zone-yellow,
+  #chrono-display:fullscreen .chrono-time.chrono-zone-yellow,
+  #chrono-display:-webkit-full-screen .chrono-time.chrono-zone-yellow {
+    color: #d49a00 !important;
+  }
+
+  #chrono-display.chrono-fullscreen .chrono-time.chrono-zone-red,
+  #chrono-display:fullscreen .chrono-time.chrono-zone-red,
+  #chrono-display:-webkit-full-screen .chrono-time.chrono-zone-red {
+    color: #ef2e31 !important;
+  }
+</style>
+
+<!-- SCRIPT -->
+<script>
+(function () {
+  var COOKIE_MINUTES = "chrono_minutes";
+  var COOKIE_TIERS = "chrono_tierstemps";
+
+  function setCookie(name, value, days) {
+    var expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = name + "=" + encodeURIComponent(value) + "; expires=" + expires + "; path=/";
+  }
+
+  function getCookie(name) {
+    var match = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
+    return match ? decodeURIComponent(match[1]) : null;
+  }
+
+  var totalSeconds = 20 * 60;
+  var elapsedBeforePause = 0;
+  var startEpoch = null;
+  var running = false;
+  var tickInterval = null;
+  var extraMinutesRung = 0;
+  var zeroRung = false;
+  var audioCtx = null;
+
+  function getEl(id) { return document.getElementById(id); }
+
+  function loadSavedSettings() {
+    var savedMinutes = getCookie(COOKIE_MINUTES);
+    if (savedMinutes) { getEl("chronoMinutes").value = savedMinutes; }
+    var savedTiers = getCookie(COOKIE_TIERS);
+    if (savedTiers === "1") { getEl("chronoTiersTemps").checked = true; }
+  }
+
+  function formatTime(seconds) {
+    var sign = seconds < 0 ? "+" : "";
+    var abs = Math.abs(seconds);
+    var m = Math.floor(abs / 60);
+    var s = abs % 60;
+    return sign + m + ":" + (s < 10 ? "0" : "") + s;
+  }
+
+  function playBell() {
+    try {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      var now = audioCtx.currentTime;
+
+      var osc1 = audioCtx.createOscillator();
+      var gain1 = audioCtx.createGain();
+      osc1.type = "sine";
+      osc1.frequency.setValueAtTime(880, now);
+      gain1.gain.setValueAtTime(0.0001, now);
+      gain1.gain.exponentialRampToValueAtTime(0.5, now + 0.02);
+      gain1.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+      osc1.connect(gain1);
+      gain1.connect(audioCtx.destination);
+      osc1.start(now);
+      osc1.stop(now + 1.3);
+
+      var osc2 = audioCtx.createOscillator();
+      var gain2 = audioCtx.createGain();
+      osc2.type = "sine";
+      osc2.frequency.setValueAtTime(1760, now);
+      gain2.gain.setValueAtTime(0.0001, now);
+      gain2.gain.exponentialRampToValueAtTime(0.25, now + 0.02);
+      gain2.gain.exponentialRampToValueAtTime(0.0001, now + 0.8);
+      osc2.connect(gain2);
+      gain2.connect(audioCtx.destination);
+      osc2.start(now);
+      osc2.stop(now + 0.9);
+    } catch (e) {
+      // Web Audio non disponible, on ignore silencieusement
+    }
+  }
+
+  function currentRemaining() {
+    var elapsed = elapsedBeforePause;
+    if (running) { elapsed += (Date.now() - startEpoch) / 1000; }
+    return totalSeconds - elapsed;
+  }
+
+  function render() {
+    var remaining = currentRemaining();
+    var displaySeconds = Math.ceil(remaining);
+    var timeEl = getEl("chronoTime");
+    timeEl.textContent = formatTime(displaySeconds);
+
+    var overtime = -displaySeconds; // > 0 once time is exceeded
+    timeEl.classList.remove("chrono-zone-green", "chrono-zone-yellow", "chrono-zone-red");
+    if (overtime >= -20 && overtime <= 20) {
+      timeEl.classList.add("chrono-zone-green");
+    } else if (overtime > 20 && overtime <= 60) {
+      timeEl.classList.add("chrono-zone-yellow");
+    } else if (overtime > 60) {
+      timeEl.classList.add("chrono-zone-red");
+    }
+  }
+
+  function tick() {
+    var remaining = currentRemaining();
+
+    if (!zeroRung && remaining <= 0) {
+      zeroRung = true;
+      playBell();
+    } else if (zeroRung && remaining < 0) {
+      var overtimeMinutes = Math.floor(-remaining / 60);
+      if (overtimeMinutes > extraMinutesRung) {
+        extraMinutesRung = overtimeMinutes;
+        playBell();
+      }
+    }
+
+    render();
+  }
+
+  window.chronoInit = function () {
+    var minutes = parseFloat(getEl("chronoMinutes").value) || 20;
+    var tiersTemps = getEl("chronoTiersTemps").checked;
+
+    setCookie(COOKIE_MINUTES, minutes, 365);
+    setCookie(COOKIE_TIERS, tiersTemps ? "1" : "0", 365);
+
+    totalSeconds = minutes * 60 * (tiersTemps ? 4 / 3 : 1);
+    elapsedBeforePause = 0;
+    running = false;
+    extraMinutesRung = 0;
+    zeroRung = false;
+
+    getEl("chrono-setup").style.display = "none";
+    getEl("chrono-display").style.display = "block";
+    getEl("chronoPlayPause").textContent = "Démarrer";
+    render();
+  };
+
+  window.chronoToggle = function () {
+    if (running) {
+      elapsedBeforePause += (Date.now() - startEpoch) / 1000;
+      running = false;
+      clearInterval(tickInterval);
+      getEl("chronoPlayPause").textContent = "Reprendre";
+    } else {
+      startEpoch = Date.now();
+      running = true;
+      tickInterval = setInterval(tick, 250);
+      getEl("chronoPlayPause").textContent = "Pause";
+    }
+  };
+
+  window.chronoReset = function () {
+    running = false;
+    clearInterval(tickInterval);
+    elapsedBeforePause = 0;
+    extraMinutesRung = 0;
+    zeroRung = false;
+    getEl("chronoPlayPause").textContent = "Démarrer";
+    render();
+  };
+
+  window.chronoBackToSetup = function () {
+    running = false;
+    clearInterval(tickInterval);
+    getEl("chrono-display").style.display = "none";
+    getEl("chrono-setup").style.display = "block";
+  };
+
+  function isFullscreenActive() {
+    var el = getEl("chrono-display");
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement ||
+      document.mozFullScreenElement || document.msFullscreenElement;
+    return fsEl === el || el.classList.contains("chrono-fullscreen");
+  }
+
+  function updateFullscreenButton() {
+    getEl("chronoFullscreenBtn").textContent = isFullscreenActive() ? "Quitter le plein écran" : "Plein écran";
+  }
+
+  function exitFallbackFullscreen() {
+    getEl("chrono-display").classList.remove("chrono-fullscreen");
+    document.removeEventListener("keydown", onFallbackKeydown);
+    updateFullscreenButton();
+  }
+
+  function onFallbackKeydown(e) {
+    if (e.key === "Escape") { exitFallbackFullscreen(); }
+  }
+
+  window.chronoFullscreen = function () {
+    var el = getEl("chrono-display");
+
+    if (isFullscreenActive()) {
+      if (document.exitFullscreen) { document.exitFullscreen(); }
+      else if (document.webkitExitFullscreen) { document.webkitExitFullscreen(); }
+      else if (document.mozCancelFullScreen) { document.mozCancelFullScreen(); }
+      else if (document.msExitFullscreen) { document.msExitFullscreen(); }
+      else { exitFallbackFullscreen(); }
+      return;
+    }
+
+    var request = el.requestFullscreen || el.webkitRequestFullscreen ||
+      el.mozRequestFullScreen || el.msRequestFullscreen;
+
+    if (request) {
+      var result = request.call(el);
+      if (result && typeof result.catch === "function") {
+        result.catch(function () {
+          el.classList.add("chrono-fullscreen");
+          document.addEventListener("keydown", onFallbackKeydown);
+          updateFullscreenButton();
+        });
+      }
+    } else {
+      el.classList.add("chrono-fullscreen");
+      document.addEventListener("keydown", onFallbackKeydown);
+      updateFullscreenButton();
+    }
+
+    setTimeout(updateFullscreenButton, 100);
+  };
+
+  ["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "MSFullscreenChange"]
+    .forEach(function (evt) { document.addEventListener(evt, updateFullscreenButton); });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.code !== "Space" && e.key !== " ") { return; }
+    var tag = e.target.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || tag === "BUTTON") { return; }
+    if (getEl("chrono-display").style.display === "none") { return; }
+    e.preventDefault();
+    window.chronoToggle();
+  });
+
+  loadSavedSettings();
+})();
+</script>
