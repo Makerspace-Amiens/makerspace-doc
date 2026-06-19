@@ -1,0 +1,44 @@
+---
+title: Medieval Challenge
+layout: project-home
+permalink: /workshops/medieval-challenge/
+project_slug: medieval-challenge
+project_image: /assets/images/projects/medieval-challenge.png
+project_tags:
+  - Mécatronique
+  - Découpe laser
+  - Impression 3D
+description: "Concevez et construisez une catapulte médiévale fonctionnelle pour le tournoi inter-étudiants du MakerSpace. Un défi mêlant mécanique, fabrication numérique et créativité."
+special_section_label: Tournoi
+special_section_icon: fas fa-chess-rook
+special_section_desc: "Le règlement du tournoi final où chaque catapulte devra démontrer ses capacités."
+specials:
+  - /docs/concepts/medieval-challenge/tournament/
+tutorials:
+  - /docs/tutorials/production/imprimer-une-piece/
+how_to_guides:
+  - /docs/how-to-guides/laser-cut/
+  - /docs/how-to-guides/integrer_insert/
+  - /docs/how-to-guides/tuto-vis/
+software:
+  - /docs/references/software/algodoo/
+  - /docs/references/software/507movements/
+  - /docs/references/software/motiongen/
+---
+
+## À propos du projet
+
+Le **Medieval Challenge** est un projet à réaliser en **binôme**, dont l'objectif est de **concevoir** et **fabriquer** une **catapulte miniature** en utilisant les ressources du MakerSpace.
+
+Ce projet vous permettra d'expérimenter la **CAO**, la **découpe laser** et l'**impression 3D**, tout en découvrant le fonctionnement du lieu et de ses équipements.
+
+L'expérience se conclut par un **tournoi** où chaque catapulte devra démontrer ses capacités !
+
+## Organisation du projet
+
+Le projet se déroule sur 6 séances réparties en trois étapes :
+
+- **Séances de projet (5 séances = 15h)** : conception, prototypage et fabrication de la catapulte, ajustements et validation des prototypes.
+- **Séance finale (1 séance = 3h)** : tournoi et évaluation des catapultes lors de l'épreuve.
+
+En savoir plus sur le [cahier des charges complet](/docs/concepts/medieval-challenge/informations/) et le [règlement du tournoi](/docs/concepts/medieval-challenge/tournament/).

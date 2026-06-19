@@ -9,6 +9,8 @@
       link: /workshops/fab-additive/
     - name: Projet Otto
       link: /workshops/otto-mks/
+    - name: Medieval Challenge
+      link: /workshops/medieval-challenge/
 - name: Documentation
   link: /docs/
   dropdown: 
