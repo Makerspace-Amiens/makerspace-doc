@@ -44,12 +44,3 @@ La Phrozen Sonic Mighty 4K est une imprimante 3D résine LCD, idéale pour les i
 - **Compatibilité avec résines UV** : Fonctionne avec une large gamme de résines pour des applications variées.
 
 La Sonic Mighty 4K est particulièrement adaptée aux utilisateurs cherchant à réaliser des modèles détaillés avec précision.
-
----
-
-{%
-  include card_collections.html
-  title="Nos autres machines"
-  description="Découvrez les autres machines du MakerSpace"
-  type="equipment"
-%}

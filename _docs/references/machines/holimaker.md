@@ -38,12 +38,3 @@ todo: 100
 ## Notes :
 
 [^1]: [HoliMaker](https://holimaker.fr/)
-
----
-
-{%
-  include card_collections.html
-  title="Nos autres machines"
-  description="Découvrez les autres machines du MakerSpace"
-  type="equipment"
-%}

@@ -32,12 +32,3 @@ todo: 100
 ## Techniques & tutos :
 
 ## Notes :
-
----
-
-{%
-  include card_collections.html
-  title="Nos autres machines"
-  description="Découvrez les autres machines du MakerSpace"
-  type="equipment"
-%}

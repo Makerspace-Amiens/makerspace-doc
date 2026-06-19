@@ -39,12 +39,3 @@ Les matériaux peuvent faire jusqu'à 30 centimètres de large et 3 mètres de l
 ## Notes :
 
 [^1]: [Silhouette](http://silhouettefr.fr/silhouette_cameo4.html)
-
----
-
-{%
-  include card_collections.html
-  title="Nos autres machines"
-  description="Découvrez les autres machines du MakerSpace"
-  type="equipment"
-%}

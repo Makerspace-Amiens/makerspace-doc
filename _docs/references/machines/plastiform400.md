@@ -17,12 +17,3 @@ external_link: https://alton.nl/fr/le-thermoform-400.html
 
 todo: 100
 ---
-
----
-
-{%
-  include card_collections.html
-  title="Nos autres machines"
-  description="Découvrez les autres machines du MakerSpace"
-  type="equipment"
-%}

@@ -54,12 +54,3 @@ L'Artillery Sidewinder X2 est une imprimante 3D FDM offrant un grand volume d'im
 - **Détection de fin de filament et reprise d'impression** : Ces fonctionnalités minimisent les risques d'échecs d'impression dus à une rupture de filament ou à une coupure de courant.
 
 Ces caractéristiques font de l'Artillery Sidewinder X2 une option intéressante pour les utilisateurs recherchant une imprimante 3D fiable et performante, adaptée à une variété de projets.
-
----
-
-{%
-  include card_collections.html
-  title="Nos autres machines"
-  description="Découvrez les autres machines du MakerSpace"
-  type="equipment"
-%}

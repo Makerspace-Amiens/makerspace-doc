@@ -237,7 +237,8 @@
 // ── Colonne TOC sticky ────────────────────────────────────────────────────────
 
 .toc-column {
-  height: 90vh;
+  max-height: 90vh;
+  align-self: flex-start;
   position: sticky;
   top: 3.2rem;
   overflow: auto;

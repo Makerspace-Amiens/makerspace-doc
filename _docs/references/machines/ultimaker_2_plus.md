@@ -52,12 +52,3 @@ L'Ultimaker 2+ est une imprimante 3D FDM reconnue pour sa fiabilité et sa préc
 - **Logiciel Cura** : Fournit des profils d'impression optimisés et une compatibilité avec une large gamme de matériaux.
 
 Ces caractéristiques font de l'Ultimaker 2+ une imprimante 3D polyvalente et performante, idéale pour des impressions de haute qualité.
-
----
-
-{%
-  include card_collections.html
-  title="Nos autres machines"
-  description="Découvrez les autres machines du MakerSpace"
-  type="equipment"
-%}

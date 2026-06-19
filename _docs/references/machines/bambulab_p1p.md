@@ -49,12 +49,3 @@ La Bambulab P1P est une imprimante 3D rapide, conçue pour le prototypage et les
 - **Système de refroidissement efficace** : Assure la qualité d'impression même à haute vitesse.
 
 La P1P est idéale pour ceux qui ont besoin d'une imprimante rapide pour des prototypes et des projets de développement.
-
----
-
-{%
-  include card_collections.html
-  title="Nos autres machines"
-  description="Découvrez les autres machines du MakerSpace"
-  type="equipment"
-%}

@@ -49,12 +49,3 @@ La Bambulab A1 Mini est une imprimante 3D FDM compacte, conçue pour des projets
 - **Facilité de connexion** : Compatible avec les options de connectivité standard pour un contrôle pratique.
 
 La A1 Mini est idéale pour les créateurs ayant besoin d'une machine compacte sans compromis sur la qualité.
-
----
-
-{%
-  include card_collections.html
-  title="Nos autres machines"
-  description="Découvrez les autres machines du MakerSpace"
-  type="equipment"
-%}

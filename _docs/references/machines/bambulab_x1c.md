@@ -51,12 +51,3 @@ La Bambulab X1C est une imprimante 3D avancée, destinée aux projets de haute p
 - **Refroidissement et stabilité** : Système de refroidissement sophistiqué pour des impressions sans défaut.
 
 La X1C est parfaite pour les utilisateurs cherchant une imprimante polyvalente et fiable pour des impressions détaillées.
-
----
-
-{%
-  include card_collections.html
-  title="Nos autres machines"
-  description="Découvrez les autres machines du MakerSpace"
-  type="equipment"
-%}

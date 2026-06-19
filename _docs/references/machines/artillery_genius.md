@@ -54,13 +54,3 @@ L'Artillery Genius Pro est une imprimante 3D FDM (Fused Deposition Modeling) qui
 - **Détection de fin de filament et reprise d'impression** : Ces fonctionnalités minimisent les risques d'échecs d'impression dus à une rupture de filament ou à une coupure de courant.
 
 Ces améliorations font de l'Artillery Genius Pro une option intéressante pour les utilisateurs recherchant une imprimante 3D fiable et performante, adaptée à une variété de projets.
-
-
----
-
-{%
-  include card_collections.html
-  title="Nos autres machines"
-  description="Découvrez les autres machines du MakerSpace"
-  type="equipment"
-%}
