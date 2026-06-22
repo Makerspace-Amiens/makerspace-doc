@@ -1,0 +1,117 @@
+{% comment %}
+  project-tutos.html
+  Injecté dans documentation.html pour les pages tutoriels appartenant à un projet (_workshops/*).
+  Affiche : présentation rapide du projet + liste complète des étapes
+{% endcomment %}
+
+{% comment %} Trouver le projet parent — utilise forced_project si fourni par l'include {% endcomment %}
+{% assign all_docs = site.docs | concat: site.workshops %}
+{% if include.forced_project %}
+  {% assign current_project = include.forced_project %}
+{% else %}
+  {% assign current_project = nil %}
+  {% for proj in all_docs %}
+    {% if proj.tutorials %}
+      {% for tuto_url in proj.tutorials %}
+        {% if tuto_url == page.url and current_project == nil %}
+          {% assign current_project = proj %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% comment %} Construire la liste ordonnée depuis le projet parent {% endcomment %}
+{% assign project_tutos = '' | split: '' %}
+{% assign project_slug = '' %}
+{% if current_project %}
+  {% assign project_slug = current_project.project_slug %}
+  {% for tuto_url in current_project.tutorials %}
+    {% assign found = all_docs | where: 'url', tuto_url | first %}
+    {% if found %}{% assign project_tutos = project_tutos | push: found %}{% endif %}
+  {% endfor %}
+{% endif %}
+{% comment %} L'ordre vient de la liste tutorials: du projet — pas de sort {% endcomment %}
+
+{% assign current_step = 0 %}
+{% for tuto in project_tutos %}
+  {% if tuto.url == page.url %}
+    {% assign current_step = forloop.index %}
+  {% endif %}
+{% endfor %}
+
+{% assign progress_pct = current_step | times: 100 | divided_by: project_tutos.size %}
+
+{% assign project_label = current_project.title | default: project_slug | replace: '-', ' ' | capitalize %}
+
+<div class="pt-banner">
+
+  {{/*  ── Top bar ─────────────────────────────────────────── */}}
+  <div class="pt-topbar">
+    <a href="{{ current_project.url | relative_url }}" class="pt-back">
+      <i class="fas fa-arrow-left"></i>
+      Retour au projet
+    </a>
+
+    <div class="pt-project-name">
+      <i class="fas fa-folder-open"></i>
+      {{ project_label }}
+    </div>
+
+    <div class="pt-progress-wrap">
+      <span class="pt-progress-label">
+        Étape {{ current_step }} / {{ project_tutos.size }}
+      </span>
+      <div class="pt-progress-bar">
+        <div class="pt-progress-fill" style="width:{{ progress_pct }}%"></div>
+      </div>
+    </div>
+  </div>
+
+  {{/*  ── Steps list ──────────────────────────────────────── */}}
+  <div class="pt-steps">
+    {% for tuto in project_tutos %}
+      {% assign step_n = forloop.index %}
+      {% assign is_current = false %}
+      {% assign is_done = false %}
+      {% if tuto.url == page.url %}{% assign is_current = true %}{% endif %}
+      {% if step_n < current_step %}{% assign is_done = true %}{% endif %}
+
+      <a href="{{ tuto.url | relative_url }}?project={{ current_project.project_slug }}"
+         class="pt-step{% if is_current %} is-active{% elsif is_done %} is-done{% endif %}">
+
+        <span class="pt-step-num">
+          {% if is_done %}
+            <i class="fas fa-check"></i>
+          {% else %}
+            {{ step_n }}
+          {% endif %}
+        </span>
+
+        <div class="pt-step-body">
+          <span class="pt-step-title">{{ tuto.title }}</span>
+          {% if tuto.subtitle %}
+            <span class="pt-step-sub">{{ tuto.subtitle | truncate: 60 }}</span>
+          {% endif %}
+        </div>
+
+        <div class="pt-step-meta">
+          {% if tuto.time %}
+            <span class="pt-step-time">
+              <i class="fas fa-clock"></i> {{ tuto.time }}h
+            </span>
+          {% endif %}
+          {% if tuto.difficulty %}
+            <span class="pt-step-diff">
+              {% for i in (1..tuto.difficulty) %}<i class="fas fa-circle"></i>{% endfor %}
+              {% assign rem = 3 | minus: tuto.difficulty %}
+              {% if rem > 0 %}{% for i in (1..rem) %}<i class="far fa-circle"></i>{% endfor %}{% endif %}
+            </span>
+          {% endif %}
+        </div>
+
+      </a>
+    {% endfor %}
+  </div>
+
+</div>

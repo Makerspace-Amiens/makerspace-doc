@@ -6,8 +6,27 @@ layout: default
     {% include kicanvas-include.html %}
 </head>
 
+{% comment %} Collecter tous les projets qui référencent cette page (docs + workshops) {% endcomment %}
+{% assign _all_docs = site.docs | concat: site.workshops %}
+{% assign _referencing_projects = '' | split: '' %}
+{% assign _seen_project_slugs = '' | split: '' %}
+{% for proj in _all_docs %}
+  {% if proj.tutorials %}
+    {% for tuto_url in proj.tutorials %}
+      {% if tuto_url == page.url %}
+        {% unless _seen_project_slugs contains proj.project_slug %}
+          {% assign _referencing_projects = _referencing_projects | push: proj %}
+          {% assign _seen_project_slugs = _seen_project_slugs | push: proj.project_slug %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+{% assign _in_project = false %}
+{% if _referencing_projects.size > 0 %}{% assign _in_project = true %}{% endif %}
+
 <div class="columns is-multiline">
-    
+
     {% if page.doc_header==true %}
         <div class="column is-1-desktop is-1-tablet is-hidden-mobile"></div>
 
@@ -364,16 +383,83 @@ layout: default
         <div class="column is-1-desktop is-1-tablet is-hidden-mobile"></div>
     {% endif %}
 
-    <div class="columns is-multiline {% if page.doc_header %}mt-6{% endif %}">
+    {% for _proj in _referencing_projects %}
+    <div class="column is-12 px-0 pt-project-sidebar" data-project="{{ _proj.project_slug }}" style="display:none">
+      {% include project-tutos.html forced_project=_proj %}
+    </div>
+    {% endfor %}
+
+    <div class="columns is-multiline {% if page.doc_header and _in_project == false %}mt-6{% endif %}">
 
         {% if page.component_toc %}
         <div class="column is-9-desktop is-9-tablet">
         {% else %}
         <div class="column is-12-desktop is-12-tablet">
         {% endif %}
-            <div class="content">
+            <div class="content{% if _in_project %} tuto-step-content{% endif %}">
                 {{ content }}
             </div>
+
+            {% comment %} Prev / next navigation for project tutorials {% endcomment %}
+            {% if _in_project %}
+              {% assign _parent_proj = nil %}
+              {% for proj in _all_docs %}
+                {% if proj.tutorials and _parent_proj == nil %}
+                  {% for tuto_url in proj.tutorials %}
+                    {% if tuto_url == page.url %}{% assign _parent_proj = proj %}{% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+              {% assign all_tutos = '' | split: '' %}
+              {% if _parent_proj %}
+                {% for tuto_url in _parent_proj.tutorials %}
+                  {% assign found = _all_docs | where: 'url', tuto_url | first %}
+                  {% if found %}{% assign all_tutos = all_tutos | push: found %}{% endif %}
+                {% endfor %}
+              {% endif %}
+              {% comment %} L'ordre vient de la liste tutorials: du projet — pas de sort {% endcomment %}
+
+              {% assign prev_tuto = nil %}
+              {% assign next_tuto = nil %}
+              {% assign found_current = false %}
+              {% for tuto in all_tutos %}
+                {% if found_current and next_tuto == nil %}
+                  {% assign next_tuto = tuto %}
+                {% endif %}
+                {% if tuto.url == page.url %}
+                  {% assign found_current = true %}
+                {% endif %}
+                {% unless found_current %}
+                  {% assign prev_tuto = tuto %}
+                {% endunless %}
+              {% endfor %}
+
+              <nav class="tuto-nav" style="display:none">
+                <div class="tuto-nav-prev">
+                  {% if prev_tuto %}
+                  <a href="{{ prev_tuto.url | relative_url }}" class="tuto-nav-btn" data-base-url="{{ prev_tuto.url | relative_url }}">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>
+                      <small>Précédent</small>
+                      {{ prev_tuto.title }}
+                    </span>
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="tuto-nav-next">
+                  {% if next_tuto %}
+                  <a href="{{ next_tuto.url | relative_url }}" class="tuto-nav-btn tuto-nav-btn--next" data-base-url="{{ next_tuto.url | relative_url }}">
+                    <span>
+                      <small>Suivant</small>
+                      {{ next_tuto.title }}
+                    </span>
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                  {% endif %}
+                </div>
+              </nav>
+            {% endif %}
+
         </div>
 
         {% if page.component_toc %}
@@ -384,3 +470,19 @@ layout: default
         {% endif %}
     </div>
 </div>
+
+{% if _in_project %}
+<script>
+(function () {
+  var slug = new URLSearchParams(window.location.search).get('project');
+  if (!slug) return;
+  var sidebar = document.querySelector('.pt-project-sidebar[data-project="' + slug + '"]');
+  if (sidebar) sidebar.style.removeProperty('display');
+  var nav = document.querySelector('.tuto-nav');
+  if (nav) nav.style.removeProperty('display');
+  document.querySelectorAll('.tuto-nav-btn[data-base-url]').forEach(function (a) {
+    a.href = a.dataset.baseUrl + '?project=' + encodeURIComponent(slug);
+  });
+})();
+</script>
+{% endif %}
