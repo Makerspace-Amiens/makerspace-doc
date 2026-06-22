@@ -20,16 +20,31 @@
       {% endif %}
       <div class="home-hero-body">
         <div class="container">
-          <span class="home-hero-badge">UniLaSalle Amiens</span>
-          <h1 class="home-hero-title">{{ page.hero_title | default: "L'atelier ouvert aux étudiants UniLaSalle." }}</h1>
-          <p class="home-hero-sub">{{ page.hero_subtitle | default: "Imprimante 3D, découpe laser, électronique, programmation les machines et la documentation pour aller de l'idée à l'objet." }}</p>
-          <div class="home-hero-actions">
-            <a href="{{ '/docs' | relative_url }}" class="button is-medium home-btn-primary">
-              Voir la documentation
-            </a>
-            <a href="{{ '/informations' | relative_url }}" class="button is-medium home-btn-ghost">
-              Accès &amp; horaires
-            </a>
+          <div class="home-hero-grid">
+            <div class="home-hero-text">
+              <span class="home-hero-badge">UniLaSalle Amiens</span>
+              <h1 class="home-hero-title">{{ page.hero_title | default: "L'atelier ouvert aux étudiants UniLaSalle." }}</h1>
+              <p class="home-hero-sub">{{ page.hero_subtitle | default: "Imprimante 3D, découpe laser, électronique, programmation les machines et la documentation pour aller de l'idée à l'objet." }}</p>
+              <div class="home-hero-actions">
+                <a href="{{ '/docs' | relative_url }}" class="button is-medium home-btn-primary">
+                  Voir la documentation
+                </a>
+                <a href="{{ '/informations' | relative_url }}" class="button is-medium home-btn-ghost">
+                  Accès &amp; horaires
+                </a>
+              </div>
+            </div>
+            <div class="home-hero-anim">
+              <canvas id="hero-scroll-canvas"
+                      data-frame-count="70"
+                      data-frame-path="{{ '/assets/video/frames/' | relative_url }}"
+                      data-frame-width="640"
+                      data-frame-height="1138"
+                      data-content-x="124"
+                      data-content-y="90"
+                      data-content-w="414"
+                      data-content-h="980"></canvas>
+            </div>
           </div>
         </div>
       </div>
@@ -201,5 +216,6 @@
 
     {% include footer-scripts.html %}
     <script src="{{ '/assets/js/script-3d-viewer.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/hero-scroll-animation.js' | relative_url }}"></script>
   </body>
 </html>

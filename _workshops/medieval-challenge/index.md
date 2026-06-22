@@ -4,6 +4,9 @@ layout: project-home
 permalink: /workshops/medieval-challenge/
 project_slug: medieval-challenge
 project_image: /assets/images/projects/medieval-challenge.png
+image: /assets/images/projects/medieval-challenge.png
+type: workshop
+subtitle: Concevez et construisez une catapulte médiévale pour le tournoi inter-étudiants
 project_tags:
   - Mécatronique
   - Découpe laser

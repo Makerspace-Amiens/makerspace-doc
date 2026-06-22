@@ -1,7 +1,8 @@
 ---
 title: Fabrication Additive
 subtitle: Ressources pour la fabrication additive au MakerSpace - UniLaSalle Amiens
-layout: collection
+layout: project-home
+permalink: /workshops/fab-additive/
 
 hide_hero: true
 

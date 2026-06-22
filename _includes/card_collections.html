@@ -147,7 +147,12 @@
         {% endif %}
           <div class="card">
             {% if item.image %}
-              {% capture image-url %}{{ site.baseurl }}{{ item.url }}{{ item.image }}{% endcapture %}
+              {% assign image_first_char = item.image | slice: 0, 1 %}
+              {% if item.image contains '://' or image_first_char == '/' %}
+                {% assign image-url = item.image | relative_url %}
+              {% else %}
+                {% capture image-url %}{{ site.baseurl }}{{ item.url }}{{ item.image }}{% endcapture %}
+              {% endif %}
               <div class="card-image">
                 <figure class="image is-fullwidth fixed-image {% if include.image_fit == 'contain' %}is-contain{% endif %}">
                   <img src="{{ image-url }}" alt="{{ item.title }}" />
