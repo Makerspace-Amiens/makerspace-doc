@@ -131,12 +131,3 @@ Dans la fenêtre qui s'ouvre, cochez la case **Partager**, puis ajoutez les adre
 - **remi.lacombe@etu.unilasalle.fr**" 
 image="image-10.png" 
 %}
-
----
-
-{%
-  include card_collections.html
-  title="Pour aller plus loin"
-  description="Trouvez d'autres tutoriels en lien avec le projet"
-  type="tuto"
-%}

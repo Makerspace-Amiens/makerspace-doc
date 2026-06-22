@@ -398,12 +398,3 @@ message="
 " 
 status="is-info" 
 icon="fas fa-pen" %}
-
----
-
-{%
-  include card_collections.html
-  title="Pour aller plus loin"
-  description="Trouvez d'autres tutoriels en lien avec le projet"
-  type="tuto"
-%}

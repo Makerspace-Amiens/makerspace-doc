@@ -28,15 +28,13 @@ layout: default
 <div class="columns is-multiline">
 
     {% if page.doc_header==true %}
-        <div class="column is-1-desktop is-1-tablet is-hidden-mobile"></div>
-
-        <div class="column is-5-desktop is-5-tablet">
+        <div class="column p-0 is-6-desktop is-6-tablet">
             <figure class="image is-fullwidth ">
                 <img class="has-ratio is-fullwidth rounded-corners" src="{{ page.image }}" />
             </figure>
         </div>
 
-        <div class="column is-5-desktop is-5-tablet">
+        <div class="column p-0 is-6-desktop is-6-tablet">
             <div class="panel is-primary">
                 <!-- Panel heading -->
                 {% if page.title %}

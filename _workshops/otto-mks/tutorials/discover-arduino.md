@@ -155,12 +155,3 @@ image_3="Arduino_IDE_tKkyM2M3dU.png"
 Votre environnement de développement est désormais correctement installé, et vous êtes prêt à commencer la programmation des cartes Otto MKS.  
 
 Nous vous recommandons de suivre les tutoriels suivants afin de vous familiariser avec les fonctionnalités de base de la carte. 
-
----
-
-{%
-  include card_collections.html
-  title="Pour aller plus loin"
-  description="Trouvez d'autres tutoriels en lien avec le projet"
-  type="tuto"
-%}

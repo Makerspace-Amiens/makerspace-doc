@@ -233,12 +233,3 @@ content="**Félicitations !** 🎉
 Votre Otto est maintenant opérationnel !
 Vous pouvez désormais le programmer et le modifier pour participer, et peut-être remporter, les épreuves du tournoi, dont les règles sont [disponibles ici]().
 " %}
-
----
-
-{%
-  include card_collections.html
-  title="Pour aller plus loin"
-  description="Découvrez d'autres tutoriels en lien avec le projet"
-  type="tuto"
-%}

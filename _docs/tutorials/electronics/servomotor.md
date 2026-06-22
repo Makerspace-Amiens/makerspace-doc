@@ -164,12 +164,3 @@ void walk(){
 Cet exemple est très basique, et vous constaterez rapidement que modifier ce type de séquences peut devenir fastidieux à mesure que votre projet se complexifie. 
 
 Pour aller plus loin, il serait intéressant d'intégrer des fonctions qui permettent de piloter plusieurs servomoteurs avec des vitesses différentes ou de simplifier la création et la gestion des séquences. Cela rendra votre code plus lisible, modulaire et évolutif pour des applications plus avancées.
-
----
-
-{%
-  include card_collections.html
-  title="Pour aller plus loin"
-  description="Trouvez d'autres tutoriels en lien avec le projet"
-  type="tuto"
-%}
