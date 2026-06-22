@@ -6,12 +6,18 @@
 
 .home-hero {
   position: relative;
-  min-height: 100vh;
+  height: calc(100vh - var(--bulma-navbar-height, 3.25rem));
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
   background-color: $grey-darker;
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: calc(100vh - var(--bulma-navbar-height, 3.25rem));
+    overflow: visible;
+  }
 }
 
 .home-hero-media {
@@ -36,13 +42,19 @@
 }
 
 .home-hero-body {
+  overflow: visible;
   position: relative;
   z-index: 2;
-  padding: 8rem 1.5rem 6rem;
+  width: 100%;
+  padding: clamp(2.5rem, 9vh, 8rem) 1.5rem clamp(2rem, 7vh, 6rem);
 
   @media (max-width: 768px) {
-    padding: 6rem 1.25rem 4rem;
+    padding: clamp(2rem, 8vh, 6rem) 1.25rem clamp(1.5rem, 6vh, 4rem);
   }
+}
+
+.home-hero-body .container{
+  overflow: visible;
 }
 
 .home-hero-badge {
@@ -99,45 +111,50 @@
 }
 
 .home-hero-grid {
-  position: relative;
-  min-height: 60vh;
+  overflow: visible;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
 
   @media (max-width: 768px) {
-    min-height: 0;
-    display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 2rem;
   }
 }
 
 .home-hero-text {
-  position: relative;
-  z-index: 2;
+  flex: 0 0 auto;
+  min-width: 0;
   max-width: 540px;
+  margin-left: -85px;
 }
 
 .home-hero-anim {
-  position: absolute;
-  top: 50%;
-  right: -8vw;
-  transform: translateY(-50%);
-  width: clamp(560px, 56vw, 980px);
+  overflow: visible;
+  flex: 0 0 auto;
+  // Capped by vh so it fits the fixed-height hero (no negative margin
+  // bleed here: .home-hero clips overflow, so anything pushed past its
+  // box via negative margins gets cut off top/bottom).
+  height: clamp(336px, min(96vh, calc((250vw - 660px) * 16 / 9)), 880px);
   pointer-events: none;
-  z-index: 1;
 
   @media (max-width: 768px) {
-    position: static;
-    transform: none;
-    width: 80vw;
-    max-width: 420px;
+    height: clamp(264px, 43vh, 504px);
     margin: 0 auto;
   }
 }
 
 #hero-scroll-canvas {
   display: block;
-  width: 100%;
+  height: 100%;
+  width: auto;
+  overflow: visible;
+  max-width: 100%;
   aspect-ratio: 9 / 16;
+  transform: scaleX(-1);
 }
 
 .home-btn-primary {

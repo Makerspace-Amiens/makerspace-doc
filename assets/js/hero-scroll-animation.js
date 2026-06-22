@@ -7,6 +7,7 @@
   var basePath = canvas.dataset.framePath;
   var frames = [];
   var currentFrame = -1;
+  var lastDrawnIndex = frameCount - 1;
 
   // Crop window (in source-frame pixel coordinates) covering the
   // non-transparent content across all frames, so the visible subject
@@ -32,9 +33,15 @@
     var img = frames[index];
     if (!img || !img.complete || currentFrame === index) return;
     currentFrame = index;
+    lastDrawnIndex = index;
     var cw = canvas.width, ch = canvas.height;
+    // "Contain" the content box (not "cover" it): covering would scale to
+    // fill the canvas on whichever axis is tightest, cropping the other
+    // axis — since the box's aspect ratio doesn't match the canvas's,
+    // that crops the top/bottom of the subject. Containing keeps the
+    // full subject visible, with a transparent margin on the loose axis.
     var scale = box.w && box.h
-      ? Math.max(cw / box.w, ch / box.h)
+      ? Math.min(cw / box.w, ch / box.h)
       : Math.max(cw / img.width, ch / img.height);
     var dw = img.width * scale, dh = img.height * scale;
     var dx = cw / 2 - (box.x + box.w / 2) * scale;
@@ -43,37 +50,62 @@
     ctx.drawImage(img, dx, dy, dw, dh);
   }
 
-  function progress() {
-    var p = window.scrollY / window.innerHeight;
-    return Math.min(Math.max(p, 0), 1);
-  }
-
-  var ticking = false;
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function () {
-      var index = Math.round(progress() * (frameCount - 1));
-      draw(index);
-      ticking = false;
-    });
-  }
-
   pad(canvas);
   window.addEventListener('resize', function () {
     pad(canvas);
     currentFrame = -1;
-    draw(Math.round(progress() * (frameCount - 1)));
+    draw(lastDrawnIndex);
   });
 
+  var scrollKeys = { Space: 1, PageUp: 1, PageDown: 1, End: 1, Home: 1, ArrowUp: 1, ArrowDown: 1 };
+  function preventScroll(e) { e.preventDefault(); }
+  function preventScrollKeys(e) { if (scrollKeys[e.code]) e.preventDefault(); }
+
+  function lockScroll() {
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('wheel', preventScroll, { passive: false });
+    window.addEventListener('touchmove', preventScroll, { passive: false });
+    window.addEventListener('keydown', preventScrollKeys, { passive: false });
+  }
+
+  function unlockScroll() {
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    window.removeEventListener('wheel', preventScroll);
+    window.removeEventListener('touchmove', preventScroll);
+    window.removeEventListener('keydown', preventScrollKeys);
+  }
+
+  function playIntro() {
+    var index = frameCount - 1;
+    draw(index);
+    var timer = setInterval(function () {
+      index--;
+      if (index < 0) {
+        clearInterval(timer);
+        unlockScroll();
+        return;
+      }
+      draw(index);
+    }, 41);
+  }
+
+  lockScroll();
+  // Safety net: never trap the user if frames are slow to load.
+  var safety = setTimeout(unlockScroll, 4000);
+
+  var loadedCount = 0;
   for (var i = 0; i < frameCount; i++) {
     var img = new Image();
     img.src = frameUrl(i);
     img.onload = function () {
-      draw(Math.round(progress() * (frameCount - 1)));
+      loadedCount++;
+      if (loadedCount === frameCount) {
+        clearTimeout(safety);
+        playIntro();
+      }
     };
     frames.push(img);
   }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
 })();
