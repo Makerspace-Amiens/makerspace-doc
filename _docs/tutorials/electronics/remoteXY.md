@@ -7,7 +7,6 @@ image: image.png
 component_toc: true
 doc_header: true
 type: tutorial
-tag: otto-mks
 
 title: RemoteXY
 subtitle: Piloter son microcontroleur à distance

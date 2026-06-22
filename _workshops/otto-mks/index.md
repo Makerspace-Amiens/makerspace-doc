@@ -3,7 +3,7 @@ title: Otto MKS
 layout: project-home
 permalink: /workshops/otto-mks/
 project_slug: otto-mks
-project_image: /docs/concepts/otto-mks/informations/otto-mks.jpg
+project_image: /workshops/otto-mks/concepts/informations/otto-mks.jpg
 project_tags:
   - Robotique
   - Arduino
@@ -14,10 +14,10 @@ special_section_label: Ottolympiades
 special_section_icon: fas fa-trophy
 special_section_desc: "Défis sportifs inter-étudiants pour tester les capacités de votre robot Otto-MKS lors de la journée des projets."
 specials:
-  - /docs/concepts/otto-mks/ottolympiades/chrono_race/
-  - /docs/concepts/otto-mks/ottolympiades/obstacle_course/
-  - /docs/concepts/otto-mks/ottolympiades/sumo/
-  - /docs/concepts/otto-mks/ottolympiades/tir_a_la_corde/
+  - /workshops/otto-mks/concepts/otto-mks/ottolympiades/chrono_race/
+  - /workshops/otto-mks/concepts/otto-mks/ottolympiades/obstacle_course/
+  - /workshops/otto-mks/concepts/otto-mks/ottolympiades/sumo/
+  - /workshops/otto-mks/concepts/otto-mks/ottolympiades/tir_a_la_corde/
 hardware:
   - /docs/references/hardware/reference-xiao/
   - /docs/references/hardware/otto-official/
@@ -27,15 +27,15 @@ software:
   - /docs/references/software/arduino-ide/
   - /docs/references/software/remote-xy/
 tutorials:
-  - /docs/tutorials/build-otto-mks/onshape-project/
-  - /docs/tutorials/build-otto-mks/export-print/
-  - /docs/tutorials/build-otto-mks/discover-otto-pcb/
-  - /docs/tutorials/build-otto-mks/discover-arduino/
-  - /docs/tutorials/build-otto-mks/buzzer-functions/
-  - /docs/tutorials/build-otto-mks/ultrasound-serial/
-  - /docs/tutorials/build-otto-mks/servomotor/
-  - /docs/tutorials/build-otto-mks/assemble-otto/
-  - /docs/tutorials/build-otto-mks/remoteXY/
+  - /workshops/otto-mks/tutorials/onshape-project/
+  - /workshops/otto-mks/tutorials/export-print/
+  - /workshops/otto-mks/tutorials/discover-otto-pcb/
+  - /workshops/otto-mks/tutorials/discover-arduino/
+  - /docs/tutorials/electronics/buzzer-functions/
+  - /workshops/otto-mks/tutorials/ultrasound-serial/
+  - /docs/tutorials/electronics/servomotor/
+  - /workshops/otto-mks/tutorials/assemble-otto/
+  - /docs/tutorials/electronics/remoteXY/
 how_to_guides:
   - /docs/how-to-guides/design-rules/
   - /docs/how-to-guides/integrer_insert/
@@ -60,4 +60,4 @@ Sur les bases de ce projet, nous avons créé une version sur mesure, made in **
 
 Par groupe de 3, vous devrez fabriquer votre propre **Otto-MKS** grâce aux tutoriels de ce projet, puis le faire évoluer comme vous le souhaitez en vue des **Ottolympiades**, le tournoi organisé lors de la journée des projets.
 
-En savoir plus sur [le robot Otto](/docs/concepts/otto-mks/informations/) et le [règlement complet des Ottolympiades](/docs/concepts/otto-mks/ottolympiades/).
+En savoir plus sur [le robot Otto](/workshops/otto-mks/concepts/otto-mks/informations/) et le [règlement complet des Ottolympiades](/workshops/otto-mks/concepts/otto-mks/ottolympiades/).

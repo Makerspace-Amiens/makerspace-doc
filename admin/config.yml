@@ -159,7 +159,7 @@ collections:
   - name: docs_tutorials_build_otto
     label: Tutoriels - Otto
     label_singular: Document
-    folder: _docs/tutorials/build-otto-mks
+    folder: _workshops/otto-mks/tutorials
     media_folder: "{{dirname}}/{{filename}}"
     public_folder: ""
     create: true

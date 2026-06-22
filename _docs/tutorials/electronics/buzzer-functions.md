@@ -7,7 +7,6 @@ image: image.png
 component_toc: true
 doc_header: true
 type: tutorial
-tag: otto-mks
 
 title: Premier programme - Buzzer et Fonctions !
 subtitle: Vos premiers pas avec la Arduino

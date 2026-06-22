@@ -13,11 +13,11 @@ special_section_label: Tournoi
 special_section_icon: fas fa-chess-rook
 special_section_desc: "Le règlement du tournoi final où chaque catapulte devra démontrer ses capacités."
 specials:
-  - /docs/concepts/medieval-challenge/tournament/
+  - /workshops/medieval-challenge/concepts/medieval-challenge/tournament/
 tutorials:
   - /docs/tutorials/production/imprimer-une-piece/
 how_to_guides:
-  - /docs/how-to-guides/laser-cut/
+  - /workshops/medieval-challenge/how-to-guides/laser-cut/
   - /docs/how-to-guides/integrer_insert/
   - /docs/how-to-guides/tuto-vis/
 software:
@@ -41,4 +41,4 @@ Le projet se déroule sur 6 séances réparties en trois étapes :
 - **Séances de projet (5 séances = 15h)** : conception, prototypage et fabrication de la catapulte, ajustements et validation des prototypes.
 - **Séance finale (1 séance = 3h)** : tournoi et évaluation des catapultes lors de l'épreuve.
 
-En savoir plus sur le [cahier des charges complet](/docs/concepts/medieval-challenge/informations/) et le [règlement du tournoi](/docs/concepts/medieval-challenge/tournament/).
+En savoir plus sur le [cahier des charges complet](/workshops/medieval-challenge/concepts/medieval-challenge/informations/) et le [règlement du tournoi](/workshops/medieval-challenge/concepts/medieval-challenge/tournament/).

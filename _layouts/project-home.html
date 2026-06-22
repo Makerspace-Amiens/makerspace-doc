@@ -1,6 +1,9 @@
 ---
 ---
-{%- comment %} Collect all docs for this project {% endcomment -%}
+{%- comment %} Collect all docs for this project. Les pages peuvent vivre dans
+  la collection "docs" (contenu global) ou "workshops" (contenu propre à un
+  workshop, ex: _workshops/otto-mks/tutorials/) ─── {% endcomment -%}
+{%- assign all_docs  = site.docs | concat: site.workshops -%}
 {%- assign tutos     = '' | split: '' -%}
 {%- assign howtos    = '' | split: '' -%}
 {%- assign ressources= '' | split: '' -%}
@@ -10,37 +13,37 @@
 
 {%- comment %} Tutoriels : liste ordonnée depuis le frontmatter du projet ─── {% endcomment -%}
 {%- for tuto_url in page.tutorials -%}
-  {%- assign found = site.docs | where: 'url', tuto_url | first -%}
+  {%- assign found = all_docs | where: 'url', tuto_url | first -%}
   {%- if found -%}{%- assign tutos = tutos | push: found -%}{%- endif -%}
 {%- endfor -%}
 
 {%- comment %} How-to guides : liste ordonnée depuis le frontmatter du projet {% endcomment -%}
 {%- for howto_url in page.how_to_guides -%}
-  {%- assign found = site.docs | where: 'url', howto_url | first -%}
+  {%- assign found = all_docs | where: 'url', howto_url | first -%}
   {%- if found -%}{%- assign howtos = howtos | push: found -%}{%- endif -%}
 {%- endfor -%}
 
 {%- comment %} Matériel & composants : liste depuis le frontmatter du projet ─── {% endcomment -%}
 {%- for url in page.hardware -%}
-  {%- assign found = site.docs | where: 'url', url | first -%}
+  {%- assign found = all_docs | where: 'url', url | first -%}
   {%- if found -%}{%- assign hardware = hardware | push: found -%}{%- endif -%}
 {%- endfor -%}
 
 {%- comment %} Logiciels & outils : liste depuis le frontmatter du projet ─── {% endcomment -%}
 {%- for url in page.software -%}
-  {%- assign found = site.docs | where: 'url', url | first -%}
+  {%- assign found = all_docs | where: 'url', url | first -%}
   {%- if found -%}{%- assign software = software | push: found -%}{%- endif -%}
 {%- endfor -%}
 
 {%- comment %} Autres références : liste depuis le frontmatter du projet ─── {% endcomment -%}
 {%- for url in page.ressources -%}
-  {%- assign found = site.docs | where: 'url', url | first -%}
+  {%- assign found = all_docs | where: 'url', url | first -%}
   {%- if found -%}{%- assign ressources = ressources | push: found -%}{%- endif -%}
 {%- endfor -%}
 
 {%- comment %} Section spéciale (ex: ottolympiades) : liste depuis le frontmatter du projet ─── {% endcomment -%}
 {%- for url in page.specials -%}
-  {%- assign found = site.docs | where: 'url', url | first -%}
+  {%- assign found = all_docs | where: 'url', url | first -%}
   {%- if found -%}{%- assign specials = specials | push: found -%}{%- endif -%}
 {%- endfor -%}
 
