@@ -55,6 +55,22 @@
   }
 }
 
+// ── En-tête doc-header : image + panel ──────────────────────────────────────
+
+// Both columns use p-0 so the image bleeds to the column edge — without a
+// gap the panel sits flush against it. Stack-aware: top gap on mobile,
+// left gap once the columns sit side by side.
+.doc-header-panel-col {
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 769px) {
+  .doc-header-panel-col {
+    margin-top: 0;
+    padding-left: 1.5rem !important;
+  }
+}
+
 // ── Panel primary ─────────────────────────────────────────────────────────────
 
 .panel.is-primary {
