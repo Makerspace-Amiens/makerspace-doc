@@ -265,6 +265,13 @@
   margin-top: 0;
 }
 
+// Article TOC on doc-header pages (equipment/machine pages): the panel row
+// above already provides the spacing, so the extra offset pushes it out of
+// alignment with the main content column.
+.toc-column.doc-header-toc-column {
+  margin-top: 0;
+}
+
 .doc-content { min-width: 0; }
 
 .content p > img {
