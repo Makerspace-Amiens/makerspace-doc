@@ -81,6 +81,7 @@
   {% assign sorted_items = raw_items | sort: include.sort %}
 {% endif %}
 
+{% if include.title or include.description %}
 <div class="column is-fullwidth">
   <div class="content">
     {% if include.title %}
@@ -93,6 +94,7 @@
 </div>
 
 <hr class="has-background-grey-lighter my-5" style="height: 2px; border: none;">
+{% endif %}
 
 <div class="columns is-multiline">
 

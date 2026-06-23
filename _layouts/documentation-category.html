@@ -3,9 +3,11 @@ layout: default
 show_sidebar: false
 ---
 
+{% if page.content and page.content != "" %}
 <div class="column is-12">
   {{ page.content }}
 </div>
+{% endif %}
 
 {%
   include card_collections.html
