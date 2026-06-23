@@ -61,22 +61,6 @@
   function preventScroll(e) { e.preventDefault(); }
   function preventScrollKeys(e) { if (scrollKeys[e.code]) e.preventDefault(); }
 
-  function lockScroll() {
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('wheel', preventScroll, { passive: false });
-    window.addEventListener('touchmove', preventScroll, { passive: false });
-    window.addEventListener('keydown', preventScrollKeys, { passive: false });
-  }
-
-  function unlockScroll() {
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-    window.removeEventListener('wheel', preventScroll);
-    window.removeEventListener('touchmove', preventScroll);
-    window.removeEventListener('keydown', preventScrollKeys);
-  }
-
   function playIntro() {
     var index = frameCount - 1;
     draw(index);
@@ -84,16 +68,11 @@
       index--;
       if (index < 0) {
         clearInterval(timer);
-        unlockScroll();
         return;
       }
       draw(index);
     }, 41);
   }
-
-  lockScroll();
-  // Safety net: never trap the user if frames are slow to load.
-  var safety = setTimeout(unlockScroll, 4000);
 
   var loadedCount = 0;
   for (var i = 0; i < frameCount; i++) {
@@ -102,7 +81,6 @@
     img.onload = function () {
       loadedCount++;
       if (loadedCount === frameCount) {
-        clearTimeout(safety);
         playIntro();
       }
     };
