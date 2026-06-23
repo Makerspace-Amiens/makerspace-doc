@@ -204,10 +204,18 @@ kicanvas-embed {
   }
 
   // Pour les images qui ne doivent jamais être rognées (captures d'écran, schémas...)
-  &.is-contain img {
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
+  // Square ratio matches the equipment product shots (all 1:1), so contain
+  // no longer has to squeeze them into a 16:9 frame — that mismatch is what
+  // pinned the photo edge-to-edge top/bottom while wasting space left/right.
+  &.is-contain {
+    aspect-ratio: 1 / 1;
+    padding: 1.25rem;
+
+    img {
+      object-fit: contain;
+      max-width: 100%;
+      max-height: 100%;
+    }
   }
 }
 
