@@ -42,7 +42,7 @@
             <div class="container">
                 <div class="columns is-multiline">
                     {% if page.menubar_toc %}
-                        <div class="column is-2-desktop is-2-tablet toc-column">
+                        <div class="column is-2-desktop is-2-tablet toc-column menubar-toc-column">
                             {% assign contentsTitle = page.toc_title | default: 'Contents' %}
                             {% include toc.html html=content class='menu-list' h_min=2 h_max=3 contents_title=contentsTitle %}
                         </div>

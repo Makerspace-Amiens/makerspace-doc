@@ -253,6 +253,12 @@
   &::-webkit-scrollbar-thumb { background-color: var(--border); border-radius: $radius-rounded; }
 }
 
+// Sidebar TOC sitting directly next to the main content column (e.g. /docs/),
+// with no doc-header panel above it to align with — drop the offset.
+.toc-column.menubar-toc-column {
+  margin-top: 0;
+}
+
 .doc-content { min-width: 0; }
 
 .content p > img {
