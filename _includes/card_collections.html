@@ -140,8 +140,19 @@
       - Si "include.items" est utilisé → type/tag sont ignorés
       - Sinon, on vérifie les filtres logiques
     {%- endcomment -%}
+    {%- comment -%}
+      === 5. Catégorie déduite du dossier (ex. _docs/tutorials/<categorie>/...) ===
+    {%- endcomment -%}
+    {% assign item_category = "" %}
+    {% if item.path %}
+      {% assign _path_segments = item.path | split: "/" %}
+      {% if _path_segments.size > 3 %}
+        {% assign item_category = _path_segments[2] %}
+      {% endif %}
+    {% endif %}
+
     {% if include.items or (type_match and tag_match) %}
-      <div class="column is-4-desktop is-6-tablet">
+      <div class="column is-4-desktop is-6-tablet" data-category="{{ item_category }}">
         {% if item.external_link %}
           <a href="{{ item.external_link }}" class="card-link">
         {% else %}

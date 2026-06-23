@@ -13,15 +13,6 @@
       link: /workshops/medieval-challenge/
 - name: Documentation
   link: /docs/
-  dropdown: 
-    - name: Tutoriels
-      link: /tutorials/
-    - name: Guides
-      link: /how-to-guides/
-    - name: Concepts
-      link: /concepts/
-    - name: Reférences
-      link: /references/
 - name: Ressources
   link: /ressources/
 - name: Projets étudiants
