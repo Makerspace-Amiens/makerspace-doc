@@ -236,6 +236,12 @@
 
 // ── Colonne TOC sticky ────────────────────────────────────────────────────────
 
+// Theme's `.contents` box (toc.html) ships a box-shadow but no border-radius.
+.contents {
+  border-radius: $radius-large;
+  overflow: hidden;
+}
+
 .toc-column {
   max-height: 90vh;
   align-self: flex-start;
