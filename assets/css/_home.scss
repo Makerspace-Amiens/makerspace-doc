@@ -13,7 +13,7 @@
   overflow: hidden;
   background-color: $grey-darker;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     height: auto;
     min-height: calc(100vh - var(--bulma-navbar-height, 3.25rem));
     overflow: visible;
@@ -48,7 +48,7 @@
   width: 100%;
   padding: clamp(2.5rem, 9vh, 8rem) 1.5rem clamp(2rem, 7vh, 6rem);
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     padding: clamp(2rem, 8vh, 6rem) 1.25rem clamp(1.5rem, 6vh, 4rem);
   }
 }
@@ -86,7 +86,7 @@
     text-shadow: 0 0 40px rgba($primary, 0.6), 0 0 80px rgba($primary, 0.25);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     font-size: clamp(2.25rem, 8vw, 2.75rem);
   }
 }
@@ -98,7 +98,7 @@
   max-width: 52ch;
   margin-bottom: 2.5rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     font-size: 0.9375rem;
   }
 }
@@ -118,7 +118,7 @@
   justify-content: center;
   gap: 3rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
@@ -129,19 +129,29 @@
   flex: 0 0 auto;
   min-width: 0;
   max-width: 540px;
-  margin-left: -85px;
 }
 
+// The anim column is sized by WIDTH, not height: Bulma's .container jumps
+// between fixed widths at each breakpoint (960 / 1152 / 1344px), so a
+// vh-driven height let the anim grow wider than the space actually left
+// next to the 540px text column + gap, overflowing past the viewport
+// edge. Each tier below is capped to what its container width can hold.
 .home-hero-anim {
   overflow: visible;
   flex: 0 0 auto;
-  // Capped by vh so it fits the fixed-height hero (no negative margin
-  // bleed here: .home-hero clips overflow, so anything pushed past its
-  // box via negative margins gets cut off top/bottom).
-  height: clamp(336px, min(96vh, calc((250vw - 660px) * 16 / 9)), 880px);
+  width: min(300px, calc(96vh * 9 / 16));
   pointer-events: none;
 
-  @media (max-width: 768px) {
+  @media (min-width: 1216px) and (max-width: 1407px) {
+    width: min(420px, calc(96vh * 9 / 16));
+  }
+
+  @media (min-width: 1408px) {
+    width: min(495px, calc(96vh * 9 / 16));
+  }
+
+  @media (max-width: 1023px) {
+    width: auto;
     height: clamp(264px, 43vh, 504px);
     margin: 0 auto;
   }
@@ -149,12 +159,17 @@
 
 #hero-scroll-canvas {
   display: block;
-  height: 100%;
-  width: auto;
+  width: 100%;
+  height: auto;
   overflow: visible;
-  max-width: 100%;
   aspect-ratio: 9 / 16;
   transform: scaleX(-1);
+
+  @media (max-width: 1023px) {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+  }
 }
 
 .home-btn-primary {
