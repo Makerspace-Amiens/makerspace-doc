@@ -290,6 +290,11 @@
 
 .doc-content { min-width: 0; }
 
+// A long, unbroken line inside a code block (e.g. a one-line Liquid include
+// example) otherwise forces this flex row to grow to fit it, widening the
+// whole page instead of just scrolling inside the code block.
+.doc-body-row { min-width: 0; }
+
 .content p > img {
   display: block;
   margin: 0 auto;

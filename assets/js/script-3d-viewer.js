@@ -12,4 +12,5 @@ const onProgress = (event) => {
     }
   }
 };
-document.querySelector('model-viewer').addEventListener('progress', onProgress);
+const modelViewerEl = document.querySelector('model-viewer');
+if (modelViewerEl) modelViewerEl.addEventListener('progress', onProgress);

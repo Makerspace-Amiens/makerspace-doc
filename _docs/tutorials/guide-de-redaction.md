@@ -96,7 +96,7 @@ Vous pouvez également ajouter des sections de contenu personnalisées pour des 
 
 ---
 
-## 2. Images en ligne
+## 3. Images en ligne
 
 Vous avez la possibilité d'intégrer des images en ligne. Possible jusqu'à 4 images au choix.
 
@@ -121,7 +121,7 @@ image_2 = "placeholder.png"
 
 ---
 
-## 3. Paramètres de la Carte d’En-Tête
+## 4. Paramètres de la Carte d’En-Tête
 
 Vous pouvez configurer plusieurs paramètres pour personnaliser l’affichage de la carte en haut de chaque page de tutoriel ou documentation. Voici une explication de chaque paramètre disponible :
 
@@ -162,7 +162,7 @@ Ces paramètres sont flexibles et peuvent être adaptés en fonction des besoins
 
 ---
 
-## 4. Étapes de Tutoriel
+## 5. Étapes de Tutoriel
 
 ### Exemple d'Étape
 
@@ -187,7 +187,7 @@ image="placeholder.gif" %}
 
 ---
 
-## 5. Intégration de modèles 3D
+## 6. Intégration de modèles 3D
 
 {% include 3d-model.html model="astronaut.glb" poster="astronaut_poster.webp" fullscreen_modal=true%}
 
@@ -225,7 +225,7 @@ Cette méthode est utile pour garantir une intégration rapide et simplifiée to
 
 ---
 
-## 6. Intégration de PCB - Schémas et board avec Kicanvas
+## 7. Intégration de PCB - Schémas et board avec Kicanvas
 
 Nous utilisons [**Kicanvas**](https://kicanvas.org) pour intégrer des schémas PCB et des plans de circuits imprimés dans votre documentation. 
 Kicanvas permet d'embedder des fichiers de projet KiCad (.kicad_sch pour les schémas et .kicad_pcb pour les boards) pour une visualisation interactive directement sur la page.
@@ -276,7 +276,7 @@ Pour la visualisation de la carte en 3D, vous pouvez toujours utiliser le module
 
 ---
 
-## 7. Cartes de Collections
+## 8. Cartes de Collections
 
 Vous pouvez intégrer des cartes de collections en indiquant la collection que vous souhaitez faire apparaitre. Idéal pour renvoyer vos lecteurs vers des tutoriels similaires ou en lien.
 
@@ -289,7 +289,7 @@ Vous pouvez intégrer des cartes de collections en indiquant la collection que v
 
 ---
 
-## 8. Tabs
+## 9. Tabs
 
 {% capture tab1 %}
 ### Introduction
@@ -376,7 +376,7 @@ Tu peux utiliser tout le Markdown que tu veux ici.
 
 ---
 
-## 9. 3D Graph
+## 10. 3D Graph
 
 Le graphe est généré grace à un fichier Yaml stocké dans le dossier `_data` :
 
@@ -469,7 +469,7 @@ graph3d-subtitle: Découvrez les liens entre nos projets et nos machines
 
 ---
 
-## 10.Skill Graph
+## 11. Skill Graph
 
 Un skill graph simple avec un set de datas :
 

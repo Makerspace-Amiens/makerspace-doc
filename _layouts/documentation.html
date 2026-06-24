@@ -387,12 +387,12 @@ layout: default
     </div>
     {% endfor %}
 
-    <div class="columns is-multiline {% if page.doc_header and _in_project == false %}mt-6{% endif %}">
+    <div class="columns is-multiline doc-body-row {% if page.doc_header and _in_project == false %}mt-6{% endif %}">
 
         {% if page.component_toc %}
-        <div class="column is-9-desktop is-9-tablet">
+        <div class="column is-9-desktop is-9-tablet doc-content">
         {% else %}
-        <div class="column is-12-desktop is-12-tablet">
+        <div class="column is-12-desktop is-12-tablet doc-content">
         {% endif %}
             <div class="content{% if _in_project %} tuto-step-content{% endif %}">
                 {{ content }}
