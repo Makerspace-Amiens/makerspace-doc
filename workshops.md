@@ -6,4 +6,5 @@ collection: workshops
 type: workshop
 show_sidebar: false
 hero_height: is-small
+hero_image: /assets/img/printer.jpg
 ---

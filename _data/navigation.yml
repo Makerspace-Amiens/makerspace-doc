@@ -11,6 +11,8 @@
       link: /workshops/otto-mks/
     - name: Medieval Challenge
       link: /workshops/medieval-challenge/
+    - name: Carte contrôleur Machine That Draws
+      link: /workshops/stepper-controller-board/
 - name: Documentation
   link: /docs/
 - name: Ressources
