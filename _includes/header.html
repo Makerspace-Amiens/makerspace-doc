@@ -78,6 +78,13 @@
                 >
                     <span class="icon"><i class="fas fa-file-code"></i></span>
                 </a>
+                <a
+                    class="navbar-item"
+                    href="{{ '/admin/' | relative_url }}"
+                    title="Administration du site"
+                >
+                    <span class="icon"><i class="fas fa-gear"></i></span>
+                </a>
                 {% if site.gh_sponsor %}
                     <a class="navbar-item" href="https://github.com/sponsors/{{ site.gh_sponsor }}">
                         <span class="icon gh-sponsor"><i class="fas fa-heart"></i></span>
