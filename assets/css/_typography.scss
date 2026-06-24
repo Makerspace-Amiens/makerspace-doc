@@ -92,7 +92,9 @@ html {
   }
 
   // Code inline (hors blocs highlight)
-  code:not([class]) {
+  // Rouge laisse le <code> interne sans classe : on l'exclut explicitement,
+  // sinon ce style "inline" (fond clair) écrase le thème sombre des blocs.
+  code:not([class]):not(pre code) {
     background-color: $grey-lightest;
     color: #be185d;
     border: 1px solid $border;
