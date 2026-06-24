@@ -57,6 +57,20 @@
             </div>
 
             <div class="navbar-end">
+                <div class="navbar-item" id="site-search">
+                    <div class="control has-icons-left">
+                        <input
+                            class="input is-small"
+                            type="text"
+                            id="site-search-input"
+                            placeholder="Rechercher..."
+                            autocomplete="off"
+                            data-search-url="{{ '/search.json' | relative_url }}"
+                        >
+                        <span class="icon is-small is-left"><i class="fas fa-search"></i></span>
+                    </div>
+                    <div class="site-search-results" id="site-search-results"></div>
+                </div>
                 <a
                     class="navbar-item"
                     href="{{ '/docs/tutorials/writing-guide/' | relative_url }}"
@@ -74,3 +88,5 @@
         </div>
     </div>
 </nav>
+
+<script src="{{ '/assets/js/site-search.js' | relative_url }}"></script>

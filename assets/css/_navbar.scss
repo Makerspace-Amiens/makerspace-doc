@@ -169,3 +169,77 @@
     }
   }
 }
+
+// ── Recherche globale (navbar) ──────────────────────────────────────────────
+
+#site-search {
+  position: relative;
+  padding: 0.5rem 0.75rem !important;
+
+  .control {
+    width: 12rem;
+  }
+
+  .input {
+    border-radius: $radius-rounded;
+  }
+}
+
+.site-search-results {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0.75rem;
+  right: 0.75rem;
+  margin-top: 0.5rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: $radius-large;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.07);
+  max-height: 70vh;
+  overflow-y: auto;
+  z-index: 40;
+}
+
+#site-search.is-active .site-search-results {
+  display: block;
+}
+
+.site-search-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: $radius;
+  text-decoration: none !important;
+
+  &:hover,
+  &.is-active {
+    background-color: var(--bg-subtle);
+  }
+}
+
+.site-search-item-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--fg-strong);
+}
+
+.site-search-item-subtitle {
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+}
+
+.site-search-empty {
+  padding: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--fg-muted);
+}
+
+@include touch {
+  #site-search {
+    .control {
+      width: 100%;
+    }
+  }
+}
