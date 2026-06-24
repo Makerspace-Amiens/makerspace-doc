@@ -66,22 +66,6 @@ collections:
         label: Documentation
         file: docs.md
         fields: *documentation_page_fields
-      - name: tutoriels
-        label: Tutoriels
-        file: tutorials.md
-        fields: *documentation_page_fields
-      - name: guides
-        label: Guides pratiques
-        file: how-to-guides.md
-        fields: *documentation_page_fields
-      - name: concepts
-        label: Concepts
-        file: concepts.md
-        fields: *documentation_page_fields
-      - name: references
-        label: References
-        file: references.md
-        fields: *documentation_page_fields
       - name: ressources
         label: Ressources
         file: ressources.md
@@ -169,28 +153,18 @@ collections:
       preview: false
     fields: *content_fields
 
-  - name: docs_tutorials_design
-    label: Tutoriels - Design
+  - name: docs_tutorials
+    label: Tutoriels
     label_singular: Document
-    folder: _docs/tutorials/design
-    media_folder: "{{dirname}}/{{filename}}"
+    folder: _docs/tutorials
+    media_folder: "{{filename}}"
     public_folder: ""
     create: true
     extension: md
     format: frontmatter
-    editor:
-      preview: false
-    fields: *content_fields
-
-  - name: docs_tutorials_production
-    label: Tutoriels - Production
-    label_singular: Document
-    folder: _docs/tutorials/production
-    media_folder: "{{dirname}}/{{filename}}"
-    public_folder: ""
-    create: true
-    extension: md
-    format: frontmatter
+    nested:
+      depth: 3
+      summary: "{{title}}"
     editor:
       preview: false
     fields: *content_fields

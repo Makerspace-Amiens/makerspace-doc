@@ -25,6 +25,15 @@
   {% include card_collections.html type="tutorial" tag="fabrication-additive" %}
     → Combine les deux (type OU, tag ET).
 
+  {% include card_collections.html path_prefix="_ressources/tools/" %}
+    → Restreint aux items dont le chemin contient ce préfixe (ex. une section
+      dédiée à un seul sous-dossier de premier niveau).
+
+  {% include card_collections.html category_path_offset=2 %}
+    → Le data-category de chaque carte (utilisé par les boutons de filtre)
+      vient du Nème sous-dossier après la racine de la collection (1 par
+      défaut, ex. _ressources/<categorie>/... ; 2 pour _docs/tutorials/<cat>/...).
+
   ===================================
   🧩 NOUVEAUTÉ : COMPOSITION MANUELLE
   ===================================
@@ -136,22 +145,40 @@
     {% endif %}
 
     {%- comment -%}
+      === 3b. Filtrage PATH_PREFIX ===
+      Restreint aux items dont le chemin commence par le préfixe donné
+      (ex. path_prefix="_ressources/tools/" pour une section dédiée).
+    {%- endcomment -%}
+    {% assign path_match = true %}
+    {% if include.path_prefix %}
+      {% assign path_match = false %}
+      {% if item.path and item.path contains include.path_prefix %}
+        {% assign path_match = true %}
+      {% endif %}
+    {% endif %}
+
+    {%- comment -%}
       === 4. Affichage de la carte ===
       - Si "include.items" est utilisé → type/tag sont ignorés
       - Sinon, on vérifie les filtres logiques
     {%- endcomment -%}
     {%- comment -%}
-      === 5. Catégorie déduite du dossier (ex. _docs/tutorials/<categorie>/...) ===
+      === 5. Catégorie déduite du dossier ===
+      Par défaut, le 1er sous-dossier après la racine de la collection
+      (ex. _ressources/<categorie>/...). Utiliser include.category_path_offset
+      pour décaler quand la collection a un niveau de groupage en plus
+      (ex. _docs/tutorials/<categorie>/... → offset=2).
     {%- endcomment -%}
+    {% assign category_path_offset = include.category_path_offset | default: 1 %}
     {% assign item_category = "" %}
     {% if item.path %}
       {% assign _path_segments = item.path | split: "/" %}
-      {% if _path_segments.size > 3 %}
-        {% assign item_category = _path_segments[2] %}
+      {% if _path_segments.size > category_path_offset | plus: 1 %}
+        {% assign item_category = _path_segments[category_path_offset] %}
       {% endif %}
     {% endif %}
 
-    {% if include.items or (type_match and tag_match) %}
+    {% if include.items or (type_match and tag_match and path_match) %}
       <div class="column is-4-desktop is-6-tablet" data-category="{{ item_category }}">
         {% if item.external_link %}
           <a href="{{ item.external_link }}" class="card-link">

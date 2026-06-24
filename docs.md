@@ -50,7 +50,7 @@ hero_height: is-small
   </div>
   {% endif %}
 
-  {% include card_collections.html type="tutorial" %}
+  {% include card_collections.html type="tutorial" category_path_offset=2 %}
 
   <p class="doc-empty has-text-grey" style="display:none">Aucun résultat dans cette section.</p>
 </div>
