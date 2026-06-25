@@ -6,9 +6,10 @@ hero_image: opera_PmIMDM8QQi.png
 hero_darken: true
 component_toc: true
 doc_header: true
-type: doc,archive
+type: doc,tutorial
+tag: additive-manufacturing
 
-title: Impression 3D avec CURA sur le serveur du MakerSpace
+title: Impression 3D avec CURA (Obsolete)
 subtitle: Comment imprimer sa pièce avec CURA et le serveur du MakerSpace
 description: Dans ce tutoriel, nous vous apprenons à imprimer votre pièce en utilisant le logiciel CURA et le serveur d'impression 3D du MakerSpace.
 author: Remi Lacombe
@@ -31,6 +32,8 @@ softwares:
 
 todo: 100
 ---
+
+{% include message.html title="Tutoriel obsolète" message="Ce tutoriel n'est plus à jour et est proposé à titre informatif uniquement." status="is-danger" dismissable="true" icon="fas fa-duotone fa-triangle-exclamation" %}
 
 # Impression 3D d'une pièce
 
