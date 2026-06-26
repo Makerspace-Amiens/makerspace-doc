@@ -7,10 +7,8 @@ image: image.png
 component_toc: true
 doc_header: true
 external_link: https://platformio.org
-
 title: PlatformIO
 subtitle: Développez, compilez et déployez vos projets embarqués efficacement
 description: Développez, compilez et déployez vos projets embarqués efficacement
-
 author: Adrien BRACQ
 ---

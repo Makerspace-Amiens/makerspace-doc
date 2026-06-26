@@ -7,10 +7,8 @@ image: image.png
 component_toc: true
 doc_header: true
 external_link: https://remotexy.com
-
 title: RemoteXY
 subtitle: Contrôlez vos projets microcontrôleurs facilement
 description: Contrôlez vos projets microcontrôleurs facilement
-
 author: Adrien BRACQ
 ---
