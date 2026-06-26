@@ -6,7 +6,7 @@ hero_darken: true
 image: image.png
 component_toc: true
 doc_header: true
-type: ressources
+type: doc,software,reference
 external_link: https://remotexy.com
 
 title: RemoteXY

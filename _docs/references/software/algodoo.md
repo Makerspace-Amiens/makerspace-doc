@@ -6,7 +6,7 @@ hero_darken: true
 image: image.png
 component_toc: true
 doc_header: true
-type: doc,software
+type: doc,software,reference
 
 title: Algodoo
 subtitle: Logiciel de simulation mécanique
