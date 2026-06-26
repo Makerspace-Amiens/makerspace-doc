@@ -14,7 +14,7 @@ subtitle: Comment imprimer sa pièce avec OrcaSlicer
 description: Dans ce tutoriel, vous apprendrez à imprimer votre première pièce en utilisant le logiciel OrcaSlicer.  
 author: Rémi Lacombe
 
-time: 3  
+time: 1  
 difficulty: 2  
 compatibilities-os: win, mac, lin
 
@@ -216,13 +216,4 @@ content="Bravo ! Vous savez maintenant imprimer une pièce au **PrinterLab**.
 
 Pour que ce lieu reste **ouvert à toutes et tous**, c'est maintenant à vous de **partager ce que vous avez** appris dans ce tuto !
 "
-%}
-
----
-
-{%
-  include card_collections.html
-  title="Pour aller plus loin"
-  description="Explorez d'autres tutoriels pour approfondir vos connaissances"
-  type="tutorial"
 %}

@@ -571,12 +571,3 @@ Les frontières entre impression personnelle et professionnelle s’effacent peu
 ### Le Projet RepRap : Objectif atteint ?
 
 Le projet RepRap visait à démocratiser la fabrication en permettant à chacun de produire des objets grâce à des imprimantes auto-réplicantes. Si cet objectif a été en partie atteint, des questions subsistent quant à l’autonomie réelle des utilisateurs et à l’impact des tendances vers des modèles commerciaux propriétaires.
-
----
-
-{%
-  include card_collections.html
-  title="Pour aller plus loin"
-  description="Explorez d'autres formations pour approfondir vos connaissances"
-  type="course"
-%}
