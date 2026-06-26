@@ -18,12 +18,5 @@
 - name: Ressources
   link: /ressources/
 - name: Projets étudiants
-  link:
-  dropdown: 
-    - name: 2023-24
-      link: https://makerspace-amiens-2023-24.github.io
-    - name: 2024-25
-      link: https://makerspace-amiens-2024-25.github.io
-    - name: 2025-26
-      link: https://makerspace-amiens-2025-26.github.io
+  link: https://makerspace-amiens.fr/makerspace-projects/
     
