@@ -22,7 +22,6 @@ specials:
   - /workshops/otto-mks/concepts/otto-mks/ottolympiades/tir_a_la_corde/
 hardware:
   - /docs/references/hardware/reference-xiao/
-  - /docs/references/hardware/otto-official/
   - /docs/references/hardware/xiao-ebook/
   - /docs/references/hardware/servomotor/
 software:
@@ -43,6 +42,8 @@ how_to_guides:
   - /docs/how-to-guides/integrer_insert/
   - /docs/how-to-guides/tuto-vis/
   - /docs/how-to-guides/print-troubleshooting/
+ressources:
+  - /workshops/otto-mks/references/otto-official/
 ---
 
 ## Otto, c'est quoi ?
