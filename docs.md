@@ -104,7 +104,7 @@ hero_height: is-small
       <button type="button" class="tag is-medium doc-filter-btn" data-category="{{ cat }}">
         {%- case cat -%}
           {%- when "software" -%}Logiciels
-          {%- when "hardware" -%}Électronique
+          {%- when "hardware" -%}Matériel
           {%- when "machines" -%}Machines
           {%- when "plans" -%}Plans
           {%- when "others" -%}Autres
