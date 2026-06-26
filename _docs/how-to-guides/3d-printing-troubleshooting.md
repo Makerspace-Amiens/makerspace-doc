@@ -6,7 +6,7 @@ hero_darken: true
 image: "DroopingOverhang1000.png"
 component_toc: true
 doc_header: true
-type: doc, how-to
+type: how-to
 tags: additive-manufacturing, otto-mks
 
 title: Résolution des Problèmes de Qualité d'Impression 3D

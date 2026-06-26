@@ -6,7 +6,7 @@ hero_darken: true
 image: "cameo.jpg"
 component_toc: true
 doc_header: true
-type: doc, equipment
+type: equipment
 tag: 
 
 title: Silhouette Cameo 4

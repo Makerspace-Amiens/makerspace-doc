@@ -6,7 +6,6 @@ hero_darken: true
 image: "image.png"
 component_toc: true
 doc_header: true
-type: library
 external_link: https://octopart.com/fr
 
 title: OctoPART - Recherche de composants électroniques

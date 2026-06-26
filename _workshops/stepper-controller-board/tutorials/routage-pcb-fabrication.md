@@ -5,7 +5,6 @@ hero_image: /workshops/stepper-controller-board/hero.png
 hero_darken: true
 image: /workshops/stepper-controller-board/hero.png
 component_toc: true
-type: tutorial
 tag: stepper-controller-board
 
 title: Routage du PCB et fabrication

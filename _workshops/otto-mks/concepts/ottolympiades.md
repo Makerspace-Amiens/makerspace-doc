@@ -8,7 +8,6 @@ hero_darken: true
 image: otto_jam.png
 title: Ottolympiades
 subtitle: Présentation et règlement du tournoi Otto !
-type: doc,concept
 tag: otto-mks
 ---
 

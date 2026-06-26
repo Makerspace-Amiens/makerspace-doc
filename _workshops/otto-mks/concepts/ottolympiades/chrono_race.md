@@ -6,7 +6,6 @@ hero_darken: true
 image: otto_run.png
 component_toc: true
 doc_header: true
-type: ottolympiades
 
 title: ⏱️ Chrono challenge
 subtitle: Votre robot, une ligne droite, faites le meilleur temps !

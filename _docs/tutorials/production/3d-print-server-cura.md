@@ -6,7 +6,7 @@ hero_image: opera_PmIMDM8QQi.png
 hero_darken: true
 component_toc: true
 doc_header: true
-type: doc,tutorial
+type: tutorial
 tag: additive-manufacturing
 
 title: Impression 3D avec CURA (Obsolete)

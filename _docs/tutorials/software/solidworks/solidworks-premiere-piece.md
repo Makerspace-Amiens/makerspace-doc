@@ -11,7 +11,7 @@ title: SolidWorks (2) - Première pièce
 subtitle: Votre première pièce
 description: Création de votre première pièce sous Solidworks
 tags: solidworks
-type: doc,cao
+type: tutorial
 
 time: 2
 difficulty: 1

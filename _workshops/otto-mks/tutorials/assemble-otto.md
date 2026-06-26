@@ -6,7 +6,6 @@ hero_darken: true
 image: OttoIkea.png
 component_toc: true
 doc_header: true
-type: tutorial
 tag: otto-mks
 
 title: Assemblez votre Otto-MKS

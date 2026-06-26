@@ -6,7 +6,7 @@ hero_image: Vis.jpg
 hero_darken: true
 component_toc: true
 doc_header: true
-type: doc, how-to
+type: how-to
 tags: additive-manufacturing, otto-mks
 
 title: Assemblage, quel vis choisir ?

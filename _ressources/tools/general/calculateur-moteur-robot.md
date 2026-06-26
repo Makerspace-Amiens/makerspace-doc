@@ -6,7 +6,6 @@ hero_image: hero-motor-calculator.jpg
 hero_darken: true
 component_toc: true
 doc_header: true
-type: ressource, robot
 
 title: Outil de dimensionnement de la motorisation d'un robot
 subtitle: Calculateur en ligne pour dimensionner ses moteurs

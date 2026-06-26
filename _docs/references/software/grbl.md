@@ -6,8 +6,6 @@ hero_darken: true
 image: image.png
 component_toc: true
 doc_header: true
-type: doc,software
-
 title: GRBL
 subtitle: Piloter une CNC avec un arduino UNO
 description: Cette page détaille le fonctionnement du firmware GRBL

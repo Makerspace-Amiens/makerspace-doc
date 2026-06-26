@@ -6,7 +6,6 @@ hero_darken: true
 image: bounding_box.png
 component_toc: true
 doc_header: true
-type: homologation
 
 title: 📏 Homologation
 subtitle: Ensemble des règles à respecter pour participer aux épreuves !

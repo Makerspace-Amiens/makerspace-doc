@@ -6,7 +6,6 @@ hero_darken: true
 image: "image.png"
 component_toc: true
 doc_header: true
-type: doc,reference
 tag: additive-manufacturing
 
 

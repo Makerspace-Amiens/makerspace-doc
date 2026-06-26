@@ -6,7 +6,6 @@ hero_darken: true
 image: "image.png"
 component_toc: true
 doc_header: true
-type: reseller
 external_link: https://www.digikey.fr
 
 title: Digikey - Fournisseur de composants électroniques

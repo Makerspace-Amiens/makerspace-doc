@@ -6,7 +6,6 @@ hero_image: 25.png
 hero_darken: true
 component_toc: true
 doc_header: true
-type: doc, plans
 
 title: S'exercer à la modélisation
 subtitle: Une série de pièces et de plans permettant de s'exercer à la CAO

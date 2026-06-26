@@ -6,7 +6,6 @@ hero_darken: true
 image: image-1.png
 component_toc: true
 doc_header: true
-type: doc,hardware
 
 title: Driver de moteur
 subtitle: Pour piloter un moteur pas-à-pas

@@ -6,7 +6,6 @@ hero_darken: true
 image: geomerative.png
 component_toc: true
 doc_header: true
-type: doc,software
 
 title: Librairie Processing Geomerative
 subtitle: Nécessaire pour génerer du GCODE avec Processing

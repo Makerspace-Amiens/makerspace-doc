@@ -11,7 +11,7 @@ title: OnShape (5) - Premier Assemblage
 subtitle: Création de votre premier assemblage dans OnShape
 description: Création de votre premier fichier d'assemblage dans OnShape
 tags: onshape
-type: doc,cao, tutorial
+type: tutorial
 
 time: 3
 difficulty: 2

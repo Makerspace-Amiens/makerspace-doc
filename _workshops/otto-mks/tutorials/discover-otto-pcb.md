@@ -6,7 +6,6 @@ hero_darken: true
 image: IMG_20250128_151446-EDIT.jpg
 component_toc: true
 doc_header: true
-type: tutorial
 tag: otto-mks
 
 title: Découvrez la carte du Otto !

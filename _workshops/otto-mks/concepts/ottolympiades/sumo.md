@@ -6,7 +6,6 @@ hero_darken: true
 image: otto_sumo.png
 component_toc: true
 doc_header: true
-type: ottolympiades
 
 title: ⚔️ Otto Sumo
 subtitle: Deux robots, un duel, un seul reste debout !

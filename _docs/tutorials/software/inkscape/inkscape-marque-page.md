@@ -11,7 +11,7 @@ title: Inkscape (3) - Marque-Page
 subtitle: Réalisation d'un marque-page
 description: Tutoriel d'initiation à Inkscape avec la réalisation d'un marque-page pouvant être découpé au laser.
 tags: inkscape
-type: doc,cao
+type: tutorial
 
 time: 2
 difficulty: 2

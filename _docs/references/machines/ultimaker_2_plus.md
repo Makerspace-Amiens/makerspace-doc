@@ -6,7 +6,7 @@ hero_darken: true
 image: "ultimaker_2_plus.jpg"
 component_toc: true
 doc_header: true
-type: doc, equipment
+type: equipment
 tag: additive-manufacturing
 
 title: Ultimaker 2+

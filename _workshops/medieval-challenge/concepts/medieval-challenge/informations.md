@@ -8,7 +8,6 @@ hero_darken: true
 image: isocontours.png
 title: Informations sur le projet
 subtitle: Tout ce que vous devez savoir
-type: doc,concept
 tags: medieval-challenge
 ---
 

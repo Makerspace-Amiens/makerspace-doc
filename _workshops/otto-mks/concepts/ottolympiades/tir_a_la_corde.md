@@ -7,7 +7,6 @@ hero_darken: true
 image: otto_pull.png
 component_toc: true
 doc_header: true
-type: ottolympiades
 
 title: 💪 Tir à la corde
 subtitle: Deux équipes de 3 robots s'affrontent pour tirer les adversaires de leur côté !

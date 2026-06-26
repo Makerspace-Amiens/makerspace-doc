@@ -6,7 +6,7 @@ hero_darken: true
 image: "2022-09-27-11-27-09.png"
 component_toc: true
 doc_header: true
-type: doc, equipment
+type: equipment
 tag: additive-manufacturing
 
 title: SnapMaker 2.0 A350T

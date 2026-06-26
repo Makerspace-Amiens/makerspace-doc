@@ -11,7 +11,7 @@ title: Fusion 360 (2) - Votre première pièce
 subtitle: Création de votre première pièce sous Fusion 360
 description: Création de votre première pièce sous Fusion 360
 tags: fusion
-type: doc,cao
+type: tutorial
 
 time: 2
 difficulty: 1

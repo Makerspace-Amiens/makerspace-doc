@@ -6,7 +6,6 @@ hero_darken: true
 image: "3d-printing-tips.jpg"
 component_toc: true
 doc_header: true
-type: doc,reference
 tag: additive-manufacturing
 
 

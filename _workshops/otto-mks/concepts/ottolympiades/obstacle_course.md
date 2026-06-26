@@ -6,7 +6,6 @@ hero_darken: true
 image: otto_obstacle.png
 component_toc: true
 doc_header: true
-type: ottolympiades
 
 title: 🚧 Course d'obstacle
 subtitle: Traversez un parcours semé d'obstacles en un temps record !

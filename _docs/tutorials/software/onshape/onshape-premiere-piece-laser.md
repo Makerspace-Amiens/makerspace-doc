@@ -11,7 +11,7 @@ title: OnShape (4) - Votre première pièce en Laser
 subtitle: Création de votre première pièce en laser sous OnShape
 description: Création de votre première pièce en laser sous OnShape
 tags: onshape
-type: doc,cao, tutorial
+type: tutorial
 
 time: 3
 difficulty: 2

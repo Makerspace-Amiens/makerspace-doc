@@ -6,7 +6,7 @@ hero_darken: true
 image: "page_1_img_20.png"
 component_toc: true
 doc_header: true
-type: doc, how-to
+type: how-to
 tags: additive-manufacturing, otto-mks
 
 title: Règles de conception et conseils

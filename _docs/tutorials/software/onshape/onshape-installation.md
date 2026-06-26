@@ -11,7 +11,7 @@ title: OnShape (1) - Présentation et Installation
 subtitle: Découvrez OnShape et installez le !
 description: Dans ce premier tuto, nous allons voir comment vous pouvez installer OnShape.
 tags: onshape
-type: doc,cao, tutorial
+type: tutorial
 
 time: 2
 difficulty: 1

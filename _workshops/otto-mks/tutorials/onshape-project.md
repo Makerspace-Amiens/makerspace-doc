@@ -6,7 +6,6 @@ hero_darken: true
 image: onshapeLogo.png
 component_toc: true
 doc_header: true
-type: tutorial
 tag: otto-mks
 
 title: Démarrer avec OnShape

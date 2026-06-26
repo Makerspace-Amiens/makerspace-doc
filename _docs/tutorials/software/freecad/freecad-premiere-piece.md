@@ -11,7 +11,7 @@ title: FreeCAD (2) - Votre première pièce
 subtitle: Création de votre première pièce sous FreeDAC
 description: Création de votre première pièce sous FreeDAC
 tags: freecad
-type: doc,cao
+type: tutorial
 
 time: 2
 difficulty: 1

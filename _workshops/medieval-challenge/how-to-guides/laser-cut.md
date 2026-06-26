@@ -6,7 +6,6 @@ hero_darken: true
 image: Icon.png
 component_toc: true
 doc_header: true
-type: doc, how-to
 tags: medieval-challenge
 
 title: Découper au laser

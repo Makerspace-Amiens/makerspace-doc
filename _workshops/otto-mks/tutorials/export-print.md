@@ -6,7 +6,6 @@ hero_darken: true
 image: print_head_green.gif
 component_toc: true
 doc_header: true
-type: tutorial
 tag: otto-mks
 
 title: Exportez et imprimez Otto !

@@ -11,7 +11,7 @@ title: Inkscape (2) - Porte-clef
 subtitle: Réalisation d'un porte-clef
 description: Tutoriel d'initiation à Inkscape avec la réalisation d'un porte-clef pouvant être découpé au laser.
 tags: inkscape
-type: doc,cao
+type: tutorial
 
 time: 2
 difficulty: 1

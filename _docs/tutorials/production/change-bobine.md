@@ -6,7 +6,7 @@ hero_image: IMG_20241001_141743.jpg
 hero_darken: true
 component_toc: true
 doc_header: true
-type: doc,tutorial
+type: tutorial
 tag: additive-manufacturing
 
 title: Recharger les bobines au MakerSpace

@@ -6,7 +6,6 @@ hero_darken: true
 image: image.png
 component_toc: true
 doc_header: true
-type: doc,software
 
 title: Débuter Processing
 subtitle: Avec Daniel Shiffman - The Coding Train

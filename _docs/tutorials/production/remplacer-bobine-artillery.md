@@ -6,7 +6,7 @@ hero_image: artillery_genius.jpg
 hero_darken: true
 component_toc: true
 doc_header: true
-type: doc,tutorial
+type: tutorial
 tag: additive-manufacturing
 
 title: Remplacer une bobine - Artillery

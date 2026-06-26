@@ -6,7 +6,7 @@ hero_image: bambulab_a1_mini.png
 hero_darken: true
 component_toc: true
 doc_header: true
-type: doc,tutorial
+type: tutorial
 tag: additive-manufacturing
 
 title: Remplacer une bobine - A1 mini

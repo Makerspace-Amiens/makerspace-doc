@@ -6,7 +6,6 @@ hero_darken: true
 image: "image.png"
 component_toc: true
 doc_header: true
-type: library
 external_link: https://grabcad.com/library
 
 title: GrabCAD - Modèles 3D et ressources CAO

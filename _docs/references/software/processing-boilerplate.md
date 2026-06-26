@@ -6,7 +6,6 @@ hero_darken: true
 image: image.png
 component_toc: true
 doc_header: true
-type: doc,software
 
 title: Processing to GCode
 subtitle: Générer des Gcode avec Processing

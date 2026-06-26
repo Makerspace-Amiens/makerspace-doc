@@ -6,7 +6,6 @@ hero_darken: true
 image: "placeholder.png"
 component_toc: true
 doc_header: true
-type: internal
 
 title: Exemple de Tutoriel
 subtitle: Suivez ces étapes pour accomplir votre tâche

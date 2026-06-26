@@ -6,7 +6,6 @@ hero_darken: true
 image: "image.png"
 component_toc: true
 doc_header: true
-type: tool
 external_link: https://wokwi.com
 
 title: Wokwi - Simulateur de circuits électroniques

@@ -11,7 +11,7 @@ title: SolidWorks (3) - Mini-projet
 subtitle: Réaliser un mini-projet sans tutoriel
 description: Dans ce troisième tutoriel, on va créer un support de téléphone simple afin de pouvoir ensuite l'imprimer en 3D.
 tags: solidworks
-type: doc,cao
+type: tutorial
 
 time: 2
 difficulty: 2

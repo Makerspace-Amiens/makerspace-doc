@@ -8,7 +8,6 @@ hero_darken: true
 image: otto-mks.jpg
 title: Le robot Otto
 subtitle: Découvrez le robot Otto
-type: doc,concept
 tag: otto-mks
 ---
 

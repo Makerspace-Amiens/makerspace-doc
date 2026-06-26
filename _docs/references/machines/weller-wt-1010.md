@@ -6,7 +6,7 @@ hero_darken: true
 image: "2022-09-27-11-20-27.png"
 component_toc: true
 doc_header: true
-type: doc, equipment
+type: equipment
 
 title: Weller WT 1010
 subtitle: Fer à souder

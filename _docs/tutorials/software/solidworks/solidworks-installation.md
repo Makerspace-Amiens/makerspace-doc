@@ -11,7 +11,7 @@ title: SolidWorks (1) - Présentation et Installation
 subtitle: Découvrez SolidWorks et installez le !
 description: Dans ce premier tuto, nous allons voir comment vous pouvez installer une version éducation de SolidWorks.
 tags: solidworks
-type: doc,cao
+type: tutorial
 
 time: 2
 difficulty: 1

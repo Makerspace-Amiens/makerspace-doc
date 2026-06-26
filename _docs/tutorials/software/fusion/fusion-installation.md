@@ -11,7 +11,7 @@ title: Fusion 360 (1) - Présentation et Installation
 subtitle: Découvrez Fusion 360 et installez le !
 description: Dans ce premier tuto, nous allons voir comment vous pouvez installer Fusion 360.
 tags: fusion
-type: doc,cao
+type: tutorial
 
 time: 2
 difficulty: 1
