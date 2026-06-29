@@ -19,6 +19,7 @@ tutorials:
   - /docs/tutorials/software/onshape/onshape-premier-mini-projet/
   - /docs/tutorials/production/imprimer-une-piece/
   - /workshops/initiation-conception-prototypage/tutorials/drawings-training/
+  - /workshops/initiation-conception-prototypage/tutorials/kumiko-collaboratif/
   - /docs/tutorials/software/onshape/onshape-premiere-piece-laser/
   - /docs/tutorials/software/onshape/onshape-premier-assemblage/
   - /docs/tutorials/software/inkscape/inkscape-premiere-piece/
