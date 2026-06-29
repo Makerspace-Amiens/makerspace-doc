@@ -5,12 +5,16 @@
 - name: Thématiques
   link: /workshops/
   dropdown:
+    - name: Initiation Conception Prototypage
+      link: /workshops/initiation-conception-prototypage/
     - name: Découvrez la Fabrication Additive
       link: /workshops/fab-additive/
     - name: Projet Otto
       link: /workshops/otto-mks/
     - name: Medieval Challenge
       link: /workshops/medieval-challenge/
+    - name: Machine that Draws
+      link: /workshops/machine-that-draws/
     - name: Carte contrôleur Machine That Draws
       link: /workshops/stepper-controller-board/
 - name: Documentation
