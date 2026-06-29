@@ -7,7 +7,7 @@ hero_darken: true
 component_toc: true
 doc_header: true
 
-title: OnShape (2) - Votre première pièce
+title: OnShape - Votre première pièce
 subtitle: Création de votre première pièce sous OnShape
 description: Création de votre première pièce sous OnShape
 tags: onshape

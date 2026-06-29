@@ -7,7 +7,7 @@ hero_darken: true
 component_toc: true
 doc_header: true
 
-title: OnShape (5) - Premier Assemblage
+title: OnShape - Premier Assemblage
 subtitle: Création de votre premier assemblage dans OnShape
 description: Création de votre premier fichier d'assemblage dans OnShape
 tags: onshape

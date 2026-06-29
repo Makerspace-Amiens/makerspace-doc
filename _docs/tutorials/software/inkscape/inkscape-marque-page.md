@@ -7,7 +7,7 @@ hero_darken: true
 component_toc: true
 background_color: '#efedfa'
 
-title: Inkscape (3) - Marque-Page
+title: Inkscape - Marque-Page
 subtitle: Réalisation d'un marque-page
 description: Tutoriel d'initiation à Inkscape avec la réalisation d'un marque-page pouvant être découpé au laser.
 tags: inkscape
