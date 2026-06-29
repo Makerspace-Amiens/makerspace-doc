@@ -1,8 +1,8 @@
 ---
 layout: documentation
-image: insert-16.png
+image: kumiko.jpg
 hide_hero: false
-hero_image: insert-16.png
+hero_image: kumiko.jpg
 hero_darken: true
 component_toc: true
 doc_header: true
