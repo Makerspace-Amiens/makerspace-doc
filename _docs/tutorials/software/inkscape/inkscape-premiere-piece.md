@@ -7,7 +7,7 @@ hero_darken: true
 component_toc: true
 background_color: '#efedfa'
 
-title: Inkscape (2) - Porte-clef
+title: Inkscape - Porte-clef
 subtitle: Réalisation d'un porte-clef
 description: Tutoriel d'initiation à Inkscape avec la réalisation d'un porte-clef pouvant être découpé au laser.
 tags: inkscape

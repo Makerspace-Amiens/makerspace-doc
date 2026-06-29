@@ -7,7 +7,7 @@ hero_darken: true
 component_toc: true
 doc_header: true
 
-title: OnShape (1) - Présentation et Installation
+title: OnShape - Présentation et Installation
 subtitle: Découvrez OnShape et installez le !
 description: Dans ce premier tuto, nous allons voir comment vous pouvez installer OnShape.
 tags: onshape
