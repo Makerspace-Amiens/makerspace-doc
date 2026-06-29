@@ -27,10 +27,22 @@ softwares:
 todo: 10
 ---
 
+## Introduction
+
 {% include message.html 
 message="L’ordre des exercices n’est pas imposé. Vous pouvez les réaliser librement selon vos envies, votre niveau ou les compétences que vous souhaitez renforcer. L’objectif est de choisir les pièces qui vous intéressent et de progresser à votre rythme." 
 status="is-warning" 
 icon="fas fa-info-circle" %}
+
+
+
+{% include step-tuto.html 
+greyBackground = true
+title ="Sélectionnez vos pièces"
+content ="Pour chaque pièce d'initiation à réaliser sur OnShape, vous utiliserez un seul et même projet. Dans ce projet, vous allez créer un dossier (voir animation ci-contre) que vous renommerez en **Entrainement**. Ensuite, chaque pièce sera créée dans un **Part Studio** renommé avec le nom de votre pièce." 
+image ="opera_XwzVfGjKxn.gif"%}
+
+## Pièces d'entrainement
 
 {% include plan_card.html 
     title="Pièce 03 - Équerre de fixation"
