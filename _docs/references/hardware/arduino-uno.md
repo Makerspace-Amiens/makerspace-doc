@@ -308,13 +308,3 @@ VSCode à l'avantage de s'intégrer parfaitement dans une multitude de projet de
 * [Arduino Education](https://arduino.education/?page_id=27)
 * [Wikipedia - Arduino](https://fr.wikipedia.org/wiki/Arduino)
 * [Historique Arduino - eni](https://www.editions-eni.fr/open/mediabook.aspx?idR=a81a087b555eea0aad94df95ee8febf4)
-
-
----
-
-{%
-  include card_collections.html
-  title="Pour aller plus loin"
-  description="Trouvez d'autres tutoriels en lien avec le projet"
-  type="hardware"
-%}

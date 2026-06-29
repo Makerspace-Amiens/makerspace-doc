@@ -4,15 +4,7 @@
   link: /equipment/
 - name: Thématiques
   link: /workshops/
-  dropdown:
-    - name: Découvrez la Fabrication Additive
-      link: /workshops/fab-additive/
-    - name: Projet Otto
-      link: /workshops/otto-mks/
-    - name: Medieval Challenge
-      link: /workshops/medieval-challenge/
-    - name: Carte contrôleur Machine That Draws
-      link: /workshops/stepper-controller-board/
+  dropdown: true
 - name: Documentation
   link: /docs/
 - name: Ressources

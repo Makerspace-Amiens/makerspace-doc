@@ -26,6 +26,17 @@
                 {% if site.data.navigation %}
                     {% for item in site.data.navigation %}
                         {% if item.dropdown %}
+                            {%- comment -%}
+                              Pour /workshops/, le dropdown est généré dynamiquement à partir de la
+                              collection workshops (toutes les pages project-home), plutôt que d'une
+                              liste statique qui finit toujours par désynchroniser et oublier des
+                              projets récents.
+                            {%- endcomment -%}
+                            {% if item.link == "/workshops/" %}
+                                {% assign dropdown_items = site.workshops | where: "layout", "project-home" | sort: "title" %}
+                            {% else %}
+                                {% assign dropdown_items = item.dropdown %}
+                            {% endif %}
                             <div class="navbar-item has-dropdown is-hoverable {% if site.fixed_navbar == 'bottom' %} has-dropdown-up {% endif %}">
                                 <a
                                     href="{{ item.link | relative_url }}"
@@ -34,12 +45,14 @@
                                     {{- item.name -}}
                                 </a>
                                 <div class="navbar-dropdown">
-                                    {% for subitem in item.dropdown %}
+                                    {% for subitem in dropdown_items %}
+                                        {% assign sub_link = subitem.link | default: subitem.permalink %}
+                                        {% assign sub_name = subitem.title | default: subitem.name %}
                                         <a
-                                            href="{{ subitem.link | relative_url }}"
-                                            class="navbar-item {% if subitem.link == page.url %}is-active{% endif %}"
+                                            href="{{ sub_link | relative_url }}"
+                                            class="navbar-item {% if sub_link == page.url %}is-active{% endif %}"
                                         >
-                                            {{- subitem.name -}}
+                                            {{- sub_name -}}
                                         </a>
                                     {% endfor %}
                                 </div>
