@@ -23,19 +23,20 @@ difficulty: 1
 
 La majorité des cartes "type Arduino" sont capables de communiquer en série via l'USB (c'est le cas des cartes arduino UNO). Il est donc possible de recevoir et d'envoyer des instructions via ce port et de les afficher sur un terminal de l'ordinateur hôte.
 
-Pour se faire nous allons établir une communication série entre le µC et le PC. 
+Pour se faire nous allons établir une communication série entre le µC et le PC.
 
 La liaison série permet une communication point-à-point grâce à deux voies:
+
 - **TX : La transmission** - C'est la voie qui transmet le message à son interlocuteur
 - **RX : La réception** - C'est la voie qui va recevoir un message de l'interlocuteur
 
 Etant donné que les voies sont spécifiques et associées à des pins du µC (sur une UNO : RX = pin0 et TX = pin1) il ne faut pas oublier de croiser le fils de communication comme montré dans cet exemple :
 
-![](schema-connexion-tx-rx.png)
+![schema](schema-connexion-tx-rx.png)
 
 Afin de communiquer, les deux périphériques doivent être synchronisés sur la même vitesse de transmission appelée [**bauds**](https://fr.wikipedia.org/wiki/Baud_(mesure)).
 
-Si vous souhaitez en savoir plus sur la liaison série : 
+Si vous souhaitez en savoir plus sur la liaison série :
 [La liaison série - Zeste de savoir](https://zestedesavoir.com/tutoriels/686/arduino-premiers-pas-en-informatique-embarquee/744_la-communication-avec-arduino/3426_generalites-sur-la-voie-serie/)
 
 ### 1.2 - Premier exemple
@@ -63,15 +64,15 @@ void loop()
 
 ```
 
-* `Serial.begin(115200) `   : Initialise une communication série à 115200 bauds
-* `Serial.print(">sin:")`   : Envoi sur le porte série la chaine de caractères `">sin:"`
-* `Serial.println(sin(i))`  : Envoi sur le porte série le résultat de l'opération `sin(i)` avec un retour à la ligne à la fin
+- `Serial.begin(115200) `   : Initialise une communication série à 115200 bauds
+- `Serial.print(">sin:")`   : Envoi sur le porte série la chaine de caractères `">sin:"`
+- `Serial.println(sin(i))`  : Envoi sur le porte série le résultat de l'opération `sin(i)` avec un retour à la ligne à la fin
 
 En savoir plus sur l'utilisation du port série dans le Framework arduino : [référence Arduino - Serial](https://www.arduino.cc/reference/en/language/functions/communication/serial/)
 
 Pour que le moniteur série puisse lire le porte série, il faut donner à platformIO l'information de vitesse de la communication en ajoutant la ligne suivante `monitor_speed = 115200` dans le fichier de configuration  **platformio.ini**
 
-![](platformio-ini-monitor-speed.png)
+![speed](platformio-ini-monitor-speed.png)
 
 Vous pouvez ensuite **Serial Monitor** dans la barre de menu en bas à gauche :
 
