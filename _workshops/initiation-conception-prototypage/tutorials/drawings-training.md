@@ -39,7 +39,7 @@ icon="fas fa-info-circle" %}
 {% include step-tuto.html 
 greyBackground = true
 title ="Sélectionnez vos pièces"
-content ="Pour chaque pièce d'initiation à réaliser sur OnShape, vous utiliserez un seul et même projet. Dans ce projet, vous allez créer un dossier (voir animation ci-contre) que vous renommerez en **Entrainement**. Ensuite, chaque pièce sera créée dans un **Part Studio** renommé avec le nom de votre pièce." 
+content ="Pour chaque pièce d'initiation à réaliser sur OnShape, vous utiliserez **un seul et même projet**. Dans ce projet, vous allez créer un dossier (voir animation ci-contre) que vous renommerez en **Entrainement**. Ensuite, chaque pièce sera créée dans un **Part Studio** renommé avec le nom de votre pièce." 
 image ="opera_XwzVfGjKxn.gif"%}
 
 ## Pièces d'entrainement
@@ -73,7 +73,7 @@ image ="opera_XwzVfGjKxn.gif"%}
     title="Pièce 06 - Berceau de support"
     image="06.png"
     difficulty=3
-    content="**Conseil :** pensez à créer des plans de construction et à réaliser la découpe cylindrique dans une fonctione séparée."
+    content="**Conseil :** pensez à créer des plans de construction et à réaliser la découpe cylindrique dans une fonction séparée."
 %}
 
 {% include plan_card.html 
