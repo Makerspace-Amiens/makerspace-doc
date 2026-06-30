@@ -1,0 +1,57 @@
+<!-- Include Mermaid - https://mermaid.js.org -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Kramdown rend les blocs ```mermaid en <pre><code class="language-mermaid...">,
+    // alors que mermaid.js attend des éléments portant directement la classe "mermaid".
+    // On utilise une <div> (et non un <pre>) pour éviter le fond sombre que
+    // _syntax.scss applique globalement aux <pre> (blocs de code).
+    document.querySelectorAll('pre > code[class^="language-mermaid"]').forEach(function (code) {
+      var diagram = document.createElement("div");
+      diagram.className = "mermaid";
+      diagram.textContent = code.textContent;
+      code.parentElement.replaceWith(diagram);
+    });
+
+    // Thème aligné sur la palette du site (assets/css/_tokens.scss — fond blanc uniquement)
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "base",
+      themeVariables: {
+        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+
+        background: "#ffffff",
+
+        primaryColor: "#f4f4f5",
+        primaryTextColor: "#09090b",
+        primaryBorderColor: "#a1a1aa",
+
+        secondaryColor: "#fcc7c8",
+        secondaryTextColor: "#09090b",
+        secondaryBorderColor: "#ef2e31",
+
+        tertiaryColor: "#f4f4f5",
+        tertiaryTextColor: "#27272a",
+        tertiaryBorderColor: "#d4d4d8",
+
+        lineColor: "#71717a",
+        textColor: "#09090b",
+        titleColor: "#09090b",
+
+        clusterBkg: "#f4f4f5",
+        clusterBorder: "#d4d4d8",
+
+        edgeLabelBackground: "#ffffff",
+        nodeTextColor: "#09090b",
+
+        errorBkgColor: "#ef4444",
+        errorTextColor: "#ffffff",
+
+        noteBkgColor: "#fcc7c8",
+        noteTextColor: "#09090b",
+        noteBorderColor: "#ef2e31",
+      },
+    });
+  });
+</script>
