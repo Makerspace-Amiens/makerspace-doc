@@ -201,7 +201,7 @@ L'utilisation des fichiers d'en-tête présente plusieurs avantages :
 
 1. **Modularité**  
    - Ils permettent de découper le code en modules réutilisables, ce qui facilite la maintenance et l'évolution du projet.
-   
+
 2. **Lisibilité et organisation**  
    - En séparant les déclarations des implémentations, le code devient plus facile à comprendre et à gérer.
 
@@ -272,22 +272,26 @@ En utilisant les fichiers d'en-tête dans vos projets, vous pouvez rendre votre 
 
 ---
 
-{% include message.html 
-title="A faire" 
+{% include message.html
+title="A faire"
 message="Avant de passer à la suite :
 
 **Niveau 1 :**
+
 - Complétez la liste des notes avec les fréquences correspondantes
 - Réalisez le son de démarrage de votre robot
 
 **Niveau 2 :**
-- Réalisez une fonction permettant la lecture d'une mélodie contenue dans un tableau d'entier 
+
+- Réalisez une fonction permettant la lecture d'une mélodie contenue dans un tableau d'entier
+
 ```cpp
 int melody[] = {NOTE_C4, NOTE_D4, NOTE_OFF, NOTE_F4, ...};
 ```
 
 **Niveau 3 :**
-- Réalisez une fonction permettant la gestion des durées de chaque note de la mélodie 
- " 
-status="is-info" 
+
+- Réalisez une fonction permettant la gestion des durées de chaque note de la mélodie
+ "
+status="is-info"
 icon="fas fa-pen" %}

@@ -99,15 +99,15 @@ Vous pouvez également ajouter des sections de contenu personnalisées pour des 
 
 Vous avez la possibilité d'intégrer des images en ligne. Possible jusqu'à 4 images au choix.
 
-{% include image-row.html 
-image_1 = "placeholder.png" 
+{% include image-row.html
+image_1 = "placeholder.png"
 image_2 = "placeholder.png"
 %}
 
-{% include image-row.html 
-image_1 = "placeholder.png" 
+{% include image-row.html
+image_1 = "placeholder.png"
 image_2 = "placeholder.png"
-image_3 = "placeholder.png" 
+image_3 = "placeholder.png"
 image_4 = "placeholder.png"
 %}
 
@@ -165,21 +165,21 @@ Ces paramètres sont flexibles et peuvent être adaptés en fonction des besoins
 
 ### Exemple d'Étape
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
-content="Cette étape montre comment présenter une étape dans le tutoriel. Vous pouvez inclure une description ici." 
+content="Cette étape montre comment présenter une étape dans le tutoriel. Vous pouvez inclure une description ici."
 image="placeholder.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 title = "Titre"
-content="Vous pouvez compléter votre étape avec un titre et avec plusieurs images (jusqu'à 4) si vous le souhaitez." 
-image="placeholder.png" 
-image_2="placeholder.png" 
-image_3="placeholder.png" 
+content="Vous pouvez compléter votre étape avec un titre et avec plusieurs images (jusqu'à 4) si vous le souhaitez."
+image="placeholder.png"
+image_2="placeholder.png"
+image_3="placeholder.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="Vous pouvez également utiliser un gif plutôt qu'une image. Mais ne surchargez pas la page avec des gif lourd. Cela peut-être nocif pour la lisibilité de votre page de documentaiton."
 image="placeholder.gif" %}
@@ -189,7 +189,6 @@ image="placeholder.gif" %}
 ## 6. Intégration de modèles 3D
 
 {% include 3d-model.html model="astronaut.glb" poster="astronaut_poster.webp" fullscreen_modal=true%}
-
 
 Pour intégrer des modèles 3D dans votre documentation, nous utilisons la librairie [**model-viewer**](https://modelviewer.dev). Celle-ci permet de visualiser des fichiers 3D interactifs directement dans le navigateur. Il est possible de les intégrer de deux manières : en utilisant l’API [**model-viewer**](https://modelviewer.dev/editor/) directement ou en passant par un fichier d’inclusion.
 
@@ -226,12 +225,12 @@ Cette méthode est utile pour garantir une intégration rapide et simplifiée to
 
 ## 7. Intégration de PCB - Schémas et board avec Kicanvas
 
-Nous utilisons [**Kicanvas**](https://kicanvas.org) pour intégrer des schémas PCB et des plans de circuits imprimés dans votre documentation. 
+Nous utilisons [**Kicanvas**](https://kicanvas.org) pour intégrer des schémas PCB et des plans de circuits imprimés dans votre documentation.
 Kicanvas permet d'embedder des fichiers de projet KiCad (.kicad_sch pour les schémas et .kicad_pcb pour les boards) pour une visualisation interactive directement sur la page.
 
 ### Méthode d'intégration directe avec Kicanvas
 
-Utilisez la balise `<kicanvas-embed>` pour intégrer vos fichiers PCB et schémas, en spécifiant le chemin du fichier source. 
+Utilisez la balise `<kicanvas-embed>` pour intégrer vos fichiers PCB et schémas, en spécifiant le chemin du fichier source.
 Vous pouvez ajuster les contrôles selon vos préférences en utilisant l'attribut `controls`.
 
 #### Exemple d'intégration d'un schéma
@@ -291,19 +290,25 @@ Vous pouvez intégrer des cartes de collections en indiquant la collection que v
 ## 9. Tabs
 
 {% capture tab1 %}
+
 ### Introduction
+
 Bienvenue dans l’onglet d’introduction.
 Tu peux utiliser tout le Markdown que tu veux ici.
 {% endcapture %}
 
 {% capture tab2 %}
+
 ### Détails techniques
+
 - Étape 1
 - Étape 2
 {% endcapture %}
 
 {% capture tab3 %}
+
 ### Galerie
+
 ![Image](https://picsum.photos/300)
 {% endcapture %}
 
@@ -327,7 +332,6 @@ Tu peux utiliser tout le Markdown que tu veux ici.
   tab3=tab3
   tab4=tab4
 %}
-
 
 ```liquid
 {% raw %}
@@ -406,7 +410,7 @@ links:
 
 ```
 
-{% include graph3d-base.html 
+{% include graph3d-base.html
    id="graph-makerspace-2"
    data=site.data.graph_test
    transparent=true
@@ -426,7 +430,7 @@ links:
 
 Même génération mais sous forme de bandeau avec titre et sous-titre.
 
-{% include graph3d-hero.html 
+{% include graph3d-hero.html
    id="graph-makerspace"
    data=site.data.graph_test
    title="MakerSpace Network"

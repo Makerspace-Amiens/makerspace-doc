@@ -27,6 +27,8 @@ todo: 10
 {% include message.html title="Attention" message="La page est en cours de rédaction. C'est pour l'instant un extrait brut des slides [du cours d'introduction à l'impression 3D.](/assets/pdf/initiation-fabrication-additive.pdf)"
 status="is-warning" dismissable="false" icon="fas fa-exclamation-triangle" %}
 
+<!-- markdownlint-disable MD024 -- extrait brut de slides, titres dupliqués d'une diapo à l'autre ; à réécrire avec la page (cf. todo: 10) -->
+
 ## Workflow Logiciel
 
 Workflow Logiciel
@@ -37,12 +39,9 @@ Principe général Le workflow Logiciel 105   Logiciel de modélisation Slicer M
 
 ![Slide 105 Image](slide_105_image_8.png)
 
-
 ![Slide 105 Image](slide_105_image_9.png)
 
-
 ![Slide 105 Image](slide_105_image_10.png)
-
 
 ## La Modélisation
 
@@ -50,15 +49,14 @@ La Modélisation 106 Les logiciels de conception, de modélisation, Scan 3D, …
 
 ## Récupérer son fichier 3D
 
-Récupérer son fichier 3D Les bibliothèques 3D 107 PrusaPrinters : https://www.printables.com/ 
-Plateforme de partage de fichiers 3D optimisée pour les imprimantes Prusa, mais compatible avec toutes les machines. Thingiverse : https://www.thingiverse.com/ 
-L'une des plus grandes communautés de modèles 3D gratuits, idéale pour les amateurs et les makers. YouMagine : https://www.youmagine.com/ 
-Plateforme open source mettant l'accent sur le partage et la collaboration autour de modèles 3D. Cults : https://cults3d.com/ 
-Bibliothèque en ligne proposant des fichiers 3D gratuits et payants, avec un focus sur le design artistique. GrabCAD : https://grabcad.com/
+Récupérer son fichier 3D Les bibliothèques 3D 107 PrusaPrinters : <https://www.printables.com/>
+Plateforme de partage de fichiers 3D optimisée pour les imprimantes Prusa, mais compatible avec toutes les machines. Thingiverse : <https://www.thingiverse.com/>
+L'une des plus grandes communautés de modèles 3D gratuits, idéale pour les amateurs et les makers. YouMagine : <https://www.youmagine.com/>
+Plateforme open source mettant l'accent sur le partage et la collaboration autour de modèles 3D. Cults : <https://cults3d.com/>
+Bibliothèque en ligne proposant des fichiers 3D gratuits et payants, avec un focus sur le design artistique. GrabCAD : <https://grabcad.com/>
 Plateforme orientée ingénierie, spécialisée dans les modèles 3D industriels et les fichiers techniques.  Et bien d’autres…
 
 ![Slide 107 Image](slide_107_image_4.png)
-
 
 ## Récupérer son fichier 3D
 
@@ -66,9 +64,7 @@ Récupérer son fichier 3D Scanner son objet 108 Principe : Utilisation d’un s
 
 ![Slide 108 Image](slide_108_image_4.png)
 
-
 ![Slide 108 Image](slide_108_image_5.png)
-
 
 ## Récupérer son fichier 3D
 
@@ -76,9 +72,7 @@ Récupérer son fichier 3D Scanner son objet 109 Précision limitée : Les scann
 
 ![Slide 109 Image](slide_109_image_4.png)
 
-
 ![Slide 109 Image](slide_109_image_5.png)
-
 
 ## Modélisation 3D
 
@@ -86,9 +80,7 @@ Modélisation 3D Les logiciels de modélisation 110 Principe : Les logiciels de 
 
 ![Slide 110 Image](slide_110_image_4.png)
 
-
 ![Slide 110 Image](slide_110_image_5.jpg)
-
 
 ## Conception Assistée
 
@@ -96,9 +88,7 @@ Conception Assistée Les logiciels de CAO 111 Principe : Les logiciels de CAO pe
 
 ![Slide 111 Image](slide_111_image_4.jpg)
 
-
 ![Slide 111 Image](slide_111_image_5.png)
-
 
 ## Conception Assistée
 
@@ -106,12 +96,9 @@ Conception Assistée Les logiciels de CAO 112 SolidWorks : Logiciel professionne
 
 ![Slide 112 Image](slide_112_image_4.jpg)
 
-
 ![Slide 112 Image](slide_112_image_5.jpg)
 
-
 ![Slide 112 Image](slide_112_image_6.png)
-
 
 ## Modélisation par code
 
@@ -119,16 +106,13 @@ Modélisation par code OpenSCAD 113 Qu’est-ce que OpenSCAD ? Logiciel open sou
 
 ![Slide 113 Image](slide_113_image_4.jpg)
 
-
 ![Slide 113 Image](slide_113_image_5.png)
-
 
 ## Modélisation par IA
 
 Modélisation par IA Rodin 114 Qu’est-ce que Rodin ? Rodin est un outil basé sur l’IA qui permet de créer des modèles 3D directement à partir de descriptions textuelles ou d’autres données d’entrée.  Caractéristiques : Création rapide et intuitive : Pas besoin de compétences en modélisation, l’IA génère des modèles complexes en quelques étapes. Adapté aux débutants et experts : Idéal pour des concepts artistiques ou des prototypes fonctionnels. Compatibilité : Export des modèles dans des formats courants (STL, OBJ) pour l’impression 3D ou d’autres applications.  Limites : Les détails complexes peuvent être imparfaits (coiffures, expressions). Les modèles générés doivent souvent être retravaillés pour un usage optimal. La qualité du modèle dépend de la clarté de l'entrée textuelle.
 
 ![Slide 114 Image](slide_114_image_4.png)
-
 
 ## L’Export
 
@@ -152,13 +136,11 @@ Le Slicer Présentation 119 Définition : Un slicer est un logiciel qui converti
 
 ![Slide 119 Image](slide_119_image_4.png)
 
-
 ## Le Slicer
 
 Le Slicer Les différents logiciels 120 Par Compatibilité avec des imprimantes spécifiques Multimarques/Open Source : Cura, PrusaSlicer, SuperSlicer, OrcaSlicer. Marques spécifiques : BambuLab : Bambu Studio, OrcaSlicer. Creality : Creality Slicer (modifié à partir de Cura). Raise3D : IdeaMaker. MakerBot : MakerBot Print. FlashForge : FlashPrint. (…)  Par Types d’Impression : FDM (Filament) : Cura, PrusaSlicer, Simplify3D, IdeaMaker, OrcaSlicer, SuperSlicer. SLA/DLP (Résine) : ChiTuBox, Lychee Slicer. (…)
 
 ![Slide 120 Image](slide_120_image_4.png)
-
 
 ## CURA
 
@@ -166,9 +148,7 @@ CURA Ultimaker 121 Qu’est-ce que Cura ?: Slicer open source développé par Ul
 
 ![Slide 121 Image](slide_121_image_4.jpg)
 
-
 ![Slide 121 Image](slide_121_image_5.jpg)
-
 
 ## Prusa Slicer
 
@@ -176,19 +156,15 @@ Prusa Slicer Prusa research 122 Qu’est-ce que PrusaSlicer ?: Slicer basé sur 
 
 ![Slide 122 Image](slide_122_image_4.png)
 
-
 ![Slide 122 Image](slide_122_image_5.png)
-
 
 ## Bambu Slicer
 
-Bambu Slicer BambuLab 123 Qu’est-ce que Bambu Studio ?: Slicer développé pour les imprimantes Bambu Lab, offrant des fonctionnalités spécifiques pour ces machines.  Avantages: Intégré avec les imprimantes Bambu, gestion avancée des couleurs et des matériaux.  Inconvénients: Principalement conçu pour l'écosystème Bambu, support limité pour d'autres imprimantes. 
+Bambu Slicer BambuLab 123 Qu’est-ce que Bambu Studio ?: Slicer développé pour les imprimantes Bambu Lab, offrant des fonctionnalités spécifiques pour ces machines.  Avantages: Intégré avec les imprimantes Bambu, gestion avancée des couleurs et des matériaux.  Inconvénients: Principalement conçu pour l'écosystème Bambu, support limité pour d'autres imprimantes.
 
 ![Slide 123 Image](slide_123_image_4.png)
 
-
 ![Slide 123 Image](slide_123_image_5.jpg)
-
 
 ## Orca Slicer
 
@@ -196,20 +172,17 @@ Orca Slicer Slicer multi-marque OpenSource 124 Qu’est-ce qu’OrcaSlicer ?: Fo
 
 ![Slide 124 Image](slide_124_image_4.jpg)
 
-
 ![Slide 124 Image](slide_124_image_5.jpg)
-
 
 ## Full Control XYZ
 
-Full Control XYZ L’anomalie… https://fullcontrol.xyz 125 Open source : Projet disponible sur GitHub, conçu pour repousser les limites des slicers traditionnels.  Fonctionnalité clé : Permet la génération manuelle et avancée de structures directement en G-code, sans nécessiter un modèle 3D intermédiaire.  Contrôle total sur l’impression : Les utilisateurs peuvent créer des structures paramétriques complexes, comme des treillis, des objets mathématiques ou des géométries sur mesure.
+Full Control XYZ L’anomalie… <https://fullcontrol.xyz> 125 Open source : Projet disponible sur GitHub, conçu pour repousser les limites des slicers traditionnels.  Fonctionnalité clé : Permet la génération manuelle et avancée de structures directement en G-code, sans nécessiter un modèle 3D intermédiaire.  Contrôle total sur l’impression : Les utilisateurs peuvent créer des structures paramétriques complexes, comme des treillis, des objets mathématiques ou des géométries sur mesure.
 
 ![Slide 125 Image](slide_125_image_4.png)
 
-
 ## Full Control XYZ
 
-Full Control XYZ L’anomalie… https://fullcontrol.xyz 126 Exploration de nouveaux usages : Idéal pour la recherche, le prototypage, ou les applications nécessitant une précision extrême (bio-impression, structures légères).  Indépendance vis-à-vis des formats traditionnels : Plus besoin de fichiers STL ou OBJ, tout est défini directement dans le slicer.  Évolution des slicers : Introduit une approche programmative et personnalisable, s’éloignant des slicers conventionnels qui s’appuient sur des modèles figés.  FullControl.xyz ouvre de nouvelles perspectives pour les makers et chercheurs en permettant une maîtrise inédite de la fabrication additive.
+Full Control XYZ L’anomalie… <https://fullcontrol.xyz> 126 Exploration de nouveaux usages : Idéal pour la recherche, le prototypage, ou les applications nécessitant une précision extrême (bio-impression, structures légères).  Indépendance vis-à-vis des formats traditionnels : Plus besoin de fichiers STL ou OBJ, tout est défini directement dans le slicer.  Évolution des slicers : Introduit une approche programmative et personnalisable, s’éloignant des slicers conventionnels qui s’appuient sur des modèles figés.  FullControl.xyz ouvre de nouvelles perspectives pour les makers et chercheurs en permettant une maîtrise inédite de la fabrication additive.
 
 ## Le Slicer
 
@@ -221,23 +194,19 @@ Le Slicer Les réglages de base 128 Pourquoi les réglages de base sont importan
 
 ![Slide 128 Image](slide_128_image_4.png)
 
-
 ## Températures d’impression
 
 Températures d’impression Les réglages de base 129 Température du filament: Chaque fabricant indique une plage optimale (200-240°C pour la buse).  Température du plateau: Recommandée entre 60 et 100°C selon le filament. Respectez les valeurs pour éviter les déformations
 
 ![Slide 129 Image](slide_129_image_4.jpg)
 
-
 ![Slide 129 Image](slide_129_image_5.jpg)
-
 
 ## Hauteur de couche
 
 Hauteur de couche Les réglages de base 130 Impact sur la qualité: Hauteurs basses (0,1 mm) = plus de détails, mais impression lente. Hauteurs élevées (0,2 mm) = impression rapide, mais moins précise.  Configuration variable: Certains slicers permettent d’ajuster la hauteur selon les zones pour optimiser le temps et la qualité.
 
 ![Slide 130 Image](slide_130_image_4.png)
-
 
 ## Parois et couches solides
 
@@ -249,16 +218,13 @@ Remplissage et motifs Les réglages de base 132 Pourcentage de remplissage: 10-2
 
 ![Slide 132 Image](slide_132_image_5.png)
 
-
 ## Supports
 
 Supports Les réglages de base 133  Rôle des supports: Structures temporaires pour soutenir les parties en surplomb. Minimise les échecs.    Optimisation: Réduisez les supports en orientant mieux l’objet ou en adaptant la conception.
 
 ![Slide 133 Image](slide_133_image_4.png)
 
-
 ![Slide 133 Image](slide_133_image_5.png)
-
 
 ## Adhérence au plateau
 
@@ -266,12 +232,9 @@ Adhérence au plateau Les réglages de base 134 Bordure: Augmente l’adhérence
 
 ![Slide 134 Image](slide_134_image_4.png)
 
-
 ![Slide 134 Image](slide_134_image_5.png)
 
-
 ![Slide 134 Image](slide_134_image_6.png)
-
 
 ## Pontage et refroidissement
 
@@ -279,12 +242,9 @@ Pontage et refroidissement Les réglages de base 135 Pontage: Impression dans le
 
 ![Slide 135 Image](slide_135_image_4.png)
 
-
 ![Slide 135 Image](slide_135_image_5.png)
 
-
 ![Slide 135 Image](slide_135_image_6.png)
-
 
 ## Optimiser ses designs
 
@@ -296,9 +256,7 @@ Minimiser les supports Optimiser ses designs 137 Pourquoi ? Les imprimantes ne p
 
 ![Slide 137 Image](slide_137_image_4.png)
 
-
 ![Slide 137 Image](slide_137_image_5.png)
-
 
 ## Positionnement sur le plateau
 
@@ -306,19 +264,15 @@ Positionnement sur le plateau Optimiser ses designs 138 Surface directe: Les sur
 
 ![Slide 138 Image](slide_138_image_4.png)
 
-
 ![Slide 138 Image](slide_138_image_5.png)
-
 
 ## Résistance des couches
 
-Résistance des couches Optimiser ses designs 139 Orientation des couches  Les pièces sont plus fragiles dans la direction parallèle aux couches. Concevez en fonction des contraintes prévues. 
+Résistance des couches Optimiser ses designs 139 Orientation des couches  Les pièces sont plus fragiles dans la direction parallèle aux couches. Concevez en fonction des contraintes prévues.
 
 ![Slide 139 Image](slide_139_image_4.png)
 
-
 ![Slide 139 Image](slide_139_image_5.png)
-
 
 ## Découpe des modèles
 
@@ -326,9 +280,7 @@ Découpe des modèles Optimiser ses designs 140 Pourquoi découper ?: Couper un 
 
 ![Slide 140 Image](slide_140_image_4.png)
 
-
 ![Slide 140 Image](slide_140_image_5.png)
-
 
 ## Tolérances dans les assemblages
 
@@ -336,12 +288,9 @@ Tolérances dans les assemblages Optimiser ses designs 141 Importance des tolér
 
 ![Slide 141 Image](slide_141_image_4.png)
 
-
 ![Slide 141 Image](slide_141_image_5.png)
 
-
 ![Slide 141 Image](slide_141_image_6.jpg)
-
 
 ## Orientation des trous
 
@@ -349,9 +298,7 @@ Orientation des trous Optimiser ses designs 142 Trous imprimés verticalement : 
 
 ![Slide 142 Image](slide_142_image_4.png)
 
-
 ![Slide 142 Image](slide_142_image_5.png)
-
 
 ## Largeur des périmètres
 
@@ -359,9 +306,7 @@ Largeur des périmètres Optimiser ses designs 143 Périmètre simple: Avec une 
 
 ![Slide 143 Image](slide_143_image_4.png)
 
-
 ![Slide 143 Image](slide_143_image_5.png)
-
 
 ## Le GCode
 
@@ -373,13 +318,11 @@ Le G-code Qu’est-ce que le G-code ? 145 Définition: Le G-code est un langage 
 
 ![Slide 145 Image](slide_145_image_4.png)
 
-
 ## Le G-code
 
 Le G-code Principe de fonctionnement 146 Structure des commandes: Chaque ligne commence par une lettre (ex. G pour mouvement, M pour contrôle) suivie de paramètres.  Exemple: G1 X10 Y20 Z0.2 F1500 : Déplace la tête à X=10, Y=20, Z=0.2 à une vitesse de 1500 mm/min.  Lien avec le slicer: Le G-code est généré par un slicer à partir d’un modèle 3D, traduisant le fichier en commandes machine.
 
 ![Slide 146 Image](slide_146_image_4.png)
-
 
 ## Le G-code
 

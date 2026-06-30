@@ -22,6 +22,7 @@ author: Adrien BRACQ
 ## 1 - Introduction
 
 Lorsque l'on parle d'arduino, on peut en fait parler de **quatre choses distincts** et pourtant **étroitement liées**
+
 - Les cartes physiques développées par la société Arduino
 - Framework Arduino
 - Le Logiciel Arduino IDE
@@ -33,7 +34,7 @@ On peut également parler plus généralement de la marque [Arduino](https://www
 
 ### 2.1 - Historique
 
-La première carte arduino développée, et la plus populaire encore maintenant, est la carte Arduino UNO. 
+La première carte arduino développée, et la plus populaire encore maintenant, est la carte Arduino UNO.
 
 Elle a été créée dans les années 2000 par Massimo Banzi, David Cuartielles, Tom Igoe, Gianluca Martino, David Mellis et Nicholas Zambetti, à l’Interaction Design Institute d’Ivrea, en Italie, dans le cadre d'un projet étudiant.
 
@@ -53,7 +54,7 @@ Visant à rendre la plateforme toujours moins chère et plus accessible, une éq
 
 ### 2.2 - Principes
 
-L'ensemble des cartes Arduino fonctionnent sur un principe quasi similaire, et sont basées sur un composant central : le microcontrôleur. 
+L'ensemble des cartes Arduino fonctionnent sur un principe quasi similaire, et sont basées sur un composant central : le microcontrôleur.
 
 ```mermaid!
 flowchart LR
@@ -88,29 +89,28 @@ Selon les cartes, il existe différents types de μC et vous pouvez en retrouver
 
 Selon le μC, les capacités de calculs et d'entrée / sortie seront différentes. Il faudra donc être vigilant quant au choix de la carte et des conditions d'utilisation.
 
-
-
 #### b. Le convertisseur USB - Serie
 
 Afin de simplifier la liaison du micro-contrôleur avec l'ordinateur et de limiter l'usage de boitier externes supplémentaires, un composant va se charger de faire la conversion entre un port USB et le port série du micro-contrôleur. Ce fonctionnement va permettre deux choses :
-- La programmation du composant directement en USB. Le micro-contrôleur sera préprogrammé avec un bootloader permettant ce type de programmation
-- L'interfaçage série entre le PC et le micro-contrôleur, la carte étant détectée comme interface série par un PC. 
 
-{% include message.html 
-message="Certaines cartes Arduino (notamment la UNO) utilisent comme bus série des pins accessibles depuis les ports de la carte. Sur la UNO par exemple, se seront les pins 0 et 1. Si c'est le cas, les instructions de lecture et écriture sur le port série affecteront ces pins de même que l'upload d'un code." 
+- La programmation du composant directement en USB. Le micro-contrôleur sera préprogrammé avec un bootloader permettant ce type de programmation
+- L'interfaçage série entre le PC et le micro-contrôleur, la carte étant détectée comme interface série par un PC.
+
+{% include message.html
+message="Certaines cartes Arduino (notamment la UNO) utilisent comme bus série des pins accessibles depuis les ports de la carte. Sur la UNO par exemple, se seront les pins 0 et 1. Si c'est le cas, les instructions de lecture et écriture sur le port série affecteront ces pins de même que l'upload d'un code."
 status="is-warning" %}
 
-{% include message.html 
-message="Sur certaines carte, et grâce aux capacités de certains micro-contrôleurs, la conversion USB - série se fait directement par le micro-contrôleur lui-même. C'est le cas par exemple sur les cartes à base de μC de la famille XXuX comme les 32u4 de l'arduino micro ou le 16u2." 
+{% include message.html
+message="Sur certaines carte, et grâce aux capacités de certains micro-contrôleurs, la conversion USB - série se fait directement par le micro-contrôleur lui-même. C'est le cas par exemple sur les cartes à base de μC de la famille XXuX comme les 32u4 de l'arduino micro ou le 16u2."
 status="is-info" %}
 
 #### c. Gestion de l'alimentation
 
-Selon les cartes, on trouvera un étage de conversion ou de gestion de l'alimentation. En effet, les composants devant fonctionner avec des niveaux de tension précis (classiquement 5V ou 3,3V), il faut s'assurer de la conversion de tension entre l'entrée d'alimentation et les composants. 
+Selon les cartes, on trouvera un étage de conversion ou de gestion de l'alimentation. En effet, les composants devant fonctionner avec des niveaux de tension précis (classiquement 5V ou 3,3V), il faut s'assurer de la conversion de tension entre l'entrée d'alimentation et les composants.
 
 Les cartes pouvant être alimentées par le port d'upload (USB) ou par un alimentation externe, il est souvent nécessaire d'effectuer une conversion. Rappelons que l'USB d'un PC peut délivrer dans la majorité des cas une tension de 5V sous 500mA max.
 
-Sur les cartes les plus simples, aucune gestion de l'alimentation n'est réalisée. C'est à la charge de l'utilisateur de fournir les tension d'alimentation adequats. 
+Sur les cartes les plus simples, aucune gestion de l'alimentation n'est réalisée. C'est à la charge de l'utilisateur de fournir les tension d'alimentation adequats.
 
 Mais traditionnellement, on va trouver ce type de montage sur les cartes Arduino en 5V:
 
@@ -131,35 +131,35 @@ gestAlim -- 5V --> microC
 
 ```
 
-{% include message.html 
-message="Les cartes Arduino et leurs déclinaisons étant nombreuses, il faut impérativement vérifier sur les datasheet ou les circuits des cartes afin de connaitre leur fonctionnement avant usage." 
+{% include message.html
+message="Les cartes Arduino et leurs déclinaisons étant nombreuses, il faut impérativement vérifier sur les datasheet ou les circuits des cartes afin de connaitre leur fonctionnement avant usage."
 status="is-warning" %}
 
-{% include message.html 
-message="Attention aux limitation de courant et aux capacités maxi de charges des ports USB (500mA) et des régulateurs (rarement au dessus de 500mA)." 
+{% include message.html
+message="Attention aux limitation de courant et aux capacités maxi de charges des ports USB (500mA) et des régulateurs (rarement au dessus de 500mA)."
 status="is-warning" %}
 
 #### d. Entrée - Sortie
 
-Chaque carte Arduino possède des périphériques d'entrées sorties. La gestion et les fonctionnalités dépendent de la carte choisie. Il faut donc correctement se renseigner sur les datasheet des cartes utilisées afin d'en connaitre précisément ses capacités. 
+Chaque carte Arduino possède des périphériques d'entrées sorties. La gestion et les fonctionnalités dépendent de la carte choisie. Il faut donc correctement se renseigner sur les datasheet des cartes utilisées afin d'en connaitre précisément ses capacités.
 
 Dans le cas d'une arduino UNO, on retrouve l'architecture suivante :
 
 ![](2021-11-05-09-35-57.png)
 
 - **USB :** Programmation et liaison série
-- **Alimentation (7v-12V) :** Source d'alimentation externe 
-- **A :** 
-    * Entrées-sorties numériques
-    * Sorties PWM
-    * Bus de communication série
+- **Alimentation (7v-12V) :** Source d'alimentation externe
+- **A :**
+  - Entrées-sorties numériques
+  - Sorties PWM
+  - Bus de communication série
 - **B :**
-    * Entrées-sorties numériques
-    * Entrées analogiques
-    * Bus de communication I2C
+  - Entrées-sorties numériques
+  - Entrées analogiques
+  - Bus de communication I2C
 - **C :**
-    * 5V et 3,3V
-    * GND
+  - 5V et 3,3V
+  - GND
 - **D :** Reset externe
 
 ## 3 - Le Framework Arduino
@@ -172,19 +172,20 @@ Dans le cas d'une arduino UNO, on retrouve l'architecture suivante :
 
 En programmation informatique, un framework [...] désigne un ensemble cohérent de composants logiciels structurels, qui sert à créer les fondations ainsi que les grandes lignes de tout ou partie d'un logiciel (architecture). Un framework se distingue d'une simple bibliothèque logicielle principalement par :
 
-* son caractère générique, faiblement spécialisé, contrairement à certaines bibliothèques ; un framework peut à ce titre être constitué de plusieurs bibliothèques, chacune spécialisée dans un domaine. Un framework peut néanmoins être spécialisé sur un langage particulier, une plateforme spécifique, un domaine particulier : communication de données, data mapping, etc. ;
+- son caractère générique, faiblement spécialisé, contrairement à certaines bibliothèques ; un framework peut à ce titre être constitué de plusieurs bibliothèques, chacune spécialisée dans un domaine. Un framework peut néanmoins être spécialisé sur un langage particulier, une plateforme spécifique, un domaine particulier : communication de données, data mapping, etc. ;
 
-* le cadre de travail qu'il impose dû à sa construction même, guidant l'architecture logicielle voire conduisant le développeur à respecter certains patrons de conception ; les bibliothèques le constituant sont alors organisées selon le même paradigme.
+- le cadre de travail qu'il impose dû à sa construction même, guidant l'architecture logicielle voire conduisant le développeur à respecter certains patrons de conception ; les bibliothèques le constituant sont alors organisées selon le même paradigme.
 
 Les frameworks sont donc conçus et utilisés pour modeler l'architecture des logiciels applicatifs, des applications web, des middlewares et des composants logiciels. Les frameworks sont acquis par les informaticiens, puis incorporés dans des logiciels applicatifs mis sur le marché, ils sont par conséquent rarement achetés et installés séparément par un utilisateur final.
 
 ---
 
-Dans notre cas, le Framework Arduino est un Framework particulier qui permet de programmer simplement les fonctionnalités hardware liées aux micro-contrôleurs, ou micro-processeurs, utilisés sur les cartes compatibles. 
+Dans notre cas, le Framework Arduino est un Framework particulier qui permet de programmer simplement les fonctionnalités hardware liées aux micro-contrôleurs, ou micro-processeurs, utilisés sur les cartes compatibles.
 
 Ce FrameWork est basé sur l'usage du C++ et améliore expérience utilisateur dans la démarche de programmation des cartes.
 
 **Il est donc important de noter et de retenir les points suivants :**
+
 - Le Framework n'est qu'une couche software simplifiant la programmation
 - Le Framework peut être supplanté par des commandes bas niveaux afin de piloter plus finement le fonctionnement hardware du micro-contrôleur.
 - Le Langage C C++ utilisé, ses structures, ses possibilités reste inchangées dans la mesure où elle sont adaptées à environnement embarqué.
@@ -196,11 +197,12 @@ Ce FrameWork est basé sur l'usage du C++ et améliore expérience utilisateur d
 Vous pouvez retrouver l'ensemble des fonctionnaltiés du framework Arduino sur [la doc de référence](https://www.arduino.cc/reference/en/)[fr](https://www.arduino.cc/reference/fr/) en ligne.
 
 Cette documentation vous donne accès à l'ensemble des fonctionnalités prévues dans le Framework et sont classées en 3 catégories :
+
 - Les structures
 - Les Variables
 - les Fonctions
 
-Ces fonctionnalités sont accessibles sans ajout de librairies supplémentaires. Attention cependant : en fonction du type de carte et du type de micro-contrôleur, certaines fonctionnalités peuvent être limitées. 
+Ces fonctionnalités sont accessibles sans ajout de librairies supplémentaires. Attention cependant : en fonction du type de carte et du type de micro-contrôleur, certaines fonctionnalités peuvent être limitées.
 
 De plus, la structure d'un programme avec le Framework arduino diverge d'une structure standard de code C. En effet la structure classique d'un programme en C va être la suivante :
 
@@ -215,6 +217,7 @@ int main
     return 0;
 }
 ```
+
 Dans le cas d'un programme pour micro-contrôleur, on retrouvera la structure suivante
 
 ``` c++
@@ -253,7 +256,7 @@ void loop()
 }
 ```
 
-En effet, les fonctions `void setup()` et `void loop()` sont déjà créées et nécessaires à la compilation du programme principale. 
+En effet, les fonctions `void setup()` et `void loop()` sont déjà créées et nécessaires à la compilation du programme principale.
 
 - `void setup()` : Initialisation du programme - un seul passage au reset du µC
 - `void loop()` : Boucle infinie - programme principal
@@ -265,12 +268,12 @@ Déclaration --> Setup --> Loop --> Loop
 
 ```
 
-{% include message.html 
-message="'Programme principal' ne veut pas dire que l'ensemble des lignes de codes doit être comprises dans cette fonction. Comme en C et C++ classique, la création de fonctions supplémentaires est autorisée et même encouragée." 
+{% include message.html
+message="'Programme principal' ne veut pas dire que l'ensemble des lignes de codes doit être comprises dans cette fonction. Comme en C et C++ classique, la création de fonctions supplémentaires est autorisée et même encouragée."
 status="is-warning" %}
 
-{% include message.html 
-message="A noter que dans le cas de l'utilisation de l'IDE Arduino, la déclaration `#include <arduino.h>` n'est pas utile." 
+{% include message.html
+message="A noter que dans le cas de l'utilisation de l'IDE Arduino, la déclaration `#include <arduino.h>` n'est pas utile."
 status="is-info" %}
 
 ## 4 - Environnement de développement
@@ -291,7 +294,7 @@ Pour poursuivre vers l'installation de l'IDE, vous pouvez suivre le lien ci-dess
 
 ### 4.2 - PlatformIO
 
-PlatformIO est une alternative à l’IDE Arduino permettant de développer des objets connectés ou du code pour micro-contrôleur d’une manière plus générale. PlatformIO n’est pas un éditeur de code : c’est un ensemble d’outils (toolchains) sous la forme de plugin pour Visual Studio Code (ou VSCode) de Microsoft et Atom de GitHub (également Microsoft !). 
+PlatformIO est une alternative à l’IDE Arduino permettant de développer des objets connectés ou du code pour micro-contrôleur d’une manière plus générale. PlatformIO n’est pas un éditeur de code : c’est un ensemble d’outils (toolchains) sous la forme de plugin pour Visual Studio Code (ou VSCode) de Microsoft et Atom de GitHub (également Microsoft !).
 
 Atom étant en perte de vitesse en terme de développement, nous vous conseillons de vous orienter vers VSCode. VSCode est un éditeur de code léger et gratuit pour Windows, macOS, Linux. Il permet de réaliser des projets de développement sur quasi n'importe quel support.
 
@@ -305,6 +308,6 @@ VSCode à l'avantage de s'intégrer parfaitement dans une multitude de projet de
 
 ## Sources
 
-* [Arduino Education](https://arduino.education/?page_id=27)
-* [Wikipedia - Arduino](https://fr.wikipedia.org/wiki/Arduino)
-* [Historique Arduino - eni](https://www.editions-eni.fr/open/mediabook.aspx?idR=a81a087b555eea0aad94df95ee8febf4)
+- [Arduino Education](https://arduino.education/?page_id=27)
+- [Wikipedia - Arduino](https://fr.wikipedia.org/wiki/Arduino)
+- [Historique Arduino - eni](https://www.editions-eni.fr/open/mediabook.aspx?idR=a81a087b555eea0aad94df95ee8febf4)

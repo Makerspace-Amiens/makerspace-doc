@@ -18,16 +18,16 @@ external_link: https://mayku.me
 todo: 100
 ---
 
-## Présentation :
+## Présentation
 
-## Possibilités et limitations :
+## Possibilités et limitations
 
 ### a. Possibilités
 
 ### b. Limitations
 
-## Matériaux utilisables :
+## Matériaux utilisables
 
-## Techniques & tutos :
+## Techniques & tutos
 
-## Notes :
+## Notes

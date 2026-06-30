@@ -22,7 +22,6 @@ Le CNC Shield est une carte d'extension pour Arduino, qui permet de contrôler f
 
 La CNC Shield est particulièrement utile car elle simplifie le montage des composants, en rendant les connexions électriques plus pratiques et en offrant une interface directe avec GRBL, permettant ainsi d'avoir un contrôleur de machine complet à moindre coût.
 
-
 ## Interfaces
 
 Pour mettre en place une machine CNC basée sur la CNC Shield et Arduino, vous aurez besoin des éléments suivants :
@@ -40,7 +39,6 @@ Pour mettre en place une machine CNC basée sur la CNC Shield et Arduino, vous a
 - **Limiteurs de course (Interrupteurs fin de course) :** Ces interrupteurs sont placés aux extrémités des axes pour éviter que la machine ne dépasse les limites physiques.
 
 - **Câbles et connecteurs :** Pour relier les moteurs, l'alimentation et les interrupteurs de fin de course au CNC Shield.
-
 
 {% include message.html title="Pour comprendre" message="Veillez à naviguer vers les liens du constructeur afin de comprendre le fonctionnement des différents éléments. Vous y trouverez les datasheets des composants, les dessins techniques, les caracteristiques techniques mais également des éléments de mise en service du matériel."
 status="is-info" dismissable="false" icon="fas fa-exclamation-triangle" %}

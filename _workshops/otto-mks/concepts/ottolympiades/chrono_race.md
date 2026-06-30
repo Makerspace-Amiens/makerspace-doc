@@ -27,6 +27,7 @@ L'épreuve **Chrono Challenge** est une course de vitesse où les robots doivent
 greyBackground = true
 title = "Conditions et contraintes"
 content="
+
 - Le robot est **autonome**, aucun contrôle à distance n’est autorisé.
 - Le robot ne doit **pas bouger** avant le retrait de la planche.
 - Si le robot s’arrête avant la ligne, l’essai est annulé.
@@ -39,16 +40,17 @@ image="otto_wake.png" %}
 greyBackground = true
 title = "Déroulement de l’épreuve"
 content="
+
 - **Placement initial** :
-   - Votre robot est placé derrière la ligne de départ, en **arrêt total**.
-   - Une **planche est positionnée à 5 cm** devant son capteur ultrason.  
+  - Votre robot est placé derrière la ligne de départ, en **arrêt total**.
+  - Une **planche est positionnée à 5 cm** devant son capteur ultrason.  
 
 - **Début de l'épreuve** :
-   - Lorsque la planche est **retirée**, le robot doit démarrer et avancer de manière **autonome**.  
+  - Lorsque la planche est **retirée**, le robot doit démarrer et avancer de manière **autonome**.  
 
 - **Fin de l'épreuve** :
-   - Le chrono s'arrête quand le robot franchi la ligne d'arrivée située à **1 m** !  
-   
+  - Le chrono s'arrête quand le robot franchi la ligne d'arrivée située à **1 m** !  
+
 "
 image="otto_wall.png"
 image_2="otto_race_solo.png"%}
@@ -63,7 +65,7 @@ content="
 image = "otto_race_winner.png"
 image_2="victory.png" %}
 
-## Éléments de jeu 
+## Éléments de jeu
 
 {% include 3d-model.html model="OTTO_RACE_TRACK.glb" poster="poster.webp" fullscreen_modal=true %}
 

@@ -20,9 +20,10 @@ author: Adrien BRACQ & Rémi LACOMBE
 
 ## Présentation de la carte
 
-La carte du robot **Otto-MKS** a été conçue par le **MakerSpace d'UniLaSalle Amiens** pour faciliter l'utilisation du robot Otto. Cette carte intègre un microcontrôleur et permet de piloter Otto ainsi que ses différents éléments. 
+La carte du robot **Otto-MKS** a été conçue par le **MakerSpace d'UniLaSalle Amiens** pour faciliter l'utilisation du robot Otto. Cette carte intègre un microcontrôleur et permet de piloter Otto ainsi que ses différents éléments.
 
-### Caractéristiques principales :
+### Caractéristiques principales
+
 - **Microcontrôleur ESP32-C3** basé sur un module **XIAO** (voir détails ci-dessous).
 - **Connexion pour une batterie 9V rechargeable**.
 - **Interrupteur à levier** pour la mise sous tension.
@@ -31,8 +32,10 @@ La carte du robot **Otto-MKS** a été conçue par le **MakerSpace d'UniLaSalle 
 - **4 connecteurs pour servomoteurs 9g**.
 - **Buzzer** intégré pour les signaux sonores.
 
-### Options supplémentaires :
+### Options supplémentaires
+
 Des fonctionnalités supplémentaires peuvent être ajoutées en soudant des connecteurs pour intégrer :
+
 - Un **écran OLED I2C 0,91"**.
 - Un **extendeur de 16 servomoteurs PCA9685**.
 - Un **capteur 6DOF MPU6050**, comprenant :
@@ -40,7 +43,7 @@ Des fonctionnalités supplémentaires peuvent être ajoutées en soudant des con
   - Gyroscope 3 axes.
 - **Deux servomoteurs supplémentaires**
 
-### Caractéristiques techniques :
+### Caractéristiques techniques
 
 - **Dimensions** : 50 x 60 mm  
 - **Fixation** : Par le pas de vis de l'interrupteur  
@@ -50,7 +53,7 @@ Des fonctionnalités supplémentaires peuvent être ajoutées en soudant des con
 
 ---
 
-{% include image-row.html 
+{% include image-row.html
 image_1 = "IMG_20250128_151541-EDIT.jpg"
 image_2 = "IMG_20250128_151625-EDIT.jpg"
 %}
@@ -75,8 +78,8 @@ Vous trouverez ci-dessous les schémas et PCB interactifs de la carte **Otto-MKS
 
 La carte Otto, conçue par le MakerSpace, est basée sur le module XIAO-ESP32C3. Ce module intègre un microcontrôleur ESP32-C3, ainsi que tous les composants nécessaires pour assurer son fonctionnement de manière autonome.
 
-{% include image-row.html 
-image_1 = "xiao-c3.png" 
+{% include image-row.html
+image_1 = "xiao-c3.png"
 image_2 = "xiao-c3-34.png"
 image_3 = "xiao-c3-antenna.png"
 %}
@@ -86,6 +89,7 @@ Le [**Seeed Studio XIAO ESP32C3**](https://wiki.seeedstudio.com/XIAO_ESP32C3_Get
 Un **antenne externe** est incluse pour améliorer la portée du signal sans fil. La carte est compacte et peut être facilement intégrée dans différents projets grâce à son design simple à souder.  
 
 Elle dispose de **11 broches numériques**, utilisables pour contrôler des composants comme des LED ou des moteurs (PWM), et de **3 broches analogiques** pour mesurer des signaux comme la lumière ou la température (ADC). Elle est aussi compatible avec plusieurs types de communication, comme :  
+
 - **UART** (pour communiquer avec d'autres cartes),  
 - **I2C** (pour connecter des capteurs),  
 - **SPI** (pour échanger rapidement des données avec d'autres composants).  
@@ -94,9 +98,10 @@ Sur la carte, on trouve aussi un **bouton de réinitialisation** et un bouton po
 
 Grâce à son faible coût et sa faible consommation d’énergie, cette carte est idéale pour les projets IoT simples, comme des objets connectés à batterie ou des dispositifs portables.  
 
-# Caractéristiques du XIAO ESP32C3
+## Caractéristiques du XIAO ESP32C3
 
 ## Performances et connectivité
+
 - **Processeur puissant** : ESP32-C3, processeur monocœur 32 bits RISC-V fonctionnant jusqu'à 160 MHz.
 - **Wi-Fi intégré** : Compatible avec le protocole IEEE 802.11 b/g/n, prenant en charge plusieurs modes : Station, SoftAP, SoftAP + Station et mode promiscuité.
 - **Bluetooth 5.0** : Prise en charge du Bluetooth Low Energy (BLE) et du maillage Bluetooth (Bluetooth Mesh).
@@ -104,6 +109,7 @@ Grâce à son faible coût et sa faible consommation d’énergie, cette carte e
 - **Antenne externe** : Fournie pour améliorer la réception du signal sans fil.
 
 ## Fonctionnalités supplémentaires
+
 - **Gestion de la batterie** : Puce de charge intégrée pour la gestion de la charge et de la décharge des batteries lithium.
 - **Mémoire intégrée** : 400 KB de RAM et 4 MB de mémoire Flash embarquée.
 - **Taille ultra-compacte** : Seulement 21 x 17,8 mm, idéal pour les projets portables et les objets connectés.
@@ -148,8 +154,8 @@ Grâce à son faible coût et sa faible consommation d’énergie, cette carte e
 
 ## Détails des broches d'alimentation
 
-{% include image-row.html 
-image_1 = "details-xiao-C3.png" 
+{% include image-row.html
+image_1 = "details-xiao-C3.png"
 image_2 = "details-xiao-C3-rear.png"
 %}
 

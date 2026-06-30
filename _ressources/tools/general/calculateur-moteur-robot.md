@@ -16,11 +16,12 @@ author: Adrien Bracq
 
 ## 1. Présentation et Méthode
 
-La méthode et l'outil se basent sur le travail de [cbenson](https://www.robotshop.com/community/user/cbenson) déposé sur le site de [Robotshop](https://www.robotshop.com/community/blog/show/dimensionnement-dun-moteur-dentranement) en 2013. 
+La méthode et l'outil se basent sur le travail de [cbenson](https://www.robotshop.com/community/user/cbenson) déposé sur le site de [Robotshop](https://www.robotshop.com/community/blog/show/dimensionnement-dun-moteur-dentranement) en 2013.
 
 L'outil permet de dimensionner rapidement des moteurs d'entrainement (pour un robot par exemple) en vue d'en faire une sélection sur catalogue.
 
 Quelques points d'attention :
+
 * Les résultats sont donnés **par** sortie
 * Attention aux unités
 * Le calculateur ne tient pas compte d'éventuels réducteurs positionnés en sortie du moteur. Plutôt que d'essayer de trouver un nouveau moteur, il est parfois intéressant d'envisager l'ajout d'un réducteur en sortie afin de s'adapter aux requis.

@@ -19,22 +19,20 @@ external_link: https://holimaker.fr/
 todo: 100
 ---
 
-## Présentation :
+## Présentation
 
 [HoliPress](https://holimaker.fr/)[^1] est un outil qui permet de fondre des matières plastiques, puis de les injecter dans des moules grâce à la force manuelle. HoliPress a pour vocation la création de pièces en plastique de petit format (16cm3 max actuellement) en petite série (10 a 500 unités).
 
-
-## Possibilités et limitations :
+## Possibilités et limitations
 
 ### a. Possibilités
 
 ### b. Limitations
 
-## Materiaux utilisables :
+## Materiaux utilisables
 
-## Techniques & tutos :
+## Techniques & tutos
 
-
-## Notes :
+## Notes
 
 [^1]: [HoliMaker](https://holimaker.fr/)

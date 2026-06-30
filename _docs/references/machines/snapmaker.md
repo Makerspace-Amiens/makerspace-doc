@@ -19,16 +19,16 @@ external_link: https://eu.snapmaker.com
 todo: 100
 ---
 
-## Présentation :
+## Présentation
 
-## Possibilités et limitations :
+## Possibilités et limitations
 
 ### a. Possibilités
 
 ### b. Limitations
 
-## Matériaux utilisables :
+## Matériaux utilisables
 
-## Techniques & tutos :
+## Techniques & tutos
 
-## Notes :
+## Notes

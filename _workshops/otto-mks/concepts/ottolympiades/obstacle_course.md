@@ -21,13 +21,13 @@ author: Adrien BRACQ & Rémi LACOMBE
 L’épreuve **Course d’obstacle** met à l’épreuve la précision et la rapidité des pilotes. Chaque équipe doit guider son robot à travers un **champ d'obstacles** constitué de **cônes retournés**, tout en **évitant de les faire tomber**.  
 Le but est de **franchir la ligne d’arrivée en un temps record**. Chaque cône tombé entraîne une **pénalité de 5 secondes** ajoutée au temps final.  
 
-
 ## Règlement  
 
 {% include step-tuto.html  
 greyBackground = true  
 title = "Conditions et contraintes"  
 content="  
+
 - L’épreuve se joue en **mode télécommandé**.  
 - Chaque équipe dispose d'autant d'essais que souhaité (dans la limite de disponibilité de la piste), seul le **meilleur temps** sera retenu.  
 - Le robot doit **rester dans les limites du parcours**.  
@@ -41,6 +41,7 @@ image="otto_wake.png" %}
 greyBackground = true  
 title = "Déroulement de l’épreuve"  
 content="  
+
 - **Placement initial** :  
   - Le robot est placé dans la zone de départ.  
 - **Début du match** :  
@@ -69,4 +70,3 @@ image="victory.png" %}
 {% include card_collections.html  
 description="Testez votre robot sur tous les terrains !"  
 type="ottolympiades" %}
-

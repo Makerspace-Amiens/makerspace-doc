@@ -18,16 +18,16 @@ external_link: https://www.weller-tools.com/professional/EUR/fr/Professionnel/Te
 todo: 100
 ---
 
-## Présentation :
+## Présentation
 
-## Possibilités et limitations :
+## Possibilités et limitations
 
 ### a. Possibilités
 
 ### b. Limitations
 
-## Matériaux utilisables :
+## Matériaux utilisables
 
-## Techniques & tutos :
+## Techniques & tutos
 
-## Notes :
+## Notes

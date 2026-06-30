@@ -27,6 +27,7 @@ todo: 10
 {% include message.html title="Attention" message="La page est en cours de rédaction. C'est pour l'instant un extrait brut des slides [du cours d'introduction à l'impression 3D.](/assets/pdf/initiation-fabrication-additive.pdf)"
 status="is-warning" dismissable="false" icon="fas fa-exclamation-triangle" %}
 
+<!-- markdownlint-disable MD024 -- extrait brut de slides, titres dupliqués d'une diapo à l'autre ; à réécrire avec la page (cf. todo: 10) -->
 
 ## II - Les technologies
 
@@ -50,16 +51,13 @@ FFF / FDM Fused Deposition Modeling / Fused Filament Fabrication 68 La plus rép
 
 ![Slide 68 Image](slide_68_image_4.png)
 
-
 ## FFF / FDM – Types de machines
 
 FFF / FDM – Types de machines Cartésienne – “Bed slinger” 69 Principe de Fonctionnement Les imprimantes cartésiennes utilisent des axes orthogonaux (X, Y, Z) pour les déplacements. Dans une configuration bed slinger, le plateau (bed) se déplace.  Avantages : Conception simple et économique. Idéal pour les imprimantes FDM grand public  Limites : Déplacements rapides limités par l’inertie du plateau. Peut affecter la qualité d’impression sur de grands volumes.
 
 ![Slide 69 Image](slide_69_image_4.png)
 
-
 ![Slide 69 Image](slide_69_image_5.png)
-
 
 ## FFF / FDM – Types de machines
 
@@ -67,22 +65,17 @@ FFF / FDM – Types de machines Cartésienne – “Cantilever” 70 Principe de
 
 ![Slide 70 Image](slide_70_image_4.jpg)
 
-
 ![Slide 70 Image](slide_70_image_5.jpg)
-
 
 ## FFF / FDM – Types de machines
 
-FFF / FDM – Types de machines Cartésienne – “Core XY” 71 Principe de Fonctionnement Une architecture CoreXY utilise un système de poulies et courroies pour coordonner les déplacements sur les axes X et Y. La tête d’impression est suspendue et se déplace indépendamment du plateau.  Avantages : Vitesse élevée : Mouvement plus léger et rapide, car seule la tête d’impression se déplace sur X et Y. Précision accrue : Réduction des vibrations par rapport aux architectures de type bed slinger. Idéal pour les grands volumes : Stabilité optimale sur de grandes dimension  Limites : Nécessite un alignement précis des courroies. Coût plus élevé que les architectures simples comme les bed slingers ou cantilever. https://corexy.com/theory.html
+FFF / FDM – Types de machines Cartésienne – “Core XY” 71 Principe de Fonctionnement Une architecture CoreXY utilise un système de poulies et courroies pour coordonner les déplacements sur les axes X et Y. La tête d’impression est suspendue et se déplace indépendamment du plateau.  Avantages : Vitesse élevée : Mouvement plus léger et rapide, car seule la tête d’impression se déplace sur X et Y. Précision accrue : Réduction des vibrations par rapport aux architectures de type bed slinger. Idéal pour les grands volumes : Stabilité optimale sur de grandes dimension  Limites : Nécessite un alignement précis des courroies. Coût plus élevé que les architectures simples comme les bed slingers ou cantilever. <https://corexy.com/theory.html>
 
 ![Slide 71 Image](slide_71_image_4.png)
 
-
 ![Slide 71 Image](slide_71_image_5.jpg)
 
-
 ![Slide 71 Image](slide_71_image_7.png)
-
 
 ## FFF / FDM – Types de machines
 
@@ -90,9 +83,7 @@ FFF / FDM – Types de machines Cartésienne – “Core XY” 72
 
 ![Slide 72 Image](slide_72_image_3.gif)
 
-
 ![Slide 72 Image](slide_72_image_4.gif)
-
 
 ## FFF / FDM – Types de machines
 
@@ -100,9 +91,7 @@ FFF / FDM – Types de machines Delta 73 Principe de Fonctionnement Une impriman
 
 ![Slide 73 Image](slide_73_image_4.png)
 
-
 ![Slide 73 Image](slide_73_image_5.png)
-
 
 ## FFF / FDM – Les composants
 
@@ -114,19 +103,15 @@ FFF / FDM – Les composants Deux principaux types d’ensemble 75 Direct Drive 
 
 ![Slide 75 Image](slide_75_image_4.png)
 
-
 ## FFF / FDM – Les composants
 
 FFF / FDM – Les composants L’extrudeur 76 Fonction principale : Mouvements du filament L’extrudeur pousse le filament plastique dans la buse d’impression pour qu’il soit fondu et extrudé.  Il contrôle : La vitesse d’alimentation. La précision du débit de filament  Importance pour les matériaux complexes Les matériaux comme les TPU ou TPE sont flexibles et difficiles à extruder sans un contrôle précis.  Un extrudeur performant : Évite les bourrages. Maintient une extrusion fluide et homogène. Assure une qualité d’impression optimale, même avec des filaments exigeants.
 
 ![Slide 76 Image](slide_76_image_4.png)
 
-
 ![Slide 76 Image](slide_76_image_5.jpg)
 
-
 ![Slide 76 Image](slide_76_image_6.jpg)
-
 
 ## FFF / FDM – Les composants
 
@@ -134,20 +119,17 @@ FFF / FDM – Les composants La Hotend 77    1 - Tube PTFE 2 - Dissipateur therm
 
 ![Slide 77 Image](slide_77_image_4.png)
 
-
 ## FFF / FDM – Les composants
 
 FFF / FDM – Les composants La buse 78 Rôle de la buse Extruder le filament fondu pour créer des couches d’impression. Déterminer la précision et la vitesse de l’impression en limitant le diamètre de sortie du matériau.  Matériaux des buses Laiton (standard) : Idéal pour le PLA, ABS et PETG. Excellente conductivité thermique. S'use rapidement avec des filaments abrasifs (ex. carbone).  Acier trempé : Conçu pour les filaments abrasifs comme le carbone ou le métal. Grande durabilité. Conductivité thermique inférieure au laiton.  Revêtements spéciaux : Buses plaquées (nickel, cuivre) pour une meilleure résistance et moins d’adhérence.
 
 ![Slide 78 Image](slide_78_image_4.jpg)
 
-
 ## FFF / FDM – Les composants
 
 FFF / FDM – Les composants Taille des buses 79  0,4 mm (standard) : Équilibre entre précision et vitesse. Idéal pour la majorité des projets.  Petites tailles (ex. 0,2 mm) : Avantages : Plus de détails pour des impressions précises. Limites : Impression plus lente.  Grandes tailles (ex. 0,6 à 1,0 mm) : Avantages : Impression plus rapide pour les grandes pièces. Limites : Moins de finesse dans les détails.  Le choix de la buse impacte : La résolution (précision des détails). La vitesse d’impression. La compatibilité avec les matériaux spécifiques.
 
 ![Slide 79 Image](slide_79_image_4.jpg)
-
 
 ## SLA
 
@@ -158,7 +140,6 @@ SLA Stéréolithographie 80
 SLA Stéréolithographie 81 Principe de Fonctionnement Utilisation de résines liquides photosensibles, solidifiées par la lumière UV. Une plateforme descend après chaque couche solidifiée, permettant à une nouvelle couche d’adhérer.  Caractéristiques Précision élevée : Objets détaillés avec des couches quasiment invisibles. Finitions lisses, idéales pour les bijoux et les applications médicales.  Limitations : Surface d’impression réduite. Temps d’impression plus long que les imprimantes FFF. Résines liquides toxiques : manipulation et ventilation nécessaires.  Avantages Détails incroyables et surface lisse, impossible à atteindre avec les imprimantes FFF. Applications professionnelles : prototypes complexes, modélisation médicale, et bijoux.
 
 ![Slide 81 Image](slide_81_image_4.jpg)
-
 
 ## Slide 82
 
@@ -174,20 +155,17 @@ SLA Stéréolithographie 81 Principe de Fonctionnement Utilisation de résines l
 
 ![Slide 84 Image](slide_84_image_4.png)
 
-
 ## Slide 85
 
 85 Principe de Fonctionnement Utilise un projecteur numérique pour solidifier toute une couche à la fois. Les zones exposées par le projecteur durcissent simultanément. Caractéristiques Temps d’impression : Constant, quelle que soit la quantité d’objets sur la plateforme. Précision : Dépend de la résolution du projecteur. SLA DLP (Digital Light Processing) Avantages Rapidité accrue pour les impressions multi-objets. Répartition homogène de l’exposition sur toute la plateforme. Limites Résolution XY limitée par la qualité du projecteur.
 
 ![Slide 85 Image](slide_85_image_5.png)
 
-
 ## Slide 86
 
 86 Principe de Fonctionnement Une LED UV haute performance émet de la lumière. Un écran LCD agit comme un masque, ne laissant passer la lumière que sur les zones à solidifier. Caractéristiques Temps d’impression : Constant pour chaque couche, quelle que soit la quantité d’objets. Résolution fixe : Dépend de la résolution de l’écran LCD. SLA MSLA (stéréolithographie masquée) Avantages Rapide et efficace pour des impressions multi-objets. Prix généralement plus abordable que le SLA laser. Limites La résolution dépend uniquement de l’écran LCD (XY). Durabilité limitée des écrans LCD avec le temps.
 
 ![Slide 86 Image](slide_86_image_5.png)
-
 
 ## SLS / DMLS
 
@@ -199,12 +177,9 @@ SLS / DMLS Selective Laser Sintering - Frittage 88 Principe de Fonctionnement Le
 
 ![Slide 88 Image](slide_88_image_0.jpg)
 
-
 ![Slide 88 Image](slide_88_image_5.jpg)
 
-
 ![Slide 88 Image](slide_88_image_6.jpg)
-
 
 ## SLS / DMLS
 
@@ -212,20 +187,17 @@ SLS / DMLS Selective Laser Sintering - Frittage 89 Eléments constitutifs : 1 - 
 
 ![Slide 89 Image](slide_89_image_4.png)
 
-
 ## Les autres technologies
 
 Les autres technologies 90 Binder Jetting, Polyjet
 
 ## Binder Jetting
 
-Binder Jetting Principe et Applications 91 Définition Le Binder Jetting est une technologie d’impression 3D qui utilise un liant liquide pour agglomérer une poudre fine et former un objet couche par couche. Contrairement au SLS, la poudre n'est pas fondue mais collée par le liant.  Principe de Fonctionnement Application de la poudre : Une fine couche de poudre (métal, sable, céramique). Projection de liant : Une tête d’impression dépose un liant liquide sur les zones définies. Formation couche par couche : La plateforme descend pour accueillir de nouvelles couches. Post-traitement : Nécessaire pour renforcer les pièces (sintering, infiltration).  Caractéristiques Matériaux : Métaux, sable, céramiques. Vitesse : Rapide, couche entière solidifiée en une fois. Précision : Surfaces lisses et détails fins. 
+Binder Jetting Principe et Applications 91 Définition Le Binder Jetting est une technologie d’impression 3D qui utilise un liant liquide pour agglomérer une poudre fine et former un objet couche par couche. Contrairement au SLS, la poudre n'est pas fondue mais collée par le liant.  Principe de Fonctionnement Application de la poudre : Une fine couche de poudre (métal, sable, céramique). Projection de liant : Une tête d’impression dépose un liant liquide sur les zones définies. Formation couche par couche : La plateforme descend pour accueillir de nouvelles couches. Post-traitement : Nécessaire pour renforcer les pièces (sintering, infiltration).  Caractéristiques Matériaux : Métaux, sable, céramiques. Vitesse : Rapide, couche entière solidifiée en une fois. Précision : Surfaces lisses et détails fins.
 
 ![Slide 91 Image](slide_91_image_4.jpg)
 
-
 ![Slide 91 Image](slide_91_image_5.jpg)
-
 
 ## PolyJet
 
@@ -233,9 +205,7 @@ PolyJet Principe et Applications 92 Définition Le PolyJet est une technologie d
 
 ![Slide 92 Image](slide_92_image_4.png)
 
-
 ![Slide 92 Image](slide_92_image_5.jpg)
-
 
 ## Les matériaux
 
@@ -247,12 +217,9 @@ Les matériaux Les familles de matériaux selon les technologies 94 Filaments (F
 
 ![Slide 94 Image](slide_94_image_4.jpg)
 
-
 ![Slide 94 Image](slide_94_image_5.jpg)
 
-
 ![Slide 94 Image](slide_94_image_6.jpg)
-
 
 ## Les filaments
 
@@ -260,17 +227,15 @@ Les filaments 95 PLA, PETG, TPU, ABS, PVA
 
 ## PLA
 
-PLA Acide Polylactique 96 Caractéristiques: Biodégradable, facile à imprimer. Faible résistance à la chaleur et aux chocs. Température d’impression: 190-220°C. Applications: Objets décoratifs, prototypes non fonctionnels. Avantages: Peu de déformation, compatible avec les imprimantes débutantes. Limites: Fragilité, sensibilité à la chaleur. 
+PLA Acide Polylactique 96 Caractéristiques: Biodégradable, facile à imprimer. Faible résistance à la chaleur et aux chocs. Température d’impression: 190-220°C. Applications: Objets décoratifs, prototypes non fonctionnels. Avantages: Peu de déformation, compatible avec les imprimantes débutantes. Limites: Fragilité, sensibilité à la chaleur.
 
 ![Slide 96 Image](slide_96_image_4.jpg)
 
-
 ## PETG
 
-PETG Polyéthylène Téréphtalate Glycol 97 Caractéristiques: Résistant, flexible, bonne adhérence entre les couches. Léger effet brillant. Température d’impression: 220-250°C. Applications: Pièces fonctionnelles, contenants alimentaires (sous conditions). Avantages: Résistant à l’humidité et aux produits chimiques. Limites: Sensible à l’humidité pendant l’impression, risque de fils ('stringing'). 
+PETG Polyéthylène Téréphtalate Glycol 97 Caractéristiques: Résistant, flexible, bonne adhérence entre les couches. Léger effet brillant. Température d’impression: 220-250°C. Applications: Pièces fonctionnelles, contenants alimentaires (sous conditions). Avantages: Résistant à l’humidité et aux produits chimiques. Limites: Sensible à l’humidité pendant l’impression, risque de fils ('stringing').
 
 ![Slide 97 Image](slide_97_image_4.jpg)
-
 
 ## TPU
 
@@ -278,16 +243,13 @@ TPU Polyuréthane Thermoplastique 98 Caractéristiques: Flexible et élastique, 
 
 ![Slide 98 Image](slide_98_image_4.jpg)
 
-
 ## ABS
 
 ABS Acrylonitrile Butadiène Styrène 99 Caractéristiques: Résistant à la chaleur et aux chocs. Nécessite un plateau chauffant et une enceinte fermée pour éviter le warping. Température d’impression: 220-250°C. Applications: Pièces mécaniques, prototypes industriels. Avantages: Durable et robuste. Limites: Émissions de vapeurs, nécessite une bonne ventilation.
 
 ![Slide 99 Image](slide_99_image_4.jpg)
 
-
 ![Slide 99 Image](slide_99_image_5.jpg)
-
 
 ## PVA
 
@@ -295,9 +257,7 @@ PVA Alcool Polyvinylique 100 Caractéristiques: Soluble dans l’eau, utilisé c
 
 ![Slide 100 Image](slide_100_image_4.png)
 
-
 ![Slide 100 Image](slide_100_image_5.jpg)
-
 
 ## Les filaments
 
@@ -310,8 +270,6 @@ HIPS Polystyrène à impact élevé 102 Caractéristiques: Léger et facile à i
 ## Composites
 
 Composites Filaments mélangés 103 Caractéristiques: PLA ou ABS mélangés avec du bois, du métal ou de la fibre de carbone. Applications: Design, prototypage, pièces nécessitant résistance. Polyétheréthercétone/Ultem PEEK/PEI Caractéristiques: Haute résistance mécanique, thermique et chimique. Utilisé pour des applications industrielles et médicales Applications: Aéronautique, médical, automobile. Nécessite des imprimantes haut de gamme. ASA Acrylonitrile Styrène Acrylate Caractéristiques: Alternative à l’ABS, résistant aux UV et intempéries. Applications: Pièces extérieures ou d’usage prolongé en extérieur.
-
-
 
 ---
 

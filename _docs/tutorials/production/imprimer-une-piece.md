@@ -25,7 +25,7 @@ softwares:
 todo: 100  
 ---
 
-# Impression 3D d'une pièce
+## Impression 3D d'une pièce
 
 ### Introduction
 
@@ -147,6 +147,7 @@ Vous pouvez visualiser le processus d'impression en utilisant le slider à droit
 greyBackground = true  
 image = "Window.png"  
 content="Avant de lancer l'impression, vérifiez que :  
+
 - L'impression finira bien **avant l'heure de fermeture du MakerSpace** (consultez un **fab manager**).  
 - La machine que vous avez choisie est **toujours disponible**.  
 - Le plateau d'impression est **vide et propre**. Si ce n'est pas le cas, des **lingettes** et du produit de nettoyage sont à votre disposition sur le coté de la servante rouge.
@@ -190,7 +191,7 @@ Si la **pièce se décolle** avant la fin ou qu'un **autre problème** survient,
 greyBackground = true  
 title="6 - Post-traitement"  
 image = "Remove_Part.gif"  
-content="Après un peu de patience, voici votre **impression terminée** ! 
+content="Après un peu de patience, voici votre **impression terminée** !
 
 Pour **retirer la pièce du plateau**, pas besoin de forcer ! Il suffit d'attendre que le plateau refroidisse.
 

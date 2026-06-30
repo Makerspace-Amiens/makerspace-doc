@@ -39,6 +39,7 @@ L'impression 3D, également connue sous le nom de **fabrication additive**, est 
 **Les principaux procédés de l'impression 3D :**
 
 À ses débuts, l'impression 3D se distinguait par deux procédés principaux :
+
 1. **FDM (Fused Deposition Modeling)** : Cette méthode utilise un filament de plastique fondu, déposé par une buse chauffante pour former chaque couche.
 2. **SLA (Stereolithography Apparatus)** : Ici, une résine liquide photosensible est solidifiée couche par couche à l'aide d'une lumière UV ou laser, permettant des niveaux de détail très élevés.
 
@@ -86,15 +87,15 @@ Ces deux techniques, bien qu'ayant évolué, restent au cœur des technologies d
 
 ### Exemples de machines au début 2000
 
-{% include step-tuto.html 
-greyBackground = true 
+{% include step-tuto.html
+greyBackground = true
 content="**3D Systems SLA 5000**
 
 Introduite au début des années 2000, cette machine de stéréolithographie offrait une grande précision pour des applications industrielles."
 image="slide_11_image_1.jpg" %}
 
-{% include step-tuto.html 
-greyBackground = true 
+{% include step-tuto.html
+greyBackground = true
 content="**EOSINT P 700**
 
 Sortie en 2004, cette imprimante SLS (Selective Laser Sintering) permettait la production de pièces en polymère pour des usages variés"
@@ -106,9 +107,9 @@ image="slide_11_image_3.jpg" %}
 
 ### Le Brevet - Fonctionnement
 
-Un brevet est un outil juridique essentiel pour protéger les inventions. Il constitue un **droit de propriété intellectuelle** qui offre à son titulaire un **monopole d'exploitation temporaire**, interdisant à d'autres personnes de fabriquer, utiliser ou vendre l'invention sans autorisation. 
+Un brevet est un outil juridique essentiel pour protéger les inventions. Il constitue un **droit de propriété intellectuelle** qui offre à son titulaire un **monopole d'exploitation temporaire**, interdisant à d'autres personnes de fabriquer, utiliser ou vendre l'invention sans autorisation.
 
-Pour qu'une invention puisse bénéficier d'un brevet, elle doit remplir trois critères fondamentaux : 
+Pour qu'une invention puisse bénéficier d'un brevet, elle doit remplir trois critères fondamentaux :
 
 1. **Nouvelle** : L'invention doit être originale et ne pas avoir été révélée au public auparavant.  
 2. **Innovante** : Elle doit présenter une avancée technique par rapport à ce qui existe déjà.  
@@ -122,7 +123,7 @@ En général, un brevet est valide pour une durée de **20 ans**, à condition q
 
 Contrairement aux brevets, l'approche open source repose sur une philosophie de **partage et de collaboration**. Les créations open source sont accessibles librement, permettant à chacun de les utiliser, de les modifier et de les améliorer. Cette philosophie favorise la diffusion rapide des technologies et rend leur accès plus universel.
 
-L'open source présente plusieurs **avantages majeurs** : 
+L'open source présente plusieurs **avantages majeurs** :
 
 - Il **accélère l'innovation** en encourageant les collaborations entre divers contributeurs.  
 - Il **réduit les coûts** pour les utilisateurs finaux, rendant les technologies plus accessibles.  
@@ -154,8 +155,8 @@ En **2005**, **Adrian Bowyer**, professeur à l’Université de Bath au Royaume
 
 Le premier modèle issu de ce projet, nommé **Darwin**, voit le jour en **2007**. Le projet RepRap marque un tournant dans l’histoire de l’impression 3D en rendant cette technologie **plus abordable et accessible** à tous. En libérant les plans et les codes sources, il devient le catalyseur d’une véritable révolution technologique, ouvrant la voie à une fabrication plus démocratisée.
 
-{% include image-row.html 
-image_1 = "slide_17_image_2.png" 
+{% include image-row.html
+image_1 = "slide_17_image_2.png"
 image_2 = "image.png"
 %}
 
@@ -199,14 +200,14 @@ Grâce à son caractère visionnaire, RepRap continue d’inspirer des communaut
 
 ### RepRap Family Tree
 
-L’évolution du projet **RepRap** ne s’est pas arrêtée avec le modèle initial **Darwin**. Depuis sa création, le projet a donné naissance à une multitude de déclinaisons et d’améliorations, formant ce que l’on appelle le **"RepRap Family Tree"**. Ce diagramme, disponible sur [reprap.org](https://reprap.org/wiki/RepRap_Family_Tree), illustre les innombrables forks et variantes qui ont vu le jour grâce à l’engagement de la communauté mondiale. 
+L’évolution du projet **RepRap** ne s’est pas arrêtée avec le modèle initial **Darwin**. Depuis sa création, le projet a donné naissance à une multitude de déclinaisons et d’améliorations, formant ce que l’on appelle le **"RepRap Family Tree"**. Ce diagramme, disponible sur [reprap.org](https://reprap.org/wiki/RepRap_Family_Tree), illustre les innombrables forks et variantes qui ont vu le jour grâce à l’engagement de la communauté mondiale.
 
 Ces forks incarnent l’esprit **open source** et collaboratif de RepRap, permettant à des passionnés et à des entreprises d’ajouter leurs contributions. Parmi les descendants les plus connus figurent des imprimantes comme la **Mendel** (2009), la **Prusa Mendel** (2011) et plus tard la **Prusa i3**, qui est devenue une référence dans le domaine. Chaque fork a introduit des améliorations spécifiques : réduction du coût de fabrication, augmentation de la précision ou encore simplification de l’assemblage.
 
 Aujourd’hui, le RepRap Family Tree continue de croître, avec des imprimantes dérivées adaptées à des besoins variés : des machines spécialisées pour des impressions haute précision, comme les modèles delta, aux imprimantes robustes pour des environnements industriels. Ce foisonnement témoigne de l’impact durable du projet RepRap, qui a su transformer l’impression 3D en une technologie accessible, collaborative et en constante évolution.
 
-{% include image-row.html 
-image_1 = "slide_21_image_1.png" 
+{% include image-row.html
+image_1 = "slide_21_image_1.png"
 image_2 = "slide_21_image_3.png"
 %}
 
@@ -214,36 +215,36 @@ image_2 = "slide_21_image_3.png"
 
 ### Quelques imprimantes dérivées du proejt RepRap
 
-{% include step-tuto.html 
-greyBackground = true 
+{% include step-tuto.html
+greyBackground = true
 content="**Darwin (2007)**  
 
 Le modèle Darwin, développé par Adrian Bowyer, est la première imprimante 3D open source et auto-réplicante du projet RepRap. Elle concrétise la vision d’une machine capable de fabriquer une partie de ses propres composants, ouvrant ainsi la voie à de nombreux forks et innovations."
 image="image-1.png" %}
 
-{% include step-tuto.html 
-greyBackground = true 
+{% include step-tuto.html
+greyBackground = true
 content="**Mendel (2009)**  
 
 Le modèle Mendel apporte une structure plus compacte et stable, facilitant l’assemblage et améliorant la qualité d’impression. Ce design devient rapidement un standard dans la communauté RepRap, grâce à son équilibre entre performance et simplicité."
 image="image-2.png" %}
 
-{% include step-tuto.html 
-greyBackground = true 
+{% include step-tuto.html
+greyBackground = true
 content="**Prusa Mendel (2011)**  
 
 Conçue par Josef Prusa, cette version simplifie la conception en réduisant le nombre de pièces et le coût de fabrication, rendant l’impression 3D encore plus accessible. Elle devient une base pour de nombreuses déclinaisons ultérieures."
 image="image-3.png" %}
 
-{% include step-tuto.html 
-greyBackground = true 
+{% include step-tuto.html
+greyBackground = true
 content="**Rostock (2012)**  
 
 La Rostock est la première imprimante RepRap de type delta. Elle utilise trois bras pour déplacer la tête d’impression, offrant une grande vitesse et précision, particulièrement adaptée aux objets hauts et cylindriques."
 image="image-4.png" %}
 
-{% include step-tuto.html 
-greyBackground = true 
+{% include step-tuto.html
+greyBackground = true
 content="**Prusa I3 (2017)**  
 
 Cette version introduit un cadre en une seule pièce, augmentant la rigidité et simplifiant l’assemblage. La Prusa I3 devient l’un des modèles les plus populaires, reconnue pour sa fiabilité et sa qualité d’impression."
@@ -251,15 +252,15 @@ image="image-5.png" %}
 
 ### Les imprimantes oubliées
 
-{% include step-tuto.html 
-greyBackground = true 
+{% include step-tuto.html
+greyBackground = true
 content="**RepRap Morgan**  
 
 La RepRap Morgan est une imprimante RepRap innovante qui propose un design unique basé sur un mécanisme de bras articulés. Cette architecture réduit les coûts de fabrication tout en offrant une précision acceptable pour des projets personnels."
 image="slide_27_image_1.jpg" %}
 
-{% include step-tuto.html 
-greyBackground = true 
+{% include step-tuto.html
+greyBackground = true
 content="**RepRap Simpson**  
 
 La RepRap Simpson adopte un design non conventionnel avec une structure sphérique, éliminant les axes cartésiens traditionnels. Elle est particulièrement expérimentale et illustre l’esprit d’innovation et d’exploration technique propre à la communauté RepRap."
@@ -287,10 +288,10 @@ Fondée en **2009** par **Bre Pettis**, **Adam Mayer**, et **Zach "Hoeken" Smith
 - **Thing-O-Matic (2010)** : Une des premières imprimantes 3D abordables pour le grand public.  
 - **Replicator (2012)** : Une imprimante fiable et conviviale, dotée d’un boîtier fermé et d’un écran LCD, facilitant son utilisation.
 
-{% include image-row.html 
-image_1="slide_31_image_2.jpg" 
-image_2="slide_31_image_3.jpg" 
-image_3="slide_31_image_4.jpg" 
+{% include image-row.html
+image_1="slide_31_image_2.jpg"
+image_2="slide_31_image_3.jpg"
+image_3="slide_31_image_4.jpg"
 %}
 
 **Vendre la "révolution" :**
@@ -317,10 +318,10 @@ Fondée en **2011** aux Pays-Bas, **Ultimaker** s'est positionnée comme un acte
 
 Malgré son engagement initial envers l'open source, Ultimaker a progressivement basculé vers un modèle propriétaire à partir de l'Ultimaker 2, ciblant davantage les marchés professionnels.
 
-{% include image-row.html 
-image_1="slide_33_image_2.png" 
-image_2="slide_34_image_1.jpg" 
-image_3="slide_34_image_2.png" 
+{% include image-row.html
+image_1="slide_33_image_2.png"
+image_2="slide_34_image_1.jpg"
+image_3="slide_34_image_2.png"
 %}
 
 **Rapprochement des marques**
@@ -341,6 +342,7 @@ En **mai 2022**, **MakerBot** et **Ultimaker** ont annoncé leur fusion pour for
 Le documentaire **Print The Legend**, produit par Netflix, explore les débuts de l'impression 3D à travers les trajectoires de startups comme **MakerBot** et **Formlabs**, ainsi que d'acteurs établis tels que **Stratasys** et **3D Systems**.
 
 **Thèmes abordés** :  
+
 - **Innovation technologique** : Les défis et opportunités d'une industrie émergente.  
 - **Rivalités entrepreneuriales** : Les tensions entre visionnaires et stratégies commerciales.  
 - **Impact sociétal et éthique** : L'impression 3D comme levier de transformation industrielle et sociétale.
@@ -362,10 +364,10 @@ Créée en **2014** en Chine, **Creality** s'est rapidement imposée comme un ac
 
 Creality a su attirer une large base d’utilisateurs, allant des débutants aux passionnés, tout en proposant des machines évolutives.
 
-{% include image-row.html 
-image_1="slide_37_image_2.png" 
-image_2="slide_38_image_1.jpg" 
-image_3="slide_38_image_3.png" 
+{% include image-row.html
+image_1="slide_37_image_2.png"
+image_2="slide_38_image_1.jpg"
+image_3="slide_38_image_3.png"
 %}
 
 ---
@@ -400,7 +402,6 @@ Bien que toujours engagée dans l’open source, Prusa a dû faire face à des t
 Prusa tente de rester fidèle à ses idéaux tout en évoluant pour répondre aux contraintes commerciales et concurrentielles.
 
 ![Prusa – Open Source](slide_42_image_2.jpg)
-
 
 ## Évolution des coûts
 

@@ -1,4 +1,5 @@
 # Makerspace UniLaSalle Amiens
+
 Bienvenue sur le site du Makerspace Unilasalle Amiens
 
 ## C’est quoi le “MakerSpace” ?
@@ -9,7 +10,7 @@ C’est un lieu de rencontre et d’apprentissage permettant à chacun de concev
 
 Enfin, le Makerspace est un outil pédagogique fort et ancré dans l’école. Il doit permettre l’émergence de nouveaux usages dans la formations des étudiants et doit simplifier la mise en œuvre des projets pédagogiques. Il vient également en appui à la vie étudiante et à l’accompagnement des clubs et associations du campus.
 
-## Accès et horaires :
+## Accès et horaires
 
 Le Makerspace est accessible librement chaque semaine le mercredi de 18h à 21h et le jeudi de 13h30 à 18h. (Dans le cadre de projets personnels, chacun est responsable du matériel et des ressources pour sa réalisation.)
 

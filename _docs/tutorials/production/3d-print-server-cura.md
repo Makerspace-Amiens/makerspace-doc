@@ -35,14 +35,14 @@ todo: 100
 
 {% include message.html title="Tutoriel obsolète" message="Ce tutoriel n'est plus à jour et est proposé à titre informatif uniquement." status="is-danger" dismissable="true" icon="fas fa-duotone fa-triangle-exclamation" %}
 
-# Impression 3D d'une pièce
+## Impression 3D d'une pièce
 
 ### Préparation du fichier
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 title="1 - Enregistrement au format 3mf"
-content="Cliquez droit sur votre pièce dans la barre de d'outil de gauche, puis cliquez sur **exporter**. 
+content="Cliquez droit sur votre pièce dans la barre de d'outil de gauche, puis cliquez sur **exporter**.
 
 ![Alt text](opera_Cylzhb20xb.png)
 
@@ -52,7 +52,7 @@ Sélectionnez le format de fichier le ***3mf**. Enregistrez le fichier sur une c
 "
 image="opera_q0E3mrqhdm.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 title="2 - Ouverture du fichier"
 content="Ouvrez le logiciel Cura ![](20230823_182215.png) puis ouvrez votre fichier au format **3mf** en allant dans **File > Open File(s)**
@@ -64,7 +64,7 @@ Sélectionnez le modèle et à l'aide des outils de déplacement et de rotation,
 "
 image="UltiMaker-Cura_UFt5BViqGd.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 title="3 - Slicage"
 content="Vérifiez que la machine et les paramètres sélectionnés sont correctes (voir ci-dessous), puis cliquez sur **Slice** en bas à droite. ![Alt text](UltiMaker-Cura_20230823_182901.png)
@@ -77,10 +77,10 @@ Une fois l'opération de slice terminée, vous verrez apparaitre une estimation 
 "
 image="UltiMaker-Cura_20230823_183033.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 title="4 - Vérification"
-content="Dans le bandeau supérieur, cliquez sur l'onglet **Preview**. 
+content="Dans le bandeau supérieur, cliquez sur l'onglet **Preview**.
 
 ![Alt text](UltiMaker-Cura_20230823_183117.png)
 
@@ -90,7 +90,7 @@ Vous aurez alors accès à une vue représentant l'ensemble des couches et des o
 "
 image="UltiMaker-Cura_20230823_183456.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 title="5 - Enregistrement"
 content="Il ne vous reste plus qu'à enregistrer le code machine généré par le logiciel afin de l'envoyer sur le serveur d'impression. Pour cela, cliquez simplement sur **Save to Disk** en bas à droite et enregistrez le ficheir au format ***.gcode**.
@@ -101,7 +101,7 @@ image="UltiMaker-Cura_20230823_183846.png" %}
 
 ### Impression du fichier sur le serveur
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 title="1 - Accéder au serveur"
 content="Allez dans le MakerSpace sur l'ordinateur d'impression et ouvrez, si ce n'est pas déja fait, la page du serveur d'impression.
@@ -110,21 +110,21 @@ Sur la page qui s'ouvre, vous avez accés au statut de l'ensemble des imprimante
 "
 image="opera_jgFT9zCsVc.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 title="2 - Accéder à l'imprimante"
 content="Cliquez ensuite sur le bouton **Aller à l'imprimante** sous l'imprimante à laquelle vous souhaitez accéder.
 
 ![Alt text](opera_AQgVbCvl0a.png)
 
-Vous arrivez sur la page de gestion de l'imprimante. 
+Vous arrivez sur la page de gestion de l'imprimante.
 "
 image="opera_KhippXyscX.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 title="3 - Charger et lancer le Gcode"
-content="Cliquez sur **Charger le G-Code** et selectionnez le fichier que vous avez précédemment créé avec Cura. 
+content="Cliquez sur **Charger le G-Code** et selectionnez le fichier que vous avez précédemment créé avec Cura.
 
 ![Alt text](opera_rqZdnGHzrr.png)
 
@@ -136,19 +136,19 @@ Une fois lancée, les informations d'impression se mettent à jour en haut de la
 
 ![Alt text](opera_TyOjruQrHo.png)
 
-Il ne vous reste plus qu'à vérifier la bonne impression des premieres couches et à vérifier le bon fonctionnement de l'impression règulierement. 
+Il ne vous reste plus qu'à vérifier la bonne impression des premieres couches et à vérifier le bon fonctionnement de l'impression règulierement.
 "
 image="opera_PmIMDM8QQi.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 title="4 - Récuperez votre pièce !"
 content="Et voila ! Il ne vous reste plus qu'à attendre la fin de votre impression ! Pour retirer la pièce, bien attendre que le plateau ai refroidit. LA pièce doti se décoller toute seul sans forcer. Si ce n'est pas le cas, attendre encore un peu ou prévenir le FabManager.
 "
 image="Animation.gif" %}
 
-{% include message.html title="Attention" 
-message="Si un soucis apparait avant ou pendant l'impression, ou que vous avez un doute sur la marche à suivre, n'hésitez pas à contacter le FabManager du MakerSpace." 
+{% include message.html title="Attention"
+message="Si un soucis apparait avant ou pendant l'impression, ou que vous avez un doute sur la marche à suivre, n'hésitez pas à contacter le FabManager du MakerSpace."
 status="is-warning"
 icon="fas fa-exclamation-triangle" %}
 
