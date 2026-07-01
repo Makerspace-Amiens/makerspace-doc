@@ -70,7 +70,4 @@ Si des arguments sont fournis, les utiliser comme indication sur le contexte ou 
 7. **Créer le commit** avec `git add` sur les fichiers pertinents puis `git commit -m "..."`.
    - Ne jamais faire `git add .` ou `git add -A` sans vérifier d'abord qu'aucun fichier sensible (`.env`, clés, fichiers temporaires) n'est inclus.
    - Si les changements touchent plusieurs sujets indépendants, proposer de les splitter en plusieurs commits.
-   - Toujours ajouter en fin de message :
-     ```
-     Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
-     ```
+   - **Ne pas ajouter** de ligne `Co-Authored-By` dans les messages de commit.
