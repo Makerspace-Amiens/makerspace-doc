@@ -5,7 +5,7 @@ permalink: /workshops/microcontroleur/
 type: workshop
 image: /workshops/microcontroleur/hero.jpg
 project_slug: microcontroleur
-project_image: /workshops/microcontroleur/hero.jpg
+project_image: /assets/images/projects/uc.webp
 project_tags:
   - Électronique
   - Embarqué
@@ -14,10 +14,20 @@ description: "Découvrir les microcontrôleurs de l'architecture jusqu'au projet
 subtitle: De l'architecture au jeu embarqué — ESP32-S3
 
 concepts:
+  - /workshops/microcontroleur/concepts/architecture-microcontroleur/
+  - /workshops/microcontroleur/concepts/gpio-monde-numerique/
+  - /workshops/microcontroleur/concepts/adc-pwm/
+  - /workshops/microcontroleur/concepts/bus-communication/
+  - /workshops/microcontroleur/concepts/du-materiel-au-logiciel/
+  - /workshops/microcontroleur/concepts/machine-etats-finis/
   - /docs/concepts/capteurs/
 
 tutorials:
   - /docs/tutorials/software/vscode-platformio/installation-vscode-platformio/
+  - /workshops/microcontroleur/tutorials/td1-toolchain-blink/
+  - /workshops/microcontroleur/tutorials/td2-entrees-boutons-joystick/
+  - /workshops/microcontroleur/tutorials/td3-ecran-spi-game-loop/
+  - /workshops/microcontroleur/tutorials/td4-collisions-fsm-pong/
   - /docs/tutorials/electronics/port-serie/
   - /docs/tutorials/electronics/esp32-ssd1306-oled/
 

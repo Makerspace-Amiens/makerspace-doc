@@ -51,3 +51,4 @@ exclude:
   - CONTRIBUTING.md
   - "*.sh"
   - scripts/
+  - _workshops/microcontroleur/note.md
