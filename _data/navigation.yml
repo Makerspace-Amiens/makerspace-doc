@@ -4,26 +4,11 @@
   link: /equipment/
 - name: Thématiques
   link: /workshops/
-  dropdown:
-    - name: Découvrez la Fabrication Additive
-      link: /workshops/fab-additive/
-    - name: Projet Otto
-      link: /workshops/otto-mks/
-    - name: Medieval Challenge
-      link: /workshops/medieval-challenge/
-    - name: Carte contrôleur Machine That Draws
-      link: /workshops/stepper-controller-board/
+  dropdown: true
 - name: Documentation
   link: /docs/
 - name: Ressources
   link: /ressources/
 - name: Projets étudiants
-  link:
-  dropdown: 
-    - name: 2023-24
-      link: https://makerspace-amiens-2023-24.github.io
-    - name: 2024-25
-      link: https://makerspace-amiens-2024-25.github.io
-    - name: 2025-26
-      link: https://makerspace-amiens-2025-26.github.io
+  link: https://makerspace-amiens.fr/makerspace-projects/
     

@@ -6,7 +6,6 @@ hero_image: hero-chrono-soutenance.jpg
 hero_darken: true
 component_toc: true
 doc_header: false
-type: ressource
 
 title: Chronomètre de soutenance
 subtitle: Décompte plein écran pour les oraux et soutenances

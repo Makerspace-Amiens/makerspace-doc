@@ -6,7 +6,6 @@ hero_image: resistances.jpg
 hero_darken: true
 component_toc: true
 doc_header: true
-type: ressource
 
 title: Outil de visualisation des valeurs de resistance
 subtitle: Calculateur de code couleurs des résistances

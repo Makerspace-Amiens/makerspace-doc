@@ -7,6 +7,7 @@
 {%- assign tutos     = '' | split: '' -%}
 {%- assign howtos    = '' | split: '' -%}
 {%- assign ressources= '' | split: '' -%}
+{%- assign concepts  = '' | split: '' -%}
 {%- assign hardware  = '' | split: '' -%}
 {%- assign software  = '' | split: '' -%}
 {%- assign specials  = '' | split: '' -%}
@@ -39,6 +40,12 @@
 {%- for url in page.ressources -%}
   {%- assign found = all_docs | where: 'url', url | first -%}
   {%- if found -%}{%- assign ressources = ressources | push: found -%}{%- endif -%}
+{%- endfor -%}
+
+{%- comment %} Concepts : liste depuis le frontmatter du projet ─── {% endcomment -%}
+{%- for url in page.concepts -%}
+  {%- assign found = all_docs | where: 'url', url | first -%}
+  {%- if found -%}{%- assign concepts = concepts | push: found -%}{%- endif -%}
 {%- endfor -%}
 
 {%- comment %} Section spéciale (ex: ottolympiades) : liste depuis le frontmatter du projet ─── {% endcomment -%}
@@ -105,6 +112,34 @@
         </div>
         <div class="content ph-presentation">
           {{ content }}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ══ CONCEPTS ═════════════════════════════════════════════════════════ -->
+    {% if concepts.size > 0 %}
+    <section class="ph-section">
+      <div class="container">
+        <div class="ph-section-header">
+          <div>
+            <h2 class="ph-section-title">
+              <i class="fas fa-lightbulb"></i> Concepts
+            </h2>
+            <p class="ph-section-sub">Les notions clés à comprendre avant de se lancer.</p>
+          </div>
+        </div>
+        <div class="ph-resource-grid">
+          {% for doc in concepts %}
+          <a href="{{ doc.url | relative_url }}" class="ph-resource-card">
+            <div class="ph-resource-icon"><i class="fas fa-lightbulb"></i></div>
+            <div class="ph-resource-body">
+              <span class="ph-resource-title">{{ doc.title }}</span>
+              {% if doc.subtitle %}<span class="ph-resource-sub">{{ doc.subtitle }}</span>{% endif %}
+            </div>
+            {% if doc.external_link %}<i class="fas fa-external-link-alt ph-resource-ext"></i>{% endif %}
+          </a>
+          {% endfor %}
         </div>
       </div>
     </section>

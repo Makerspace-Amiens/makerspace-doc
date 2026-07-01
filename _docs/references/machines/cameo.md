@@ -6,7 +6,7 @@ hero_darken: true
 image: "cameo.jpg"
 component_toc: true
 doc_header: true
-type: doc, equipment
+type: equipment
 tag: 
 
 title: Silhouette Cameo 4
@@ -19,23 +19,22 @@ external_link: https://www.silhouettefr.fr
 todo: 100
 ---
 
-## Présentation :
+## Présentation
 
 La [Cameo 4](http://silhouettefr.fr/silhouette_cameo4.html)[^1] est une machine de découpe conçue avant tout pour les loisirs créatifs mais est également capable de découper des matériaux plus techniques comme le cuivre, et de permettre le prototypage de PCB souples. Entre autre, elle vous permet de découper avec précision le vinyle, le papier cartonné, le tissu, etc.
 
 Les matériaux peuvent faire jusqu'à 30 centimètres de large et 3 mètres de long et la machine a la capacité de découper des images imprimées grâce à un système de détection des repères.
 
-## Possibilités et limitations :
+## Possibilités et limitations
 
 ### a. Possibilités
 
 ### b. Limitations
 
-## Matériaux utilisables :
+## Matériaux utilisables
 
-## Techniques & tutos :
+## Techniques & tutos
 
-
-## Notes :
+## Notes
 
 [^1]: [Silhouette](http://silhouettefr.fr/silhouette_cameo4.html)

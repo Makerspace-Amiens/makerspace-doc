@@ -6,7 +6,6 @@ hero_darken: true
 image: image.png
 component_toc: true
 doc_header: true
-type: tutorial
 tag: otto-mks
 
 title: Capteur ultrason et liaison série
@@ -18,7 +17,7 @@ difficulty: 2
 
 author: Adrien BRACQ & Rémi LACOMBE
 ---
-# Introduction à la liaison série
+## Introduction à la liaison série
 
 ## Qu'est-ce qu'une liaison série ?
 
@@ -73,15 +72,15 @@ En utilisant le moniteur série de l'IDE Arduino, il est possible de voir les me
 
 {% include step-tuto.html
 greyBackground = true
-content="Pour cela, cliquez en haut à droite sur **Serial Monitor** ![alt text](Arduino_IDE_Ld1OnYlOJU.png). En onglet s'ouvre en dessous de votre fenêtre à coté de l'onglet Output vous montrant les éléments envoyés par votre carte. 
+content="Pour cela, cliquez en haut à droite sur **Serial Monitor** ![alt text](Arduino_IDE_Ld1OnYlOJU.png). En onglet s'ouvre en dessous de votre fenêtre à coté de l'onglet Output vous montrant les éléments envoyés par votre carte.
 "
 image="Arduino_IDE_cnrdkHFnpj.png"
 %}
 
-{% include message.html 
-title="Attention" 
-message="La communication série étant partagée avec le téléversement du code, il faudra fermer l'onglet de communication série avant de pouvoir téléverser de nouveau votre code." 
-status="is-danger" 
+{% include message.html
+title="Attention"
+message="La communication série étant partagée avec le téléversement du code, il faudra fermer l'onglet de communication série avant de pouvoir téléverser de nouveau votre code."
+status="is-danger"
 icon="fas fa-triangle-exclamation" %}
 
 ---
@@ -169,16 +168,18 @@ Cette solution permet de détecter des objets et d'obtenir leur distance avec pr
 
 ---
 
-{% include message.html 
-title="A faire" 
+{% include message.html
+title="A faire"
 message="
 **Niveau 1 :**
+
 - Créez une fonction permettant de récupérer la distance du capteur et de la retourner
 - Créez une fonction permettant d'afficher la distance
 
 **Niveau 2 :**
+
 - Créez un booléen global `debug` qui, quand il est mis à `true` affiche la distance mesurée dans la fonction d'affichage sur le port série
 
-Cette variable pourra être utilisée dans le code pour activer ou non l'affichage d'éléments de debug sur le port série." 
-status="is-info" 
+Cette variable pourra être utilisée dans le code pour activer ou non l'affichage d'éléments de debug sur le port série."
+status="is-info"
 icon="fas fa-pen" %}

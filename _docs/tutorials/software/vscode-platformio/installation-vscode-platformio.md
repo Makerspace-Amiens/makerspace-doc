@@ -42,6 +42,7 @@ todo: 100
 **Visual Studio Code** (VSCode) est un éditeur de code léger et puissant développé par Microsoft. **PlatformIO** est une plateforme de développement professionnelle pour microcontrôleurs qui s'intègre à VSCode via une extension.
 
 Ensemble, VSCode + PlatformIO offrent :
+
 - Support de centaines de cartes de développement (Arduino, ESP32, ESP8266, STM32, Raspberry Pi Pico...)
 - Gestion automatique des bibliothèques et dépendances
 - Compilation, upload et débogage intégrés
@@ -135,7 +136,8 @@ content="Téléchargez et installez le paquet .deb depuis le site officiel :
 `sudo apt install ./code_*.deb`
 
 Ou via le dépôt officiel :
-```
+
+```bash
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo \"deb [arch=amd64] https://packages.microsoft.com/repos/code stable main\" > /etc/apt/sources.list.d/vscode.list'
@@ -148,15 +150,20 @@ greyBackground = true
 title = "Fedora / Red Hat / CentOS"
 content="Installez le paquet RPM :
 
-```
+```bash
+
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e \"[code]\\nname=Visual Studio Code\\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\\nenabled=1\\ngpgcheck=1\\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\" > /etc/yum.repos.d/vscode.repo'
+
 ```
 
 Puis :
-```
+
+```bash
+
 sudo dnf check-update
 sudo dnf install code
+
 ```" %}
 
 {% include step-tuto.html
@@ -270,9 +277,11 @@ greyBackground = true
 title = "Ajouter l'utilisateur au groupe dialout"
 content="Ouvrez un terminal et exécutez :
 
-```
+```bash
+
 sudo usermod -a -G dialout $USER
 sudo usermod -a -G plugdev $USER
+
 ```
 
 **Déconnectez-vous puis reconnectez-vous** (ou redémarrez l'ordinateur) pour que les changements prennent effet." %}
@@ -282,14 +291,19 @@ greyBackground = true
 title = "Installer les règles udev (optionnel)"
 content="Pour un meilleur support de certaines cartes (ESP32, STM32...), installez les règles udev de PlatformIO :
 
-```
+```bash
+
 curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/master/scripts/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules
+
 ```
 
 Puis rechargez les règles :
-```
+
+```bash
+
 sudo udevadm control --reload-rules
 sudo udevadm trigger
+
 ```" %}
 
 {% include message.html
@@ -403,6 +417,7 @@ lib_deps =
 ```
 
 Pour ajouter plusieurs bibliothèques, listez-les les unes sous les autres :
+
 ```ini
 lib_deps =
     waspinator/AccelStepper@^1.64
@@ -479,9 +494,11 @@ Si Python n'est pas installé, téléchargez-le depuis [python.org](https://www.
 greyBackground = true
 title = "Vérifier les permissions USB"
 content="Assurez-vous d'avoir suivi les étapes de configuration USB (section précédente) :
-```
+```bash
+
 sudo usermod -a -G dialout $USER
 sudo usermod -a -G plugdev $USER
+
 ```
 
 Puis déconnectez-vous et reconnectez-vous." %}
@@ -542,7 +559,7 @@ pio lib install <nom_lib>
 
 ### Structure d'un projet PlatformIO
 
-```
+```text
 mon_projet/
 ├── .pio/               # Fichiers de build (généré automatiquement)
 ├── include/            # Fichiers d'en-tête (.h)

@@ -9,7 +9,6 @@ image: Assembly 1.png
 title: Le tournoi
 subtitle: Règles et fonctionnement
 description: Règles du tournoi de catapultes du Medieval Challenge
-type: doc,concept
 tags: medieval-challenge
 ---
 

@@ -6,7 +6,6 @@ hero_darken: true
 image: image-1.png
 component_toc: true
 doc_header: true
-type: doc,hardware
 
 title: Driver de moteur
 subtitle: Pour piloter un moteur pas-à-pas
@@ -47,13 +46,13 @@ Pour choisir le bon driver, il est essentiel de considérer les caractéristique
 
 ## Réglage du courant du driver
 
-Pour vous aider à correctement régler le courant de foncitonnement du driver pour votre moteur, vous pouvez suivre cette documentation : 
+Pour vous aider à correctement régler le courant de foncitonnement du driver pour votre moteur, vous pouvez suivre cette documentation :
 
 {% include youtube.html video="89BHS9hfSUk" %}
 
 ## Votre matériel
 
-Pour le projet **Machine That Draws**, vous aurez accès aux materiel suivant : 
+Pour le projet **Machine That Draws**, vous aurez accès aux materiel suivant :
 
 - **Driver :** [A4988](https://www.pololu.com/product/1182)
 

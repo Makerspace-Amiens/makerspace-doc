@@ -6,7 +6,6 @@ hero_darken: true
 image: image.png
 component_toc: true
 doc_header: true
-type: doc,hardware
 
 title: CNC Shield
 subtitle: Une carte de contrôle pour votre machine CNC
@@ -22,7 +21,6 @@ author: Adrien BRACQ
 Le CNC Shield est une carte d'extension pour Arduino, qui permet de contrôler facilement des machines à commande numérique (CNC), comme des fraiseuses, des machines de gravure, des imprimantes 3D et des traceurs de dessin. La CNC Shield v3 est l'une des solutions les plus populaires pour transformer une carte Arduino Uno en contrôleur de machine CNC. Cette carte utilise le firmware GRBL, qui est un firmware open-source basé sur Arduino, permettant de gérer les moteurs pas à pas, les limites de course, les commandes G-code, ainsi que d'autres fonctionnalités essentielles pour le fonctionnement d'une machine CNC.
 
 La CNC Shield est particulièrement utile car elle simplifie le montage des composants, en rendant les connexions électriques plus pratiques et en offrant une interface directe avec GRBL, permettant ainsi d'avoir un contrôleur de machine complet à moindre coût.
-
 
 ## Interfaces
 
@@ -41,7 +39,6 @@ Pour mettre en place une machine CNC basée sur la CNC Shield et Arduino, vous a
 - **Limiteurs de course (Interrupteurs fin de course) :** Ces interrupteurs sont placés aux extrémités des axes pour éviter que la machine ne dépasse les limites physiques.
 
 - **Câbles et connecteurs :** Pour relier les moteurs, l'alimentation et les interrupteurs de fin de course au CNC Shield.
-
 
 {% include message.html title="Pour comprendre" message="Veillez à naviguer vers les liens du constructeur afin de comprendre le fonctionnement des différents éléments. Vous y trouverez les datasheets des composants, les dessins techniques, les caracteristiques techniques mais également des éléments de mise en service du matériel."
 status="is-info" dismissable="false" icon="fas fa-exclamation-triangle" %}

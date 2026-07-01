@@ -6,7 +6,7 @@ hero_darken: true
 image: "bambulab_a1_mini.png"
 component_toc: true
 doc_header: true
-type: doc, equipment
+type: equipment
 tag: additive-manufacturing
 
 title: Bambulab A1 Mini

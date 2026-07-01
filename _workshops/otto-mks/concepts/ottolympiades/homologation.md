@@ -6,7 +6,6 @@ hero_darken: true
 image: bounding_box.png
 component_toc: true
 doc_header: true
-type: homologation
 
 title: 📏 Homologation
 subtitle: Ensemble des règles à respecter pour participer aux épreuves !
@@ -40,13 +39,13 @@ image="must_walk.png" %}
 
 {% include step-tuto.html
 greyBackground = true
-title = "Fabrication" 
+title = "Fabrication"
 content="Votre robot doit être **fabriqué** et **programmé** par les étudiant(e)s sans l'utilisation d'un kit du commerce."
 image="keep_aspect.png" %}
 
 {% include step-tuto.html
 greyBackground = true
-title = "Modification" 
+title = "Modification"
 content="**La modification est fortement encouragée**, amusez-vous ! Mais le robot doit conserver **l'esprit** et **l'esthétique** du projet Otto.
 Vous pouvez ajouter de nouveaux actionneurs (bras, mains...), mais ces derniers ne doivent pas pouvoir endommager le robot adverse.
 Les dispositifs présentant un danger sont évidemment proscrits (lasers, lames, flammes... **bref, ne nous obligez pas à ajouter de nouvelles règles** 😅)."
@@ -54,7 +53,7 @@ image="otto_mod.png" %}
 
 {% include step-tuto.html
 greyBackground = true
-title = "Marche / Arrêt" 
+title = "Marche / Arrêt"
 content="
 L'**interrupteur** d'alimentation doit rester accessible en tout temps par l'arbitre afin d'arrêter le robot en cas de situation de danger pour **lui-même**, les **autres robots**, ou les **éléments de jeu**."
 image="otto_switch.png" %}
@@ -76,7 +75,7 @@ image="command_mode.png" %}
 
 {% include step-tuto.html
 greyBackground = true
-title = "Programme" 
+title = "Programme"
 content="
 Aucun langage de programmation n'est imposé, cependant, la logique des **programmes** déployés doit pouvoir être **expliquée** en détail par l'équipe :  
 
@@ -85,6 +84,6 @@ image="otto_program.png" %}
 
 {% include step-tuto.html
 greyBackground = true
-title = "Arbitrage" 
+title = "Arbitrage"
 content="L'arbitre s'engage a avoir connaissance du règlement, durant les phases de match, sa position et ses décisions doivent donc être respectées."
 image="otto_referee.png" %}

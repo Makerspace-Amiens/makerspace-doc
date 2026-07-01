@@ -8,7 +8,6 @@ hero_darken: true
 image: isocontours.png
 title: Informations sur le projet
 subtitle: Tout ce que vous devez savoir
-type: doc,concept
 tags: medieval-challenge
 ---
 
@@ -116,6 +115,7 @@ Finalement, soyez sympas les uns envers les autres : **ce projet doit rester un 
 greyBackground = false
 title = "Livrables"
 content="
+
 - Une catapulte fonctionnelle conforme au présent cahier des charges.
 - Une **documentation en ligne** du projet.
 - L'ensemble des **prototypes intermédiaires** réalisés pendant le projet.

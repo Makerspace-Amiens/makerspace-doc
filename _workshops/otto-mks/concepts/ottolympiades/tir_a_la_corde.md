@@ -7,7 +7,6 @@ hero_darken: true
 image: otto_pull.png
 component_toc: true
 doc_header: true
-type: ottolympiades
 
 title: 💪 Tir à la corde
 subtitle: Deux équipes de 3 robots s'affrontent pour tirer les adversaires de leur côté !
@@ -31,6 +30,7 @@ Cette épreuve se joue en équipes de 3 robots qui seront à composer avant les 
 greyBackground = true
 title = "Conditions et contraintes"
 content="
+
 - Les robots d'une équipe sont tout trois reliés par des **éléments** de 8 cm attachée à une **boucle en velcro** placé autour du corps de chaque robot.
 - De l'autre côté, se trouvent trois autres **anneaux élastiques** destinés aux robots adverses.
 - L'épreuve se joue en mode télécommandé.
@@ -41,6 +41,7 @@ content="
 greyBackground = true
 title = "Déroulement de l’épreuve"
 content="
+
 - **Placement initial** :
   - Le premier robot se positionne derrière la ligne de départ, les deux autres robot sont positionés derrière, cordes tendues.
   - Le placement des élastiques sur le corps des robots est vérifié par l'arbitre
@@ -50,7 +51,7 @@ content="
 - **Fin du match** :
   - Le match se termine dès qu'une équipe parvient à faire glisser le **marqueur rouge**, situé au milieu de la corde, de son côté de la **ligne centrale**.
     "
-    image="otto_pull_chain.png" 
+    image="otto_pull_chain.png"
     image_2="otto_pull_chain_win.png"%}
 
 {% include step-tuto.html
@@ -61,7 +62,8 @@ Cette épreuve est avant tout **amicale** : le but est d’expérimenter des str
 
 Les participants peuvent s’affronter **autant de fois qu’ils le souhaitent**, en formant des **équipes de trois robots selon leurs envies.**" image="victory.png" %}
 
-## Éléments de jeu 
+## Éléments de jeu
+
 {% include 3d-model.html model="OTTO_PULL_TRACK.glb" poster="poster.webp" fullscreen_modal=true %}
 
 ## Autres épreuves
@@ -71,5 +73,3 @@ Les participants peuvent s’affronter **autant de fois qu’ils le souhaitent**
   description="Testez votre robot sur tout les terrains !"
   type="ottolympiades"
 %}
-
-

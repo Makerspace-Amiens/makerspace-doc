@@ -6,7 +6,7 @@ hero_darken: true
 image: "bambulab_x1c.png"
 component_toc: true
 doc_header: true
-type: doc, equipment
+type: equipment
 tag: additive-manufacturing
 
 title: Bambulab X1C

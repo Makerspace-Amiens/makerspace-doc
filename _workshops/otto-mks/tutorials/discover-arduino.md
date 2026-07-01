@@ -6,7 +6,6 @@ hero_darken: true
 image: Arduino_IDE_Fia33YwlyJ.png
 component_toc: true
 doc_header: true
-type: tutorial
 tag: otto-mks
 
 title: Démarrer avec Arduino !
@@ -60,81 +59,81 @@ Afin de développer des projets sur des cartes compatibles avec l'environnement 
 - Les outils de développement fournis par Arduino ([IDE en ligne ou hors-ligne](https://www.arduino.cc/en/software)).
 - [PlatformIO](https://platformio.org), intégré à un IDE comme VS Code, par exemple.
 
-Si la seconde solution est plus avancée et permet de travailler dans des environnements de développement plus complets, favorisant ainsi une approche plus professionnelle, c'est bien la première solution que nous étudierons ici dans un contexte d'initiation. 
+Si la seconde solution est plus avancée et permet de travailler dans des environnements de développement plus complets, favorisant ainsi une approche plus professionnelle, c'est bien la première solution que nous étudierons ici dans un contexte d'initiation.
 
 Gardez à l'esprit que le code et le langage restent les mêmes dans tous les cas et qu'il vous est tout a fait possible de passer à un autre IDE par la suite.
 
 ### Mise en place de l'environnement de développement
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="Nous allons donc commencer par installer, si ce n'est pas déja fait, l'IDE Arduino.
 
 Pour cela, rendez-vous sur [le site d'Arduino](https://www.arduino.cc/en/software) et téléchargez la version qui convient à votre ordinateur.
-" 
+"
 image="opera_lJptd4GUNO.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="Installez ensuite l'application en suivant attentivement les étapes d'installation. Si l'on vous demande d'installer des pilotes à ce moment de l'installation, acceptez-les, car ils sont nécessaires pour établir la connexion avec les cartes.  
 
 Une fois l'installation terminée, lancez l'application.
-" 
-image="arduino-ide_2.3.4_Windows_64bit_LlaPyfanrF.png" 
-image_2="arduino-ide_2.3.4_Windows_64bit_XiduRTIyac.png" 
+"
+image="arduino-ide_2.3.4_Windows_64bit_LlaPyfanrF.png"
+image_2="arduino-ide_2.3.4_Windows_64bit_XiduRTIyac.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
-content="Au **premier** lancement du programme, il est possible que le logiciel fasse des mises à jours ou des installations de périphériques. Acceptez-les afin de pouvoir vous connecter à vos cartes de développement. 
-" 
-image="Arduino_IDE_5QyuDN0Tnf.png" 
+content="Au **premier** lancement du programme, il est possible que le logiciel fasse des mises à jours ou des installations de périphériques. Acceptez-les afin de pouvoir vous connecter à vos cartes de développement.
+"
+image="Arduino_IDE_5QyuDN0Tnf.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="Afin de pouvoir compiler et charger votre programme sur votre carte, vous devez installer les paquets fournis par le constructeur.  
 
 Pour cela, rendez-vous dans **Fichier > Préférences**, puis dans le champ **Additional Boards**, ajoutez le lien suivant :  
 
-```
+```text
 https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 ```  
 
 Profitez-en pour cocher les différentes options, comme illustré sur l'image, afin d'accéder à des fonctionnalités supplémentaires et d'activer des options avancées de débogage.  
 
 Cliquez sur **OK**, puis ouvrez le panneau latéral dans l'onglet **Boards**, tapez **ESP32**, et lancez l'installation du paquet **ESP32** *by Espressif Systems*. Attendez la fin de l'installation avant de continuer. Cela peut durer quelques minutes.
-" 
-image="hczUEuM8gK.png" 
-image_2="Arduino_IDE_uLuPrFembp.png" 
-image_3="Arduino_IDE_ZZyHDG13fW.png" 
+"
+image="hczUEuM8gK.png"
+image_2="Arduino_IDE_uLuPrFembp.png"
+image_3="Arduino_IDE_ZZyHDG13fW.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="Nous allons effectuer un test de liaison avec votre carte afin de vérifier qu'elle est correctement reconnue par votre ordinateur et qu'il est possible d'y envoyer du code.  
 
 Branchez votre carte via le port USB de votre ordinateur (ne connectez aucun autre périphérique pour ce test unitaire). Vérifiez ensuite que la LED rouge située à côté du port USB est bien allumée ou clignote.
-" 
-image="opera_rwDHZZVYMd.png" 
-image_2="opera_cKFjuAidHG.png" 
-image_3="opera_Kb84cFbwtS.png" 
+"
+image="opera_rwDHZZVYMd.png"
+image_2="opera_cKFjuAidHG.png"
+image_3="opera_Kb84cFbwtS.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="Accédez ensuite au menu déroulant **Select Board**. Vous devriez voir votre carte apparaître sur l'un des ports COM de votre ordinateur.  
 
 Cliquez sur **Select Other Board**, puis, dans la barre de recherche, saisissez **XIAO** et sélectionnez la variante **XIAO_ESP32C3**.  
 
 Validez votre choix en cliquant sur **OK**.
-" 
-image="Arduino_IDE_qykVNLk9fH.png" 
-image_2="Arduino_IDE_gk3tQxMmN2.png" 
-image_3="Arduino_IDE_RMuNmI6o6q.png" 
+"
+image="Arduino_IDE_qykVNLk9fH.png"
+image_2="Arduino_IDE_gk3tQxMmN2.png"
+image_3="Arduino_IDE_RMuNmI6o6q.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="Vous êtes maintenant prêt à charger un premier programme sur votre carte. Pour ce premier test, nous allons utiliser un programme vide afin de vérifier la connexion. Nous utiliserons le programme de base qui s'affiche lors de la création d'un nouveau projet.  
 
@@ -144,14 +143,14 @@ En haut à gauche, vous trouverez deux icônes :
 - ![alt text](upload.png) **Téléverser** : cette option envoie le code compilé vers le microcontrôleur. Cliquer sur ce bouton lancera également la vérification et la compilation du programme avant son envoi.  
 
 Cliquez sur **Téléverser** et assurez-vous que le programme est bien transféré en vérifiant l'affichage du message **Done uploading**.
-" 
-image="Arduino_IDE_Fia33YwlyJ.png" 
-image_2="Arduino_IDE_pJ2c2oLC6n.png" 
-image_3="Arduino_IDE_tKkyM2M3dU.png" 
+"
+image="Arduino_IDE_Fia33YwlyJ.png"
+image_2="Arduino_IDE_pJ2c2oLC6n.png"
+image_3="Arduino_IDE_tKkyM2M3dU.png"
 %}
 
 ---
 
 Votre environnement de développement est désormais correctement installé, et vous êtes prêt à commencer la programmation des cartes Otto MKS.  
 
-Nous vous recommandons de suivre les tutoriels suivants afin de vous familiariser avec les fonctionnalités de base de la carte. 
+Nous vous recommandons de suivre les tutoriels suivants afin de vous familiariser avec les fonctionnalités de base de la carte.

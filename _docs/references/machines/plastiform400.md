@@ -6,7 +6,7 @@ hero_darken: true
 image: "2022-09-27-11-35-24.png"
 component_toc: true
 doc_header: true
-type: doc, equipment
+type: equipment
 
 title: Thermoform 400
 subtitle: Thermo-plieuse plastique

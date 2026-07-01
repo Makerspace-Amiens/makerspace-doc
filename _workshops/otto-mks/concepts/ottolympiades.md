@@ -8,11 +8,10 @@ hero_darken: true
 image: otto_jam.png
 title: Ottolympiades
 subtitle: Présentation et règlement du tournoi Otto !
-type: doc,concept
 tag: otto-mks
 ---
 
-# Les Ottolympiades
+## Les Ottolympiades
 
 ## Présentation
 
@@ -23,6 +22,7 @@ Vous devrez **adapter**, **modifier**, **bricoler** votre robot **OTTO-MKS** pou
 Un socle de règles est commun à toutes les épreuves, et votre robot devra, avant de pouvoir participer, passer à un stand d'homologation pour vérifier qu'il est conforme.
 
 ## Homologation
+
 {%
   include card_collections.html
   description="Ensemble des règles à respecter pour participer aux épreuves !"
@@ -30,6 +30,7 @@ Un socle de règles est commun à toutes les épreuves, et votre robot devra, av
 %}
 
 ## Epreuves
+
 {%
   include card_collections.html
   description="Testez votre robot sur tout les terrains !"

@@ -20,7 +20,7 @@ author: Adrien BRACQ & Rémi LACOMBE
 
 ## Présentation de RemoteXY
 
-[RemoteXY](https://remotexy.com) est une plateforme qui permet de créer des interfaces utilisateur pour contrôler des microcontrôleurs (comme Arduino, ESP32, STM32, etc.) via des appareils mobiles (smartphones ou tablettes). Ces interfaces peuvent inclure des boutons, des curseurs, des joysticks, des indicateurs, etc. 
+[RemoteXY](https://remotexy.com) est une plateforme qui permet de créer des interfaces utilisateur pour contrôler des microcontrôleurs (comme Arduino, ESP32, STM32, etc.) via des appareils mobiles (smartphones ou tablettes). Ces interfaces peuvent inclure des boutons, des curseurs, des joysticks, des indicateurs, etc.
 
 [RemoteXY](https://remotexy.com) simplifie ainsi la création d'applications interactives sans nécessiter de compétences avancées en développement mobile.
 
@@ -35,22 +35,25 @@ author: Adrien BRACQ & Rémi LACOMBE
 **2. Communication**
 
   RemoteXY connecte l’application mobile au microcontrôleur via :
-  - Bluetooth (classique ou BLE),
-  - Wi-Fi (ESP32, ESP8266),
-  - ou USB (connexion filaire).
+
+- Bluetooth (classique ou BLE),
+- Wi-Fi (ESP32, ESP8266),
+- ou USB (connexion filaire).
 
 **3. Code Généré**
 
   Le code généré contient :
-  - La gestion des éléments de l’interface.
-  - La configuration du mode de communication choisi.
-  - Des outils pour lire/écrire les données entre l’interface et le microcontrôleur.
+
+- La gestion des éléments de l’interface.
+- La configuration du mode de communication choisi.
+- Des outils pour lire/écrire les données entre l’interface et le microcontrôleur.
 
 **4. Interaction**
 
   Le microcontrôleur échange des données avec l’application mobile :
-  - Reçoit des commandes pour exécuter des actions (ex. : allumer une LED, contrôler un moteur).
-  - Envoie des informations pour mettre à jour l’interface (ex. : afficher une température).
+
+- Reçoit des commandes pour exécuter des actions (ex. : allumer une LED, contrôler un moteur).
+- Envoie des informations pour mettre à jour l’interface (ex. : afficher une température).
   
   Cela permet de développer rapidement des systèmes interactifs et évolutifs.
 
@@ -58,45 +61,45 @@ author: Adrien BRACQ & Rémi LACOMBE
 
 ## Créer une interface simple
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="Dans un premier temps, téléchargez l'application sur votre téléphone, soit depuis l'App Store de votre système mobile, soit directement via la [page web du projet](https://remotexy.com/en/download/).
-" 
-image="opera_DaVHd25tyT.png" 
+"
+image="opera_DaVHd25tyT.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="Ensuite, rendez-vous sur [la page de l'éditeur d'interface](https://remotexy.com/en/editor/). Vous y trouverez tous les outils nécessaires pour concevoir votre interface. Pour commencer, nous allons créer une application simple permettant de tester un servomoteur à l’aide d’un slider.
-" 
-image="opera_My1aCr6po0.png" 
+"
+image="opera_My1aCr6po0.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="Pour cela, glissze déposez un slider sur l'interface et positionnez le à l'endroit désiré. Vous pouvez remarquer sur votre droite des informations liées à ce slider, comme le nom de la variable ou des options graphiques.
 
 changez le nom de variable en `slider_servo_D7`, puis passez l'option `Center position` sur **Middle**.
-" 
-image="opera_KHtlD6mykG.png" 
-image_2="opera_E1a1HH25KZ.png" 
-image_3="opera_NaeS40383r.png" 
+"
+image="opera_KHtlD6mykG.png"
+image_2="opera_E1a1HH25KZ.png"
+image_3="opera_NaeS40383r.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="Dans **Configuration**, en haut à droite, sélectionnez **Bluetooth**. Une fenêtre s’ouvre pour vous guider dans la configuration de votre projet.
 
 Dans **Board**, sélectionnez votre carte, ici `ESP32 based board`. Dans **Module**, choisissez `Integrated Bluetooth`.
 
 Une fois ces paramètres définis, cliquez sur **Apply** pour valider.
-" 
-image="opera_3HGQqEByWS.png" 
-image_2="opera_uIRiFM7zHV.png" 
-image_3="opera_1XT7wIeSdi.png" 
+"
+image="opera_3HGQqEByWS.png"
+image_2="opera_uIRiFM7zHV.png"
+image_3="opera_1XT7wIeSdi.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="
 Dans l'onglet **Settings**, vous pouvez configurer les paramètres de connexion avec votre appareil. Voici les options disponibles :
@@ -105,18 +108,18 @@ Dans l'onglet **Settings**, vous pouvez configurer les paramètres de connexion 
 - **`Access password` :** Le mot de passe d'accès. Ce n'est pas obligatoire, mais fortement recommandé pour sécuriser la connexion.  
 - **`Bluetooth name` :** Le nom de votre équipement visible lors de la recherche d'appareils Bluetooth.  
 - **`Mode` :** Le type de connexion Bluetooth utilisé, soit classique, soit **LE** (Low Energy), en fonction des capacités de votre appareil.  
-" 
-image="opera_R8eBXKT4n2.png" 
-image_2="opera_QJuRbWld8T.png" 
+"
+image="opera_R8eBXKT4n2.png"
+image_2="opera_QJuRbWld8T.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="
 Cliquez ensuite sur **Get Source Code** en haut à droite. Une nouvelle page s'ouvre avec un code généré pour votre application. Cliquez sur download code pour télécharger votre code et l'ouvrir dans l'Arduino IDE, ou copier coller votre code dans un nouveau projet.
-" 
-image="opera_TkX7x01zw2.png" 
-image_2="opera_5wlkOG38W8.png" 
+"
+image="opera_TkX7x01zw2.png"
+image_2="opera_5wlkOG38W8.png"
 image_3="Arduino_IDE_FKFaHRGvAG.png"
 %}
 
@@ -230,7 +233,7 @@ void loop()
 }
 ```
 
-- **`RemoteXY_Handler()`** : 
+- **`RemoteXY_Handler()`** :
   - Cette fonction traite les données échangées entre le microcontrôleur et l'application mobile.
   - Elle met à jour les valeurs des variables de la structure RemoteXY en fonction des interactions de l'utilisateur.
 - **`TODO` Comments** : Ces sections servent à ajouter vos propres instructions pour interagir avec les variables (par exemple, déplacer un servomoteur selon la position du slider).
@@ -240,6 +243,7 @@ void loop()
 ---
 
 #### Résumé du Fonctionnement
+
 1. **Configuration :** Le code initialise la communication Bluetooth avec le nom et le mot de passe définis.
 2. **Interface graphique :** Un slider est configuré pour envoyer des valeurs de -100 à 100.
 3. **Échanges de données :**
@@ -273,6 +277,7 @@ Pour ajouter le pilotage d’un servomoteur connecté à la broche **D7** sur un
 ---
 
 #### 1. Inclure la bibliothèque Servo
+
 Ajoutez la bibliothèque **ESP32Servo.h** en haut du code pour permettre le contrôle du servomoteur.
 
 ```cpp
@@ -282,6 +287,7 @@ Ajoutez la bibliothèque **ESP32Servo.h** en haut du code pour permettre le cont
 ---
 
 #### 2. Déclarer un objet Servo
+
 Déclarez un objet pour représenter le servomoteur et une constante pour la broche **D7**.
 
 ```cpp
@@ -292,6 +298,7 @@ const int servoPinD7 = D7; // Définir la broche D7
 ---
 
 #### 3. Initialiser le servomoteur dans `setup()`
+
 Ajoutez l'instruction pour attacher le servomoteur à la broche D7 dans la fonction **`setup()`**.
 
 ```cpp
@@ -306,6 +313,7 @@ void setup()
 ---
 
 #### 4. Piloter le servomoteur dans `loop()`
+
 Ajoutez le code dans la fonction **`loop()`** pour lire la valeur du slider et l’utiliser pour contrôler le servomoteur. Convertissez la valeur du slider (de -100 à 100) en un angle (de 0° à 180°).
 
 ```cpp
@@ -323,35 +331,35 @@ void loop()
 
 #### 5. Téléverser le programme
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="
 Une fois le programme modifié, vous pouvez téléverser le code dans la carte et lancer l'application. N'oubliez pas d'installer la librairie `RemoteXY` dans l'IDE Arduino.
-" 
-image="Arduino_IDE_PQpeD0Fh7H.png" 
+"
+image="Arduino_IDE_PQpeD0Fh7H.png"
 %}
 
 ---
 
 ### Connection avec l'application
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="
 Sur votre téléphone, ouvrez l'application **RemoteXY**. Appuyez sur **+ - Add new device**, puis sélectionnez **Bluetooth**. Choisissez la technologie Bluetooth correspondant à celle configurée précédemment dans l'éditeur (classique ou BLE). Votre appareil devrait apparaître dans la liste des connexions Bluetooth. Appuyez sur son nom pour vous connecter, puis saisissez le mot de passe si nécessaire.
-" 
-image="Screenshot_2025-01-28-12-16-37-380_com.shevauto.remotexy.free.jpg" 
-image_2="Screenshot_2025-01-28-12-17-05-885_com.shevauto.remotexy.free.jpg" 
-image_3="Screenshot_2025-01-28-12-17-13-157_com.shevauto.remotexy.free.jpg" 
-image_4="Screenshot_2025-01-28-12-17-19-959_com.android.companiondevicemanager.jpg" 
+"
+image="Screenshot_2025-01-28-12-16-37-380_com.shevauto.remotexy.free.jpg"
+image_2="Screenshot_2025-01-28-12-17-05-885_com.shevauto.remotexy.free.jpg"
+image_3="Screenshot_2025-01-28-12-17-13-157_com.shevauto.remotexy.free.jpg"
+image_4="Screenshot_2025-01-28-12-17-19-959_com.android.companiondevicemanager.jpg"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="
 Une fois connecté, votre application devrait s’afficher sur votre téléphone. Essayez de déplacer le slider : le servomoteur devrait réagir en suivant les mouvements du slider, ajustant sa position en conséquence.
-" 
-image="Screenshot_2025-01-28-12-17-26-644_com.shevauto.remotexy.free.jpg" 
+"
+image="Screenshot_2025-01-28-12-17-26-644_com.shevauto.remotexy.free.jpg"
 %}
 
 ---
@@ -360,41 +368,42 @@ image="Screenshot_2025-01-28-12-17-26-644_com.shevauto.remotexy.free.jpg"
 
 Dans les chapitres précédents, nous avons vu comment récupérer la distance du capteur ultrason. Nosu allons ici adapter l'interface afin d'afficher cette distance sur votre téléphone.
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="
 Ajoutez un élément **Value** et donnez lui le nom **distance_sensor**.
-" 
-image="opera_NjHXzjTf3p.png" 
+"
+image="opera_NjHXzjTf3p.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="
-Générez le code et copiez uniquement les éléments destinés aux modifications de l'interface. 
-" 
+Générez le code et copiez uniquement les éléments destinés aux modifications de l'interface.
+"
 image="opera_puto4kEddp.png"
-image_2="Arduino_IDE_js90QMENOq.png" 
+image_2="Arduino_IDE_js90QMENOq.png"
 %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 content="
 Ajoutez les lignes de code nécessaires pour récupérer la distance mesurée par le capteur. Veillez à remplacer les `delay()` par des `RemoteXY_delay()` si nécessaire. Évitez d'utiliser la liaison série dans ce cas. Nous utiliserons la variable `RemoteXY.distance_sensor`.
 
 Relancez l'application. Vous devriez voir la distance mesurée par votre capteur s'afficher en dessous.
-" 
+"
 image="Arduino_IDE_AxTCUKLp6v.png"
 image_2="Screenshot_2025-01-28-12-47-15-711_com.shevauto.remotexy.free.jpg"
 %}
 
 ---
 
-{% include message.html 
-title="A faire" 
+{% include message.html
+title="A faire"
 message="
+
 - Créer un programme et une application pour piloter le Otto
 - Adapter le Otto au règlement des différentes compétitions
-" 
-status="is-info" 
+"
+status="is-info"
 icon="fas fa-pen" %}

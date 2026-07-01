@@ -6,7 +6,7 @@ hero_darken: true
 image: "2022-09-27-11-20-27.png"
 component_toc: true
 doc_header: true
-type: doc, equipment
+type: equipment
 
 title: Weller WT 1010
 subtitle: Fer à souder
@@ -18,16 +18,16 @@ external_link: https://www.weller-tools.com/professional/EUR/fr/Professionnel/Te
 todo: 100
 ---
 
-## Présentation :
+## Présentation
 
-## Possibilités et limitations :
+## Possibilités et limitations
 
 ### a. Possibilités
 
 ### b. Limitations
 
-## Matériaux utilisables :
+## Matériaux utilisables
 
-## Techniques & tutos :
+## Techniques & tutos
 
-## Notes :
+## Notes

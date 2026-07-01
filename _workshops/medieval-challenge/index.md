@@ -19,8 +19,8 @@ specials:
   - /workshops/medieval-challenge/concepts/medieval-challenge/tournament/
 tutorials:
   - /docs/tutorials/production/imprimer-une-piece/
+  - /docs/tutorials/production/laser-cut/
 how_to_guides:
-  - /workshops/medieval-challenge/how-to-guides/laser-cut/
   - /docs/how-to-guides/integrer_insert/
   - /docs/how-to-guides/tuto-vis/
 software:

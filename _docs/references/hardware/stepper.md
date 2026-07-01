@@ -6,7 +6,6 @@ hero_darken: true
 image: 17HE12-1204S-500x500.jpg
 component_toc: true
 doc_header: true
-type: doc,hardware
 
 title: Moteur pas-à-pas
 subtitle: Pour se déplacer précisemment
@@ -47,7 +46,6 @@ Les moteurs pas à pas possèdent plusieurs caractéristiques qui les distinguen
 
 Ces caractéristiques permettent de choisir le moteur pas à pas le mieux adapté en fonction des exigences spécifiques de chaque application, qu'il s'agisse de précision, de couple, ou de vitesse.
 
-
 ## Pilotage du moteur pas-à-pas
 
 Pour piloter un moteur pas à pas, un driver spécialisé est nécessaire pour gérer la séquence des impulsions électriques qui commandent les bobines du moteur. Le driver convertit les signaux provenant d'un microcontrôleur, comme un Arduino, en impulsions de tension précises qui permettent de faire tourner le moteur d'un angle défini – chaque impulsion correspond à un pas. Cela permet de simplifier la commande du moteur, tout en améliorant la précision et la fiabilité du contrôle.
@@ -56,7 +54,7 @@ Pour piloter un moteur pas à pas, un driver spécialisé est nécessaire pour g
 
 ## Votre matériel
 
-Pour le projet **Machine That Draws**, vous aurez accès aux materiel suivant : 
+Pour le projet **Machine That Draws**, vous aurez accès aux materiel suivant :
 
 - **Moteur Pas-à-pas :** [17HE12-1204S - StepperOnline](https://www.omc-stepperonline.com/fr/e-serie-nema-17-bipolaire-26ncm-36-82oz-in-1-2a-42x42x30mm-4-fils-avec-1m-de-cable-et-connecteur-17he12-1204s)
 

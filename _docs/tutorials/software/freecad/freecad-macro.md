@@ -11,7 +11,7 @@ title: FreeCAD (3) - Macros
 subtitle: Création et programmation de macros
 description: Documentaiton sur la creation de macros dans freeCAD
 tags: freecad
-type: doc,cao
+type: tutorial
 
 time: 5
 difficulty: 5
@@ -29,16 +29,16 @@ todo: 5
 ---
 
 
-{% include message.html 
+{% include message.html
 icon="fas fa-info-circle"
 title="Notes"
-message="Cette page ne traitera que du paramétrage de la version *link-branch* de [RealThunder](https://github.com/realthunder/FreeCAD_assembly3). Attention à la version utilisée spécifiée ci-dessous. " 
+message="Cette page ne traitera que du paramétrage de la version *link-branch* de [RealThunder](https://github.com/realthunder/FreeCAD_assembly3). Attention à la version utilisée spécifiée ci-dessous. "
 status="is-info" %}
 
-{% include message.html 
+{% include message.html
 icon="fas fa-info-circle"
 title="Work In Progress..."
-message="La documentation n'est pas terminée ! " 
+message="La documentation n'est pas terminée ! "
 status="is-danger" %}
 
 <div class="control">
@@ -56,6 +56,7 @@ status="is-danger" %}
 ## 1. XXXXXXXX
 
 En-tête de base.
+
 ```python
 __title__   = " "
 __author__  = ""
@@ -67,7 +68,9 @@ __Communication__ = ""
 __IconL__  = ""
 __IconW__  = ""
 ```
+
 Code de base pour affichage d'une fenêtre dockée sur la droite.
+
 ``` python
 import sys
 from PySide import QtGui ,QtCore 
@@ -90,13 +93,11 @@ myNewFreeCADWidget.ui.setupUi(myNewFreeCADWidget) # setup the ui
 FCmw.addDockWidget(QtCore.Qt.RightDockWidgetArea,myNewFreeCADWidget) # add the widget to the main window
 ```
 
-
-
 ## 2. Avec l'interface QT creator
 
 Télécharger QT Creator avec la licence "openSource"
 
-Attention à ne pas oublier de mettre un layout global pour voir le panel en entier et éviter cela : 
+Attention à ne pas oublier de mettre un layout global pour voir le panel en entier et éviter cela :
 ![](2022-01-04-14-50-16.png)
 Pour se faire dans QT verifier dans les objets qu'il n'y a pas de layouts cassés ou non définit. Si oui (voir image), alors clic droit sur l'objet > Mettre en page et choisissez la mise en page
 ![](2022-01-04-15-00-32.png)
@@ -121,19 +122,19 @@ class BoxTaskPanel:
 panel = BoxTaskPanel()
 FreeCADGui.Control.showDialog(panel)
 
-``` 
-
+```
 
 ---
+
 ## X. Aller plus loin
 
 **Macros intéressantes**
 
 - [FCInfo](https://wiki.freecadweb.org/Macro_FCInfo/fr)
-- 
+-
 
 **Tutoriels**
 
 - [Tuto d'origine FreeCAD](https://wiki.freecadweb.org/Manual:Creating_interface_tools)
 - [QT exemple sous FreeCAD](https://wiki.freecadweb.org/Qt_Example)
-- 
+-

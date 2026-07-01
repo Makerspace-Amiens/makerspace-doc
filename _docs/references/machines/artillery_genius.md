@@ -6,7 +6,7 @@ hero_darken: true
 image: "artillery_genius.jpg"
 component_toc: true
 doc_header: true
-type: doc, equipment
+type: equipment
 tag: additive-manufacturing
 
 title: Artillery Genius Pro

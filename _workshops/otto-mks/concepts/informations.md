@@ -8,19 +8,17 @@ hero_darken: true
 image: otto-mks.jpg
 title: Le robot Otto
 subtitle: Découvrez le robot Otto
-type: doc,concept
 tag: otto-mks
 ---
 
-# Otto, c'est quoi ?
+## Otto, c'est quoi ?
 
 Le robot Otto est un petit robot humanoïde open-source, développé pour enseigner les bases de la robotique et de la programmation. Facile à assembler et à personnaliser, Otto est adapté aux enfants, aux étudiants et aux amateurs de robotique. Il est souvent utilisé dans les écoles et les ateliers de Makerspaces pour initier les jeunes aux STEM (Sciences, Technologie, Ingénierie, Mathématiques).
 
-{% include image-row.html 
-image_1 = "Otto_Original.png" 
+{% include image-row.html
+image_1 = "Otto_Original.png"
 image_2 = "Otto_Original_Pose.png"
 %}
-
 
 ## Otto en 4 points clés
 
@@ -33,33 +31,32 @@ image_2 = "Otto_Original_Pose.png"
 
 Sur les bases de ce projet, nous avons créé une version sur mesure, made in **UniLaSalle Amiens**, en **améliorant et modifiant certains points**, par exemple, notre version de Otto peut se connecter en **Bluetooth** ou **WiFi** a un téléphone !
 
-
-{% include image-row.html 
-image_1 = "Otto-MKS-EXPLODED.png" 
+{% include image-row.html
+image_1 = "Otto-MKS-EXPLODED.png"
 image_2 = "OTTO-MKS.png"
 %}
 
 Pour construire un **Otto-MKS**, les composants suivants vous serons fournis :
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 image = "PCB.jpg"
 title="Carte électronique Otto-MKS"
 content="Conçue sur mesure au **MakerSpace**, cette carte intègre un micro-contrôleur **ESP32**, une **Led**, un **interrupteur**, des sorties pour servomoteurs, ainsi qu'un emplacement pour capteur ultrason HC-SR04 et d'autres connecteurs pour d'éventuelles composants additionnels (Gyroscope, Ecran...)" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 image = "servo.png"
 title="Servomoteurs"
 content="4 servomoteurs pour les **mouvements de marche**" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 image = "HC-SR04.png"
 title="Capteur ultrason"
 content="Permet au robot d'obtenir des **informations sur son environnement** (Présence, Distance, Mouvement...)" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = false
 image = "Battery.png"
 title="Batterie 9V rechargeable"
@@ -93,7 +90,6 @@ Sur ce projet de première année, vous serez notez sur ces livrables :
 - Le fichier OnShape de votre OTTO-MKS modifié
 - Un **rapport de projet** OU un **site web** de documentation
 - Votre participation aux **Ottolympiades**
-
 
 ## Ressources
 

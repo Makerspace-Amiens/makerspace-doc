@@ -2,6 +2,8 @@
 title: Otto MKS
 layout: project-home
 permalink: /workshops/otto-mks/
+type: workshop
+image: /workshops/otto-mks/concepts/informations/otto-mks.jpg
 project_slug: otto-mks
 project_image: /workshops/otto-mks/concepts/informations/otto-mks.jpg
 project_tags:
@@ -20,7 +22,6 @@ specials:
   - /workshops/otto-mks/concepts/otto-mks/ottolympiades/tir_a_la_corde/
 hardware:
   - /docs/references/hardware/reference-xiao/
-  - /docs/references/hardware/otto-official/
   - /docs/references/hardware/xiao-ebook/
   - /docs/references/hardware/servomotor/
 software:
@@ -41,6 +42,8 @@ how_to_guides:
   - /docs/how-to-guides/integrer_insert/
   - /docs/how-to-guides/tuto-vis/
   - /docs/how-to-guides/print-troubleshooting/
+ressources:
+  - /workshops/otto-mks/references/otto-official/
 ---
 
 ## Otto, c'est quoi ?

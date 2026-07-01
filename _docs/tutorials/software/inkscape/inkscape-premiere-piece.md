@@ -7,11 +7,11 @@ hero_darken: true
 component_toc: true
 background_color: '#efedfa'
 
-title: Inkscape (2) - Porte-clef
+title: Inkscape - Porte-clef
 subtitle: Réalisation d'un porte-clef
 description: Tutoriel d'initiation à Inkscape avec la réalisation d'un porte-clef pouvant être découpé au laser.
 tags: inkscape
-type: doc,cao
+type: tutorial
 
 time: 2
 difficulty: 1
@@ -39,7 +39,7 @@ L'objectif de ce tutoriel est de découvrir les fonctions basiques de Inkscape e
 
 ## Conception basique
 
-{% include step-tuto.html 
+{% include step-tuto.html
 title="1 - Création des formes de base"
 content="Nous allons commencer par créer les différents éléments qui constitueront votre porte clef. Commencez par tracer un rectangle, un cercle et une étoile en utilisant les outils de la barre d'outils de gauche:
 
@@ -48,14 +48,14 @@ content="Nous allons commencer par créer les différents éléments qui constit
 - Outil **Etoile** ![Alt text](inkscape_r2sizVE4gh.png)
 
 ![Alt text](inkscape_GO1oE8jIjW.png)
-" 
+"
 image="inkscape_RsNU8SGsuc.gif" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 title="2 - Modification des couleurs"
 content="Afin de visualiser au mieux nous allons modifier les couleurs des éléments. Ces couleur ne seront là que le temps de nous aider à modéliser notre forme. Une fois terminé, nous pourrons en changer si besoins.
 
-Pour cela, nous allons utiliser la barre de couleurs rapide en dessous de la fenêtre. 
+Pour cela, nous allons utiliser la barre de couleurs rapide en dessous de la fenêtre.
 
 ![Alt text](inkscape_StjldLb8hE.png)
 
@@ -63,10 +63,10 @@ Pour cela, nous allons utiliser la barre de couleurs rapide en dessous de la fen
 - Un clic gauche + maj modifie le contour de l'objet
 
 Modifiez les couleurs des objets comme vous le souhaitez.
-" 
+"
 image="inkscape_wg7cBMuMIx.gif" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 title="3 - Ajuster les tailles d'objets"
 content="Nous allons maintenant modifier la taille des objets. Pour cela nous allons d'abord modifier la taille de la plaque principale. Pour cela cliquez sur le rectangle et modifiez ses dimensions dans la barre d'outil supérieur. Attention à bien se positionner en **mm**. La hauteur doit être de 20mm. Pour la largeur, vous pouvez commencer avec 60mm, vous pourrez modifier si besoin par la suite.
 
@@ -75,10 +75,10 @@ content="Nous allons maintenant modifier la taille des objets. Pour cela nous al
 Faites de même pour le cercle qui représente le perçage pour votre anneau de porte clef en lui donnant les dimensions suivantes :
 
 ![Alt text](inkscape_rEZlsCOrYV.png)
-" 
+"
 image="inkscape_OlUVYHeb9B.gif" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 title="4 - Positionner les éléments"
 content="Déplacez maintenant vos éléments comme sur l'exemple afin de construire votre porte-clef.
 
@@ -91,50 +91,50 @@ Si vos éléments ne sont pas sur la bonne hauteur, vous pouvez les faire monter
 Enfin, vous pouvez ajuster la taille de l'arrondi de votre rectangle. Pour cela double-cliquez **rapidement** sur la forme et ajustez en utilisant les poignées rondes qui viennent d'apparaitre :
 
 ![Alt text](inkscape_HDW37LxSqv.gif)
-" 
+"
 image="inkscape_gBWOoWx3PW.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 title="5 - Création de votre texte"
 content="On va maintenant insérer votre texte. Pour cela rien de plus facile : cliquez sur **Créer et éditer des objets textes** ![Alt text](inkscape_aWboAoL96w.png) puis cliquez sur votre espace de travail. Inscrivez votre texte. Vous pouvez modifier la police d'écriture en haut à gauche ![Alt text](inkscape_OxgfGoWefB.png).
 
 Vous pouvez éditer la taille de votre texte comme les éléments classiques. Un conseil cependant : veillez à cocher l'option **Grader les même proportion** dans la barre d'outils supérieur ![Alt text](inkscape_slSCEECezF.png)
-" 
+"
 image="inkscape_3SuxwaxUmv.gif" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 title="6 - Adaptez la taille de votre Porte-clef"
 content="Il est très probable que lors de l'insertion de votre texte, votre porte-clef soit trop grand ou trop petit. Dans ce cas, modifiez la taille de votre rectangle ainsi que la position du cercle.
-" 
+"
 image="inkscape_Dfqz7fzYZr.png" %}
 
-{% include message.html 
+{% include message.html
 icon="fas fa-info-circle"
 title="Sauvegarder"
-message="Et si vous en profitiez pour sauvegarder votre travail avant de passer à la suite ? 😋 " 
+message="Et si vous en profitiez pour sauvegarder votre travail avant de passer à la suite ? 😋 "
 status="is-info" %}
 
 ## Fusion des éléments
 
 Jusqu'à maintenant nos éléments sont des formes séparées. Mais ce que nous souhaitons avoir à la fin c'est un contour de découpe et une gravure de texte. Nous allons donc voir comment faire pour fusionner nos éléments.
 
-{% include step-tuto.html 
+{% include step-tuto.html
 title="1 - Transformer votre texte en chemin"
 content="Pour l'instant, votre texte est un élément que seul Inkscape peut interpréter. Afin que la découpe laser puisse graver correctement les lettres, il va falloir les transformer en chemin. Pour cela, cliquez sur votre texte, puis allez dans **Chemin > Objet en chemin**
 
 La modification ne sera pas visible directement, mais si vous cliquez plusieurs fois sur les lettres, vous verrez que vous ne pouvez plus les éditer comme du texte mais comme un chemin complexe.
 
 ![Alt text](inkscape_FCJ0aYwExc.gif)
-" 
+"
 image="inkscape_anTi3gbIMc.png" %}
 
-{% include message.html 
+{% include message.html
 icon="fas fa-info-circle"
 title="Modification impossible"
-message="Après cette opération vous ne pourrez plus modifier votre texte simplement. Nous vous conseillons de faire une copie de votre élément de texte à coté au cas où. " 
+message="Après cette opération vous ne pourrez plus modifier votre texte simplement. Nous vous conseillons de faire une copie de votre élément de texte à coté au cas où. "
 status="is-danger" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 title="2 - Fusionner les chemins"
 content="Nous allons maintenant fusionner les éléments afin de créer notre contour de porte-clef. Pour cela nous allons utiliser les outils disponibles dans le menu **Chemin**
 
@@ -148,7 +148,7 @@ Nous aurons alors la forme de contour de notre porte-clef qui nous permettra de 
 "
 image="inkscape_7YAmy55oe3.gif" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 title="3 - Changer les couleurs"
 content="Maintenant que vous avez votre forme finale, il peut être intéressant de changer la représentation de votre forme. Par exemple, il est assez convenu de mettre les formes qui vont être découpées avec un fond blanc ou transparent, et avec un contour rouge.
 "
@@ -158,7 +158,7 @@ image="inkscape_9HEJT9yISA.png" %}
 
 Nous allons maintenant rajouter une image sur notre porte-clef. Le soucis c'est qu'une image est un élément matriciel composé de pixels. Il va donc falloir transformer notre image en élément vectoriel afin de pouvoir en faire la gravure ou la découpe et de le manipuler dans Inkscape.
 
-{% include step-tuto.html 
+{% include step-tuto.html
 title="1 - Récupérer une image"
 content="Dans notre exemple, nous allons utiliser l'image ci-contre pour réaliser notre porte-clef. Mais vous pouvez utiliser n'importe qu'elle image à partir du moment où celle-ci est en noir et blanc.
 
@@ -168,13 +168,13 @@ Copier-coller l'image ci-contre dans Inkscape et redimensionnez la en conséquen
 "
 image="inkscape_TykSbLJQfq.png" %}
 
-{% include message.html 
+{% include message.html
 icon="fas fa-info-circle"
 title="Images en couleurs"
-message="Il est tout à fait possible de vectoriser des images en couleurs, mais le traitement est plus long et complexe et ne sera pas traité dans ce tutoriel." 
+message="Il est tout à fait possible de vectoriser des images en couleurs, mais le traitement est plus long et complexe et ne sera pas traité dans ce tutoriel."
 status="is-info" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 title="2 - Vectoriser"
 content="Cliquez maintenant sur votre image puis allez dans **Chemin > Vectoriser un objet Matriciel** ![Alt text](inkscape_LIGAN6ygiA.png). Un menu sur votre droite s'ouvre. Ajustez le seuil jusqu'à ce que l'image vous convienne puis cliquez sur **Appliquer** en bas du menu.
 
