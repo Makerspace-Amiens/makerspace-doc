@@ -23,7 +23,8 @@ concepts:
   - /docs/concepts/capteurs/
 
 tutorials:
-  - /docs/tutorials/software/vscode-platformio/installation-vscode-platformio/
+  - /docs/tutorials/software/vscode-platformio/installation-vscode/
+  - /docs/tutorials/software/vscode-platformio/installation-platformio/
   - /workshops/microcontroleur/tutorials/td1-toolchain-blink/
   - /workshops/microcontroleur/tutorials/td2-entrees-boutons-joystick/
   - /workshops/microcontroleur/tutorials/td3-ecran-spi-game-loop/
