@@ -16,6 +16,12 @@ time: 3
 difficulty: 2
 
 author: Adrien BRACQ & Rémi LACOMBE
+
+softwares:
+  - label: Arduino IDE
+    link: /docs/references/software/arduino-ide/
+  - label: PlatformIO IDE (extension VSCode)
+    link: /docs/references/software/platformIO/
 ---
 
 ## Rappels sur les servomoteurs
@@ -34,7 +40,9 @@ icon="fas fa-info" %}
 
 ## Installer la bibliothèque Servo
 
-Avant de piloter des servomoteurs avec Arduino, il va falloir installer une librairie développée pour l'ESP32. Dans ce cadre, vous pouvez utiliser [la librairie ESP32Servo](https://madhephaestus.github.io/ESP32Servo/annotated.html) :
+Avant de piloter des servomoteurs avec Arduino, il va falloir installer une librairie développée pour l'ESP32. Dans ce cadre, vous pouvez utiliser [la librairie ESP32Servo](https://madhephaestus.github.io/ESP32Servo/annotated.html), créée par *Kevin Harrington et John K. Bennett*. La marche à suivre dépend de l'environnement que vous utilisez.
+
+### Avec l'Arduino IDE
 
 {% include step-tuto.html
 greyBackground = true
@@ -42,6 +50,25 @@ content="Rendez-vous dans l'onglet de gauche **Library Manager**, recherchez `ES
 "
 image="Arduino_IDE_zlHeYNVgAy.png"
 %}
+
+### Avec VSCode et PlatformIO
+
+Sous PlatformIO, les bibliothèques se déclarent directement dans le fichier de configuration du projet plutôt que via un gestionnaire graphique. Ajoutez `ESP32Servo` dans `lib_deps` de votre fichier `platformio.ini` :
+
+```ini
+[env:esp32dev]
+platform = espressif32
+board = esp32dev
+framework = arduino
+lib_deps =
+    madhephaestus/ESP32Servo
+```
+
+{% include message.html
+title="Installation automatique"
+message="PlatformIO télécharge et installe la bibliothèque automatiquement à la prochaine compilation du projet, sans autre manipulation."
+status="is-info"
+icon="fas fa-info-circle" %}
 
 Cette bibliothèque fonctionne exactement comme la bibliothèque Arduino classique **Servo**, mais elle est spécialement adaptée aux microcontrôleurs de type ESP32.
 
