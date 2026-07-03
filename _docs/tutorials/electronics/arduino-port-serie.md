@@ -246,7 +246,7 @@ void loop()
 
 Pour cela, il parait intéressant de chercher d'autres options d'affichage. Actuellement il n'existe pas de vrai alternative implémentée directement dans VSCode par PlatformIO ou par Arduino.
 
-C'est pour cela que l'extension **TelePlot** a été développée et sera explicitée dans ce tutoriel : [VScode, platformio port serie](/docs/tutorials/electronics/vscode-port-serie/). 
+C'est pour cela que l'extension **TelePlot** a été développée et sera explicitée dans ce tutoriel : [VScode, platformio port serie](/docs/tutorials/electronics/vscode-port-serie/).
 
 ## Sources
 
