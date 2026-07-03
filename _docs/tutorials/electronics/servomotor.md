@@ -2,6 +2,7 @@
 layout: documentation
 hide_hero: false
 hero_image: image.png
+hero_height: is-small
 hero_darken: true
 image: image.png
 component_toc: true
@@ -10,18 +11,30 @@ type: tutorial
 
 title: Servomoteurs
 subtitle: Piloter un servomoteur pour le robot
-description: Cette page va vous accompagner dans l'utilisation des servomoteurs sur le Otto-MKS
+description: Installer la bibliothèque ESP32Servo puis piloter un ou plusieurs servomoteurs en position, avec l'Arduino IDE ou PlatformIO.
+author: Adrien BRACQ & Rémi LACOMBE
 
 time: 3
 difficulty: 2
+compatibilities-os: win, mac, lin
 
-author: Adrien BRACQ & Rémi LACOMBE
+prerequisites:
+  - label: Démarrer avec Arduino !
+    link: /workshops/otto-mks/tutorials/discover-arduino/
+  - label: Découvrez la carte du Otto !
+    link: /workshops/otto-mks/tutorials/discover-otto-pcb/
 
 softwares:
   - label: Arduino IDE
     link: /docs/references/software/arduino-ide/
   - label: PlatformIO IDE (extension VSCode)
     link: /docs/references/software/platformIO/
+
+hardwares:
+  - label: XIAO ESP32
+    link: /docs/references/hardware/reference-xiao/
+  - label: Servomoteur
+    link: /docs/references/hardware/servomotor/
 ---
 
 ## Rappels sur les servomoteurs
