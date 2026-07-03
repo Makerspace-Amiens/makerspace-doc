@@ -3,7 +3,7 @@ title: Microcontrôleurs
 layout: project-home
 permalink: /workshops/microcontroleur/
 type: workshop
-image: /workshops/microcontroleur/hero.jpg
+image: /assets/images/projects/uc.webp
 project_slug: microcontroleur
 project_image: /assets/images/projects/uc.webp
 project_tags:
@@ -25,7 +25,7 @@ concepts:
 tutorials:
   - /docs/tutorials/software/vscode-platformio/installation-vscode/
   - /docs/tutorials/software/vscode-platformio/installation-platformio/
-  - /workshops/microcontroleur/tutorials/td1-toolchain-blink/
+  - /workshops/microcontroleur/tutorials/toolchain-blink/
   - /workshops/microcontroleur/tutorials/td2-entrees-boutons-joystick/
   - /workshops/microcontroleur/tutorials/td3-ecran-spi-game-loop/
   - /workshops/microcontroleur/tutorials/td4-collisions-fsm-pong/

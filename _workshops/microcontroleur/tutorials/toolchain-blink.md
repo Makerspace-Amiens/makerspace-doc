@@ -1,14 +1,14 @@
 ---
 layout: documentation
 hide_hero: false
-hero_image: hero.png
+hero_image: /assets/images/projects/uc.webp
 hero_height: is-small
 hero_darken: true
-image: hero.png
+image: /assets/images/projects/uc.webp
 component_toc: true
 doc_header: true
 
-title: TD1 — Sas toolchain & premier blink
+title: Vérification de la toolchain
 subtitle: Installer la chaîne ESP32-S3 et valider ton premier flashage
 description: Configurer PlatformIO pour l'ESP32-S3 et faire clignoter la LED embarquée, avant d'ajouter une LED externe.
 author: Alban Petit
@@ -34,11 +34,9 @@ hardwares:
 todo: 10
 ---
 
-## TD1 — Sas toolchain & GPIO (1h30)
+Ce tutoriel a pour but de vérifier que **chacun** a une chaîne de développement fonctionnelle avant d'attaquer la suite des aventures sur les microcontroleurs. Chaque TD suivant ajoutera un périphérique au même montage le câblage posé ici ne bougera plus.
 
-Ce premier TD est un **sas** : son but n'est pas d'apprendre à coder, mais de vérifier que **chacun** a une chaîne de développement fonctionnelle avant d'attaquer le vrai contenu au TD2. Chaque TD suivant ajoutera un périphérique au même montage — le câblage posé ici ne bougera plus.
-
-{% include message.html title="À faire avant la séance" message="L'installation de PlatformIO (voir le prérequis ci-dessus) et du support ESP32 doit être terminée **en autonomie avant** le TD. Les 1h30 de séance servent à **valider** l'installation sur le matériel réel, pas à télécharger des paquets — la connexion Wi-Fi de la salle ne supportera pas 20 téléchargements simultanés." status="is-warning" icon="fas fa-exclamation-triangle" %}
+{% include message.html title="À faire avant la séance" message="L'installation de PlatformIO (voir le prérequis ci-dessus) et du support ESP32 doit être terminée." status="is-warning" icon="fas fa-exclamation-triangle" %}
 
 {% include step-tuto.html
 greyBackground=true
@@ -75,9 +73,7 @@ content="La carte communique avec l'ordinateur via une puce USB-série (CP2102 o
 {% include step-tuto.html
 greyBackground=true
 title="3 — Flasher le blink de base"
-content="Remplace le contenu de `src/main.cpp` par le code ci-dessous, puis clique sur **Upload** (flèche →) dans la barre bleue PlatformIO en bas de VSCode."
-%}
-
+content="Remplace le contenu de `src/main.cpp` par le code ci-dessous, puis clique sur **Upload** (flèche →) dans la barre bleue PlatformIO en bas de VSCode.
 ```cpp
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
@@ -89,24 +85,23 @@ void loop() {
   digitalWrite(LED_BUILTIN, LOW);
   delay(500);
 }
-```
+```" %}
 
 {% include message.html title="Ça ne flashe pas ?" message="Si l'upload échoue avec une erreur de timeout, maintiens le bouton **BOOT** de la carte appuyé pendant les 2 premières secondes de l'upload (jusqu'à ce que la ligne `Writing at...` apparaisse), puis relâche." status="is-info" icon="fas fa-info-circle" %}
 
 {% include step-tuto.html
 greyBackground=true
 title="4 — Validation individuelle"
-content="La LED intégrée (`LED_BUILTIN`) doit clignoter à 1 Hz. **Montre ta carte qui clignote** avant de passer à la suite — c'est la seule sortie attendue de ce TD1."
+content="La LED intégrée (`LED_BUILTIN`) doit clignoter à 1 Hz. **Montre ta carte qui clignote** avant de passer à la suite c'est la seule sortie attendue de ce TD1."
 %}
 
 ## Bonus — LED externe sur breadboard
 
 S'il te reste du temps, câble une LED externe avec sa résistance série. C'est la première brique **physique** du montage qui restera figée jusqu'au projet.
 
-```text
-GPIO4 ──── R (150 Ω) ──── Anode LED
-                          Cathode LED ──── GND
-```
+![BreadBoard](esp32-s3-blink.png)
+
+Voci le code nécessaire pour le fonctionement de cette demonstration.
 
 ```cpp
 #define LED_PIN 4
@@ -125,4 +120,4 @@ void loop() {
 
 Le calcul de la résistance série est détaillé dans le concept [GPIO & monde numérique](/workshops/microcontroleur/concepts/gpio-monde-numerique/).
 
-{% include message.html title="Rendez-vous au TD2" message="Le TD2 réutilise cette même carte et ce même projet PlatformIO : garde ton câblage tel quel, tu ajouteras boutons et joystick sans rien démonter." status="is-success" icon="fas fa-check-circle" %}
+{% include message.html title="Rendez-vous au tutoriel suivant" message="Le prochain tutoriel réutilise cette même carte et ce même projet PlatformIO : garde ton câblage tel quel, tu ajouteras boutons et joystick sans rien démonter." status="is-success" icon="fas fa-check-circle" %}

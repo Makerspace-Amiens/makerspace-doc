@@ -17,8 +17,8 @@ time: 3
 difficulty: 2
 
 prerequisites:
-  - label: "TD1 — Sas toolchain & premier blink"
-    link: /workshops/microcontroleur/tutorials/td1-toolchain-blink/
+  - label: "Vérification de la toolchain"
+    link: /workshops/microcontroleur/tutorials/toolchain-blink/
   - label: "Concept : GPIO & monde numérique"
     link: /workshops/microcontroleur/concepts/gpio-monde-numerique/
   - label: "Concept : ADC & PWM"

@@ -4,7 +4,7 @@ hide_hero: false
 hero_image: hero.png
 hero_height: is-small
 hero_darken: true
-image: hero.png
+image: /assets/images/projects/uc.webp
 component_toc: true
 doc_header: true
 
