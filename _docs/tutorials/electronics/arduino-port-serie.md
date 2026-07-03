@@ -10,11 +10,25 @@ doc_header: true
 type: tutorial
 
 title: Arduino port série
-subtitle: Utiliser le port série pour communiquer et tracer des données
-description: Ressources d'utilisation du port série
+subtitle: Lire et tracer les données du port série avec le moniteur de l'IDE Arduino
+description: Établir une liaison série entre une carte Arduino et un PC, puis utiliser le moniteur et le traceur série intégrés à l'IDE Arduino pour lire et visualiser les données envoyées.
+author: Alban Petit
 
 time: 1
 difficulty: 1
+compatibilities-os: win, mac, lin
+
+prerequisites:
+  - label: Notions de base en C++ (framework Arduino)
+    link: ""
+
+softwares:
+  - label: Arduino IDE
+    link: /docs/references/software/arduino-ide/
+
+hardwares:
+  - label: Carte compatible Arduino (UNO, ESP32, etc.)
+    link: /docs/references/hardware/arduino-uno/
 ---
 
 ## 1 - Introduction

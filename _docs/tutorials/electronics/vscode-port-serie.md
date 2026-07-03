@@ -9,12 +9,30 @@ component_toc: true
 doc_header: true
 type: tutorial
 
-title: VScode et platformio port série
-subtitle: Utiliser le port série pour communiquer et tracer des données
-description: Ressources d'utilisation du port série
+title: VSCode et PlatformIO — port série
+subtitle: Lire et tracer les données du port série avec PlatformIO et TelePlot
+description: Utiliser le moniteur série de PlatformIO puis l'extension TelePlot pour visualiser en temps réel des courbes de données envoyées via le port série.
+author: Alban Petit
 
 time: 1
 difficulty: 1
+compatibilities-os: win, mac, lin
+
+prerequisites:
+  - label: Installation de VSCode et PlatformIO
+    link: /docs/tutorials/software/vscode-platformio/installation-vscode/
+  - label: Notions de base en C++ (framework Arduino)
+    link: ""
+
+softwares:
+  - label: PlatformIO IDE (extension VSCode)
+    link: /docs/references/software/platformIO/
+  - label: TelePlot (extension VSCode)
+    link: "https://github.com/nesnes/teleplot-vscode"
+
+hardwares:
+  - label: Carte compatible Arduino (UNO, ESP32, etc.)
+    link: /docs/references/hardware/arduino-uno/
 ---
 
 
