@@ -29,7 +29,7 @@ tutorials:
   - /workshops/microcontroleur/tutorials/td2-entrees-boutons-joystick/
   - /workshops/microcontroleur/tutorials/td3-ecran-spi-game-loop/
   - /workshops/microcontroleur/tutorials/td4-collisions-fsm-pong/
-  - /docs/tutorials/electronics/port-serie/
+  - /docs/tutorials/electronics/vscode-port-serie/
   - /docs/tutorials/electronics/esp32-ssd1306-oled/
 
 how_to_guides:
