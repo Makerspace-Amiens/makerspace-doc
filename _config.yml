@@ -37,6 +37,9 @@ collections:
     show_sidebar: false
 excerpt_separator: "<!--more-->"
 
+kramdown:
+  math_engine: null
+
 sass:
   silence_deprecations:
     - import
