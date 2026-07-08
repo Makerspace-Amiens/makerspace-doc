@@ -97,13 +97,12 @@ monitor_speed = 115200
 {% include step-tuto.html
 greyBackground=true
 title="Câbler le bouton"
-content="Relie le bouton entre une broche GPIO et la **masse (GND)**. Pas besoin de résistance externe : on active le **pull-up interne** de l'ESP32 par logiciel, qui maintient la broche à l'état haut tant que le bouton n'est pas pressé.
+content="Relie le bouton entre une broche GPIO et la **masse (GND)**. Pas besoin de résistance externe : on active le **pull-up interne** de l'ESP32 par logiciel, qui maintient la broche à l'état haut tant que le bouton n'est pas pressé." %}
 
-```text
-GPIO4 ──── Bouton ──── GND
+```mermaid
+graph LR
+  GPIO["GPIO4"] --> BTN["Bouton"] --> GND["GND"]
 ```
-
-" %}
 
 ```cpp
 #define BTN_PIN 4
@@ -141,14 +140,12 @@ Trois modes existent pour une broche configurée en entrée :
 {% include step-tuto.html
 greyBackground=true
 title="Câbler la LED"
-content="Câble la LED avec sa résistance série entre une broche GPIO et la masse, anode côté résistance.
+content="Câble la LED avec sa résistance série entre une broche GPIO et la masse, anode côté résistance." %}
 
-```text
-GPIO2 ──── R (150-220 Ω) ──── Anode LED
-                               Cathode LED ──── GND
+```mermaid
+graph LR
+  GPIO["GPIO2"] -->|"R 150-220 Ω"| A["Anode LED"] --> C["Cathode LED"] --> GND["GND"]
 ```
-
-" %}
 
 ```cpp
 #define LED_PIN 2
@@ -209,17 +206,16 @@ L'ADC de l'ESP32 a une résolution de **12 bits**, ce qui donne $2^{12} = 4096$ 
 {% include step-tuto.html
 greyBackground=true
 title="Câbler le joystick"
-content="Le joystick a 5 broches : `VCC` (3,3 V), `GND`, `VRx`, `VRy` et `SW` (bouton).
+content="Le joystick a 5 broches : `VCC` (3,3 V), `GND`, `VRx`, `VRy` et `SW` (bouton)." %}
 
-```text
-VRx ──── GPIO1  (ADC1)
-VRy ──── GPIO2  (ADC1)
-SW  ──── GPIO5
-VCC ──── 3,3 V
-GND ──── GND
+```mermaid
+graph LR
+  VRx --> GPIO1["GPIO1 (ADC1)"]
+  VRy --> GPIO2["GPIO2 (ADC1)"]
+  SW --> GPIO5["GPIO5"]
+  VCC --> V33["3,3 V"]
+  GNDj["GND"] --> GNDe["GND"]
 ```
-
-" %}
 
 ```cpp
 #define JOY_X   1
