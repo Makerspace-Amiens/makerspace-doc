@@ -1,10 +1,10 @@
 ---
 layout: documentation
 hide_hero: false
-hero_image: hero.png
+hero_image: hero.webp
 hero_height: is-small
 hero_darken: true
-image: hero.png
+image: hero.webp
 component_toc: true
 doc_header: true
 type: tutorial
