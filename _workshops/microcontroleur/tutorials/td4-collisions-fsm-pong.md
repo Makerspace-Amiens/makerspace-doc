@@ -1,10 +1,10 @@
 ---
 layout: documentation
 hide_hero: false
-hero_image: hero.png
+hero_image: hero.webp
 hero_height: is-small
 hero_darken: true
-image: /assets/images/projects/uc.webp
+image: hero.webp
 component_toc: true
 doc_header: true
 
@@ -17,8 +17,8 @@ time: 3
 difficulty: 3
 
 prerequisites:
-  - label: "TD3 — Écran SPI et game loop"
-    link: /workshops/microcontroleur/tutorials/td3-ecran-spi-game-loop/
+  - label: "Écran SPI et game loop"
+    link: /docs/tutorials/electronics/ecran-spi-game-loop/
   - label: "Concept : Machine à états finis (FSM)"
     link: /workshops/microcontroleur/concepts/machine-etats-finis/
 
@@ -48,7 +48,7 @@ void loop() {
 {% include step-tuto.html
 greyBackground=true
 title="1 — Ajouter la seconde raquette"
-content="Le joueur 1 (boutons GPIO5/GPIO6) contrôle une raquette à droite ; le joueur 2 (joystick) contrôle celle de gauche, déjà posée au TD3."
+content="Le joueur 1 (boutons GPIO5/GPIO6) contrôle une raquette à droite ; le joueur 2 (joystick) contrôle celle de gauche, déjà posée au tutoriel précédent."
 %}
 
 ```cpp
