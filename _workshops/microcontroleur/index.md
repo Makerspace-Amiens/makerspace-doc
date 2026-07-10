@@ -3,15 +3,15 @@ title: Microcontrôleurs
 layout: project-home
 permalink: /workshops/microcontroleur/
 type: workshop
-image: /assets/images/projects/uc.webp
+image: /workshops/microcontroleur/tutorials/toolchain-blink/uc.webp
 project_slug: microcontroleur
-project_image: /assets/images/projects/uc.webp
+project_image: /workshops/microcontroleur/tutorials/toolchain-blink/uc.webp
 project_tags:
   - Électronique
   - Embarqué
   - ESP32
 description: "Découvrir les microcontrôleurs de l'architecture jusqu'au projet multijoueur, avec l'ESP32-S3 et Arduino-ESP32."
-subtitle: De l'architecture au jeu embarqué — ESP32-S3
+subtitle: De l'architecture au jeu embarqué
 
 concepts:
   - /workshops/microcontroleur/concepts/architecture-microcontroleur/
@@ -60,7 +60,7 @@ Cet atelier guide les étudiants depuis les concepts fondamentaux (architecture 
 ## Progression
 
 | Phase | Volume | Résultat |
-|---|---|---|
+|----|---|---|
 | CM | 4,5h | Carte mentale du µC : archi, GPIO, ADC/PWM, bus, chaîne de dev |
 | TD | 10,5h | **Pong 2 joueurs** local sur ESP32-S3 + écran SPI |
 | Projet | binômes | **Snake multijoueur** (console + navigateur) + PCB KiCad soudé |

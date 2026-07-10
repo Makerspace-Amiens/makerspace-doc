@@ -1,10 +1,10 @@
 ---
 layout: documentation
 hide_hero: false
-hero_image: /assets/images/projects/uc.webp
+hero_image: uc.webp
 hero_height: is-small
 hero_darken: true
-image: /assets/images/projects/uc.webp
+image: uc.webp
 component_toc: true
 doc_header: true
 
@@ -74,6 +74,7 @@ content="La carte communique avec l'ordinateur via une puce USB-série (CP2102 o
 greyBackground=true
 title="3 — Flasher le blink de base"
 content="Remplace le contenu de `src/main.cpp` par le code ci-dessous, puis clique sur **Upload** (flèche →) dans la barre bleue PlatformIO en bas de VSCode.
+
 ```cpp
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
