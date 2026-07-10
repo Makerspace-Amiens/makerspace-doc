@@ -174,7 +174,7 @@ void loop() {
 }
 ```
 
-Cette structure **lire → mettre à jour → redessiner** est la charpente de toute la suite du projet : le tutoriel [Collisions, score et machine à états](/workshops/microcontroleur/tutorials/td4-collisions-fsm-pong/) et le projet Snake ne feront qu'enrichir `mettreAJourJeu()` et `redessiner()`.
+Cette structure **lire → mettre à jour → redessiner** est la charpente de toute la suite du projet : le tutoriel [Collisions, score et machine à états](/workshops/microcontroleur/tutorials/collisions-fsm-pong/) et le projet Snake ne feront qu'enrichir `mettreAJourJeu()` et `redessiner()`.
 
 {% include step-tuto.html
 greyBackground=true
@@ -211,4 +211,4 @@ void redessiner() {
 
 Une balle blanche se déplace en continu sur l'écran et rebondit sur les bords, sans clignotement ni traînée visible, pendant que la raquette du joueur 2 suit le joystick.
 
-{% include message.html title="Étape suivante" message="Le tutoriel [Collisions, score et machine à états](/workshops/microcontroleur/tutorials/td4-collisions-fsm-pong/) ajoute la seconde raquette, la détection de collision balle/raquette, le score et la machine à états (menu / partie / game over) — sans rien changer au câblage." status="is-success" icon="fas fa-check-circle" %}
+{% include message.html title="Étape suivante" message="Le tutoriel [Collisions, score et machine à états](/workshops/microcontroleur/tutorials/collisions-fsm-pong/) ajoute la seconde raquette, la détection de collision balle/raquette, le score et la machine à états (menu / partie / game over) — sans rien changer au câblage." status="is-success" icon="fas fa-check-circle" %}

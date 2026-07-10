@@ -30,7 +30,7 @@ tutorials:
   - /docs/tutorials/electronics/servomotor/
   - /workshops/microcontroleur/tutorials/entrees-boutons-joystick/
   - /docs/tutorials/electronics/ecran-spi-game-loop/
-  - /workshops/microcontroleur/tutorials/td4-collisions-fsm-pong/
+  - /workshops/microcontroleur/tutorials/collisions-fsm-pong/
   - /docs/tutorials/electronics/vscode-port-serie/
   - /docs/tutorials/electronics/esp32-ssd1306-oled/
 

@@ -8,7 +8,7 @@ image: hero.webp
 component_toc: true
 doc_header: true
 
-title: TD4 — Collisions, score et machine à états
+title: Collisions, score et machine à états
 subtitle: Terminer le Pong 2 joueurs avec écrans menu, partie et fin
 description: Ajouter la seconde raquette, la détection de collision, le score et une machine à états finis pour obtenir un Pong 2 joueurs complet.
 author: Alban Petit
@@ -25,9 +25,9 @@ prerequisites:
 todo: 10
 ---
 
-## TD4 — Animation + collisions + boutons + FSM (3h)
+## Collisions, score et machine à états
 
-Dernier TD de l'atelier : ce Pong assemble tout ce qui a été construit depuis le TD1 — boutons, joystick, écran, game loop — et lui donne une **structure complète** avec un début et une fin. Aucun câblage supplémentaire n'est nécessaire.
+Ce tutoriel assemble tout ce qui a été construit depuis le début de l'atelier — boutons, joystick, écran, game loop — et lui donne une **structure complète** avec un début et une fin. Aucun câblage supplémentaire n'est nécessaire.
 
 ### Structurer le code en trois blocs
 
@@ -63,6 +63,8 @@ void lireEntrees() {
   raquette2Y = map(analogRead(JOY_Y), 0, 4095, 0, tft.height() - RAQUETTE_H);
 }
 ```
+
+{% include message.html title="Checkpoint" message="Les boutons du joueur 1 déplacent sa raquette à droite, le joystick du joueur 2 déplace la sienne à gauche, sans traînée ni dépassement des bords haut/bas de l'écran." status="is-success" icon="fas fa-check-circle" %}
 
 {% include step-tuto.html
 greyBackground=true
@@ -102,6 +104,8 @@ void mettreAJourJeu() {
 }
 ```
 
+{% include message.html title="Checkpoint" message="La balle doit rebondir sur les deux raquettes et sur les bords haut/bas, et disparaître/réapparaître au centre quand elle sort par la gauche ou la droite — sans encore afficher de score visible." status="is-success" icon="fas fa-check-circle" %}
+
 {% include step-tuto.html
 greyBackground=true
 title="3 — Afficher le score"
@@ -126,6 +130,8 @@ void afficherScore() {
   }
 }
 ```
+
+{% include message.html title="Checkpoint" message="Le score s'incrémente et s'affiche correctement à chaque point marqué, sans clignoter à chaque frame entre deux points." status="is-success" icon="fas fa-check-circle" %}
 
 ## La machine à états du jeu
 
@@ -188,7 +194,9 @@ void redessiner() {
 
 {% include message.html title="Deux sens du mot « état »" message="Ne confonds pas les **données du jeu** (`balleX`, `scoreJoueur1`… des variables) et la **phase du jeu** (`MENU` / `PARTIE` / `GAME_OVER`, la FSM). Les deux sont indispensables mais répondent à des questions différentes : « où en est la partie ? » pour les données, « quel écran afficher ? » pour la FSM." status="is-info" icon="fas fa-info-circle" %}
 
-## Sortie de séance
+{% include message.html title="Checkpoint" message="Le cycle complet doit fonctionner sans reflasher la carte : MENU → appui sur le bouton du joystick → PARTIE → un score atteint 5 → GAME_OVER → appui sur le bouton du joystick → retour au MENU." status="is-success" icon="fas fa-check-circle" %}
+
+## Résultat attendu
 
 Un **Pong 2 joueurs complet** : écran menu (démarrage au bouton du joystick), partie avec deux raquettes, balle, score et collisions, écran de fin à 5 points avec retour au menu.
 
