@@ -14,6 +14,7 @@ description: "Découvrir les microcontrôleurs de l'architecture jusqu'au projet
 subtitle: De l'architecture au jeu embarqué
 
 concepts:
+  - /workshops/microcontroleur/concepts/qu-est-ce-qu-un-microcontroleur/
   - /workshops/microcontroleur/concepts/architecture-microcontroleur/
   - /workshops/microcontroleur/concepts/gpio-monde-numerique/
   - /workshops/microcontroleur/concepts/adc-pwm/

@@ -54,7 +54,7 @@ L'ESP32 possède deux banques d'ADC :
 
 ### Lire un joystick
 
-Un joystick analogique contient deux **potentiomètres** (axe X et axe Y) et un **bouton** (appui sur le stick).
+Un joystick analogique contient deux **potentiomètres** (résistances réglables qui délivrent une tension variable selon leur position ; un par axe, X et Y) et un **bouton** (appui sur le stick).
 
 ```cpp
 int x = analogRead(JOYSTICK_X);  // 0 (gauche) → 4095 (droite)
@@ -99,7 +99,7 @@ analogWrite(LED_PIN, 0);     // éteint
 analogWrite(LED_PIN, 255);   // plein éclat
 ```
 
-L'ESP32-S3 dispose de **8 canaux LEDC** indépendants avec fréquence et résolution configurables jusqu'à 16 bits. `analogWrite()` utilise la couche LEDC d'Arduino-ESP32 en arrière-plan.
+L'ESP32-S3 dispose de **8 canaux LEDC** (*LED Control*, le générateur de PWM matériel de l'ESP32) indépendants avec fréquence et résolution configurables jusqu'à 16 bits. `analogWrite()` utilise la couche LEDC d'Arduino-ESP32 en arrière-plan.
 
 ### Applications du PWM
 

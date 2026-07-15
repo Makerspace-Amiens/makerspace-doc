@@ -30,7 +30,7 @@ Sur l'ESP32-S3 (logique **3,3 V**) :
 
 ## GPIO — General Purpose Input/Output
 
-Chaque broche GPIO peut être configurée en **entrée** ou en **sortie** par le logiciel.
+Chaque broche GPIO (*General Purpose Input/Output*, broche d'entrée/sortie à usage général) peut être configurée en **entrée** ou en **sortie** par le logiciel.
 
 ```cpp
 pinMode(LED_PIN, OUTPUT);   // broche configurée en sortie
@@ -39,7 +39,7 @@ pinMode(BTN_PIN, INPUT);    // broche configurée en entrée
 
 ### Sortie — piloter une LED
 
-Une broche en sortie peut sourcer ou drainer du courant pour piloter un composant.
+Une broche en sortie peut **sourcer ou drainer** du courant (le fournir ou l'absorber) pour piloter un composant.
 
 ```cpp
 digitalWrite(LED_PIN, HIGH);  // LED allumée (3,3 V sur la broche)
@@ -48,7 +48,7 @@ digitalWrite(LED_PIN, LOW);   // LED éteinte (0 V)
 
 **Courant maximal par broche ESP32-S3 : ~40 mA.** En pratique, limiter à 12 mA avec une résistance série.
 
-Calcul de la résistance pour une LED rouge (Vf ≈ 2 V, I = 10 mA) :
+Calcul de la résistance pour une LED rouge (Vf, la tension de seuil de la LED, ≈ 2 V ; I = 10 mA) :
 
 $$R = \frac{V_{alim} - V_f}{I} = \frac{3{,}3 - 2}{0{,}01} = 130\ \Omega$$
 
@@ -156,7 +156,7 @@ Serial1.begin(115200, SERIAL_8N1, 16, 17);  // UART1 routé sur GPIO16 (RX) / GP
 | Tension max en entrée | **3,3 V** |
 | Courant total GPIO | 1,2 A (toutes broches cumulées) |
 
-Ne jamais connecter une charge inductive (moteur, relais) directement sur un GPIO — toujours utiliser un transistor ou un driver.
+Ne jamais connecter une charge inductive (moteur, relais — une charge qui stocke de l'énergie magnétique et renvoie des pics de tension à la coupure) directement sur un GPIO — toujours utiliser un transistor ou un **driver** (circuit de puissance intermédiaire).
 
 ## Résumé
 

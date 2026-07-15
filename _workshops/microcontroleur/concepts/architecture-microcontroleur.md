@@ -12,33 +12,27 @@ subtitle: CPU, mémoires, périphériques — comprendre le schéma-bloc
 description: Comprendre le CPU, l'horloge, les mémoires Flash/RAM, les registres, les principaux périphériques et les interruptions d'un microcontrôleur, à travers l'ESP32-S3.
 author: Alban Petit
 
-todo: 60
+todo: 90
 ---
 
-## Qu'est-ce qu'un microcontrôleur ?
+## Ouvrons le capot
 
-Un **microcontrôleur** (µC) est un circuit intégré qui regroupe sur une seule puce :
+Si tu as parcouru [Qu'est-ce qu'un microcontrôleur ?](/workshops/microcontroleur/concepts/qu-est-ce-qu-un-microcontroleur/), tu sais déjà qu'un µC est un ordinateur miniature qui perçoit, décide et agit. Voyons maintenant **comment il est fait à l'intérieur**.
+
+Techniquement, un **microcontrôleur** (µC) est un circuit intégré qui regroupe sur une seule puce :
 
 - un **processeur** (CPU) pour exécuter les instructions,
 - de la **mémoire** (Flash + RAM) pour stocker le programme et les données,
 - des **périphériques** (GPIO, ADC, UART, SPI…) pour interagir avec le monde physique.
 
-À la différence d'un microprocesseur seul (qui a besoin de mémoire et de périphériques externes pour fonctionner), le µC est un **système sur puce** (*System on Chip*) : tout est intégré au même silicium. Il suffit d'une alimentation et d'une horloge pour qu'il fonctionne — c'est ce qui le rend si présent autour de nous : télécommandes, jouets, écouteurs, tableaux de bord, drones… la plupart contiennent un ou plusieurs microcontrôleurs sans qu'on y pense.
-
-```mermaid
-block-beta
-  columns 3
-  CPU["CPU\n(Xtensa LX7)"] RAM["RAM\n(512 Ko SRAM)"] FLASH["Flash\n(Programme)"]
-  GPIO["GPIO"] ADC["ADC"] UART["UART / I2C / SPI"]
-```
+À la différence d'un microprocesseur seul (qui a besoin de mémoire et de périphériques externes pour fonctionner), le µC est un **système sur puce** (*System on Chip*) : tout est intégré au même **silicium** (le matériau semi-conducteur dont est faite la puce). Il suffit d'une alimentation et d'une horloge pour qu'il fonctionne.
 
 ## Le schéma-bloc fil rouge
 
 {% include step-tuto.html
 greyBackground = true
 content="
-Ce schéma sera ré-affiché à chaque nouveau concept en surlignant la brique concernée. Garde-le en tête — il sert de carte mentale pour tout l'atelier.
-
+Garde ce schéma en tête : il sert de carte mentale pour tout l'atelier. Chaque concept qui suit — [GPIO](/workshops/microcontroleur/concepts/gpio-monde-numerique/), [ADC & PWM](/workshops/microcontroleur/concepts/adc-pwm/), [les bus](/workshops/microcontroleur/concepts/bus-communication/)… — vient détailler l'une de ces briques.
 
 | Bloc | Rôle | Accès logiciel |
 |---|---|---|
@@ -60,7 +54,20 @@ Le CPU exécute un **cycle fetch–decode–execute** en continu :
 
 Ce cycle est cadencé par l'**horloge** : l'ESP32-S3 tourne à **240 MHz**, soit 240 millions de cycles par seconde. Un `digitalWrite()` prend quelques cycles ; une multiplication quelques dizaines.
 
-L'ESP32-S3 possède **deux cœurs** Xtensa LX7. Dans le cadre Arduino-ESP32, le code `setup()`/`loop()` tourne sur le cœur 1 ; le cœur 0 gère le Wi-Fi en arrière-plan.
+L'ESP32-S3 possède **deux cœurs** (deux unités de calcul quasi indépendantes, capables de travailler en parallèle) Xtensa LX7. Dans le cadre Arduino-ESP32, le code `setup()`/`loop()` tourne sur le cœur 1 ; le cœur 0 gère le Wi-Fi en arrière-plan.
+
+### Ce que fait vraiment le CPU : calculer ou transférer
+
+Au fond, un CPU ne sait faire que deux choses : **des calculs** et **des transferts de données**. Tout programme, aussi complexe soit-il, se ramène à cette combinaison — combiner deux nombres, ou déplacer un octet d'une case vers une autre.
+
+Les calculs sont réalisés par l'**ALU** (*Arithmetic Logic Unit*, unité arithmétique et logique), le cœur mathématique du CPU. Elle prend deux nombres en entrée et produit :
+
+- des **opérations arithmétiques** : addition, soustraction, multiplication…
+- des **opérations logiques** : ET, OU, OU-exclusif (XOR), décalages de bits…
+
+À chaque opération, l'ALU met aussi à jour quelques **drapeaux d'état** (*flags*) qui résument le résultat sans qu'on ait à le relire : est-il **nul** (*zero*) ? **négatif** ? y a-t-il eu une **retenue** (*carry*) ou un **dépassement** de capacité (*overflow*) ? Ce sont ces drapeaux que le CPU consulte pour décider quoi faire ensuite — c'est exactement ce qui se cache derrière un `if (a > b)` en C : une soustraction, puis la lecture d'un drapeau.
+
+Pour travailler vite, l'ALU ne pioche pas directement dans la RAM : elle passe par une poignée de **registres internes** au CPU — à ne pas confondre avec les registres de périphériques vus plus bas — des cases ultra-rapides où sont posés les opérandes le temps du calcul.
 
 ## L'horloge — cadencer et économiser l'énergie
 
@@ -74,7 +81,7 @@ Plus la fréquence est élevée, plus le CPU exécute d'instructions par seconde
 
 | | Flash | RAM (SRAM) |
 |---|---|---|
-| **Contenu** | Programme compilé, constantes | Variables, pile, heap |
+| **Contenu** | Programme compilé, constantes | Variables, pile (mémoire des appels de fonctions) et heap (allocation dynamique) |
 | **Persistance** | Oui (survit à un reset) | Non (perdu à l'extinction) |
 | **Vitesse** | Plus lente | Très rapide |
 | **Taille ESP32-S3** | 8 Mo (externe) | 512 Ko interne |
@@ -87,9 +94,36 @@ const char msg[] PROGMEM = "Hello";
 int compteur = 0;
 ```
 
+## Le bus — l'autoroute de données partagée
+
+Le CPU, les mémoires et les périphériques ne sont pas reliés deux à deux par des fils dédiés : ils partagent un **bus**, un faisceau de pistes communes sur lequel tout le monde est branché. On y distingue en général trois faisceaux :
+
+- un **bus d'adresses** : le CPU y place l'adresse de la case qu'il veut lire ou écrire ;
+- un **bus de données** : la valeur y transite dans un sens ou dans l'autre ;
+- un **bus de contrôle** : quelques signaux qui précisent « je lis » ou « j'écris ».
+
+Comme la ligne est partagée, une règle absolue s'impose : **un seul composant a le droit de "parler" (imposer une tension) à la fois**. Si deux périphériques poussaient une valeur en même temps sur le bus de données — l'un forçant un 0, l'autre un 1 — on obtiendrait un court-circuit.
+
+Pour l'éviter, chaque composant se branche au bus via des **sorties trois états** : en plus de 0 et 1, elles disposent d'un état de **haute impédance** (*high-Z*) qui les déconnecte électriquement de la ligne. À tout instant, un seul émetteur est actif ; tous les autres sont en haute impédance, à l'écoute. C'est le bus d'adresses qui orchestre ce ballet : l'adresse émise par le CPU **sélectionne** le seul composant autorisé à répondre.
+
+```mermaid
+flowchart TB
+  CPU["CPU\n(pilote le bus)"]
+  BUS["Bus partagé — adresses · données · contrôle"]
+  RAM["RAM"]
+  PA["Périph. A\n(émetteur actif)"]
+  PB["Périph. B\n(haute impédance)"]
+  CPU --- BUS
+  BUS --- RAM
+  BUS --- PA
+  BUS --- PB
+```
+
 ## Les registres — interface logiciel/matériel
 
 Chaque périphérique est contrôlé via des **registres** : des cases mémoire à des adresses fixes. Écrire dans un registre allume une LED ; lire un registre retourne l'état d'un bouton.
+
+Comment une adresse retrouve-t-elle la bonne case ? Un circuit appelé **décodeur d'adresse** compare l'adresse présente sur le bus et n'active que la cellule correspondante ; toutes les autres restent en haute impédance. Le mécanisme est identique pour une case de RAM et pour un registre de périphérique : dans l'espace d'adressage du CPU, écrire une variable en mémoire et allumer une LED se ressemblent beaucoup — c'est la même opération « poser une valeur à telle adresse ».
 
 Arduino abstrait tout ça : `digitalWrite(LED, HIGH)` écrit dans le bon registre sans que tu aies à connaître son adresse. Mais derrière, c'est toujours un accès registre.
 
@@ -130,7 +164,7 @@ void setup() {
 | Caractéristique | Valeur |
 |---|---|
 | CPU | Xtensa LX7 dual-core 240 MHz |
-| RAM | 512 Ko SRAM + 8 Mo PSRAM optionnel |
+| RAM | 512 Ko SRAM + 8 Mo PSRAM (RAM externe supplémentaire) en option |
 | Flash | 8 Mo (externe via SPI) |
 | GPIO | 45 broches (dont 20 ADC-capable) |
 | Tension logique | **3,3 V** (≠ 5 V des Arduino classiques) |
@@ -141,8 +175,9 @@ void setup() {
 ## Résumé
 
 - Un µC = CPU + Flash + RAM + périphériques sur une seule puce — un **système sur puce** autonome.
-- Le CPU exécute des instructions cadencées par l'**horloge** (240 MHz pour l'ESP32-S3) ; couper l'horloge d'un périphérique inutilisé économise de l'énergie.
+- Le CPU ne fait au fond que **calculer** (via l'**ALU**, qui lève des drapeaux nul/négatif/retenue/dépassement) et **transférer** des données ; le tout cadencé par l'**horloge** (240 MHz pour l'ESP32-S3), dont couper la source sur un périphérique inutilisé économise de l'énergie.
 - Flash = programme (persistant) ; RAM = données en cours d'exécution (volatile).
-- Les périphériques (GPIO, ADC, Timer, DMA, RTC, Watchdog…) sont contrôlés via des **registres** — Arduino s'en charge pour toi.
+- Tout le monde partage un **bus** : un seul composant parle à la fois, les autres passent en **haute impédance**, et l'**adresse** sélectionne le destinataire.
+- Les périphériques (GPIO, ADC, Timer, DMA, RTC, Watchdog…) sont contrôlés via des **registres** — de simples cases à une adresse fixe, qu'Arduino manipule pour toi.
 - Une **interruption** permet de réagir immédiatement à un événement sans attendre le prochain passage dans `loop()`.
 - Tension logique ESP32-S3 : **3,3 V** (pas 5 V).

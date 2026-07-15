@@ -30,7 +30,7 @@ graph LR
 
 ### Principe
 
-UART est le bus le plus simple : **deux fils**, point à point, sans horloge partagée.
+UART est le bus le plus simple : **deux fils**, point à point (une liaison directe entre deux appareils seulement), sans horloge partagée.
 
 | Fil | Rôle |
 |---|---|
@@ -70,7 +70,7 @@ I2C relie **plusieurs périphériques** sur seulement **2 fils** grâce à un sy
 | **SDA** | Données (bidirectionnel) |
 | **SCL** | Horloge (générée par le maître) |
 
-Chaque composant I2C possède une **adresse 7 bits** unique (ex : `0x3C` pour un écran OLED SSD1306). Le maître (ESP32-S3) initie toujours la communication.
+Chaque composant I2C possède une **adresse 7 bits** unique (ex : `0x3C` pour un écran OLED SSD1306). Le **maître** (l'appareil qui dirige les échanges — ici l'ESP32-S3) initie toujours la communication ; les autres, les **esclaves**, ne répondent que lorsqu'il les sollicite.
 
 ```mermaid
 graph LR
@@ -91,7 +91,7 @@ graph LR
 
 - Capteurs (température, accéléromètre, IMU)
 - Petits écrans OLED
-- Mémoires EEPROM
+- Mémoires EEPROM (petite mémoire non volatile réinscriptible)
 - Cas où on chaîne plusieurs périphériques sur peu de broches
 
 ```cpp

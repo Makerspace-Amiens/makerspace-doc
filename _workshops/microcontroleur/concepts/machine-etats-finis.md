@@ -100,7 +100,7 @@ Chaque `case` gère **un seul état** : ce qu'il affiche, ce qu'il fait, et vers
 
 ### Pas d'OS, pas de processus
 
-Sur un µC Arduino, il n'y a **pas de système d'exploitation**. Pas de threads, pas de `sleep()` bloquant sans conséquence. Le `loop()` s'exécute en boucle infinie — toutes les décisions sur ce qu'il faut faire à chaque instant passent par le code.
+Sur un µC Arduino, il n'y a **pas de système d'exploitation**. Pas de threads (tâches exécutées en parallèle), pas de `sleep()` bloquant sans conséquence. Le `loop()` s'exécute en boucle infinie — toutes les décisions sur ce qu'il faut faire à chaque instant passent par le code.
 
 La FSM remplace ce qu'un OS ferait autrement : elle décide quel « mode » est actif et ce qu'il faut exécuter.
 
