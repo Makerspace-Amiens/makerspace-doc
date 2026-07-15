@@ -1,9 +1,9 @@
 ---
 layout: documentation
-hide_hero: false
+hide_hero: true
 hero_image: hero.png
 hero_darken: true
-image: hero.png
+image: image.webp
 component_toc: true
 doc_header: true
 
@@ -12,7 +12,7 @@ subtitle: Entrées et sorties tout-ou-rien — piloter une LED, lire un bouton
 description: Comprendre les GPIO numériques de l'ESP32-S3 — niveaux logiques, pull-up/pull-down et état flottant.
 author: Alban Petit
 
-todo: 20
+todo: 60
 ---
 
 ## Le numérique, c'est quoi ?
@@ -54,6 +54,26 @@ $$R = \frac{V_{alim} - V_f}{I} = \frac{3{,}3 - 2}{0{,}01} = 130\ \Omega$$
 
 Valeur normalisée : **150 Ω** (série E12).
 
+### Push-pull vs open-drain — deux façons de piloter une sortie
+
+Par défaut, `OUTPUT` configure la broche en **push-pull** : deux transistors internes permettent de tirer activement la broche à `HIGH` ou à `LOW`. C'est le mode utilisé jusqu'ici.
+
+Il existe un second mode, **open-drain** : la broche ne peut **que** tirer vers `LOW` (un seul transistor, côté masse). Pour lire ou produire un `HIGH`, il faut une résistance de tirage (interne ou externe) qui « relâche » la broche vers `HIGH` quand personne ne la tire vers le bas.
+
+```cpp
+pinMode(PIN, OUTPUT_OPEN_DRAIN);  // la broche ne peut que tirer vers 0 V
+digitalWrite(PIN, LOW);           // tire activement à 0 V
+digitalWrite(PIN, HIGH);          // relâche la broche (haute impédance)
+```
+
+| | Push-pull (`OUTPUT`) | Open-drain (`OUTPUT_OPEN_DRAIN`) |
+|---|---|---|
+| Peut tirer vers HIGH | Oui, activement | Non — nécessite un pull-up |
+| Peut tirer vers LOW | Oui, activement | Oui, activement |
+| Usage typique | LED, moteur, sortie numérique classique | Bus partagé (I2C), interfaçage avec un niveau logique différent |
+
+{% include message.html title="Pourquoi l'I2C utilise l'open-drain" message="Sur un bus I2C, plusieurs périphériques partagent les mêmes fils SDA/SCL. Si un seul poussait activement vers HIGH pendant qu'un autre tire vers LOW, ce serait un court-circuit. En open-drain, chacun ne peut que tirer vers LOW ou relâcher — jamais imposer un HIGH — d'où la résistance de pull-up partagée sur le bus (voir le concept [Les bus de communication](/workshops/microcontroleur/concepts/bus-communication/))." status="is-info" icon="fas fa-info-circle" %}
+
 ### Entrée — lire un bouton
 
 Une broche en entrée mesure le niveau de tension présent sur la broche.
@@ -69,9 +89,15 @@ int etat = digitalRead(BTN_PIN);  // retourne HIGH ou LOW
 Une broche en entrée non connectée à rien est dans un **état flottant** : sa tension est indéterminée, elle peut lire `HIGH` ou `LOW` de façon aléatoire selon les interférences électromagnétiques.
 
 ```mermaid
-graph LR
-  A["Broche GPIO\n(entrée)"] -->|"Non connectée"| B["État indéterminé ⚠️\noscille entre 0 et 1"]
+flowchart TD
+  A["pinMode(PIN, INPUT)\nsans pull-up ni pull-down"] --> B["Broche en haute impédance\n(quasiment aucun courant ne peut y circuler)"]
+  B --> C{"Un signal externe\nimpose-t-il une tension ?"}
+  C -->|"Non — rien de branché"| D["Tension flottante\ncapte le moindre bruit ambiant"]
+  D --> E["digitalRead() imprévisible\nLOW, HIGH, ou oscille sans raison"]
+  C -->|"Oui — via une résistance de rappel"| F["Tension définie et stable\nLOW ou HIGH garanti au repos"]
 ```
+
+Une broche en haute impédance n'a presque aucune résistance interne : la moindre interférence électromagnétique environnante (un câble voisin, le secteur 50 Hz, ta propre main qui s'approche) suffit à faire basculer sa lecture — d'où le terme « flottant » : rien ne fixe sa tension à une valeur précise.
 
 ### La solution : résistance de rappel
 
@@ -81,17 +107,21 @@ Une résistance de rappel (**pull**) force la broche à un niveau défini quand 
 
 La résistance relie la broche au **+3,3 V**. Au repos, la broche lit `HIGH`. Quand le bouton est pressé (connexion à GND), elle passe à `LOW`.
 
-```text
-3,3 V ──┬── R (10 kΩ) ──┐
-        │               │
-        └── Bouton ──── GND
-                        │
-                    Broche GPIO
+```mermaid
+graph LR
+  V33["3,3 V"] -->|"R (10 kΩ)"| NODE(("Broche GPIO"))
+  NODE -->|"Bouton"| GND["GND"]
 ```
 
 #### Pull-down — repos à LOW
 
 La résistance relie la broche au **GND**. Au repos, la broche lit `LOW`. Quand le bouton est pressé (connexion à +3,3 V), elle passe à `HIGH`.
+
+```mermaid
+graph LR
+  GND["GND"] -->|"R (10 kΩ)"| NODE(("Broche GPIO"))
+  NODE -->|"Bouton"| V33["3,3 V"]
+```
 
 ### Pull-up interne de l'ESP32-S3
 
@@ -104,6 +134,19 @@ pinMode(BTN_PIN, INPUT_PULLDOWN);  // pull-down interne activé
 ```
 
 Avec `INPUT_PULLUP` : le bouton doit connecter la broche à **GND** pour être détecté (logique inversée : `LOW` = pressé).
+
+## GPIO matrix — une broche n'est pas toujours un simple GPIO
+
+Au-delà de `digitalRead()`/`digitalWrite()`, une broche peut être prise en charge par un périphérique — UART, SPI, I2C, PWM (LEDC)... Sur beaucoup de microcontrôleurs, chaque fonction est câblée en dur sur des broches précises (« fonction alternative » fixe).
+
+L'ESP32-S3 est plus flexible : une **GPIO matrix** interne permet de router presque n'importe quel signal numérique de périphérique vers presque n'importe quelle broche, par logiciel.
+
+```cpp
+Serial1.begin(115200, SERIAL_8N1, 16, 17);  // UART1 routé sur GPIO16 (RX) / GPIO17 (TX)
+// une autre paire de broches fonctionnerait tout aussi bien
+```
+
+{% include message.html title="L'ADC échappe à la règle" message="Contrairement aux périphériques numériques (UART, SPI, I2C, PWM), l'ADC n'est pas routable via la GPIO matrix : chaque canal ADC1/ADC2 est câblé en dur sur des broches fixes — voir le concept [ADC & PWM](/workshops/microcontroleur/concepts/adc-pwm/)." status="is-info" icon="fas fa-info-circle" %}
 
 ## Courant maximum et protection des broches
 
@@ -119,6 +162,8 @@ Ne jamais connecter une charge inductive (moteur, relais) directement sur un GPI
 
 - GPIO = broche configurable en entrée (`INPUT`) ou sortie (`OUTPUT`).
 - Sortie : produit `0 V` (LOW) ou `3,3 V` (HIGH) — maximum ~12 mA.
+- Sortie **push-pull** (défaut) tire activement vers HIGH et LOW ; **open-drain** ne tire que vers LOW (utile pour un bus partagé comme l'I2C).
 - Entrée sans résistance de rappel → **état flottant** (lectures aléatoires).
 - `INPUT_PULLUP` / `INPUT_PULLDOWN` activent la résistance interne de l'ESP32-S3.
 - Avec pull-up : bouton branché entre GPIO et GND → `LOW` quand pressé.
+- La **GPIO matrix** route les périphériques numériques (UART, SPI, I2C, PWM) vers presque n'importe quelle broche — sauf l'ADC, câblé en dur.

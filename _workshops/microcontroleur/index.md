@@ -47,9 +47,9 @@ ressources:
 
 Bienvenue dans l'atelier **Microcontrôleurs** !
 
-Cet atelier guide les étudiants depuis les concepts fondamentaux (architecture d'un µC, GPIO, ADC, bus série) jusqu'à la réalisation d'un mini-jeu embarqué multijoueur sur **ESP32-S3**. La progression suit trois phases : cours magistral (4,5h), travaux dirigés sur breadboard (10,5h) et projet en binômes (Snake multijoueur + PCB soudé).
+Vous y trouverez les concepts fondamentaux d'un microcontrôleur (architecture d'un µC, GPIO, ADC, bus série) jusqu'à la réalisation d'un mini-jeu embarqué multijoueur sur **ESP32-S3**.
 
-## Ce que vous allez apprendre
+## Les compétences engagées
 
 - Comprendre l'architecture interne d'un microcontrôleur (CPU, mémoires, périphériques)
 - Piloter des entrées/sorties numériques et analogiques (GPIO, ADC, PWM)
@@ -71,4 +71,4 @@ Chaque notion est incarnée par une démo physique (LED, bouton, joystick affich
 
 ## Pourquoi ce projet ?
 
-Le mini-jeu type Gameboy est le fil rouge de l'atelier : simple à comprendre, riche à implémenter. Les TD construisent progressivement **Pong** (un périphérique ajouté par séance) ; le projet introduit **Snake** sur une mécanique neuve, et ajoute le multijoueur asymétrique navigateur/console. La machine à états finis (FSM), découverte au TD4 pour gérer les écrans menu/partie/fin, prépare directement les états réseau du projet.
+Le mini-jeu type Gameboy est le fil rouge de l'atelier : simple à comprendre, riche à implémenter. Les TD construisent progressivement **Pong** (un périphérique ajouté par séance) ; le projet introduit **Snake** sur une mécanique neuve, et ajoute le multijoueur asymétrique navigateur/console. La machine à états finis (FSM), pour gérer les écrans menu/partie/fin, prépare directement les états réseau du projet.
