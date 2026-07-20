@@ -58,6 +58,16 @@ Le framework **Arduino-ESP32** fournit trois éléments :
 
 L'IDE (Arduino IDE ou PlatformIO) orchestre ces outils en arrière-plan quand tu cliques sur *Téléverser* - mais la chaîne reste la même : **compiler → flasher → exécuter**.
 
+### Ce que fait vraiment le compilateur
+
+« Compiler » recouvre en réalité plusieurs étapes enchaînées :
+
+1. **Préprocesseur** : il traite les `#include` et `#define` - il colle le contenu des bibliothèques et remplace les macros.
+2. **Compilation** : chaque fichier C++ est traduit en **code objet** (instructions machine), séparément.
+3. **Édition de liens (*linker*)** : tous les fichiers objets et les bibliothèques sont assemblés en un seul **binaire**, en résolvant les références entre eux.
+
+Distinguer ces étapes aide à lire les erreurs : une **erreur de compilation** (étape 2) est une faute de syntaxe ou de type dans ton code ; une **erreur de link** (« *undefined reference* ») signale une fonction ou une bibliothèque manquante à l'étape 3.
+
 ## Flasher : écrire dans la mémoire persistante
 
 Flasher, c'est écrire le **binaire** compilé (le programme traduit en instructions machine - des 0 et des 1 exécutables par la puce) dans la **Flash** du microcontrôleur (voir [Architecture d'un microcontrôleur](/workshops/microcontroleur/concepts/architecture-microcontroleur/)). Contrairement à la RAM, la Flash retient son contenu hors tension : le programme redémarre automatiquement à chaque mise sous tension, sans intervention.
@@ -199,6 +209,7 @@ Le moniteur série est l'outil de débogage n°1 : `Serial.println()` affiche l'
 
 - Chaîne complète : code source → compilation (toolchain) → flashage (Flash) → exécution.
 - Arduino-ESP32 fournit le compilateur, le core (`pinMode`, `digitalWrite`…) et l'uploader.
+- Compiler = préprocesseur → compilation (code objet) → édition de liens (binaire) ; une erreur de link = fonction ou bibliothèque manquante.
 - `setup()` s'exécute une fois ; `loop()` tourne en boucle infinie jusqu'à la coupure d'alimentation.
 - Au reset : ROM bootloader (lit le strapping) → bootloader de second niveau → application (`setup`/`loop`).
 - Pas de système d'exploitation : pas de multitâche, `delay()` bloque tout le programme.
