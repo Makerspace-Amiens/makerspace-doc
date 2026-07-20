@@ -63,6 +63,18 @@ stateDiagram-v2
   GAME_OVER --> MENU : bouton RETRY pressé
 ```
 
+### La table de transitions
+
+Une FSM peut aussi se lire comme un **tableau** : pour chaque état (lignes) et chaque événement (colonnes), quel est l'état suivant ? C'est une façon rigoureuse de vérifier qu'aucun cas n'est oublié.
+
+| État \ Événement | START | vie == 0 | RETRY |
+|---|---|---|---|
+| **MENU** | PARTIE | - | - |
+| **PARTIE** | - | GAME_OVER | - |
+| **GAME_OVER** | - | - | MENU |
+
+Une case « - » signifie « l'événement est ignoré dans cet état ». Ce tableau se traduit ensuite directement en `switch/case`.
+
 ## Implémentation avec un `enum` + `switch`
 
 ### 1 - Déclarer les états
@@ -170,6 +182,42 @@ case GAME_OVER:
   break;
 ```
 
+## Un exemple complet : le feu tricolore
+
+Le feu de circulation est la FSM par excellence : trois états, des transitions purement **temporisées**, aucun bouton. Il rassemble tout ce qu'on vient de voir dans un programme complet et non bloquant.
+
+```mermaid
+stateDiagram-v2
+  [*] --> VERT
+  VERT --> ORANGE : après 5 s
+  ORANGE --> ROUGE : après 2 s
+  ROUGE --> VERT : après 5 s
+```
+
+```cpp
+enum Feu { VERT, ORANGE, ROUGE };
+Feu etat = VERT;
+unsigned long entreeEtat = 0;
+
+void allerVers(Feu nouvel) {
+  etat = nouvel;
+  entreeEtat = millis();
+  // action d'entrée : allumer la bonne LED une seule fois
+}
+
+void loop() {
+  unsigned long ecoule = millis() - entreeEtat;
+
+  switch (etat) {
+    case VERT:   if (ecoule > 5000) allerVers(ORANGE); break;
+    case ORANGE: if (ecoule > 2000) allerVers(ROUGE);  break;
+    case ROUGE:  if (ecoule > 5000) allerVers(VERT);   break;
+  }
+}
+```
+
+La `loop()` ne bloque jamais (aucun `delay()`) : le programme pourrait donc, en même temps, lire un bouton piéton ou animer un afficheur. C'est tout l'intérêt de coupler FSM et `millis()`.
+
 ## Exercice - dessiner la FSM du Pong
 
 Avant de coder le TD4, dessine sur papier la FSM du Pong :
@@ -190,5 +238,6 @@ Compare ensuite ta FSM avec celle du groupe - les différences de conception son
 - Implémentation Arduino : `enum` pour les états, `switch(etat)` dans la `loop()`.
 - Chaque `case` gère l'affichage, la logique et les transitions de son état.
 - La FSM élimine les booléens incompatibles et rend le code extensible.
-- Une FSM se combine avec `millis()` pour des **transitions temporisées**, et avec des **actions d'entrée** exécutées une seule fois par changement d'état.
+- Une FSM se représente aussi par une **table de transitions** (état × événement → état suivant), utile pour n'oublier aucun cas.
+- Une FSM se combine avec `millis()` pour des **transitions temporisées** (ex. le feu tricolore), et avec des **actions d'entrée** exécutées une seule fois par changement d'état.
 - Dans ce projet : FSM du jeu (TD4) → étendue aux états réseau (Projet).
