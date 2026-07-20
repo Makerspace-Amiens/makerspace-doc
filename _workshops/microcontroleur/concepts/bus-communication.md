@@ -56,9 +56,18 @@ UART est le bus le plus simple : **deux fils**, point à point (une liaison dire
 
 La vitesse est fixée à l'avance des deux côtés (**baud rate**, en bits/s). Valeur standard : **115 200 baud**.
 
-```text
-ESP32-S3 TX ──→ RX périphérique
-ESP32-S3 RX ←── TX périphérique
+```mermaid
+flowchart LR
+  subgraph ESP[ESP32-S3]
+    ETX[TX]
+    ERX[RX]
+  end
+  subgraph PER[Périphérique]
+    PRX[RX]
+    PTX[TX]
+  end
+  ETX -->|données| PRX
+  PTX -->|données| ERX
 ```
 
 {% include message.html title="Croisement obligatoire" message="TX d'un appareil se connecte au RX de l'autre, et inversement. Un câblage TX→TX ne fonctionne pas." status="is-info" icon="fas fa-info-circle" %}
