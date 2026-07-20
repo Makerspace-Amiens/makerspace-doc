@@ -149,6 +149,20 @@ void loop() {
 - `delay()` bloque le CPU car il n'y a **pas d'OS** pour exécuter autre chose pendant ce temps.
 - Ce même code, une fois compilé et flashé, tourne en **boucle infinie** tant que la carte est alimentée.
 
+## Quiz express
+
+**1. Quelles étapes transforment un `.ino` en programme qui s'exécute sur la puce ?**
+
+<details><summary>Voir la réponse</summary>Compilation (toolchain) → binaire → flashage dans la Flash → exécution.</details>
+
+**2. Pourquoi éviter `delay()` dans une `loop()` qui gère plusieurs tâches ?**
+
+<details><summary>Voir la réponse</summary>`delay()` bloque tout le programme pendant l'attente ; on utilise `millis()` pour agir sans bloquer.</details>
+
+**3. Que fait le ROM bootloader au reset ?**
+
+<details><summary>Voir la réponse</summary>Il lit les broches de strapping (dont GPIO0) pour choisir entre démarrage normal et mode téléversement.</details>
+
 ## Pour aller plus loin
 
 - [Chaîne d'outils & premier Blink](/workshops/microcontroleur/tutorials/toolchain-blink/)

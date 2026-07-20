@@ -77,6 +77,20 @@ Dans cet atelier, on utilise un microcontrôleur moderne et populaire : l'**ESP3
 
 Tu sais maintenant *à quoi sert* un microcontrôleur et *ce qu'il fait*. La prochaine étape est d'ouvrir le capot pour voir *comment* il est fait à l'intérieur — le processeur, les mémoires, les broches — dans le concept [Architecture d'un microcontrôleur](/workshops/microcontroleur/concepts/architecture-microcontroleur/).
 
+## Quiz express
+
+**1. Un microcontrôleur peut-il faire tourner plusieurs applications comme un ordinateur ?**
+
+<details><summary>Voir la réponse</summary>Non : il est conçu pour une seule tâche, répétée en boucle — c'est ce qui le rend simple, bon marché et économe.</details>
+
+**2. Quelles sont les trois étapes de sa boucle de fonctionnement ?**
+
+<details><summary>Voir la réponse</summary>Percevoir (capteurs) → décider (le programme) → agir (actionneurs).</details>
+
+**3. Qui écrit la partie « décider » ?**
+
+<details><summary>Voir la réponse</summary>Toi : sans programme, la puce reste inerte.</details>
+
 ## Pour aller plus loin
 
 Prêt à passer à la pratique ? Le premier tutoriel installe les outils et flashe ton tout premier programme :

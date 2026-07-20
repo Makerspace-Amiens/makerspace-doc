@@ -146,6 +146,20 @@ L'ESP32-S3 dispose de **8 canaux LEDC** (*LED Control*, le générateur de PWM m
 | Moteur DC | Duty cycle ∝ vitesse |
 | Buzzer | Fréquence audio → ton |
 
+## Quiz express
+
+**1. Que renvoie `analogRead()` sur une résolution de 12 bits ?**
+
+<details><summary>Voir la réponse</summary>Un entier de 0 à 4095 (soit 2¹² = 4096 valeurs).</details>
+
+**2. Comment convertir une lecture 0–4095 en angle 0–180° ?**
+
+<details><summary>Voir la réponse</summary>Avec `map(lecture, 0, 4095, 0, 180)` — et `constrain()` si la lecture peut déborder.</details>
+
+**3. Le PWM produit-il une vraie tension analogique ?**
+
+<details><summary>Voir la réponse</summary>Non : il alterne très vite entre 0 V et 3,3 V. C'est la valeur moyenne (fixée par le duty cycle) qui simule une tension intermédiaire.</details>
+
 ## Pour aller plus loin
 
 - [Entrées : boutons & joystick](/workshops/microcontroleur/tutorials/entrees-boutons-joystick/) — lire un joystick à l'ADC

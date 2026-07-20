@@ -209,6 +209,20 @@ Malgré la souplesse de la GPIO matrix, certaines broches ont un **rôle réserv
 
 Ne jamais connecter une charge inductive (moteur, relais — une charge qui stocke de l'énergie magnétique et renvoie des pics de tension à la coupure) directement sur un GPIO — toujours utiliser un transistor ou un **driver** (circuit de puissance intermédiaire).
 
+## Quiz express
+
+**1. Une entrée non connectée lit des valeurs aléatoires. Comment y remédier ?**
+
+<details><summary>Voir la réponse</summary>Avec une résistance de rappel (pull-up ou pull-down), interne (`INPUT_PULLUP`) ou externe, qui fixe un niveau défini au repos.</details>
+
+**2. Avec `INPUT_PULLUP`, quel niveau lit-on quand le bouton est pressé ?**
+
+<details><summary>Voir la réponse</summary>`LOW` (logique inversée) : le bouton relie la broche à GND.</details>
+
+**3. Pourquoi un `digitalRead()` compte-t-il parfois plusieurs appuis pour un seul ?**
+
+<details><summary>Voir la réponse</summary>À cause du rebond mécanique du contact ; on le filtre par un anti-rebond logiciel (avec `millis()`).</details>
+
 ## Pour aller plus loin
 
 - [Piloter les GPIO de l'ESP32](/docs/tutorials/electronics/esp32-gpio/)

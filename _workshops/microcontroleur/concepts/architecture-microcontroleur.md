@@ -186,6 +186,20 @@ void setup() {
 
 {% include message.html title="Attention : 3,3 V uniquement" message="L'ESP32-S3 fonctionne en logique **3,3 V**. Relier une broche GPIO directement à du 5 V (Arduino Uno, capteur alimenté en 5 V) peut endommager la puce de façon irréversible." status="is-danger" icon="fas fa-exclamation-triangle" %}
 
+## Quiz express
+
+**1. Quelle mémoire conserve le programme quand la carte est éteinte ?**
+
+<details><summary>Voir la réponse</summary>La Flash (persistante). La RAM, elle, est volatile : son contenu disparaît à l'extinction.</details>
+
+**2. À quoi sert un registre de périphérique ?**
+
+<details><summary>Voir la réponse</summary>À commander le périphérique : lire ou écrire à une adresse fixe (ex : allumer une LED, lire un bouton).</details>
+
+**3. Pourquoi un seul composant peut-il « parler » sur le bus à la fois ?**
+
+<details><summary>Voir la réponse</summary>Le bus est partagé : deux émetteurs simultanés (0 vs 1) créeraient un court-circuit. Les autres restent en haute impédance.</details>
+
 ## Pour aller plus loin
 
 - [Chaîne d'outils & premier Blink](/workshops/microcontroleur/tutorials/toolchain-blink/) — voir cette architecture à l'œuvre sur un premier programme

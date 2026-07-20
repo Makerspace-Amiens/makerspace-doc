@@ -205,6 +205,20 @@ flowchart TD
   D -->|Non| F["UART\n(debug, GPS, BT)"]
 ```
 
+## Quiz express
+
+**1. Combien de fils pour l'UART, l'I2C et le SPI ?**
+
+<details><summary>Voir la réponse</summary>UART : 2 (TX/RX) · I2C : 2 (SDA/SCL) · SPI : 4+ (MOSI, MISO, SCK, CS).</details>
+
+**2. Pourquoi faut-il des pull-ups sur un bus I2C ?**
+
+<details><summary>Voir la réponse</summary>Les lignes sont en open-drain : sans pull-up, elles ne peuvent jamais remonter à HIGH et le bus reste bloqué.</details>
+
+**3. Quel bus choisir pour un écran TFT rapide ?**
+
+<details><summary>Voir la réponse</summary>Le SPI : c'est le plus rapide (jusqu'à 80 MHz) et full-duplex.</details>
+
 ## Pour aller plus loin
 
 - [Écran SPI & game loop](/docs/tutorials/electronics/ecran-spi-game-loop/) — le SPI en pratique
