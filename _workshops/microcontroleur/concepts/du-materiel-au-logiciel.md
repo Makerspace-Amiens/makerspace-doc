@@ -155,6 +155,27 @@ void loop() {
 - `delay()` bloque le CPU car il n'y a **pas d'OS** pour exécuter autre chose pendant ce temps.
 - Ce même code, une fois compilé et flashé, tourne en **boucle infinie** tant que la carte est alimentée.
 
+## Ajouter une bibliothèque
+
+Rares sont les projets qui n'utilisent que le core Arduino : un écran, un capteur ou un servo s'appuient sur une **bibliothèque** tierce. On ne copie pas son code — on la déclare, et l'outil la télécharge :
+
+- **Arduino IDE** : menu *Croquis → Inclure une bibliothèque → Gérer les bibliothèques*, puis rechercher par nom.
+- **PlatformIO** : ajouter la dépendance dans `platformio.ini` :
+
+```ini
+lib_deps =
+    bodmer/TFT_eSPI
+    madhephaestus/ESP32Servo
+```
+
+Ensuite, un `#include <...>` dans le code suffit à utiliser la bibliothèque.
+
+## Déboguer avec le moniteur série
+
+Le moniteur série est l'outil de débogage n°1 : `Serial.println()` affiche l'état du programme en direct. Encore faut-il que les deux extrémités parlent à la **même vitesse**.
+
+{% include message.html title="Charabia à l'écran ?" message="Si le moniteur affiche des caractères illisibles, c'est presque toujours un baud rate qui ne correspond pas. Vérifie que la vitesse du moniteur série est identique à celle passée à `Serial.begin()` (souvent 115200)." status="is-warning" icon="fas fa-exclamation-triangle" %}
+
 ## Quiz express
 
 **1. Quelles étapes transforment un `.ino` en programme qui s'exécute sur la puce ?**
@@ -183,3 +204,5 @@ void loop() {
 - Pas de système d'exploitation : pas de multitâche, `delay()` bloque tout le programme.
 - Pour faire avancer plusieurs tâches en parallèle : comparer `millis()` à une date mémorisée plutôt qu'utiliser `delay()`.
 - Le Blink relie architecture, GPIO et absence d'OS en quatre lignes de code.
+- On ajoute une **bibliothèque** via le gestionnaire (Arduino IDE) ou `lib_deps` (PlatformIO), puis un `#include`.
+- Débogage : `Serial.println()` + un moniteur série au **même baud** que `Serial.begin()`.
