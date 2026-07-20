@@ -15,6 +15,12 @@ author: Alban Petit
 todo: 60
 ---
 
+## Toucher le monde réel
+
+Jusqu'ici, le microcontrôleur réfléchissait dans son coin. Mais une puce qui ne fait que calculer ne sert à rien : pour être utile, elle doit **agir** sur le monde (allumer une LED, faire tourner un moteur) et le **percevoir** (savoir si tu appuies sur un bouton).
+
+Ce contact avec le monde physique passe par les **broches** de la puce — ces petites pattes métalliques alignées sur les bords de la carte. Les plus polyvalentes s'appellent les **GPIO**, et ce concept est consacré aux plus simples d'entre elles : celles qui ne manipulent que du **tout-ou-rien**, comme un interrupteur mural qu'on bascule entre allumé et éteint. Pas de demi-mesure — et c'est justement ce qui rend le numérique si fiable.
+
 ## Le numérique, c'est quoi ?
 
 Le monde numérique ne connaît que **deux états** : `0` ou `1`, `LOW` ou `HIGH`, `0 V` ou `3,3 V`. Tout signal intermédiaire est interprété selon un seuil.
