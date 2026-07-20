@@ -12,8 +12,14 @@ subtitle: Toolchain, compilation, flash — et le premier programme
 description: Comprendre le cycle code → compilation → flash → exécution, et pourquoi setup()/loop() n'a pas besoin d'un système d'exploitation.
 author: Alban Petit
 
-todo: 20
+todo: 60
 ---
+
+## Du clavier à la LED
+
+Tu sais maintenant de quoi un microcontrôleur est fait et comment il parle au monde. Reste la question la plus concrète : quand tu écris du code et que tu cliques sur « Téléverser », que se passe-t-il *réellement* entre ton clavier et la LED qui se met à clignoter ?
+
+Ce concept suit ce voyage de bout en bout — du texte que tu tapes jusqu'aux électrons qui parcourent la puce.
 
 ## Du texte au courant électrique
 

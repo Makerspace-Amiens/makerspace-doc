@@ -12,8 +12,14 @@ subtitle: Structurer un programme embarqué avec des phases claires
 description: Comprendre et implémenter une machine à états finis (FSM) pour piloter les phases d'un jeu embarqué sur ESP32-S3.
 author: Alban Petit
 
-todo: 20
+todo: 60
 ---
+
+## Quand le code devient un plat de spaghettis
+
+Ton programme grossit. Une LED qui clignote tient en quatre lignes ; mais un jeu, lui, a plusieurs moments de vie — un menu d'accueil, une partie en cours, un écran de fin. Gérer ces phases « à la main » transforme vite le code en plat de spaghettis : des variables un peu partout, des `if/else` qui s'emmêlent, et des bugs difficiles à traquer.
+
+La **machine à états finis** (FSM) est l'outil classique de l'embarqué pour garder les idées claires. Commençons par voir ce qui se passe sans elle.
 
 ## Le problème sans FSM
 

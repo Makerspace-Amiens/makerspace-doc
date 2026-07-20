@@ -160,7 +160,6 @@ Serial1.begin(115200, SERIAL_8N1, 16, 17);  // UART1 routé sur GPIO16 (RX) / GP
 |---|---|
 | Courant max par broche | 40 mA (recommandé : ≤ 12 mA) |
 | Tension max en entrée | **3,3 V** |
-| Courant total GPIO | 1,2 A (toutes broches cumulées) |
 
 Ne jamais connecter une charge inductive (moteur, relais — une charge qui stocke de l'énergie magnétique et renvoie des pics de tension à la coupure) directement sur un GPIO — toujours utiliser un transistor ou un **driver** (circuit de puissance intermédiaire).
 

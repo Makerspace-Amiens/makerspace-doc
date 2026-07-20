@@ -12,8 +12,14 @@ subtitle: Lire un signal analogique, produire une tension variable
 description: Comprendre l'ADC (conversion analogique-numérique) et le PWM (modulation de largeur d'impulsion) sur l'ESP32-S3.
 author: Alban Petit
 
-todo: 20
+todo: 60
 ---
+
+## Au-delà du tout-ou-rien
+
+Le concept précédent — les [GPIO](/workshops/microcontroleur/concepts/gpio-monde-numerique/) — ne connaissait que deux valeurs : allumé ou éteint. Mais le monde réel est plein de nuances : un joystick n'est pas seulement « à gauche » ou « à droite », il se pousse plus ou moins loin ; une LED peut briller à mi-puissance ; un moteur tourner lentement.
+
+Pour manipuler ces valeurs intermédiaires, le microcontrôleur dispose de deux outils, tous deux au menu de ce concept : l'**ADC** pour *lire* une grandeur qui varie en continu, et le **PWM** pour en *simuler* une en sortie.
 
 ## Du continu au numérique — l'ADC
 
@@ -36,6 +42,8 @@ $$\text{valeur} = \frac{V_{entrée}}{V_{ref}} \times (2^{12} - 1) = \frac{V_{ent
 ```cpp
 int valeur = analogRead(PIN_JOYSTICK_X);  // retourne 0 à 4095
 ```
+
+{% include message.html title="L'ADC n'est pas parfaitement linéaire" message="La formule ci-dessus est une approximation pédagogique. En réalité, l'ADC de l'ESP32 est légèrement non linéaire — surtout près de 0 V et de 3,3 V — et sa pleine échelle dépend de l'atténuation configurée. Pour une mesure précise on calibre l'ADC ; pour lire un joystick, cette approximation suffit largement." status="is-info" icon="fas fa-info-circle" %}
 
 ### Échantillonnage
 

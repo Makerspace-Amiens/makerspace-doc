@@ -12,8 +12,14 @@ subtitle: UART, I2C, SPI — comprendre et choisir le bon protocole
 description: Découvrir les trois bus série les plus courants en électronique embarquée et savoir lequel choisir selon le cas d'usage.
 author: Alban Petit
 
-todo: 20
+todo: 60
 ---
+
+## Faire dialoguer les composants
+
+Un microcontrôleur est rarement seul : il pilote un écran, interroge un capteur de température, échange avec un module Bluetooth. Encore faut-il que tous ces composants se comprennent — qu'ils parlent la même langue.
+
+Ces langages communs, ce sont les **bus de communication**. Comme des humains, les composants ont plusieurs façons de discuter : à deux dans un couloir (**UART**), en petit groupe où chacun répond à son nom (**I2C**), ou par une ligne dédiée très rapide (**SPI**). Ce concept présente ces trois « dialectes » et t'aide à choisir le bon.
 
 ## Pourquoi des bus ?
 
