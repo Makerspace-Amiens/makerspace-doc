@@ -106,6 +106,35 @@ Wire.begin(SDA_PIN, SCL_PIN);  // démarre I2C
 // Les bibliothèques de capteurs utilisent Wire en arrière-plan
 ```
 
+### Câblage : les résistances de pull-up
+
+Les lignes SDA et SCL sont en **open-drain** (voir [GPIO & monde numérique](/workshops/microcontroleur/concepts/gpio-monde-numerique/)) : les composants ne peuvent que tirer la ligne vers `LOW` ou la relâcher. Il faut donc deux **résistances de pull-up** (typiquement 4,7 kΩ) reliant SDA et SCL au 3,3 V — sans elles, le bus reste bloqué et rien ne communique.
+
+{% include message.html title="Souvent déjà présentes" message="La plupart des modules I2C du commerce (écran OLED, capteur…) intègrent déjà leurs pull-ups. Si tu en chaînes plusieurs, une seule paire sur le bus suffit — inutile de les cumuler." status="is-info" icon="fas fa-info-circle" %}
+
+### Trouver l'adresse d'un périphérique — le scanner I2C
+
+On ne connaît pas toujours l'adresse d'un composant. Un petit programme balaie toutes les adresses possibles et affiche celles qui répondent :
+
+```cpp
+#include <Wire.h>
+
+void setup() {
+  Wire.begin(SDA_PIN, SCL_PIN);
+  Serial.begin(115200);
+  for (byte adr = 1; adr < 127; adr++) {
+    Wire.beginTransmission(adr);
+    if (Wire.endTransmission() == 0) {     // 0 = un composant a répondu
+      Serial.printf("Trouvé à 0x%02X\n", adr);
+    }
+  }
+}
+
+void loop() {}
+```
+
+C'est le premier réflexe de débogage quand un capteur I2C « ne répond pas ».
+
 ## SPI — Serial Peripheral Interface
 
 ### Principe
@@ -174,6 +203,6 @@ flowchart TD
 ## Résumé
 
 - **UART** : 2 fils, point à point, idéal pour le debug et les modules simples.
-- **I2C** : 2 fils, multi-esclaves par adressage, vitesse modérée.
+- **I2C** : 2 fils, multi-esclaves par adressage, vitesse modérée — exige deux **pull-ups** (~4,7 kΩ) sur SDA/SCL ; un **scanner** révèle les adresses présentes.
 - **SPI** : 4 fils, rapide, full-duplex — indispensable pour les écrans TFT.
 - Dans ce projet : **UART** pour le moniteur série (debug), **SPI** pour l'écran.
