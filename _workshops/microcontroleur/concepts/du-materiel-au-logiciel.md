@@ -26,6 +26,12 @@ Tu sais maintenant de quoi un microcontrôleur est fait et comment il parle au m
 
 Ce concept suit ce voyage de bout en bout — du texte que tu tapes jusqu'aux électrons qui parcourent la puce.
 
+**À la fin de ce concept, tu sauras :**
+
+- suivre le trajet code → compilation → flash → exécution ;
+- comprendre `setup()`/`loop()` et l'absence de système d'exploitation ;
+- éviter un `delay()` bloquant grâce à `millis()`.
+
 ## Du texte au courant électrique
 
 Un fichier `.ino` n'est que du texte. Pour qu'il fasse clignoter une LED, il doit traverser plusieurs transformations avant d'atteindre la puce :

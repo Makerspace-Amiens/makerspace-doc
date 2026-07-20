@@ -28,6 +28,12 @@ Ton programme grossit. Une LED qui clignote tient en quatre lignes ; mais un jeu
 
 La **machine à états finis** (FSM) est l'outil classique de l'embarqué pour garder les idées claires. Commençons par voir ce qui se passe sans elle.
 
+**À la fin de ce concept, tu sauras :**
+
+- reconnaître quand une machine à états finis est utile ;
+- l'implémenter avec un `enum` et un `switch` ;
+- gérer des transitions temporisées et des actions d'entrée.
+
 ## Le problème sans FSM
 
 Un programme embarqué simple enchaîne les actions ligne par ligne. Dès qu'il faut gérer plusieurs **phases** (menu d'accueil → partie en cours → game over), le code se remplit de `if/else` imbriqués et de variables booléennes qui s'accumulent :

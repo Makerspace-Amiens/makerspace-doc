@@ -26,6 +26,12 @@ Un microcontrôleur est rarement seul : il pilote un écran, interroge un capteu
 
 Ces langages communs, ce sont les **bus de communication**. Comme des humains, les composants ont plusieurs façons de discuter : à deux dans un couloir (**UART**), en petit groupe où chacun répond à son nom (**I2C**), ou par une ligne dédiée très rapide (**SPI**). Ce concept présente ces trois « dialectes » et t'aide à choisir le bon.
 
+**À la fin de ce concept, tu sauras :**
+
+- distinguer UART, I2C et SPI ;
+- choisir le bon bus selon le besoin ;
+- câbler un bus I2C (pull-ups) et trouver l'adresse d'un composant.
+
 ## Pourquoi des bus ?
 
 Relier chaque périphérique au CPU par une broche dédiée serait impraticable : un écran 240×240 nécessiterait des milliers de fils. Les **bus de communication** permettent de transmettre des données sur un petit nombre de fils en les envoyant bit par bit ou octet par octet.

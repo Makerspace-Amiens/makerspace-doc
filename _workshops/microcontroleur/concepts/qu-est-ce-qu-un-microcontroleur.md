@@ -34,6 +34,12 @@ Tu en as sûrement une dizaine à portée de main en ce moment :
 
 Aucun de ces objets n'a besoin d'un « vrai » ordinateur : ils ont besoin d'une petite puce bon marché, robuste, qui démarre instantanément et fait sa tâche en boucle. C'est exactement le rôle d'un microcontrôleur.
 
+**À la fin de ce concept, tu sauras :**
+
+- ce qu'est un microcontrôleur et où on en trouve au quotidien ;
+- décrire son cycle *percevoir → décider → agir* ;
+- ce qui le distingue d'un ordinateur classique.
+
 ## Percevoir, décider, agir
 
 Peu importe l'objet, un microcontrôleur fait toujours la même boucle en trois temps :
@@ -97,7 +103,7 @@ Prêt à passer à la pratique ? Le premier tutoriel installe les outils et flas
 
 - [Chaîne d'outils & premier Blink](/workshops/microcontroleur/tutorials/toolchain-blink/)
 
-## À retenir
+## Résumé
 
 - Un microcontrôleur est un **ordinateur miniature complet sur une seule puce**, présent dans une foule d'objets du quotidien.
 - Il fonctionne toujours en trois temps : **percevoir** (capteurs) → **décider** (le programme) → **agir** (actionneurs), en boucle.

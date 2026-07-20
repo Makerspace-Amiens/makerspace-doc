@@ -26,6 +26,12 @@ Le concept précédent — les [GPIO](/workshops/microcontroleur/concepts/gpio-m
 
 Pour manipuler ces valeurs intermédiaires, le microcontrôleur dispose de deux outils, tous deux au menu de ce concept : l'**ADC** pour *lire* une grandeur qui varie en continu, et le **PWM** pour en *simuler* une en sortie.
 
+**À la fin de ce concept, tu sauras :**
+
+- convertir une tension analogique en nombre avec l'ADC ;
+- simuler une tension variable en sortie avec le PWM ;
+- mettre une lecture à l'échelle avec `map()`.
+
 ## Du continu au numérique — l'ADC
 
 Le monde physique est **analogique** : une température, une position de joystick, une luminosité produisent des tensions qui varient en continu entre 0 V et 3,3 V. Le microcontrôleur, lui, ne comprend que des nombres entiers.

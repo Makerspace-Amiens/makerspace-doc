@@ -32,6 +32,12 @@ Techniquement, un **microcontrôleur** (µC) est un circuit intégré qui regrou
 
 À la différence d'un microprocesseur seul (qui a besoin de mémoire et de périphériques externes pour fonctionner), le µC est un **système sur puce** (*System on Chip*) : tout est intégré au même **silicium** (le matériau semi-conducteur dont est faite la puce). Il suffit d'une alimentation et d'une horloge pour qu'il fonctionne.
 
+**À la fin de ce concept, tu sauras :**
+
+- nommer les grands blocs d'un µC (CPU, mémoires, périphériques, bus) ;
+- expliquer le rôle du CPU, de l'ALU et de l'horloge ;
+- comprendre les registres, les interruptions et le partage du bus.
+
 ## Le schéma-bloc fil rouge
 
 {% include step-tuto.html

@@ -26,6 +26,12 @@ Jusqu'ici, le microcontrôleur réfléchissait dans son coin. Mais une puce qui 
 
 Ce contact avec le monde physique passe par les **broches** de la puce — ces petites pattes métalliques alignées sur les bords de la carte. Les plus polyvalentes s'appellent les **GPIO**, et ce concept est consacré aux plus simples d'entre elles : celles qui ne manipulent que du **tout-ou-rien**, comme un interrupteur mural qu'on bascule entre allumé et éteint. Pas de demi-mesure — et c'est justement ce qui rend le numérique si fiable.
 
+**À la fin de ce concept, tu sauras :**
+
+- configurer une broche en entrée ou en sortie ;
+- éviter l'état flottant avec un pull-up ou un pull-down ;
+- lire un bouton proprement (anti-rebond) et repérer les broches à éviter.
+
 ## Le numérique, c'est quoi ?
 
 Le monde numérique ne connaît que **deux états** : `0` ou `1`, `LOW` ou `HIGH`, `0 V` ou `3,3 V`. Tout signal intermédiaire est interprété selon un seuil.
