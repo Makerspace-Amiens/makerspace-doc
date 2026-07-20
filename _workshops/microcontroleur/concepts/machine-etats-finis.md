@@ -174,6 +174,10 @@ Avant de coder le TD4, dessine sur papier la FSM du Pong :
 
 Compare ensuite ta FSM avec celle du groupe — les différences de conception sont souvent révélatrices.
 
+## Pour aller plus loin
+
+- [Collisions & FSM : le Pong](/workshops/microcontroleur/tutorials/collisions-fsm-pong/) — mettre la FSM en œuvre dans un jeu
+
 ## Résumé
 
 - Une FSM = états + transitions + un seul état actif à la fois.

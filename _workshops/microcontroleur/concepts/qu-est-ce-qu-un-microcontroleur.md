@@ -77,6 +77,12 @@ Dans cet atelier, on utilise un microcontrôleur moderne et populaire : l'**ESP3
 
 Tu sais maintenant *à quoi sert* un microcontrôleur et *ce qu'il fait*. La prochaine étape est d'ouvrir le capot pour voir *comment* il est fait à l'intérieur — le processeur, les mémoires, les broches — dans le concept [Architecture d'un microcontrôleur](/workshops/microcontroleur/concepts/architecture-microcontroleur/).
 
+## Pour aller plus loin
+
+Prêt à passer à la pratique ? Le premier tutoriel installe les outils et flashe ton tout premier programme :
+
+- [Chaîne d'outils & premier Blink](/workshops/microcontroleur/tutorials/toolchain-blink/)
+
 ## À retenir
 
 - Un microcontrôleur est un **ordinateur miniature complet sur une seule puce**, présent dans une foule d'objets du quotidien.

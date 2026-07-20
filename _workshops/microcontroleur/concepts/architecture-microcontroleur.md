@@ -186,6 +186,10 @@ void setup() {
 
 {% include message.html title="Attention : 3,3 V uniquement" message="L'ESP32-S3 fonctionne en logique **3,3 V**. Relier une broche GPIO directement à du 5 V (Arduino Uno, capteur alimenté en 5 V) peut endommager la puce de façon irréversible." status="is-danger" icon="fas fa-exclamation-triangle" %}
 
+## Pour aller plus loin
+
+- [Chaîne d'outils & premier Blink](/workshops/microcontroleur/tutorials/toolchain-blink/) — voir cette architecture à l'œuvre sur un premier programme
+
 ## Résumé
 
 - Un µC = CPU + Flash + RAM + périphériques sur une seule puce — un **système sur puce** autonome.

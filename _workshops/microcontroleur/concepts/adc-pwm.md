@@ -146,6 +146,11 @@ L'ESP32-S3 dispose de **8 canaux LEDC** (*LED Control*, le générateur de PWM m
 | Moteur DC | Duty cycle ∝ vitesse |
 | Buzzer | Fréquence audio → ton |
 
+## Pour aller plus loin
+
+- [Entrées : boutons & joystick](/workshops/microcontroleur/tutorials/entrees-boutons-joystick/) — lire un joystick à l'ADC
+- [Piloter un servomoteur](/docs/tutorials/electronics/servomotor/) — le PWM en action
+
 ## Résumé
 
 - L'ADC convertit une tension (0–3,3 V) en entier (0–4095) sur 12 bits.

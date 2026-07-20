@@ -149,6 +149,11 @@ void loop() {
 - `delay()` bloque le CPU car il n'y a **pas d'OS** pour exécuter autre chose pendant ce temps.
 - Ce même code, une fois compilé et flashé, tourne en **boucle infinie** tant que la carte est alimentée.
 
+## Pour aller plus loin
+
+- [Chaîne d'outils & premier Blink](/workshops/microcontroleur/tutorials/toolchain-blink/)
+- [Le port série sous VS Code](/docs/tutorials/electronics/vscode-port-serie/)
+
 ## Résumé
 
 - Chaîne complète : code source → compilation (toolchain) → flashage (Flash) → exécution.

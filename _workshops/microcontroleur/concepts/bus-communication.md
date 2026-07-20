@@ -205,6 +205,12 @@ flowchart TD
   D -->|Non| F["UART\n(debug, GPS, BT)"]
 ```
 
+## Pour aller plus loin
+
+- [Écran SPI & game loop](/docs/tutorials/electronics/ecran-spi-game-loop/) — le SPI en pratique
+- [Écran OLED SSD1306 (I2C)](/docs/tutorials/electronics/esp32-ssd1306-oled/) — l'I2C en pratique
+- [Le port série sous VS Code](/docs/tutorials/electronics/vscode-port-serie/) — l'UART pour déboguer
+
 ## Résumé
 
 - **UART** : 2 fils, point à point, idéal pour le debug et les modules simples.

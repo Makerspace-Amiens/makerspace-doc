@@ -209,6 +209,11 @@ Malgré la souplesse de la GPIO matrix, certaines broches ont un **rôle réserv
 
 Ne jamais connecter une charge inductive (moteur, relais — une charge qui stocke de l'énergie magnétique et renvoie des pics de tension à la coupure) directement sur un GPIO — toujours utiliser un transistor ou un **driver** (circuit de puissance intermédiaire).
 
+## Pour aller plus loin
+
+- [Piloter les GPIO de l'ESP32](/docs/tutorials/electronics/esp32-gpio/)
+- [Entrées : boutons & joystick](/workshops/microcontroleur/tutorials/entrees-boutons-joystick/)
+
 ## Résumé
 
 - GPIO = broche configurable en entrée (`INPUT`) ou sortie (`OUTPUT`).
