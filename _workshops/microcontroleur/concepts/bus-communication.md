@@ -63,6 +63,17 @@ ESP32-S3 RX ←── TX périphérique
 
 {% include message.html title="Croisement obligatoire" message="TX d'un appareil se connecte au RX de l'autre, et inversement. Un câblage TX→TX ne fonctionne pas." status="is-info" icon="fas fa-info-circle" %}
 
+### Anatomie d'une trame
+
+Sans horloge partagée, comment le récepteur sait-il quand lire ? Par convention : la ligne est au repos à `HIGH`, et chaque octet est encadré de bits de synchronisation.
+
+- un **bit de start** (passage à `LOW`) annonce le début ;
+- les **bits de données** (8 le plus souvent), du poids faible au poids fort ;
+- un **bit de parité** optionnel (contrôle d'erreur) ;
+- un ou deux **bits de stop** (retour à `HIGH`).
+
+C'est ce que résume la notation **`8N1`** : 8 bits de données, `N`o parité, 1 bit de stop. Les deux extrémités doivent partager exactement le même format **et** la même vitesse, sinon les octets sont mal découpés.
+
 ### Usage principal
 
 - **Moniteur série** (debug via USB)
@@ -95,6 +106,18 @@ graph LR
   M -->|"même bus"| C2["OLED 0x3C"]
   M -->|"même bus"| C3["RTC 0x68"]
 ```
+
+### Le déroulement d'un échange
+
+Un échange I2C suit toujours le même rituel, orchestré par le maître :
+
+1. **Condition de start** : le maître prend la main sur le bus.
+2. **Adresse + bit R/W** : il émet l'adresse 7 bits du composant visé, suivie d'un bit « lecture ou écriture ».
+3. **ACK** : l'esclave concerné répond par un accusé de réception. Un silence (NACK) signifie « personne à cette adresse ».
+4. **Données** : les octets circulent, chacun confirmé par un ACK.
+5. **Condition de stop** : le maître libère le bus.
+
+C'est ce système d'accusé de réception qui permet au scanner d'adresses (plus bas) de savoir « qui est là ».
 
 ### Vitesses standard
 
@@ -236,4 +259,5 @@ flowchart TD
 - **UART** : 2 fils, point à point, idéal pour le debug et les modules simples.
 - **I2C** : 2 fils, multi-esclaves par adressage, vitesse modérée - exige deux **pull-ups** (~4,7 kΩ) sur SDA/SCL ; un **scanner** révèle les adresses présentes.
 - **SPI** : 4 fils, rapide, full-duplex - indispensable pour les écrans TFT.
+- Bas niveau : une trame UART encadre chaque octet (start / données / stop, `8N1`) ; un échange I2C = start → adresse+R/W → ACK → données → stop.
 - Dans ce projet : **UART** pour le moniteur série (debug), **SPI** pour l'écran.
