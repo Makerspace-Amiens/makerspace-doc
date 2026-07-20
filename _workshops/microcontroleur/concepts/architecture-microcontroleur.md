@@ -209,6 +209,8 @@ void setup() {
 }
 ```
 
+Le mot-clé **`IRAM_ATTR`** demande au compilateur de placer la fonction d'interruption dans la **RAM interne** (l'IRAM) plutôt qu'en Flash. Pourquoi ? Sur l'ESP32-S3, le code réside normalement en Flash et n'est lu qu'à la demande via un cache. Or une interruption peut survenir à un instant où la Flash est momentanément indisponible (pendant une écriture, par exemple) : si la fonction s'y trouvait, la puce planterait. En la forçant en IRAM, on garantit qu'elle est **toujours accessible et rapide**. Sur ESP32, toute fonction d'interruption (*ISR*) doit donc être marquée `IRAM_ATTR`.
+
 {% include message.html title="Une interruption reste courte" message="Le code d'une interruption doit être minimal (incrémenter une variable, positionner un drapeau) : tant qu'il s'exécute, le reste du programme - y compris d'autres interruptions - est suspendu." status="is-info" icon="fas fa-info-circle" %}
 
 ## L'ESP32-S3 en bref
