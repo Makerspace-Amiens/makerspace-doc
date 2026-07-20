@@ -12,7 +12,12 @@ subtitle: CPU, mémoires, périphériques — comprendre le schéma-bloc
 description: Comprendre le CPU, l'horloge, les mémoires Flash/RAM, les registres, les principaux périphériques et les interruptions d'un microcontrôleur, à travers l'ESP32-S3.
 author: Alban Petit
 
+difficulty: 2
 todo: 90
+
+prerequisites:
+  - label: Qu'est-ce qu'un microcontrôleur ?
+    link: /workshops/microcontroleur/concepts/qu-est-ce-qu-un-microcontroleur/
 ---
 
 ## Ouvrons le capot

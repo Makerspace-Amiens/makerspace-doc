@@ -12,7 +12,14 @@ subtitle: Structurer un programme embarqué avec des phases claires
 description: Comprendre et implémenter une machine à états finis (FSM) pour piloter les phases d'un jeu embarqué sur ESP32-S3.
 author: Alban Petit
 
+difficulty: 3
 todo: 60
+
+prerequisites:
+  - label: Du matériel au logiciel
+    link: /workshops/microcontroleur/concepts/du-materiel-au-logiciel/
+  - label: GPIO & monde numérique
+    link: /workshops/microcontroleur/concepts/gpio-monde-numerique/
 ---
 
 ## Quand le code devient un plat de spaghettis

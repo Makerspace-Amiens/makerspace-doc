@@ -12,7 +12,12 @@ subtitle: Toolchain, compilation, flash — et le premier programme
 description: Comprendre le cycle code → compilation → flash → exécution, et pourquoi setup()/loop() n'a pas besoin d'un système d'exploitation.
 author: Alban Petit
 
+difficulty: 1
 todo: 60
+
+prerequisites:
+  - label: Architecture d'un microcontrôleur
+    link: /workshops/microcontroleur/concepts/architecture-microcontroleur/
 ---
 
 ## Du clavier à la LED

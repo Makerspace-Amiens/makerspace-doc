@@ -12,7 +12,12 @@ subtitle: Un ordinateur miniature complet, caché dans les objets du quotidien
 description: Découvrir sans jargon ce qu'est un microcontrôleur — un mini-ordinateur sur une puce qui perçoit, décide et agit.
 author: Alban Petit
 
+difficulty: 0
 todo: 40
+
+prerequisites:
+  - label: Aucun pré-requis nécessaire
+    link: ""
 ---
 
 ## Tu en côtoies des dizaines sans le savoir

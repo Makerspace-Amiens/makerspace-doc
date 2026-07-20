@@ -12,7 +12,12 @@ subtitle: Lire un signal analogique, produire une tension variable
 description: Comprendre l'ADC (conversion analogique-numérique) et le PWM (modulation de largeur d'impulsion) sur l'ESP32-S3.
 author: Alban Petit
 
+difficulty: 3
 todo: 60
+
+prerequisites:
+  - label: GPIO & monde numérique
+    link: /workshops/microcontroleur/concepts/gpio-monde-numerique/
 ---
 
 ## Au-delà du tout-ou-rien

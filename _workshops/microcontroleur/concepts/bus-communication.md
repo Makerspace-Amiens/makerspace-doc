@@ -12,7 +12,12 @@ subtitle: UART, I2C, SPI — comprendre et choisir le bon protocole
 description: Découvrir les trois bus série les plus courants en électronique embarquée et savoir lequel choisir selon le cas d'usage.
 author: Alban Petit
 
+difficulty: 3
 todo: 60
+
+prerequisites:
+  - label: GPIO & monde numérique
+    link: /workshops/microcontroleur/concepts/gpio-monde-numerique/
 ---
 
 ## Faire dialoguer les composants

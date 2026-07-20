@@ -12,7 +12,12 @@ subtitle: Entrées et sorties tout-ou-rien — piloter une LED, lire un bouton
 description: Comprendre les GPIO numériques de l'ESP32-S3 — niveaux logiques, pull-up/pull-down et état flottant.
 author: Alban Petit
 
+difficulty: 2
 todo: 60
+
+prerequisites:
+  - label: Architecture d'un microcontrôleur
+    link: /workshops/microcontroleur/concepts/architecture-microcontroleur/
 ---
 
 ## Toucher le monde réel
