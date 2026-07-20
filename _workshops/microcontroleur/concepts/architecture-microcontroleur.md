@@ -88,6 +88,15 @@ Plus la fréquence est élevée, plus le CPU exécute d'instructions par seconde
 
 {% include message.html title="Éteindre l'horloge pour économiser" message="Chaque périphérique (UART, ADC, Wi-Fi…) peut avoir sa propre horloge activée ou coupée indépendamment par logiciel. Désactiver l'horloge d'un périphérique inutilisé est l'un des leviers principaux pour réduire la consommation d'un projet sur batterie — c'est ce que font les modes veille (deep sleep) de l'ESP32-S3." status="is-info" icon="fas fa-info-circle" %}
 
+### Dormir pour durer — les modes veille
+
+Pour un projet sur batterie, le microcontrôleur passe le plus clair de son temps à ne rien faire d'utile. Plutôt que de tourner à vide, il peut **dormir** :
+
+- **Light sleep** : le CPU est suspendu mais la RAM et l'état sont conservés ; réveil quasi instantané.
+- **Deep sleep** : presque tout est éteint sauf un petit domaine (RTC) ; la consommation tombe à quelques microampères, mais le programme **redémarre** au réveil (déclenché par un timer, une broche…).
+
+C'est ce qui permet à un capteur sans fil de tenir des mois, voire des années, sur une simple pile.
+
 ## Mémoires — Flash vs RAM
 
 | | Flash | RAM (SRAM) |
@@ -183,7 +192,7 @@ void setup() {
 
 | Caractéristique | Valeur |
 |---|---|
-| CPU | Xtensa LX7 dual-core 240 MHz |
+| CPU | Xtensa LX7 dual-core **32 bits**, 240 MHz |
 | RAM | 512 Ko SRAM + 8 Mo PSRAM (RAM externe supplémentaire) en option |
 | Flash | 8 Mo (externe via SPI) |
 | GPIO | 45 broches (dont 20 ADC-capable) |
@@ -218,4 +227,5 @@ void setup() {
 - Tout le monde partage un **bus** : un seul composant parle à la fois, les autres passent en **haute impédance**, et l'**adresse** sélectionne le destinataire.
 - Les périphériques (GPIO, ADC, Timer, DMA, RTC, Watchdog…) sont contrôlés via des **registres** — de simples cases à une adresse fixe, qu'Arduino manipule pour toi.
 - Une **interruption** permet de réagir immédiatement à un événement sans attendre le prochain passage dans `loop()`.
+- Les **modes veille** (light/deep sleep) coupent tout ou partie de la puce pour tenir longtemps sur batterie.
 - Tension logique ESP32-S3 : **3,3 V** (pas 5 V).
