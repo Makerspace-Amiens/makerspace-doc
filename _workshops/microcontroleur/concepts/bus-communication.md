@@ -13,7 +13,7 @@ description: Découvrir les trois bus série les plus courants en électronique 
 author: Alban Petit
 
 difficulty: 3
-todo: 60
+todo: 90
 
 prerequisites:
   - label: GPIO & monde numérique

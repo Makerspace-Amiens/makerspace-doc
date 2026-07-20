@@ -13,7 +13,7 @@ description: Comprendre le cycle code → compilation → flash → exécution, 
 author: Alban Petit
 
 difficulty: 1
-todo: 60
+todo: 90
 
 prerequisites:
   - label: Architecture d'un microcontrôleur

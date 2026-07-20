@@ -13,7 +13,7 @@ description: Découvrir sans jargon ce qu'est un microcontrôleur — un mini-or
 author: Alban Petit
 
 difficulty: 0
-todo: 40
+todo: 90
 
 prerequisites:
   - label: Aucun pré-requis nécessaire

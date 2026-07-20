@@ -13,7 +13,7 @@ description: Comprendre les GPIO numériques de l'ESP32-S3 — niveaux logiques,
 author: Alban Petit
 
 difficulty: 2
-todo: 60
+todo: 90
 
 prerequisites:
   - label: Architecture d'un microcontrôleur

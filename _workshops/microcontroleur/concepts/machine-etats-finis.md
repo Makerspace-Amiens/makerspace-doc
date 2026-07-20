@@ -13,7 +13,7 @@ description: Comprendre et implémenter une machine à états finis (FSM) pour p
 author: Alban Petit
 
 difficulty: 3
-todo: 60
+todo: 90
 
 prerequisites:
   - label: Du matériel au logiciel

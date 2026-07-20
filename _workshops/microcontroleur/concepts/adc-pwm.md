@@ -13,7 +13,7 @@ description: Comprendre l'ADC (conversion analogique-numérique) et le PWM (modu
 author: Alban Petit
 
 difficulty: 3
-todo: 60
+todo: 90
 
 prerequisites:
   - label: GPIO & monde numérique
