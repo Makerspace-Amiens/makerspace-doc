@@ -141,6 +141,33 @@ pinMode(BTN_PIN, INPUT_PULLDOWN);  // pull-down interne activé
 
 Avec `INPUT_PULLUP` : le bouton doit connecter la broche à **GND** pour être détecté (logique inversée : `LOW` = pressé).
 
+## Lire un bouton de façon fiable — l'anti-rebond
+
+Quand tu presses un bouton mécanique, le contact ne s'établit pas net : les lamelles métalliques **rebondissent** pendant quelques millisecondes, générant une rafale de `HIGH`/`LOW` avant de se stabiliser. Un `digitalRead()` naïf voit alors *plusieurs* appuis là où tu n'en as fait qu'un.
+
+La parade la plus simple est logicielle : après un changement d'état, on **ignore** les lectures pendant un court délai (20 à 50 ms), grâce à `millis()` (le nombre de millisecondes écoulées depuis le démarrage), le temps que le contact se stabilise.
+
+```cpp
+const unsigned long ANTIREBOND = 30;   // ms
+int dernierEtat = HIGH;
+unsigned long dernierChangement = 0;
+
+void loop() {
+  int etat = digitalRead(BTN_PIN);      // INPUT_PULLUP : LOW = pressé
+
+  if (etat != dernierEtat) {
+    dernierChangement = millis();       // le signal vient de bouger
+    dernierEtat = etat;
+  }
+
+  if (millis() - dernierChangement > ANTIREBOND && etat == LOW) {
+    // appui confirmé : stable depuis 30 ms
+  }
+}
+```
+
+{% include message.html title="Anti-rebond matériel" message="On peut aussi filtrer le rebond côté électronique (condensateur ~100 nF en parallèle du bouton, ou trigger de Schmitt). Sur un microcontrôleur, l'anti-rebond logiciel suffit néanmoins dans l'immense majorité des cas." status="is-info" icon="fas fa-info-circle" %}
+
 ## GPIO matrix — une broche n'est pas toujours un simple GPIO
 
 Au-delà de `digitalRead()`/`digitalWrite()`, une broche peut être prise en charge par un périphérique — UART, SPI, I2C, PWM (LEDC)... Sur beaucoup de microcontrôleurs, chaque fonction est câblée en dur sur des broches précises (« fonction alternative » fixe).
@@ -153,6 +180,20 @@ Serial1.begin(115200, SERIAL_8N1, 16, 17);  // UART1 routé sur GPIO16 (RX) / GP
 ```
 
 {% include message.html title="L'ADC échappe à la règle" message="Contrairement aux périphériques numériques (UART, SPI, I2C, PWM), l'ADC n'est pas routable via la GPIO matrix : chaque canal ADC1/ADC2 est câblé en dur sur des broches fixes — voir le concept [ADC & PWM](/workshops/microcontroleur/concepts/adc-pwm/)." status="is-info" icon="fas fa-info-circle" %}
+
+## Toutes les broches ne se valent pas
+
+Malgré la souplesse de la GPIO matrix, certaines broches ont un **rôle réservé** au démarrage ou au fonctionnement interne de l'ESP32-S3. Les détourner en GPIO ordinaire peut empêcher la carte de démarrer, de se flasher ou de communiquer en USB.
+
+| Broches | Rôle réservé | Précaution |
+|---|---|---|
+| **GPIO 0, 3, 45, 46** | *Strapping* — lues au reset pour choisir le mode de boot | Éviter, ou ne rien y imposer comme niveau au démarrage |
+| **GPIO 19, 20** | USB natif (D− / D+) | Éviter si tu utilises l'USB (flash, port série) |
+| **GPIO 43, 44** | UART0 par défaut (TX / RX du moniteur série) | Libres si le port série n'est pas utilisé, sinon à éviter |
+| **GPIO 26–32** | Reliées à la Flash SPI interne | **Ne jamais utiliser** |
+| **GPIO 33–37** | Utilisées par la PSRAM sur les modules « octal » | Éviter sur les modules équipés de PSRAM |
+
+{% include message.html title="En cas de doute, consulte le brochage de ta carte" message="Le nombre exact de broches libres dépend du module ESP32-S3 précis (avec ou sans PSRAM octal). Le *pinout* officiel de ta carte indique quelles broches sont réellement disponibles." status="is-warning" icon="fas fa-exclamation-triangle" %}
 
 ## Courant maximum et protection des broches
 
@@ -172,3 +213,5 @@ Ne jamais connecter une charge inductive (moteur, relais — une charge qui stoc
 - `INPUT_PULLUP` / `INPUT_PULLDOWN` activent la résistance interne de l'ESP32-S3.
 - Avec pull-up : bouton branché entre GPIO et GND → `LOW` quand pressé.
 - La **GPIO matrix** route les périphériques numériques (UART, SPI, I2C, PWM) vers presque n'importe quelle broche — sauf l'ADC, câblé en dur.
+- Un bouton mécanique **rebondit** : filtrer avec un anti-rebond logiciel (`millis()`) pour ne pas compter plusieurs appuis.
+- Certaines broches sont **réservées** (strapping, Flash SPI, USB) — vérifier le brochage de la carte avant de câbler.
