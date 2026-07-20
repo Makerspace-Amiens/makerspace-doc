@@ -1,9 +1,9 @@
 ---
 layout: documentation
-hide_hero: false
-hero_image: hero.png
+hide_hero: true
+hero_image: image.jpg
 hero_darken: true
-image: hero.png
+image: image.jpg
 component_toc: true
 doc_header: true
 
