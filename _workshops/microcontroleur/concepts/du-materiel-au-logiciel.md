@@ -86,6 +86,32 @@ Sur un ordinateur, un programme est un **processus** parmi d'autres, géré par 
 
 C'est pour cette raison que la structuration du code (game loop non bloquante, [machine à états finis](/workshops/microcontroleur/concepts/machine-etats-finis/)) devient essentielle dès que le programme gère plusieurs tâches à la fois.
 
+## Faire plusieurs choses à la fois — `millis()`
+
+Le défaut de `delay()` : pendant qu'il attend, **rien d'autre ne s'exécute**. Impossible de lire un bouton, rafraîchir un écran et faire clignoter une LED « en même temps » avec des `delay()`.
+
+La solution est de ne jamais bloquer : au lieu d'attendre, on **regarde l'heure**. `millis()` renvoie le nombre de millisecondes écoulées depuis le démarrage. En mémorisant la date de la dernière action, on décide s'il est temps d'agir — sans jamais figer le programme.
+
+```cpp
+unsigned long dernierClignotement = 0;
+const unsigned long INTERVALLE = 500;  // ms
+int etatLed = LOW;
+
+void loop() {
+  // ... ici, le reste du programme tourne librement (boutons, écran…)
+
+  if (millis() - dernierClignotement >= INTERVALLE) {
+    dernierClignotement = millis();
+    etatLed = !etatLed;
+    digitalWrite(LED_PIN, etatLed);
+  }
+}
+```
+
+Ce motif — comparer `millis()` à une date mémorisée — est le fondement de la **game loop non bloquante** et se combine naturellement avec la [machine à états finis](/workshops/microcontroleur/concepts/machine-etats-finis/).
+
+{% include message.html title="delay() reste utile" message="Pour une pause courte et unique (initialiser un composant, un petit délai au démarrage), `delay()` est parfaitement acceptable. C'est dans la `loop()`, quand plusieurs choses doivent avancer en parallèle, qu'il faut l'éviter." status="is-info" icon="fas fa-info-circle" %}
+
 ## Blink, commenté ligne par ligne
 
 Le programme le plus simple relie tous les concepts vus jusqu'ici :
@@ -114,4 +140,5 @@ void loop() {
 - Arduino-ESP32 fournit le compilateur, le core (`pinMode`, `digitalWrite`…) et l'uploader.
 - `setup()` s'exécute une fois ; `loop()` tourne en boucle infinie jusqu'à la coupure d'alimentation.
 - Pas de système d'exploitation : pas de multitâche, `delay()` bloque tout le programme.
+- Pour faire avancer plusieurs tâches en parallèle : comparer `millis()` à une date mémorisée plutôt qu'utiliser `delay()`.
 - Le Blink relie architecture, GPIO et absence d'OS en quatre lignes de code.

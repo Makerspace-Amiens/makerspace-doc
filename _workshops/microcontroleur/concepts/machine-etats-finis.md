@@ -132,6 +132,31 @@ La structure `switch(etat)` est la même — on ajoute juste des états.
 | Booléens `enPartie`, `gameOver`… | Faible (états implicites) | Difficile | États contradictoires (`enPartie && gameOver == true`) |
 | **FSM avec `enum`** | Élevée (états explicites) | Facile (ajouter un `case`) | Aucun état contradictoire possible |
 
+## Aller plus loin : actions d'entrée et transitions temporisées
+
+Deux raffinements rendent une FSM plus expressive (on suppose une variable globale `unsigned long entreeEtat;` qui mémorise l'instant d'entrée dans l'état courant).
+
+**Action d'entrée (*onEnter*).** Certaines choses ne doivent se faire qu'*une fois*, au moment où l'on bascule dans un état (réinitialiser le score, afficher un écran). On les exécute donc **au moment de la transition**, pas à chaque tour de boucle :
+
+```cpp
+void allerVers(EtatJeu nouvel) {
+  etat = nouvel;
+  entreeEtat = millis();                        // date d'entrée dans l'état
+  if (nouvel == PARTIE)    initialiserPartie(); // action d'entrée
+  if (nouvel == GAME_OVER) afficherGameOver();  // exécutée une seule fois
+}
+```
+
+**Transition temporisée.** Un état peut basculer tout seul après un certain temps — un écran « GAME OVER » qui revient au menu après 3 secondes. On combine la FSM avec `millis()` (voir [Du matériel au logiciel](/workshops/microcontroleur/concepts/du-materiel-au-logiciel/)) : on compare l'heure actuelle à la date d'entrée dans l'état.
+
+```cpp
+case GAME_OVER:
+  if (millis() - entreeEtat > 3000) {  // 3 s écoulées
+    allerVers(MENU);
+  }
+  break;
+```
+
 ## Exercice — dessiner la FSM du Pong
 
 Avant de coder le TD4, dessine sur papier la FSM du Pong :
@@ -148,4 +173,5 @@ Compare ensuite ta FSM avec celle du groupe — les différences de conception s
 - Implémentation Arduino : `enum` pour les états, `switch(etat)` dans la `loop()`.
 - Chaque `case` gère l'affichage, la logique et les transitions de son état.
 - La FSM élimine les booléens incompatibles et rend le code extensible.
+- Une FSM se combine avec `millis()` pour des **transitions temporisées**, et avec des **actions d'entrée** exécutées une seule fois par changement d'état.
 - Dans ce projet : FSM du jeu (TD4) → étendue aux états réseau (Projet).
