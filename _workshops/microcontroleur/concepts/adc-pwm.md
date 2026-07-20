@@ -45,6 +45,17 @@ int valeur = analogRead(PIN_JOYSTICK_X);  // retourne 0 à 4095
 
 {% include message.html title="L'ADC n'est pas parfaitement linéaire" message="La formule ci-dessus est une approximation pédagogique. En réalité, l'ADC de l'ESP32 est légèrement non linéaire — surtout près de 0 V et de 3,3 V — et sa pleine échelle dépend de l'atténuation configurée. Pour une mesure précise on calibre l'ADC ; pour lire un joystick, cette approximation suffit largement." status="is-info" icon="fas fa-info-circle" %}
 
+### La plage de mesure — l'atténuation
+
+Pour couvrir toute la plage 0–3,3 V, Arduino-ESP32 applique par défaut l'**atténuation** maximale à `analogRead()` — c'est pourquoi elle « fonctionne » sans réglage. On peut ajuster ce comportement et, surtout, obtenir directement une valeur en millivolts déjà calibrée :
+
+```cpp
+analogSetAttenuation(ADC_11db);           // plage étendue (~0–3,3 V) — le défaut
+int mv = analogReadMilliVolts(POT_PIN);   // tension en mV, corrigée d'usine
+```
+
+`analogReadMilliVolts()` est plus fiable qu'une conversion manuelle par la formule ci-dessus : il tient compte de la calibration propre à chaque puce.
+
 ### Échantillonnage
 
 L'ADC ne lit pas le signal en continu — il le **prélève** à intervalles réguliers (*échantillons*). Entre deux lectures, la valeur entre est ignorée. C'est suffisant pour un joystick (variation lente), mais pas pour un signal audio haute fréquence.
@@ -79,6 +90,18 @@ else if (y < 1000)  direction = BAS;
 else if (y > 3000)  direction = HAUT;
 else                direction = CENTRE;
 ```
+
+### Mettre une lecture à l'échelle — `map()`
+
+Une lecture ADC (0–4095) doit souvent être convertie vers une autre plage : un angle de servo (0–180°), une valeur PWM (0–255), un pourcentage… La fonction `map()` fait cette règle de trois d'un coup :
+
+```cpp
+int lecture = analogRead(POT_PIN);            // 0 – 4095
+int angle   = map(lecture, 0, 4095, 0, 180);  // 0 – 180°
+int pwm     = map(lecture, 0, 4095, 0, 255);  // 0 – 255
+```
+
+`map(valeur, entrée_min, entrée_max, sortie_min, sortie_max)` suppose une relation linéaire et **ne borne pas** le résultat : si la lecture peut déborder de la plage attendue, encadre-la avec `constrain(pwm, 0, 255)`.
 
 ## Du numérique vers l'analogique — le PWM
 
@@ -123,5 +146,7 @@ L'ESP32-S3 dispose de **8 canaux LEDC** (*LED Control*, le générateur de PWM m
 - L'ADC convertit une tension (0–3,3 V) en entier (0–4095) sur 12 bits.
 - **ADC1 uniquement** (GPIO 1–10) quand le Wi-Fi est actif — ADC2 est inutilisable.
 - Un joystick = 2 potentiomètres (ADC) + 1 bouton (GPIO).
+- `map()` convertit une lecture d'une plage à une autre (0–4095 → 0–180°, 0–255…) ; `constrain()` la borne.
+- `analogReadMilliVolts()` donne une tension calibrée, plus fiable que la formule théorique.
 - Le PWM simule une tension variable en faisant varier le rapport `HIGH`/`LOW`.
 - `analogWrite(pin, 0–255)` pour régler luminosité, vitesse ou position.
