@@ -301,3 +301,20 @@
   max-width: 100%;
   border-radius: $radius;
 }
+
+// ── Diagrammes Mermaid ───────────────────────────────────────────────────────
+// Le bloc ```mermaid``` est transformé en <div class="mermaid"> par
+// _includes/mermaid-include.html. On centre le SVG rendu et on autorise le
+// scroll horizontal pour les diagrammes plus larges que la zone de contenu.
+
+.mermaid {
+  text-align: center;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+
+  svg {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+  }
+}
