@@ -179,6 +179,23 @@ void loop() {
 
 {% include message.html title="Anti-rebond matériel" message="On peut aussi filtrer le rebond côté électronique (condensateur ~100 nF en parallèle du bouton, ou trigger de Schmitt). Sur un microcontrôleur, l'anti-rebond logiciel suffit néanmoins dans l'immense majorité des cas." status="is-info" icon="fas fa-info-circle" %}
 
+## Réagir sans scruter — l'interruption
+
+Scruter un bouton à chaque tour de `loop()` fonctionne, mais peut **rater** un appui si la boucle est occupée ailleurs. Une **interruption** exécute une petite fonction dès que la broche change, sans attendre (voir [Architecture — interruptions](/workshops/microcontroleur/concepts/architecture-microcontroleur/)).
+
+```cpp
+volatile bool appui = false;
+
+void IRAM_ATTR surAppui() { appui = true; }   // ISR : la plus courte possible
+
+void setup() {
+  pinMode(BTN_PIN, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(BTN_PIN), surAppui, FALLING);
+}
+```
+
+L'ISR (*Interrupt Service Routine*) se contente de lever un drapeau ; le vrai traitement — et l'anti-rebond — se fait ensuite tranquillement dans `loop()`.
+
 ## GPIO matrix — une broche n'est pas toujours un simple GPIO
 
 Au-delà de `digitalRead()`/`digitalWrite()`, une broche peut être prise en charge par un périphérique — UART, SPI, I2C, PWM (LEDC)... Sur beaucoup de microcontrôleurs, chaque fonction est câblée en dur sur des broches précises (« fonction alternative » fixe).
@@ -215,6 +232,16 @@ Malgré la souplesse de la GPIO matrix, certaines broches ont un **rôle réserv
 
 Ne jamais connecter une charge inductive (moteur, relais — une charge qui stocke de l'énergie magnétique et renvoie des pics de tension à la coupure) directement sur un GPIO — toujours utiliser un transistor ou un **driver** (circuit de puissance intermédiaire).
 
+## Connecter un composant 5 V — l'adaptation de niveau
+
+Les GPIO de l'ESP32-S3 sont en logique 3,3 V : appliquer 5 V sur une entrée peut endommager la puce (voir l'avertissement plus haut). Pour dialoguer avec un composant 5 V, il faut **adapter le niveau** :
+
+- **Entrée 5 V → 3,3 V** (lire un signal 5 V) : un simple **pont diviseur** de deux résistances (ex. 10 kΩ + 20 kΩ) ramène 5 V vers ~3,3 V.
+- **Bus ou bidirectionnel (I2C, SPI…)** : utiliser un **convertisseur de niveau** (*level shifter*) dédié, qui traduit proprement dans les deux sens.
+- **Sortie 3,3 V → 5 V** : beaucoup de composants 5 V reconnaissent déjà 3,3 V comme un `HIGH` valide ; sinon, un level shifter s'impose.
+
+{% include message.html title="Le sens du signal compte" message="Le danger vient surtout des signaux 5 V qui *entrent* dans l'ESP32-S3. Une sortie 3,3 V vers une entrée 5 V est généralement sans risque pour la puce." status="is-info" icon="fas fa-info-circle" %}
+
 ## Quiz express
 
 **1. Une entrée non connectée lit des valeurs aléatoires. Comment y remédier ?**
@@ -245,3 +272,5 @@ Ne jamais connecter une charge inductive (moteur, relais — une charge qui stoc
 - La **GPIO matrix** route les périphériques numériques (UART, SPI, I2C, PWM) vers presque n'importe quelle broche — sauf l'ADC, câblé en dur.
 - Un bouton mécanique **rebondit** : filtrer avec un anti-rebond logiciel (`millis()`) pour ne pas compter plusieurs appuis.
 - Certaines broches sont **réservées** (strapping, Flash SPI, USB) — vérifier le brochage de la carte avant de câbler.
+- Une **interruption** (`attachInterrupt`) réagit à un changement de broche sans scruter ; l'ISR reste minimale.
+- Pour connecter du 5 V : **pont diviseur** (entrée) ou **level shifter** (bus) — jamais 5 V directement sur un GPIO.
