@@ -8,7 +8,7 @@ component_toc: true
 doc_header: true
 
 title: Architecture d'un microcontrôleur
-subtitle: CPU, mémoires, périphériques  comprendre le schéma-bloc
+subtitle: CPU, mémoires, périphériques - comprendre le schéma-bloc
 description: Comprendre le CPU, l'horloge, les mémoires Flash/RAM, les registres, les principaux périphériques et les interruptions d'un microcontrôleur, à travers l'ESP32-S3.
 author: Alban Petit
 
@@ -43,11 +43,11 @@ Techniquement, un **microcontrôleur** (µC) est un circuit intégré qui regrou
 {% include step-tuto.html
 greyBackground = true
 content="
-Garde ce schéma en tête : il sert de carte mentale pour tout l'atelier. Chaque concept qui suit  [GPIO](/workshops/microcontroleur/concepts/gpio-monde-numerique/), [ADC & PWM](/workshops/microcontroleur/concepts/adc-pwm/), [les bus](/workshops/microcontroleur/concepts/bus-communication/)…  vient détailler l'une de ces briques.
+Garde ce schéma en tête : il sert de carte mentale pour tout l'atelier. Chaque concept qui suit - [GPIO](/workshops/microcontroleur/concepts/gpio-monde-numerique/), [ADC & PWM](/workshops/microcontroleur/concepts/adc-pwm/), [les bus](/workshops/microcontroleur/concepts/bus-communication/)… - vient détailler l'une de ces briques.
 
 | Bloc | Rôle | Accès logiciel |
 |---|---|---|
-| **CPU** | Exécute les instructions une par une |  |
+| **CPU** | Exécute les instructions une par une | - |
 | **Flash** | Stocke le programme (persistant) | Lecture seule à l'exécution |
 | **RAM** | Variables, pile d'appels (volatile) | Lecture/écriture rapide |
 | **Périphériques** | GPIO, ADC, UART, SPI, I2C, PWM… | Via **registres** |
@@ -55,7 +55,7 @@ Garde ce schéma en tête : il sert de carte mentale pour tout l'atelier. Chaque
 "
 image="functional-block-diagram.png" %}
 
-## CPU  le chef d'orchestre
+## CPU - le chef d'orchestre
 
 Le CPU exécute un **cycle fetch–decode–execute** en continu :
 
@@ -76,19 +76,19 @@ Les calculs sont réalisés par l'**ALU** (*Arithmetic Logic Unit*, unité arith
 - des **opérations arithmétiques** : addition, soustraction, multiplication…
 - des **opérations logiques** : ET, OU, OU-exclusif (XOR), décalages de bits…
 
-À chaque opération, l'ALU met aussi à jour quelques **drapeaux d'état** (*flags*) qui résument le résultat sans qu'on ait à le relire : est-il **nul** (*zero*) ? **négatif** ? y a-t-il eu une **retenue** (*carry*) ou un **dépassement** de capacité (*overflow*) ? Ce sont ces drapeaux que le CPU consulte pour décider quoi faire ensuite  c'est exactement ce qui se cache derrière un `if (a > b)` en C : une soustraction, puis la lecture d'un drapeau.
+À chaque opération, l'ALU met aussi à jour quelques **drapeaux d'état** (*flags*) qui résument le résultat sans qu'on ait à le relire : est-il **nul** (*zero*) ? **négatif** ? y a-t-il eu une **retenue** (*carry*) ou un **dépassement** de capacité (*overflow*) ? Ce sont ces drapeaux que le CPU consulte pour décider quoi faire ensuite - c'est exactement ce qui se cache derrière un `if (a > b)` en C : une soustraction, puis la lecture d'un drapeau.
 
-Pour travailler vite, l'ALU ne pioche pas directement dans la RAM : elle passe par une poignée de **registres internes** au CPU  à ne pas confondre avec les registres de périphériques vus plus bas des cases ultra-rapides où sont posés les opérandes le temps du calcul.
+Pour travailler vite, l'ALU ne pioche pas directement dans la RAM : elle passe par une poignée de **registres internes** au CPU - à ne pas confondre avec les registres de périphériques vus plus bas des cases ultra-rapides où sont posés les opérandes le temps du calcul.
 
-## L'horloge  cadencer et économiser l'énergie
+## L'horloge - cadencer et économiser l'énergie
 
-Rien ne bouge dans un microcontrôleur sans horloge : c'est elle qui impose le rythme auquel le CPU et les périphériques avancent d'une étape à la suivante, comme une chaîne de fabrication robotisée où chaque poste doit être synchronisé avec le suivant. Sa source est généralement un **cristal de quartz** externe : soumis à une tension, il oscille à une fréquence extrêmement stable  le même principe que dans une montre à quartz.
+Rien ne bouge dans un microcontrôleur sans horloge : c'est elle qui impose le rythme auquel le CPU et les périphériques avancent d'une étape à la suivante, comme une chaîne de fabrication robotisée où chaque poste doit être synchronisé avec le suivant. Sa source est généralement un **cristal de quartz** externe : soumis à une tension, il oscille à une fréquence extrêmement stable - le même principe que dans une montre à quartz.
 
-Plus la fréquence est élevée, plus le CPU exécute d'instructions par seconde  mais plus il consomme d'énergie et chauffe. C'est pour ça que les microcontrôleurs plafonnent en général à quelques centaines de MHz, loin des ~5 GHz d'un processeur de PC : ils visent l'autonomie sur batterie, pas la performance brute.
+Plus la fréquence est élevée, plus le CPU exécute d'instructions par seconde - mais plus il consomme d'énergie et chauffe. C'est pour ça que les microcontrôleurs plafonnent en général à quelques centaines de MHz, loin des ~5 GHz d'un processeur de PC : ils visent l'autonomie sur batterie, pas la performance brute.
 
-{% include message.html title="Éteindre l'horloge pour économiser" message="Chaque périphérique (UART, ADC, Wi-Fi…) peut avoir sa propre horloge activée ou coupée indépendamment par logiciel. Désactiver l'horloge d'un périphérique inutilisé est l'un des leviers principaux pour réduire la consommation d'un projet sur batterie  c'est ce que font les modes veille (deep sleep) de l'ESP32-S3." status="is-info" icon="fas fa-info-circle" %}
+{% include message.html title="Éteindre l'horloge pour économiser" message="Chaque périphérique (UART, ADC, Wi-Fi…) peut avoir sa propre horloge activée ou coupée indépendamment par logiciel. Désactiver l'horloge d'un périphérique inutilisé est l'un des leviers principaux pour réduire la consommation d'un projet sur batterie - c'est ce que font les modes veille (deep sleep) de l'ESP32-S3." status="is-info" icon="fas fa-info-circle" %}
 
-### Dormir pour durer  les modes veille
+### Dormir pour durer - les modes veille
 
 Pour un projet sur batterie, le microcontrôleur passe le plus clair de son temps à ne rien faire d'utile. Plutôt que de tourner à vide, il peut **dormir** :
 
@@ -97,7 +97,7 @@ Pour un projet sur batterie, le microcontrôleur passe le plus clair de son temp
 
 C'est ce qui permet à un capteur sans fil de tenir des mois, voire des années, sur une simple pile.
 
-## Mémoires  Flash vs RAM
+## Mémoires - Flash vs RAM
 
 | | Flash | RAM (SRAM) |
 |---|---|---|
@@ -119,11 +119,11 @@ int compteur = 0;
 Deux grandes familles d'architectures décrivent *comment* le CPU accède au programme et aux données :
 
 - **Von Neumann** : instructions et données partagent la **même** mémoire et le même bus. Simple, mais le CPU ne peut pas lire une instruction et une donnée au même instant.
-- **Harvard** : instructions et données empruntent des **chemins séparés**, donc lisibles en parallèle  plus rapide.
+- **Harvard** : instructions et données empruntent des **chemins séparés**, donc lisibles en parallèle - plus rapide.
 
 Le cœur Xtensa LX7 de l'ESP32-S3 suit une architecture **Harvard modifiée** : les bus d'instructions et de données sont distincts, mais la Flash est « mappée » en mémoire via un cache, ce qui donne au programmeur l'illusion d'un espace unifié. Retiens surtout l'idée : le **programme** (Flash) et les **données** (RAM) vivent dans des espaces séparés.
 
-## Le bus  l'autoroute de données partagée
+## Le bus - l'autoroute de données partagée
 
 Le CPU, les mémoires et les périphériques ne sont pas reliés deux à deux par des fils dédiés : ils partagent un **bus**, un faisceau de pistes communes sur lequel tout le monde est branché. On y distingue en général trois faisceaux :
 
@@ -131,14 +131,14 @@ Le CPU, les mémoires et les périphériques ne sont pas reliés deux à deux pa
 - un **bus de données** : la valeur y transite dans un sens ou dans l'autre ;
 - un **bus de contrôle** : quelques signaux qui précisent « je lis » ou « j'écris ».
 
-Comme la ligne est partagée, une règle absolue s'impose : **un seul composant a le droit de "parler" (imposer une tension) à la fois**. Si deux périphériques poussaient une valeur en même temps sur le bus de données  l'un forçant un 0, l'autre un 1  on obtiendrait un court-circuit.
+Comme la ligne est partagée, une règle absolue s'impose : **un seul composant a le droit de "parler" (imposer une tension) à la fois**. Si deux périphériques poussaient une valeur en même temps sur le bus de données - l'un forçant un 0, l'autre un 1 - on obtiendrait un court-circuit.
 
 Pour l'éviter, chaque composant se branche au bus via des **sorties trois états** : en plus de 0 et 1, elles disposent d'un état de **haute impédance** (*high-Z*) qui les déconnecte électriquement de la ligne. À tout instant, un seul émetteur est actif ; tous les autres sont en haute impédance, à l'écoute. C'est le bus d'adresses qui orchestre ce ballet : l'adresse émise par le CPU **sélectionne** le seul composant autorisé à répondre.
 
 ```mermaid
 flowchart TB
   CPU["CPU\n(pilote le bus)"]
-  BUS["Bus partagé  adresses · données · contrôle"]
+  BUS["Bus partagé - adresses · données · contrôle"]
   RAM["RAM"]
   PA["Périph. A\n(émetteur actif)"]
   PB["Périph. B\n(haute impédance)"]
@@ -148,23 +148,23 @@ flowchart TB
   BUS --- PB
 ```
 
-## Les registres  interface logiciel/matériel
+## Les registres - interface logiciel/matériel
 
 Chaque périphérique est contrôlé via des **registres** : des cases mémoire à des adresses fixes. Écrire dans un registre allume une LED ; lire un registre retourne l'état d'un bouton.
 
-Comment une adresse retrouve-t-elle la bonne case ? Un circuit appelé **décodeur d'adresse** compare l'adresse présente sur le bus et n'active que la cellule correspondante ; toutes les autres restent en haute impédance. Le mécanisme est identique pour une case de RAM et pour un registre de périphérique : dans l'espace d'adressage du CPU, écrire une variable en mémoire et allumer une LED se ressemblent beaucoup  c'est la même opération « poser une valeur à telle adresse ».
+Comment une adresse retrouve-t-elle la bonne case ? Un circuit appelé **décodeur d'adresse** compare l'adresse présente sur le bus et n'active que la cellule correspondante ; toutes les autres restent en haute impédance. Le mécanisme est identique pour une case de RAM et pour un registre de périphérique : dans l'espace d'adressage du CPU, écrire une variable en mémoire et allumer une LED se ressemblent beaucoup - c'est la même opération « poser une valeur à telle adresse ».
 
 Arduino abstrait tout ça : `digitalWrite(LED, HIGH)` écrit dans le bon registre sans que tu aies à connaître son adresse. Mais derrière, c'est toujours un accès registre.
 
-## Périphériques  le glossaire
+## Périphériques - le glossaire
 
 Un microcontrôleur embarque une collection de circuits spécialisés, chacun désigné par un acronyme. En voici les plus courants :
 
 | Acronyme | Nom complet | Rôle |
 |---|---|---|
-| **GPIO** | General Purpose Input/Output | Broches numériques configurables en entrée ou sortie  voir [GPIO & monde numérique](/workshops/microcontroleur/concepts/gpio-monde-numerique/) |
-| **ADC** | Analog to Digital Converter | Convertit une tension analogique en valeur numérique  voir [ADC & PWM](/workshops/microcontroleur/concepts/adc-pwm/) |
-| **UART / I2C / SPI** |  | Bus de communication série  voir [Les bus de communication](/workshops/microcontroleur/concepts/bus-communication/) |
+| **GPIO** | General Purpose Input/Output | Broches numériques configurables en entrée ou sortie - voir [GPIO & monde numérique](/workshops/microcontroleur/concepts/gpio-monde-numerique/) |
+| **ADC** | Analog to Digital Converter | Convertit une tension analogique en valeur numérique - voir [ADC & PWM](/workshops/microcontroleur/concepts/adc-pwm/) |
+| **UART / I2C / SPI** | - | Bus de communication série - voir [Les bus de communication](/workshops/microcontroleur/concepts/bus-communication/) |
 | **Timer** | Compteur matériel | Cadence des événements périodiques ou génère du PWM, indépendamment du CPU |
 | **DMA** | Direct Memory Access | Transfère des données entre mémoire et périphérique sans mobiliser le CPU |
 | **RTC** | Real-Time Clock | Horloge qui continue de tourner en veille profonde, pour réveiller la puce à une heure précise |
@@ -195,9 +195,9 @@ Le CPU exécute ces instructions **les unes après les autres**, dans l'ordre, a
 
 C'est précisément cette limite que lèvent les interruptions. (Le trajet complet du code jusqu'à la puce est détaillé dans [Du matériel au logiciel](/workshops/microcontroleur/concepts/du-materiel-au-logiciel/).)
 
-## Interruptions  réagir sans attendre
+## Interruptions - réagir sans attendre
 
-Le CPU exécute `loop()` en continu, mais certains événements ne peuvent pas attendre le prochain passage dans la boucle  un bouton pressé pendant une longue routine, par exemple. Une **interruption** suspend momentanément l'exécution normale pour exécuter une petite fonction dédiée, puis reprend exactement où elle s'était arrêtée.
+Le CPU exécute `loop()` en continu, mais certains événements ne peuvent pas attendre le prochain passage dans la boucle - un bouton pressé pendant une longue routine, par exemple. Une **interruption** suspend momentanément l'exécution normale pour exécuter une petite fonction dédiée, puis reprend exactement où elle s'était arrêtée.
 
 ```cpp
 void IRAM_ATTR surAppui() {
@@ -209,7 +209,7 @@ void setup() {
 }
 ```
 
-{% include message.html title="Une interruption reste courte" message="Le code d'une interruption doit être minimal (incrémenter une variable, positionner un drapeau) : tant qu'il s'exécute, le reste du programme  y compris d'autres interruptions  est suspendu." status="is-info" icon="fas fa-info-circle" %}
+{% include message.html title="Une interruption reste courte" message="Le code d'une interruption doit être minimal (incrémenter une variable, positionner un drapeau) : tant qu'il s'exécute, le reste du programme - y compris d'autres interruptions - est suspendu." status="is-info" icon="fas fa-info-circle" %}
 
 ## L'ESP32-S3 en bref
 
@@ -240,15 +240,15 @@ void setup() {
 
 ## Pour aller plus loin
 
-- [Chaîne d'outils & premier Blink](/workshops/microcontroleur/tutorials/toolchain-blink/)  voir cette architecture à l'œuvre sur un premier programme
+- [Chaîne d'outils & premier Blink](/workshops/microcontroleur/tutorials/toolchain-blink/) - voir cette architecture à l'œuvre sur un premier programme
 
 ## Résumé
 
-- Un µC = CPU + Flash + RAM + périphériques sur une seule puce  un **système sur puce** autonome.
+- Un µC = CPU + Flash + RAM + périphériques sur une seule puce - un **système sur puce** autonome.
 - Le CPU ne fait au fond que **calculer** (via l'**ALU**, qui lève des drapeaux nul/négatif/retenue/dépassement) et **transférer** des données ; le tout cadencé par l'**horloge** (240 MHz pour l'ESP32-S3), dont couper la source sur un périphérique inutilisé économise de l'énergie.
-- Flash = programme (persistant) ; RAM = données en cours d'exécution (volatile)  deux espaces séparés (architecture **Harvard modifiée**).
+- Flash = programme (persistant) ; RAM = données en cours d'exécution (volatile) - deux espaces séparés (architecture **Harvard modifiée**).
 - Tout le monde partage un **bus** : un seul composant parle à la fois, les autres passent en **haute impédance**, et l'**adresse** sélectionne le destinataire.
-- Les périphériques (GPIO, ADC, Timer, DMA, RTC, Watchdog…) sont contrôlés via des **registres**  de simples cases à une adresse fixe, qu'Arduino manipule pour toi.
+- Les périphériques (GPIO, ADC, Timer, DMA, RTC, Watchdog…) sont contrôlés via des **registres** - de simples cases à une adresse fixe, qu'Arduino manipule pour toi.
 - Une **interruption** permet de réagir immédiatement à un événement sans attendre le prochain passage dans `loop()`.
 - Les **modes veille** (light/deep sleep) coupent tout ou partie de la puce pour tenir longtemps sur batterie.
 - Tension logique ESP32-S3 : **3,3 V** (pas 5 V).

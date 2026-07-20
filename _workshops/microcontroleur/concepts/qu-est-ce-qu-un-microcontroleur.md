@@ -9,7 +9,7 @@ doc_header: true
 
 title: Qu'est-ce qu'un microcontrôleur ?
 subtitle: Un ordinateur miniature complet, caché dans les objets du quotidien
-description: Découvrir sans jargon ce qu'est un microcontrôleur — un mini-ordinateur sur une puce qui perçoit, décide et agit.
+description: Découvrir sans jargon ce qu'est un microcontrôleur un mini-ordinateur sur une puce qui perçoit, décide et agit.
 author: Alban Petit
 
 difficulty: 0
@@ -22,7 +22,7 @@ prerequisites:
 
 ## Tu en côtoies des dizaines sans le savoir
 
-Un **microcontrôleur**, c'est un ordinateur complet réduit à la taille d'un ongle, posé sur une seule petite puce. Pas d'écran, pas de clavier, pas de ventilateur qui ronronne — juste l'essentiel pour faire *une* chose, et la faire bien.
+Un **microcontrôleur**, c'est un ordinateur complet réduit à la taille d'un ongle, posé sur une seule petite puce. Pas d'écran, pas de clavier, pas de ventilateur qui ronronne juste l'essentiel pour faire *une* chose, et la faire bien.
 
 Tu en as sûrement une dizaine à portée de main en ce moment :
 
@@ -51,9 +51,9 @@ flowchart LR
   C -.-> A
 ```
 
-1. **Percevoir** — il lit des **capteurs** : un bouton pressé, une température, une distance, la lumière ambiante…
-2. **Décider** — il exécute son **programme** : une suite d'instructions que tu écris, qui dit quoi faire selon ce qui a été perçu.
-3. **Agir** — il commande des **actionneurs** : allumer une LED, faire tourner un moteur, émettre un son, afficher un texte…
+1. **Percevoir** il lit des **capteurs** : un bouton pressé, une température, une distance, la lumière ambiante…
+2. **Décider** il exécute son **programme** : une suite d'instructions que tu écris, qui dit quoi faire selon ce qui a été perçu.
+3. **Agir** il commande des **actionneurs** : allumer une LED, faire tourner un moteur, émettre un son, afficher un texte…
 
 Un exemple concret : un **thermostat** *perçoit* la température, *décide* « il fait trop froid », puis *agit* en allumant le chauffage. Puis il recommence, indéfiniment. Tout l'atelier consiste à écrire la partie « décider ».
 
@@ -77,19 +77,19 @@ C'est cette **sobriété** qui le rend si présent : on peut en mettre partout, 
 
 ## Le microcontrôleur de cet atelier : l'ESP32-S3
 
-Dans cet atelier, on utilise un microcontrôleur moderne et populaire : l'**ESP32-S3**. En plus de percevoir et d'agir, il sait aussi communiquer sans fil (Wi-Fi et Bluetooth) — de quoi imaginer des objets connectés. Pas d'inquiétude si le nom ne te dit rien : on part de zéro.
+Dans cet atelier, on utilise un microcontrôleur moderne et populaire : l'**ESP32-S3**. En plus de percevoir et d'agir, il sait aussi communiquer sans fil (Wi-Fi et Bluetooth) de quoi imaginer des objets connectés. Pas d'inquiétude si le nom ne te dit rien : on part de zéro.
 
 {% include message.html title="Pas besoin de tout retenir maintenant" message="« ESP32-S3 », « capteur », « actionneur »… ces mots vont vite devenir familiers en manipulant. L'objectif de cette page est juste de te donner la vue d'ensemble avant d'entrer dans le détail." status="is-success" icon="fas fa-check" %}
 
 ## Et sous le capot ?
 
-Tu sais maintenant *à quoi sert* un microcontrôleur et *ce qu'il fait*. La prochaine étape est d'ouvrir le capot pour voir *comment* il est fait à l'intérieur — le processeur, les mémoires, les broches — dans le concept [Architecture d'un microcontrôleur](/workshops/microcontroleur/concepts/architecture-microcontroleur/).
+Tu sais maintenant *à quoi sert* un microcontrôleur et *ce qu'il fait*. La prochaine étape est d'ouvrir le capot pour voir *comment* il est fait à l'intérieur le processeur, les mémoires, les broches dans le concept [Architecture d'un microcontrôleur](/workshops/microcontroleur/concepts/architecture-microcontroleur/).
 
 ## Quiz express
 
 **1. Un microcontrôleur peut-il faire tourner plusieurs applications comme un ordinateur ?**
 
-<details><summary>Voir la réponse</summary>Non : il est conçu pour une seule tâche, répétée en boucle — c'est ce qui le rend simple, bon marché et économe.</details>
+<details><summary>Voir la réponse</summary>Non : il est conçu pour une seule tâche, répétée en boucle c'est ce qui le rend simple, bon marché et économe.</details>
 
 **2. Quelles sont les trois étapes de sa boucle de fonctionnement ?**
 

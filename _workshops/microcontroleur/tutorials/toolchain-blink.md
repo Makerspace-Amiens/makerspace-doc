@@ -40,7 +40,7 @@ Ce tutoriel a pour but de vérifier que **chacun** a une chaîne de développeme
 
 {% include step-tuto.html
 greyBackground=true
-title="1 — Créer le projet PlatformIO"
+title="1 - Créer le projet PlatformIO"
 content="Dans VSCode, ouvre l'onglet **PlatformIO** (icône fourmi dans la barre latérale) puis **New Project**.
 
 Configure :
@@ -63,7 +63,7 @@ monitor_speed = 115200
 
 {% include step-tuto.html
 greyBackground=true
-title="2 — Installer les drivers USB-série"
+title="2 - Installer les drivers USB-série"
 content="La carte communique avec l'ordinateur via une puce USB-série (CP2102 ou CH340 selon le modèle). Sans le bon driver, le port ne s'affiche pas dans la liste des ports disponibles.
 
 - **Windows** : installer le driver du fabricant (Silicon Labs CP210x ou WCH CH340) si le **Gestionnaire de périphériques** affiche un point d'exclamation.
@@ -72,7 +72,7 @@ content="La carte communique avec l'ordinateur via une puce USB-série (CP2102 o
 
 {% include step-tuto.html
 greyBackground=true
-title="3 — Flasher le blink de base"
+title="3 - Flasher le blink de base"
 content="Remplace le contenu de `src/main.cpp` par le code ci-dessous, puis clique sur **Upload** (flèche →) dans la barre bleue PlatformIO en bas de VSCode.
 
 ```cpp
@@ -92,11 +92,11 @@ void loop() {
 
 {% include step-tuto.html
 greyBackground=true
-title="4 — Validation individuelle"
+title="4 - Validation individuelle"
 content="La LED intégrée (`LED_BUILTIN`) doit clignoter à 1 Hz. **Montre ta carte qui clignote** avant de passer à la suite c'est la seule sortie attendue de ce TD1."
 %}
 
-## Bonus — LED externe sur breadboard
+## Bonus - LED externe sur breadboard
 
 S'il te reste du temps, câble une LED externe avec sa résistance série. C'est la première brique **physique** du montage qui restera figée jusqu'au projet.
 

@@ -8,7 +8,7 @@ component_toc: true
 doc_header: true
 
 title: Du matériel au logiciel
-subtitle: Toolchain, compilation, flash — et le premier programme
+subtitle: Toolchain, compilation, flash - et le premier programme
 description: Comprendre le cycle code → compilation → flash → exécution, et pourquoi setup()/loop() n'a pas besoin d'un système d'exploitation.
 author: Alban Petit
 
@@ -24,7 +24,7 @@ prerequisites:
 
 Tu sais maintenant de quoi un microcontrôleur est fait et comment il parle au monde. Reste la question la plus concrète : quand tu écris du code et que tu cliques sur « Téléverser », que se passe-t-il *réellement* entre ton clavier et la LED qui se met à clignoter ?
 
-Ce concept suit ce voyage de bout en bout — du texte que tu tapes jusqu'aux électrons qui parcourent la puce.
+Ce concept suit ce voyage de bout en bout - du texte que tu tapes jusqu'aux électrons qui parcourent la puce.
 
 **À la fin de ce concept, tu sauras :**
 
@@ -44,7 +44,7 @@ flowchart LR
   D --> E["Exécution\nsur l'ESP32-S3"]
 ```
 
-Chaque étape est prise en charge par la **toolchain** — l'ensemble des outils qui transforme le code en programme exécutable.
+Chaque étape est prise en charge par la **toolchain** - l'ensemble des outils qui transforme le code en programme exécutable.
 
 ## La toolchain Arduino-ESP32
 
@@ -56,11 +56,11 @@ Le framework **Arduino-ESP32** fournit trois éléments :
 | **Core Arduino** | Bibliothèque qui définit `pinMode()`, `digitalWrite()`, `analogRead()`… |
 | **Uploader** (esptool) | Transfère le binaire compilé vers la Flash via USB |
 
-L'IDE (Arduino IDE ou PlatformIO) orchestre ces outils en arrière-plan quand tu cliques sur *Téléverser* — mais la chaîne reste la même : **compiler → flasher → exécuter**.
+L'IDE (Arduino IDE ou PlatformIO) orchestre ces outils en arrière-plan quand tu cliques sur *Téléverser* - mais la chaîne reste la même : **compiler → flasher → exécuter**.
 
 ## Flasher : écrire dans la mémoire persistante
 
-Flasher, c'est écrire le **binaire** compilé (le programme traduit en instructions machine — des 0 et des 1 exécutables par la puce) dans la **Flash** du microcontrôleur (voir [Architecture d'un microcontrôleur](/workshops/microcontroleur/concepts/architecture-microcontroleur/)). Contrairement à la RAM, la Flash retient son contenu hors tension : le programme redémarre automatiquement à chaque mise sous tension, sans intervention.
+Flasher, c'est écrire le **binaire** compilé (le programme traduit en instructions machine - des 0 et des 1 exécutables par la puce) dans la **Flash** du microcontrôleur (voir [Architecture d'un microcontrôleur](/workshops/microcontroleur/concepts/architecture-microcontroleur/)). Contrairement à la RAM, la Flash retient son contenu hors tension : le programme redémarre automatiquement à chaque mise sous tension, sans intervention.
 
 {% include message.html title="Bouton BOOT" message="Certaines cartes ESP32-S3 nécessitent de maintenir le bouton BOOT pendant le flashage pour forcer le mode téléversement. Si le flashage échoue systématiquement, c'est souvent la première chose à vérifier." status="is-info" icon="fas fa-info-circle" %}
 
@@ -68,13 +68,13 @@ Flasher, c'est écrire le **binaire** compilé (le programme traduit en instruct
 
 Entre la mise sous tension et l'exécution de ton `setup()`, l'ESP32-S3 traverse plusieurs étapes automatiques :
 
-1. **ROM bootloader** — un petit programme gravé en usine dans la puce démarre. Il lit les broches de *strapping* (dont GPIO0) pour décider : démarrage normal, ou **mode téléversement** (attente d'un flash par USB/UART).
-2. **Bootloader de second niveau** — chargé depuis la Flash, il initialise l'horloge et la mémoire, puis choisit la partition applicative à lancer.
-3. **Ton application** — enfin, le code compilé s'exécute : `setup()` une fois, puis `loop()` en boucle.
+1. **ROM bootloader** - un petit programme gravé en usine dans la puce démarre. Il lit les broches de *strapping* (dont GPIO0) pour décider : démarrage normal, ou **mode téléversement** (attente d'un flash par USB/UART).
+2. **Bootloader de second niveau** - chargé depuis la Flash, il initialise l'horloge et la mémoire, puis choisit la partition applicative à lancer.
+3. **Ton application** - enfin, le code compilé s'exécute : `setup()` une fois, puis `loop()` en boucle.
 
 C'est ce mécanisme qui explique le bouton **BOOT** : le maintenir enfoncé au reset force l'étape 1 en mode téléversement.
 
-## `setup()` et `loop()` — toute la structure
+## `setup()` et `loop()` - toute la structure
 
 Un programme Arduino tient dans deux fonctions :
 
@@ -94,24 +94,24 @@ void loop() {
 }
 ```
 
-- `setup()` initialise le matériel (broches, ports série, périphériques) — une seule fois.
+- `setup()` initialise le matériel (broches, ports série, périphériques) - une seule fois.
 - `loop()` s'exécute en boucle infinie, du démarrage jusqu'à la coupure d'alimentation.
 
 ## Pas de système d'exploitation
 
 Sur un ordinateur, un programme est un **processus** parmi d'autres, géré par l'OS (ordonnancement, mémoire virtuelle, arrêt propre). Sur un microcontrôleur Arduino, il n'y a **rien de tout ça** :
 
-- Pas de multitâche par défaut — `loop()` tourne seul, en boucle, sans interruption logicielle.
+- Pas de multitâche par défaut - `loop()` tourne seul, en boucle, sans interruption logicielle.
 - Pas de `sleep()` qui libère le CPU pour un autre programme : un `delay()` bloque **tout**, y compris la lecture des boutons.
 - Pas d'arrêt propre : couper l'alimentation coupe le programme instantanément, sans sauvegarde automatique.
 
 C'est pour cette raison que la structuration du code (game loop non bloquante, [machine à états finis](/workshops/microcontroleur/concepts/machine-etats-finis/)) devient essentielle dès que le programme gère plusieurs tâches à la fois.
 
-## Faire plusieurs choses à la fois — `millis()`
+## Faire plusieurs choses à la fois - `millis()`
 
 Le défaut de `delay()` : pendant qu'il attend, **rien d'autre ne s'exécute**. Impossible de lire un bouton, rafraîchir un écran et faire clignoter une LED « en même temps » avec des `delay()`.
 
-La solution est de ne jamais bloquer : au lieu d'attendre, on **regarde l'heure**. `millis()` renvoie le nombre de millisecondes écoulées depuis le démarrage. En mémorisant la date de la dernière action, on décide s'il est temps d'agir — sans jamais figer le programme.
+La solution est de ne jamais bloquer : au lieu d'attendre, on **regarde l'heure**. `millis()` renvoie le nombre de millisecondes écoulées depuis le démarrage. En mémorisant la date de la dernière action, on décide s'il est temps d'agir - sans jamais figer le programme.
 
 ```cpp
 unsigned long dernierClignotement = 0;
@@ -129,7 +129,7 @@ void loop() {
 }
 ```
 
-Ce motif — comparer `millis()` à une date mémorisée — est le fondement de la **game loop non bloquante** et se combine naturellement avec la [machine à états finis](/workshops/microcontroleur/concepts/machine-etats-finis/).
+Ce motif - comparer `millis()` à une date mémorisée - est le fondement de la **game loop non bloquante** et se combine naturellement avec la [machine à états finis](/workshops/microcontroleur/concepts/machine-etats-finis/).
 
 {% include message.html title="delay() reste utile" message="Pour une pause courte et unique (initialiser un composant, un petit délai au démarrage), `delay()` est parfaitement acceptable. C'est dans la `loop()`, quand plusieurs choses doivent avancer en parallèle, qu'il faut l'éviter." status="is-info" icon="fas fa-info-circle" %}
 
@@ -157,7 +157,7 @@ void loop() {
 
 ## Ajouter une bibliothèque
 
-Rares sont les projets qui n'utilisent que le core Arduino : un écran, un capteur ou un servo s'appuient sur une **bibliothèque** tierce. On ne copie pas son code — on la déclare, et l'outil la télécharge :
+Rares sont les projets qui n'utilisent que le core Arduino : un écran, un capteur ou un servo s'appuient sur une **bibliothèque** tierce. On ne copie pas son code - on la déclare, et l'outil la télécharge :
 
 - **Arduino IDE** : menu *Croquis → Inclure une bibliothèque → Gérer les bibliothèques*, puis rechercher par nom.
 - **PlatformIO** : ajouter la dépendance dans `platformio.ini` :

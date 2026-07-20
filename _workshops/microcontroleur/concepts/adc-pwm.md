@@ -22,7 +22,7 @@ prerequisites:
 
 ## Au-delà du tout-ou-rien
 
-Le concept précédent — les [GPIO](/workshops/microcontroleur/concepts/gpio-monde-numerique/) — ne connaissait que deux valeurs : allumé ou éteint. Mais le monde réel est plein de nuances : un joystick n'est pas seulement « à gauche » ou « à droite », il se pousse plus ou moins loin ; une LED peut briller à mi-puissance ; un moteur tourner lentement.
+Le concept précédent - les [GPIO](/workshops/microcontroleur/concepts/gpio-monde-numerique/) - ne connaissait que deux valeurs : allumé ou éteint. Mais le monde réel est plein de nuances : un joystick n'est pas seulement « à gauche » ou « à droite », il se pousse plus ou moins loin ; une LED peut briller à mi-puissance ; un moteur tourner lentement.
 
 Pour manipuler ces valeurs intermédiaires, le microcontrôleur dispose de deux outils, tous deux au menu de ce concept : l'**ADC** pour *lire* une grandeur qui varie en continu, et le **PWM** pour en *simuler* une en sortie.
 
@@ -32,13 +32,13 @@ Pour manipuler ces valeurs intermédiaires, le microcontrôleur dispose de deux 
 - simuler une tension variable en sortie avec le PWM ;
 - mettre une lecture à l'échelle avec `map()`.
 
-## Du continu au numérique — l'ADC
+## Du continu au numérique - l'ADC
 
 Le monde physique est **analogique** : une température, une position de joystick, une luminosité produisent des tensions qui varient en continu entre 0 V et 3,3 V. Le microcontrôleur, lui, ne comprend que des nombres entiers.
 
-Le **convertisseur analogique-numérique** (ADC — *Analog-to-Digital Converter*) transforme cette tension continue en un entier.
+Le **convertisseur analogique-numérique** (ADC - *Analog-to-Digital Converter*) transforme cette tension continue en un entier.
 
-### Résolution — 12 bits sur l'ESP32-S3
+### Résolution - 12 bits sur l'ESP32-S3
 
 L'ADC de l'ESP32-S3 a une résolution de **12 bits**, ce qui donne $2^{12} = 4096$ valeurs possibles :
 
@@ -54,14 +54,14 @@ $$\text{valeur} = \frac{V_{entrée}}{V_{ref}} \times (2^{12} - 1) = \frac{V_{ent
 int valeur = analogRead(PIN_JOYSTICK_X);  // retourne 0 à 4095
 ```
 
-{% include message.html title="L'ADC n'est pas parfaitement linéaire" message="La formule ci-dessus est une approximation pédagogique. En réalité, l'ADC de l'ESP32 est légèrement non linéaire — surtout près de 0 V et de 3,3 V — et sa pleine échelle dépend de l'atténuation configurée. Pour une mesure précise on calibre l'ADC ; pour lire un joystick, cette approximation suffit largement." status="is-info" icon="fas fa-info-circle" %}
+{% include message.html title="L'ADC n'est pas parfaitement linéaire" message="La formule ci-dessus est une approximation pédagogique. En réalité, l'ADC de l'ESP32 est légèrement non linéaire - surtout près de 0 V et de 3,3 V - et sa pleine échelle dépend de l'atténuation configurée. Pour une mesure précise on calibre l'ADC ; pour lire un joystick, cette approximation suffit largement." status="is-info" icon="fas fa-info-circle" %}
 
-### La plage de mesure — l'atténuation
+### La plage de mesure - l'atténuation
 
-Pour couvrir toute la plage 0–3,3 V, Arduino-ESP32 applique par défaut l'**atténuation** maximale à `analogRead()` — c'est pourquoi elle « fonctionne » sans réglage. On peut ajuster ce comportement et, surtout, obtenir directement une valeur en millivolts déjà calibrée :
+Pour couvrir toute la plage 0–3,3 V, Arduino-ESP32 applique par défaut l'**atténuation** maximale à `analogRead()` - c'est pourquoi elle « fonctionne » sans réglage. On peut ajuster ce comportement et, surtout, obtenir directement une valeur en millivolts déjà calibrée :
 
 ```cpp
-analogSetAttenuation(ADC_11db);           // plage étendue (~0–3,3 V) — le défaut
+analogSetAttenuation(ADC_11db);           // plage étendue (~0–3,3 V) - le défaut
 int mv = analogReadMilliVolts(POT_PIN);   // tension en mV, corrigée d'usine
 ```
 
@@ -69,7 +69,7 @@ int mv = analogReadMilliVolts(POT_PIN);   // tension en mV, corrigée d'usine
 
 ### Échantillonnage
 
-L'ADC ne lit pas le signal en continu — il le **prélève** à intervalles réguliers (*échantillons*). Entre deux lectures, la valeur entre est ignorée. C'est suffisant pour un joystick (variation lente), mais pas pour un signal audio haute fréquence.
+L'ADC ne lit pas le signal en continu - il le **prélève** à intervalles réguliers (*échantillons*). Entre deux lectures, la valeur entre est ignorée. C'est suffisant pour un joystick (variation lente), mais pas pour un signal audio haute fréquence.
 
 ### Lisser une lecture bruitée
 
@@ -81,7 +81,7 @@ for (int i = 0; i < 16; i++) somme += analogRead(POT_PIN);
 int valeur = somme / 16;   // moyenne de 16 lectures
 ```
 
-Plus on moyenne, plus la valeur est stable — mais plus la lecture prend de temps. 8 à 16 échantillons sont un bon compromis pour un potentiomètre ou un joystick.
+Plus on moyenne, plus la valeur est stable - mais plus la lecture prend de temps. 8 à 16 échantillons sont un bon compromis pour un potentiomètre ou un joystick.
 
 ### Le piège ADC2 + Wi-Fi sur l'ESP32
 
@@ -114,7 +114,7 @@ else if (y > 3000)  direction = HAUT;
 else                direction = CENTRE;
 ```
 
-### Mettre une lecture à l'échelle — `map()`
+### Mettre une lecture à l'échelle - `map()`
 
 Une lecture ADC (0–4095) doit souvent être convertie vers une autre plage : un angle de servo (0–180°), une valeur PWM (0–255), un pourcentage… La fonction `map()` fait cette règle de trois d'un coup :
 
@@ -126,9 +126,9 @@ int pwm     = map(lecture, 0, 4095, 0, 255);  // 0 – 255
 
 `map(valeur, entrée_min, entrée_max, sortie_min, sortie_max)` suppose une relation linéaire et **ne borne pas** le résultat : si la lecture peut déborder de la plage attendue, encadre-la avec `constrain(pwm, 0, 255)`.
 
-## Du numérique vers l'analogique — le PWM
+## Du numérique vers l'analogique - le PWM
 
-Un GPIO numérique ne peut produire que `0 V` ou `3,3 V`. Pour simuler une tension intermédiaire (régler la luminosité d'une LED, la vitesse d'un moteur, la position d'un servo), on utilise le **PWM** (*Pulse Width Modulation* — modulation de largeur d'impulsion).
+Un GPIO numérique ne peut produire que `0 V` ou `3,3 V`. Pour simuler une tension intermédiaire (régler la luminosité d'une LED, la vitesse d'un moteur, la position d'un servo), on utilise le **PWM** (*Pulse Width Modulation* - modulation de largeur d'impulsion).
 
 ### Principe
 
@@ -140,7 +140,7 @@ Le PWM alterne rapidement entre `HIGH` et `LOW` à haute fréquence. La proporti
 | 50 % | Mi-luminosité |
 | 100 % | Plein éclat |
 
-La fréquence est suffisamment élevée (typiquement 1–50 kHz) pour que l'œil (ou un moteur) ne perçoive pas le clignotement — seulement la valeur moyenne.
+La fréquence est suffisamment élevée (typiquement 1–50 kHz) pour que l'œil (ou un moteur) ne perçoive pas le clignotement - seulement la valeur moyenne.
 
 $$V_{moyen} = V_{max} \times \frac{\text{duty cycle}}{100}$$
 
@@ -172,7 +172,7 @@ L'ESP32-S3 dispose de **8 canaux LEDC** (*LED Control*, le générateur de PWM m
 
 **2. Comment convertir une lecture 0–4095 en angle 0–180° ?**
 
-<details><summary>Voir la réponse</summary>Avec `map(lecture, 0, 4095, 0, 180)` — et `constrain()` si la lecture peut déborder.</details>
+<details><summary>Voir la réponse</summary>Avec `map(lecture, 0, 4095, 0, 180)` - et `constrain()` si la lecture peut déborder.</details>
 
 **3. Le PWM produit-il une vraie tension analogique ?**
 
@@ -180,13 +180,13 @@ L'ESP32-S3 dispose de **8 canaux LEDC** (*LED Control*, le générateur de PWM m
 
 ## Pour aller plus loin
 
-- [Entrées : boutons & joystick](/workshops/microcontroleur/tutorials/entrees-boutons-joystick/) — lire un joystick à l'ADC
-- [Piloter un servomoteur](/docs/tutorials/electronics/servomotor/) — le PWM en action
+- [Entrées : boutons & joystick](/workshops/microcontroleur/tutorials/entrees-boutons-joystick/) - lire un joystick à l'ADC
+- [Piloter un servomoteur](/docs/tutorials/electronics/servomotor/) - le PWM en action
 
 ## Résumé
 
 - L'ADC convertit une tension (0–3,3 V) en entier (0–4095) sur 12 bits.
-- **ADC1 uniquement** (GPIO 1–10) quand le Wi-Fi est actif — ADC2 est inutilisable.
+- **ADC1 uniquement** (GPIO 1–10) quand le Wi-Fi est actif - ADC2 est inutilisable.
 - Un joystick = 2 potentiomètres (ADC) + 1 bouton (GPIO).
 - `map()` convertit une lecture d'une plage à une autre (0–4095 → 0–180°, 0–255…) ; `constrain()` la borne.
 - `analogReadMilliVolts()` donne une tension calibrée, plus fiable que la formule théorique.

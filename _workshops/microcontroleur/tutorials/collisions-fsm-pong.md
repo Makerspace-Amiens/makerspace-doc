@@ -27,11 +27,11 @@ todo: 10
 
 ## Collisions, score et machine à états
 
-Ce tutoriel assemble tout ce qui a été construit depuis le début de l'atelier — boutons, joystick, écran, game loop — et lui donne une **structure complète** avec un début et une fin. Aucun câblage supplémentaire n'est nécessaire.
+Ce tutoriel assemble tout ce qui a été construit depuis le début de l'atelier - boutons, joystick, écran, game loop - et lui donne une **structure complète** avec un début et une fin. Aucun câblage supplémentaire n'est nécessaire.
 
 ### Structurer le code en trois blocs
 
-À partir de maintenant, sépare systématiquement le code en trois responsabilités — c'est la structure qui sera reprise telle quelle au projet Snake :
+À partir de maintenant, sépare systématiquement le code en trois responsabilités - c'est la structure qui sera reprise telle quelle au projet Snake :
 
 ```cpp
 void loop() {
@@ -47,7 +47,7 @@ void loop() {
 
 {% include step-tuto.html
 greyBackground=true
-title="1 — Ajouter la seconde raquette"
+title="1 - Ajouter la seconde raquette"
 content="Le joueur 1 (boutons GPIO5/GPIO6) contrôle une raquette à droite ; le joueur 2 (joystick) contrôle celle de gauche, déjà posée au tutoriel précédent."
 %}
 
@@ -68,7 +68,7 @@ void lireEntrees() {
 
 {% include step-tuto.html
 greyBackground=true
-title="2 — Détecter la collision balle/raquette"
+title="2 - Détecter la collision balle/raquette"
 content="Une collision rectangle/cercle exacte est inutile ici : on teste si le **centre de la balle** se trouve dans le rectangle de la raquette, élargi du rayon de la balle. C'est le test d'intersection le plus simple qui donne un résultat crédible."
 %}
 
@@ -104,12 +104,12 @@ void mettreAJourJeu() {
 }
 ```
 
-{% include message.html title="Checkpoint" message="La balle doit rebondir sur les deux raquettes et sur les bords haut/bas, et disparaître/réapparaître au centre quand elle sort par la gauche ou la droite — sans encore afficher de score visible." status="is-success" icon="fas fa-check-circle" %}
+{% include message.html title="Checkpoint" message="La balle doit rebondir sur les deux raquettes et sur les bords haut/bas, et disparaître/réapparaître au centre quand elle sort par la gauche ou la droite - sans encore afficher de score visible." status="is-success" icon="fas fa-check-circle" %}
 
 {% include step-tuto.html
 greyBackground=true
-title="3 — Afficher le score"
-content="Redessine le score uniquement quand il change — pas à chaque frame — pour éviter un clignotement inutile du texte."
+title="3 - Afficher le score"
+content="Redessine le score uniquement quand il change - pas à chaque frame - pour éviter un clignotement inutile du texte."
 %}
 
 ```cpp
@@ -147,8 +147,8 @@ stateDiagram-v2
 
 {% include step-tuto.html
 greyBackground=true
-title="4 — Implémenter la FSM avec enum + switch"
-content="Chaque état gère sa propre logique et son propre affichage dans son `case` — exactement la structure vue dans le concept FSM."
+title="4 - Implémenter la FSM avec enum + switch"
+content="Chaque état gère sa propre logique et son propre affichage dans son `case` - exactement la structure vue dans le concept FSM."
 %}
 
 ```cpp

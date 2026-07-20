@@ -8,7 +8,7 @@ component_toc: true
 doc_header: true
 
 title: Les bus de communication
-subtitle: UART, I2C, SPI — comprendre et choisir le bon protocole
+subtitle: UART, I2C, SPI - comprendre et choisir le bon protocole
 description: Découvrir les trois bus série les plus courants en électronique embarquée et savoir lequel choisir selon le cas d'usage.
 author: Alban Petit
 
@@ -22,7 +22,7 @@ prerequisites:
 
 ## Faire dialoguer les composants
 
-Un microcontrôleur est rarement seul : il pilote un écran, interroge un capteur de température, échange avec un module Bluetooth. Encore faut-il que tous ces composants se comprennent — qu'ils parlent la même langue.
+Un microcontrôleur est rarement seul : il pilote un écran, interroge un capteur de température, échange avec un module Bluetooth. Encore faut-il que tous ces composants se comprennent - qu'ils parlent la même langue.
 
 Ces langages communs, ce sont les **bus de communication**. Comme des humains, les composants ont plusieurs façons de discuter : à deux dans un couloir (**UART**), en petit groupe où chacun répond à son nom (**I2C**), ou par une ligne dédiée très rapide (**SPI**). Ce concept présente ces trois « dialectes » et t'aide à choisir le bon.
 
@@ -43,7 +43,7 @@ graph LR
   CPU -->|"2 fils"| UART["PC / GPS / Bluetooth"]
 ```
 
-## UART — Universal Asynchronous Receiver-Transmitter
+## UART - Universal Asynchronous Receiver-Transmitter
 
 ### Principe
 
@@ -76,7 +76,7 @@ int v = analogRead(A0);
 Serial.println(v);           // affiche la valeur dans le moniteur série
 ```
 
-## I2C — Inter-Integrated Circuit
+## I2C - Inter-Integrated Circuit
 
 ### Principe
 
@@ -87,7 +87,7 @@ I2C relie **plusieurs périphériques** sur seulement **2 fils** grâce à un sy
 | **SDA** | Données (bidirectionnel) |
 | **SCL** | Horloge (générée par le maître) |
 
-Chaque composant I2C possède une **adresse 7 bits** unique (ex : `0x3C` pour un écran OLED SSD1306). Le **maître** (l'appareil qui dirige les échanges — ici l'ESP32-S3) initie toujours la communication ; les autres, les **esclaves**, ne répondent que lorsqu'il les sollicite.
+Chaque composant I2C possède une **adresse 7 bits** unique (ex : `0x3C` pour un écran OLED SSD1306). Le **maître** (l'appareil qui dirige les échanges - ici l'ESP32-S3) initie toujours la communication ; les autres, les **esclaves**, ne répondent que lorsqu'il les sollicite.
 
 ```mermaid
 graph LR
@@ -119,11 +119,11 @@ Wire.begin(SDA_PIN, SCL_PIN);  // démarre I2C
 
 ### Câblage : les résistances de pull-up
 
-Les lignes SDA et SCL sont en **open-drain** (voir [GPIO & monde numérique](/workshops/microcontroleur/concepts/gpio-monde-numerique/)) : les composants ne peuvent que tirer la ligne vers `LOW` ou la relâcher. Il faut donc deux **résistances de pull-up** (typiquement 4,7 kΩ) reliant SDA et SCL au 3,3 V — sans elles, le bus reste bloqué et rien ne communique.
+Les lignes SDA et SCL sont en **open-drain** (voir [GPIO & monde numérique](/workshops/microcontroleur/concepts/gpio-monde-numerique/)) : les composants ne peuvent que tirer la ligne vers `LOW` ou la relâcher. Il faut donc deux **résistances de pull-up** (typiquement 4,7 kΩ) reliant SDA et SCL au 3,3 V - sans elles, le bus reste bloqué et rien ne communique.
 
-{% include message.html title="Souvent déjà présentes" message="La plupart des modules I2C du commerce (écran OLED, capteur…) intègrent déjà leurs pull-ups. Si tu en chaînes plusieurs, une seule paire sur le bus suffit — inutile de les cumuler." status="is-info" icon="fas fa-info-circle" %}
+{% include message.html title="Souvent déjà présentes" message="La plupart des modules I2C du commerce (écran OLED, capteur…) intègrent déjà leurs pull-ups. Si tu en chaînes plusieurs, une seule paire sur le bus suffit - inutile de les cumuler." status="is-info" icon="fas fa-info-circle" %}
 
-### Trouver l'adresse d'un périphérique — le scanner I2C
+### Trouver l'adresse d'un périphérique - le scanner I2C
 
 On ne connaît pas toujours l'adresse d'un composant. Un petit programme balaie toutes les adresses possibles et affiche celles qui répondent :
 
@@ -146,7 +146,7 @@ void loop() {}
 
 C'est le premier réflexe de débogage quand un capteur I2C « ne répond pas ».
 
-## SPI — Serial Peripheral Interface
+## SPI - Serial Peripheral Interface
 
 ### Principe
 
@@ -157,7 +157,7 @@ SPI est le bus **le plus rapide** des trois. Il utilise **4 fils** et une logiqu
 | **MOSI** | Master Out Slave In (données vers le périphérique) |
 | **MISO** | Master In Slave Out (données depuis le périphérique) |
 | **SCK** | Horloge (générée par le maître) |
-| **CS** | Chip Select — sélectionne l'esclave actif (1 fil par esclave) |
+| **CS** | Chip Select - sélectionne l'esclave actif (1 fil par esclave) |
 
 La transmission est **synchrone** (l'horloge SCK cadence chaque bit) et **full-duplex** (MOSI et MISO actifs simultanément).
 
@@ -173,11 +173,11 @@ graph LR
 
 ### Vitesses typiques
 
-De quelques MHz à **80 MHz** sur ESP32-S3 — bien plus rapide que I2C.
+De quelques MHz à **80 MHz** sur ESP32-S3 - bien plus rapide que I2C.
 
 ### Usage principal
 
-- Écrans TFT (ST7789, ILI9341) — **utilisé dans ce projet**
+- Écrans TFT (ST7789, ILI9341) - **utilisé dans ce projet**
 - Cartes SD
 - Mémoires Flash externes
 - Tout périphérique nécessitant un haut débit
@@ -187,7 +187,7 @@ De quelques MHz à **80 MHz** sur ESP32-S3 — bien plus rapide que I2C.
 SPI.begin(SCK_PIN, MISO_PIN, MOSI_PIN, CS_PIN);
 ```
 
-En pratique, la bibliothèque **TFT_eSPI** gère entièrement SPI pour l'écran — tu n'as pas à appeler `SPI.begin()` manuellement.
+En pratique, la bibliothèque **TFT_eSPI** gère entièrement SPI pour l'écran - tu n'as pas à appeler `SPI.begin()` manuellement.
 
 ## Tableau comparatif
 
@@ -227,13 +227,13 @@ flowchart TD
 
 ## Pour aller plus loin
 
-- [Écran SPI & game loop](/docs/tutorials/electronics/ecran-spi-game-loop/) — le SPI en pratique
-- [Écran OLED SSD1306 (I2C)](/docs/tutorials/electronics/esp32-ssd1306-oled/) — l'I2C en pratique
-- [Le port série sous VS Code](/docs/tutorials/electronics/vscode-port-serie/) — l'UART pour déboguer
+- [Écran SPI & game loop](/docs/tutorials/electronics/ecran-spi-game-loop/) - le SPI en pratique
+- [Écran OLED SSD1306 (I2C)](/docs/tutorials/electronics/esp32-ssd1306-oled/) - l'I2C en pratique
+- [Le port série sous VS Code](/docs/tutorials/electronics/vscode-port-serie/) - l'UART pour déboguer
 
 ## Résumé
 
 - **UART** : 2 fils, point à point, idéal pour le debug et les modules simples.
-- **I2C** : 2 fils, multi-esclaves par adressage, vitesse modérée — exige deux **pull-ups** (~4,7 kΩ) sur SDA/SCL ; un **scanner** révèle les adresses présentes.
-- **SPI** : 4 fils, rapide, full-duplex — indispensable pour les écrans TFT.
+- **I2C** : 2 fils, multi-esclaves par adressage, vitesse modérée - exige deux **pull-ups** (~4,7 kΩ) sur SDA/SCL ; un **scanner** révèle les adresses présentes.
+- **SPI** : 4 fils, rapide, full-duplex - indispensable pour les écrans TFT.
 - Dans ce projet : **UART** pour le moniteur série (debug), **SPI** pour l'écran.
