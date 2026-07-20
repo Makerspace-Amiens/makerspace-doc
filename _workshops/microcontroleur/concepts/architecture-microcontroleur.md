@@ -94,6 +94,15 @@ const char msg[] PROGMEM = "Hello";
 int compteur = 0;
 ```
 
+### Harvard ou Von Neumann ?
+
+Deux grandes familles d'architectures décrivent *comment* le CPU accède au programme et aux données :
+
+- **Von Neumann** : instructions et données partagent la **même** mémoire et le même bus. Simple, mais le CPU ne peut pas lire une instruction et une donnée au même instant.
+- **Harvard** : instructions et données empruntent des **chemins séparés**, donc lisibles en parallèle — plus rapide.
+
+Le cœur Xtensa LX7 de l'ESP32-S3 suit une architecture **Harvard modifiée** : les bus d'instructions et de données sont distincts, mais la Flash est « mappée » en mémoire via un cache, ce qui donne au programmeur l'illusion d'un espace unifié. Retiens surtout l'idée : le **programme** (Flash) et les **données** (RAM) vivent dans des espaces séparés.
+
 ## Le bus — l'autoroute de données partagée
 
 Le CPU, les mémoires et les périphériques ne sont pas reliés deux à deux par des fils dédiés : ils partagent un **bus**, un faisceau de pistes communes sur lequel tout le monde est branché. On y distingue en général trois faisceaux :
@@ -176,7 +185,7 @@ void setup() {
 
 - Un µC = CPU + Flash + RAM + périphériques sur une seule puce — un **système sur puce** autonome.
 - Le CPU ne fait au fond que **calculer** (via l'**ALU**, qui lève des drapeaux nul/négatif/retenue/dépassement) et **transférer** des données ; le tout cadencé par l'**horloge** (240 MHz pour l'ESP32-S3), dont couper la source sur un périphérique inutilisé économise de l'énergie.
-- Flash = programme (persistant) ; RAM = données en cours d'exécution (volatile).
+- Flash = programme (persistant) ; RAM = données en cours d'exécution (volatile) — deux espaces séparés (architecture **Harvard modifiée**).
 - Tout le monde partage un **bus** : un seul composant parle à la fois, les autres passent en **haute impédance**, et l'**adresse** sélectionne le destinataire.
 - Les périphériques (GPIO, ADC, Timer, DMA, RTC, Watchdog…) sont contrôlés via des **registres** — de simples cases à une adresse fixe, qu'Arduino manipule pour toi.
 - Une **interruption** permet de réagir immédiatement à un événement sans attendre le prochain passage dans `loop()`.

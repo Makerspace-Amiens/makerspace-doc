@@ -53,6 +53,16 @@ Flasher, c'est écrire le **binaire** compilé (le programme traduit en instruct
 
 {% include message.html title="Bouton BOOT" message="Certaines cartes ESP32-S3 nécessitent de maintenir le bouton BOOT pendant le flashage pour forcer le mode téléversement. Si le flashage échoue systématiquement, c'est souvent la première chose à vérifier." status="is-info" icon="fas fa-info-circle" %}
 
+## Au reset : la séquence de démarrage
+
+Entre la mise sous tension et l'exécution de ton `setup()`, l'ESP32-S3 traverse plusieurs étapes automatiques :
+
+1. **ROM bootloader** — un petit programme gravé en usine dans la puce démarre. Il lit les broches de *strapping* (dont GPIO0) pour décider : démarrage normal, ou **mode téléversement** (attente d'un flash par USB/UART).
+2. **Bootloader de second niveau** — chargé depuis la Flash, il initialise l'horloge et la mémoire, puis choisit la partition applicative à lancer.
+3. **Ton application** — enfin, le code compilé s'exécute : `setup()` une fois, puis `loop()` en boucle.
+
+C'est ce mécanisme qui explique le bouton **BOOT** : le maintenir enfoncé au reset force l'étape 1 en mode téléversement.
+
 ## `setup()` et `loop()` — toute la structure
 
 Un programme Arduino tient dans deux fonctions :
@@ -139,6 +149,7 @@ void loop() {
 - Chaîne complète : code source → compilation (toolchain) → flashage (Flash) → exécution.
 - Arduino-ESP32 fournit le compilateur, le core (`pinMode`, `digitalWrite`…) et l'uploader.
 - `setup()` s'exécute une fois ; `loop()` tourne en boucle infinie jusqu'à la coupure d'alimentation.
+- Au reset : ROM bootloader (lit le strapping) → bootloader de second niveau → application (`setup`/`loop`).
 - Pas de système d'exploitation : pas de multitâche, `delay()` bloque tout le programme.
 - Pour faire avancer plusieurs tâches en parallèle : comparer `millis()` à une date mémorisée plutôt qu'utiliser `delay()`.
 - Le Blink relie architecture, GPIO et absence d'OS en quatre lignes de code.
