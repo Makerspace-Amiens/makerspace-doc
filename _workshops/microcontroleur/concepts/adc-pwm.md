@@ -71,6 +71,18 @@ int mv = analogReadMilliVolts(POT_PIN);   // tension en mV, corrigée d'usine
 
 L'ADC ne lit pas le signal en continu — il le **prélève** à intervalles réguliers (*échantillons*). Entre deux lectures, la valeur entre est ignorée. C'est suffisant pour un joystick (variation lente), mais pas pour un signal audio haute fréquence.
 
+### Lisser une lecture bruitée
+
+Une lecture ADC isolée « tremble » de quelques unités à cause du bruit électrique. Pour une valeur stable, on **moyenne plusieurs lectures** :
+
+```cpp
+long somme = 0;
+for (int i = 0; i < 16; i++) somme += analogRead(POT_PIN);
+int valeur = somme / 16;   // moyenne de 16 lectures
+```
+
+Plus on moyenne, plus la valeur est stable — mais plus la lecture prend de temps. 8 à 16 échantillons sont un bon compromis pour un potentiomètre ou un joystick.
+
 ### Le piège ADC2 + Wi-Fi sur l'ESP32
 
 L'ESP32 possède deux banques d'ADC :
@@ -178,5 +190,6 @@ L'ESP32-S3 dispose de **8 canaux LEDC** (*LED Control*, le générateur de PWM m
 - Un joystick = 2 potentiomètres (ADC) + 1 bouton (GPIO).
 - `map()` convertit une lecture d'une plage à une autre (0–4095 → 0–180°, 0–255…) ; `constrain()` la borne.
 - `analogReadMilliVolts()` donne une tension calibrée, plus fiable que la formule théorique.
+- Moyenner 8 à 16 lectures **lisse** le bruit d'un ADC qui « tremble ».
 - Le PWM simule une tension variable en faisant varier le rapport `HIGH`/`LOW`.
 - `analogWrite(pin, 0–255)` pour régler luminosité, vitesse ou position.
