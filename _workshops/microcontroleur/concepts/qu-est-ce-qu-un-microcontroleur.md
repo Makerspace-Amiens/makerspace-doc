@@ -73,6 +73,8 @@ Ton ordinateur portable est une machine polyvalente : il fait *tout* (naviguer, 
 
 C'est cette **sobriété** qui le rend si présent : on peut en mettre partout, pour presque rien, sans y penser.
 
+{% include message.html title="Et le Raspberry Pi, alors ?" message="Un Raspberry Pi n'est pas un microcontrôleur mais un **nano-ordinateur** : il a un vrai système d'exploitation (Linux), un processeur puissant et beaucoup de mémoire. Il l'emporte en polyvalence, mais consomme bien plus, démarre lentement et coûte plus cher. Règle simple : une seule tâche, temps réel, économe → microcontrôleur ; besoin d'un OS, d'un écran, du réseau complet → nano-ordinateur." status="is-info" icon="fas fa-info-circle" %}
+
 ## Le microcontrôleur de cet atelier : l'ESP32-S3
 
 Dans cet atelier, on utilise un microcontrôleur moderne et populaire : l'**ESP32-S3**. En plus de percevoir et d'agir, il sait aussi communiquer sans fil (Wi-Fi et Bluetooth) — de quoi imaginer des objets connectés. Pas d'inquiétude si le nom ne te dit rien : on part de zéro.
