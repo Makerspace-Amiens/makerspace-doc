@@ -18,8 +18,10 @@ difficulty: 1
 compatibilities-os: win, mac, lin
 
 prerequisites:
-  - label: Installation de VSCode et PlatformIO
-    link: /docs/tutorials/software/vscode-platformio/installation-vscode-platformio/
+  - label: Installation de VSCode
+    link: /docs/tutorials/software/vscode-platformio/installation-vscode/
+  - label: Installation de PlatformIO
+    link: /docs/tutorials/software/vscode-platformio/installation-platformio/
 
 softwares:
   - label: PlatformIO IDE (extension VSCode)
@@ -31,10 +33,10 @@ hardwares:
   - label: Câble USB-C data (pas uniquement charge)
     link: ""
 
-todo: 10
+todo: 70
 ---
 
-Ce tutoriel a pour but de vérifier que **chacun** a une chaîne de développement fonctionnelle avant d'attaquer la suite des aventures sur les microcontroleurs. Chaque TD suivant ajoutera un périphérique au même montage le câblage posé ici ne bougera plus.
+Ce tutoriel a pour but de vérifier que **chacun** a une chaîne de développement fonctionnelle avant d'attaquer la suite des aventures sur les microcontrôleurs. Chaque TD suivant ajoutera un périphérique au même montage : le câblage posé ici ne bougera plus.
 
 {% include message.html title="À faire avant la séance" message="L'installation de PlatformIO (voir le prérequis ci-dessus) et du support ESP32 doit être terminée." status="is-warning" icon="fas fa-exclamation-triangle" %}
 
@@ -90,10 +92,12 @@ void loop() {
 
 {% include message.html title="Ça ne flashe pas ?" message="Si l'upload échoue avec une erreur de timeout, maintiens le bouton **BOOT** de la carte appuyé pendant les 2 premières secondes de l'upload (jusqu'à ce que la ligne `Writing at...` apparaisse), puis relâche." status="is-info" icon="fas fa-info-circle" %}
 
+{% include message.html title="La LED n'est pas une simple LED" message="Sur l'ESP32-S3-DevKitC-1, la LED embarquée est une **RGB adressable** (WS2812), pas une LED monochrome. Si `digitalWrite(LED_BUILTIN, ...)` ne produit aucun clignotement, remplace le corps de `loop()` par `rgbLedWrite(RGB_BUILTIN, 40, 0, 0);` puis `rgbLedWrite(RGB_BUILTIN, 0, 0, 0);` (en gardant les `delay(500)`). Sur une carte à LED monochrome, le code d'origine fonctionne tel quel." status="is-warning" icon="fas fa-lightbulb" %}
+
 {% include step-tuto.html
 greyBackground=true
 title="4 - Validation individuelle"
-content="La LED intégrée (`LED_BUILTIN`) doit clignoter à 1 Hz. **Montre ta carte qui clignote** avant de passer à la suite c'est la seule sortie attendue de ce TD1."
+content="La LED intégrée (`LED_BUILTIN`) doit clignoter à 1 Hz. **Montre ta carte qui clignote** avant de passer à la suite : c'est la seule sortie attendue de ce TD1."
 %}
 
 ## Bonus - LED externe sur breadboard
@@ -102,7 +106,7 @@ S'il te reste du temps, câble une LED externe avec sa résistance série. C'est
 
 ![BreadBoard](esp32-s3-blink.png)
 
-Voci le code nécessaire pour le fonctionement de cette demonstration.
+Voici le code nécessaire au fonctionnement de cette démonstration.
 
 ```cpp
 #define LED_PIN 4
