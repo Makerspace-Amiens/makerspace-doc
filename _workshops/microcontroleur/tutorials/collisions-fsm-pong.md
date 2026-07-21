@@ -22,7 +22,11 @@ prerequisites:
   - label: "Concept : Machine à états finis (FSM)"
     link: /workshops/microcontroleur/concepts/machine-etats-finis/
 
-todo: 10
+softwares:
+  - label: PlatformIO IDE (extension VSCode)
+    link: /docs/references/software/platformIO/
+
+todo: 70
 ---
 
 ## Collisions, score et machine à états
@@ -191,6 +195,8 @@ void redessiner() {
   }
 }
 ```
+
+Les fonctions `deplacerBalleEtRaquettes()`, `detecterCollisions()` et `afficherMenu/Jeu/GameOver()` ne sont pas nouvelles : ce sont les blocs de code des étapes 1 à 3, regroupés dans des fonctions dédiées pour que chaque `case` reste lisible.
 
 {% include message.html title="Deux sens du mot « état »" message="Ne confonds pas les **données du jeu** (`balleX`, `scoreJoueur1`… des variables) et la **phase du jeu** (`MENU` / `PARTIE` / `GAME_OVER`, la FSM). Les deux sont indispensables mais répondent à des questions différentes : « où en est la partie ? » pour les données, « quel écran afficher ? » pour la FSM." status="is-info" icon="fas fa-info-circle" %}
 
