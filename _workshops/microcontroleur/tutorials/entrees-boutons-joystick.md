@@ -24,13 +24,17 @@ prerequisites:
   - label: "Concept : ADC & PWM"
     link: /workshops/microcontroleur/concepts/adc-pwm/
 
+softwares:
+  - label: PlatformIO IDE (extension VSCode)
+    link: /docs/references/software/platformIO/
+
 hardwares:
   - label: 2 boutons poussoir
     link: ""
   - label: Module joystick analogique (2 axes + bouton)
     link: ""
 
-todo: 10
+todo: 70
 ---
 
 ## Entrées : boutons + joystick + série
@@ -193,13 +197,15 @@ Les seuils `1500` et `2500` découpent la plage `0-4095` en cinq zones, centrée
 | **Zone morte** | `1500` – `2500` | CENTRE |
 | Butée haute | `2501` – `4095` | DROITE (X) / HAUT (Y) |
 
-Une zone morte de ±452 autour du centre absorbe le bruit électrique et l'imprécision mécanique du potentiomètre sans réduire perceptiblement la course utile du stick.
+La zone morte `1500`-`2500` (large de 1000 sur les 4096 valeurs) absorbe le bruit électrique et l'imprécision mécanique du potentiomètre autour de la position de repos, sans réduire perceptiblement la course utile du stick.
 
 {% include message.html title="Checkpoint" message="Incline le stick dans chaque direction : le moniteur série doit refléter GAUCHE, DROITE, HAUT ou BAS sans oscillation parasite quand tu relâches le stick au centre." status="is-success" icon="fas fa-check-circle" %}
 
-## Étape 5 - Combiner boutons, joystick et série
-
-Rassemble tout ce que tu viens de construire dans un seul programme : les deux boutons du joueur 1, le joystick (direction + bouton START/RETRY) du joueur 2, le tout remonté sur le port série.
+{% include step-tuto.html
+greyBackground=true
+title="5 - Combiner boutons, joystick et série"
+content="Rassemble tout ce que tu viens de construire dans un seul programme : les deux boutons du joueur 1, le joystick (direction + bouton START/RETRY) du joueur 2, le tout remonté sur le port série."
+%}
 
 ```cpp
 #define BTN_HAUT 5
