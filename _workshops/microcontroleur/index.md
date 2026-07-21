@@ -38,6 +38,8 @@ tutorials:
 how_to_guides:
 
 hardware:
+  - /docs/references/hardware/esp32-s3-devkitc-1/
+  - /docs/references/hardware/ecran-tft-spi-st7789/
 
 software:
   - /docs/references/software/arduino-ide/
