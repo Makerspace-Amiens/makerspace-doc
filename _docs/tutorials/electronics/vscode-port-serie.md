@@ -9,7 +9,7 @@ component_toc: true
 doc_header: true
 type: tutorial
 
-title: VSCode et PlatformIO — port série
+title: VSCode et PlatformIO - port série
 subtitle: Lire et tracer les données du port série avec PlatformIO et TelePlot
 description: Utiliser le moniteur série de PlatformIO puis l'extension TelePlot pour visualiser en temps réel des courbes de données envoyées via le port série.
 author: Alban Petit

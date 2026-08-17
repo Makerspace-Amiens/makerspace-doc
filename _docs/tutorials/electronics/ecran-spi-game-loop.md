@@ -32,7 +32,7 @@ todo: 10
 
 ## Écran SPI et game loop
 
-Ce tutoriel ajoute la dernière brique matérielle du montage : l'**écran**. Le câblage des boutons et du joystick posé au tutoriel [Boutons, joystick et moniteur série](/workshops/microcontroleur/tutorials/entrees-boutons-joystick/) ne bouge pas. À la fin, une balle rebondit sur l'écran — la première brique visuelle du Pong.
+Ce tutoriel ajoute la dernière brique matérielle du montage : l'**écran**. Le câblage des boutons et du joystick posé au tutoriel [Boutons, joystick et moniteur série](/workshops/microcontroleur/tutorials/entrees-boutons-joystick/) ne bouge pas. À la fin, une balle rebondit sur l'écran - la première brique visuelle du Pong.
 
 ### Câblage additionnel de l'atelier
 
@@ -55,11 +55,11 @@ graph LR
   BLK --> GPIO15["GPIO15 (ou 3,3 V)"]
 ```
 
-{% include message.html title="MISO non utilisé" message="L'écran ne renvoie jamais de données utiles à l'ESP32 : seul le sens CPU → écran (MOSI) est câblé. C'est la différence entre un bus SPI complet et cet usage en écriture seule — voir le concept [Les bus de communication](/workshops/microcontroleur/concepts/bus-communication/)." status="is-info" icon="fas fa-info-circle" %}
+{% include message.html title="MISO non utilisé" message="L'écran ne renvoie jamais de données utiles à l'ESP32 : seul le sens CPU → écran (MOSI) est câblé. C'est la différence entre un bus SPI complet et cet usage en écriture seule - voir le concept [Les bus de communication](/workshops/microcontroleur/concepts/bus-communication/)." status="is-info" icon="fas fa-info-circle" %}
 
 {% include step-tuto.html
 greyBackground=true
-title="1 — Installer TFT_eSPI et configurer User_Setup"
+title="1 - Installer TFT_eSPI et configurer User_Setup"
 content="Ajoute la bibliothèque **TFT_eSPI** à ton `platformio.ini`, puis copie le fichier `User_Setup.h` fourni (identique pour tout le groupe) dans le dossier de la librairie. C'est **le** point de blocage classique de cette étape : un `User_Setup` mal configuré donne un écran noir, pas une erreur de compilation."
 %}
 
@@ -77,7 +77,7 @@ build_flags =
 ```
 
 ```cpp
-// User_Setup.h (extrait clé en main — pins figées de l'atelier)
+// User_Setup.h (extrait clé en main - pins figées de l'atelier)
 #define ST7789_DRIVER      // adapter selon le contrôleur de ton écran
 
 #define TFT_CS   10
@@ -91,11 +91,11 @@ build_flags =
 
 {% include message.html title="Écran noir après flashage ?" message="Vérifie dans l'ordre : le rétroéclairage (BLK) est-il alimenté ? Le driver (`ST7789_DRIVER` / `ILI9341_DRIVER`) correspond-il à ton écran ? Les pins du `User_Setup.h` correspondent-elles au câblage réel ? Ces trois points couvrent la quasi-totalité des écrans noirs." status="is-warning" icon="fas fa-exclamation-triangle" %}
 
-{% include message.html title="Checkpoint" message="À ce stade, le projet doit compiler et se flasher sans erreur — même si l'écran reste noir : aucun dessin n'a encore été envoyé. Une erreur de compilation ici vient presque toujours d'un chemin ou d'un nom de fichier incorrect pour User_Setup.h." status="is-success" icon="fas fa-check-circle" %}
+{% include message.html title="Checkpoint" message="À ce stade, le projet doit compiler et se flasher sans erreur - même si l'écran reste noir : aucun dessin n'a encore été envoyé. Une erreur de compilation ici vient presque toujours d'un chemin ou d'un nom de fichier incorrect pour User_Setup.h." status="is-success" icon="fas fa-check-circle" %}
 
 {% include step-tuto.html
 greyBackground=true
-title="2 — Premières primitives"
+title="2 - Premières primitives"
 content="`TFT_eSPI` expose un système de coordonnées `(0,0)` en haut à gauche. Teste les formes et le texte de base avant de construire quoi que ce soit d'animé."
 %}
 
@@ -125,8 +125,8 @@ void loop() {}
 
 {% include step-tuto.html
 greyBackground=true
-title="3 — Une raquette qui suit le joystick"
-content="Réutilise la lecture ADC du tutoriel précédent pour déplacer un rectangle (la raquette) verticalement. On **efface l'ancienne position avant de redessiner** — sans ça, la raquette laisse une traînée à l'écran."
+title="3 - Une raquette qui suit le joystick"
+content="Réutilise la lecture ADC du tutoriel précédent pour déplacer un rectangle (la raquette) verticalement. On **efface l'ancienne position avant de redessiner** - sans ça, la raquette laisse une traînée à l'écran."
 %}
 
 ```cpp
@@ -153,8 +153,8 @@ void loop() {
 
 {% include step-tuto.html
 greyBackground=true
-title="4 — La game loop non bloquante"
-content="`delay()` bloquerait toute lecture d'entrée pendant l'attente — inacceptable pour un jeu. `millis()` permet de cadencer les mises à jour **sans jamais bloquer** le CPU, en comparant le temps écoulé à chaque passage de `loop()`."
+title="4 - La game loop non bloquante"
+content="`delay()` bloquerait toute lecture d'entrée pendant l'attente - inacceptable pour un jeu. `millis()` permet de cadencer les mises à jour **sans jamais bloquer** le CPU, en comparant le temps écoulé à chaque passage de `loop()`."
 %}
 
 ```cpp
@@ -178,7 +178,7 @@ Cette structure **lire → mettre à jour → redessiner** est la charpente de t
 
 {% include step-tuto.html
 greyBackground=true
-title="5 — Une balle qui rebondit"
+title="5 - Une balle qui rebondit"
 content="Assemble les deux étapes précédentes : une balle en mouvement constant, qui rebondit sur les bords haut/bas et droit de l'écran (le bord gauche sera la raquette, gérée à l'étape suivante)."
 %}
 
@@ -211,4 +211,4 @@ void redessiner() {
 
 Une balle blanche se déplace en continu sur l'écran et rebondit sur les bords, sans clignotement ni traînée visible, pendant que la raquette du joueur 2 suit le joystick.
 
-{% include message.html title="Étape suivante" message="Le tutoriel [Collisions, score et machine à états](/workshops/microcontroleur/tutorials/collisions-fsm-pong/) ajoute la seconde raquette, la détection de collision balle/raquette, le score et la machine à états (menu / partie / game over) — sans rien changer au câblage." status="is-success" icon="fas fa-check-circle" %}
+{% include message.html title="Étape suivante" message="Le tutoriel [Collisions, score et machine à états](/workshops/microcontroleur/tutorials/collisions-fsm-pong/) ajoute la seconde raquette, la détection de collision balle/raquette, le score et la machine à états (menu / partie / game over) - sans rien changer au câblage." status="is-success" icon="fas fa-check-circle" %}
