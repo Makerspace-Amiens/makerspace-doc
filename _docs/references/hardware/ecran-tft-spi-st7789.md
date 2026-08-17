@@ -9,7 +9,7 @@ doc_header: true
 
 title: Écran TFT SPI (ST7789)
 subtitle: L'afficheur couleur du jeu embarqué
-description: Fiche de référence de l'écran TFT SPI à contrôleur ST7789 utilisé pour afficher le Pong : caractéristiques, brochage et bibliothèque.
+description: "Fiche de référence de l'écran TFT SPI à contrôleur ST7789 utilisé pour afficher le Pong : caractéristiques, brochage et bibliothèque."
 author: Alban Petit
 
 todo: 60

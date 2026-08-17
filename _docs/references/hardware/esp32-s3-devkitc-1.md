@@ -9,7 +9,7 @@ doc_header: true
 
 title: ESP32-S3-DevKitC-1
 subtitle: La carte de développement au cœur de l'atelier
-description: Fiche de référence de la carte ESP32-S3-DevKitC-1 utilisée dans l'atelier microcontrôleurs : caractéristiques, brochage et points d'attention.
+description: "Fiche de référence de la carte ESP32-S3-DevKitC-1 utilisée dans l'atelier microcontrôleurs : caractéristiques, brochage et points d'attention."
 manufacturer:
   - name: Espressif Systems
     link: "https://www.espressif.com/en/products/devkits/esp32-s3-devkitc-1"
