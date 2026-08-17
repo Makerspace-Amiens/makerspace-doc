@@ -9,7 +9,7 @@ component_toc: true
 doc_header: true
 type: tutorial
 
-title: GPIO sur ESP32 — bouton, LED et joystick
+title: GPIO sur ESP32 - bouton, LED et joystick
 subtitle: Lire une entrée numérique, piloter une sortie, puis lire un joystick analogique
 description: Découvrir en pratique les broches GPIO d'un ESP32 en lisant un bouton externe, en pilotant une LED, puis en lisant les axes d'un joystick analogique via l'ADC.
 author: Alban Petit
@@ -47,9 +47,9 @@ Une broche **GPIO** (*General Purpose Input/Output*) peut être configurée par 
 
 Ce tutoriel parcourt les trois usages les plus courants, du plus simple au plus complexe, en construisant à chaque étape sur la précédente :
 
-1. Lire un **bouton externe** — une entrée numérique (`0` ou `1`).
-2. Piloter une **LED** — une sortie numérique.
-3. Lire un **joystick analogique** — une entrée analogique convertie en nombre via l'ADC.
+1. Lire un **bouton externe** - une entrée numérique (`0` ou `1`).
+2. Piloter une **LED** - une sortie numérique.
+3. Lire un **joystick analogique** - une entrée analogique convertie en nombre via l'ADC.
 
 À la fin, tu auras un petit montage complet qui combine les trois : un bouton, une LED et un joystick lus et pilotés simultanément.
 
@@ -72,7 +72,7 @@ Ce tutoriel parcourt les trois usages les plus courants, du plus simple au plus 
 - Un module joystick analogique 2 axes avec bouton intégré
 - Une breadboard et des fils de câblage
 
-## Étape 0 — Créer le projet PlatformIO
+## Créer le projet PlatformIO
 
 {% include step-tuto.html
 greyBackground=true
@@ -92,7 +92,7 @@ monitor_speed = 115200
 
 {% include message.html title="Adapte le nom de la board" message="Remplace `esp32dev` par la référence exacte de ta carte (visible dans l'assistant New Project). Le reste du fichier ne change pas pour ce tutoriel." status="is-info" icon="fas fa-info-circle" %}
 
-## Étape 1 — Lire un bouton externe (entrée numérique)
+## Lire un bouton externe (entrée numérique)
 
 {% include step-tuto.html
 greyBackground=true
@@ -119,7 +119,7 @@ void loop() {
 }
 ```
 
-{% include message.html title="Logique inversée avec INPUT_PULLUP" message="Avec un pull-up, la broche lit HIGH au repos et LOW quand le bouton est pressé — l'inverse de ce qu'on imagine intuitivement. Un appui mécanique produit aussi des rebonds (plusieurs transitions parasites) ; un petit délai après détection suffit à les filtrer pour un usage simple. Pour un projet où la précision du timing compte, une vraie bibliothèque de debounce est préférable." status="is-info" icon="fas fa-info-circle" %}
+{% include message.html title="Logique inversée avec INPUT_PULLUP" message="Avec un pull-up, la broche lit HIGH au repos et LOW quand le bouton est pressé - l'inverse de ce qu'on imagine intuitivement. Un appui mécanique produit aussi des rebonds (plusieurs transitions parasites) ; un petit délai après détection suffit à les filtrer pour un usage simple. Pour un projet où la précision du timing compte, une vraie bibliothèque de debounce est préférable." status="is-info" icon="fas fa-info-circle" %}
 
 ### Pourquoi pas une résistance externe ?
 
@@ -135,7 +135,7 @@ Trois modes existent pour une broche configurée en entrée :
 
 {% include message.html title="Checkpoint" message="Ouvre le moniteur série (115200 bauds) : tu dois voir « Bouton relâché » en boucle, puis « Bouton appuyé » tant que tu maintiens le bouton. Valide ce comportement avant de passer à la suite." status="is-success" icon="fas fa-check-circle" %}
 
-## Étape 2 — Piloter une LED (sortie numérique)
+## Piloter une LED (sortie numérique)
 
 {% include step-tuto.html
 greyBackground=true
@@ -191,7 +191,7 @@ void loop() {
 
 {% include message.html title="Checkpoint" message="La LED doit s'allumer instantanément dès que tu appuies sur le bouton, et s'éteindre dès que tu le relâches." status="is-success" icon="fas fa-check-circle" %}
 
-## Étape 3 — Lire un joystick analogique (ADC)
+## Lire un joystick analogique (ADC)
 
 Un joystick analogique contient deux potentiomètres (axes X et Y) et un bouton. Contrairement au bouton du départ, ses axes ne renvoient pas un simple `0`/`1` mais une **valeur continue**, convertie en nombre par le **convertisseur analogique-numérique (ADC)** de l'ESP32.
 
@@ -238,7 +238,7 @@ void loop() {
 }
 ```
 
-{% include message.html title="ADC1 plutôt qu'ADC2" message="L'ESP32 possède deux banques d'ADC. Les broches ADC2 deviennent indisponibles ou instables dès que le Wi-Fi est actif. Pour un joystick, préfère toujours les broches ADC1 (généralement GPIO1 à GPIO10 selon les modèles) — même si ton projet n'utilise pas encore le Wi-Fi aujourd'hui." status="is-warning" icon="fas fa-exclamation-triangle" %}
+{% include message.html title="ADC1 plutôt qu'ADC2" message="L'ESP32 possède deux banques d'ADC. Les broches ADC2 deviennent indisponibles ou instables dès que le Wi-Fi est actif. Pour un joystick, préfère toujours les broches ADC1 (généralement GPIO1 à GPIO10 selon les modèles) - même si ton projet n'utilise pas encore le Wi-Fi aujourd'hui." status="is-warning" icon="fas fa-exclamation-triangle" %}
 
 ### Détecter une direction
 
@@ -264,7 +264,7 @@ Direction lireDirection() {
 
 {% include message.html title="Checkpoint" message="Incliner le joystick doit faire varier x et y entre 0 et 4095 dans le moniteur série, en revenant systématiquement proche du centre (≈2048) au repos." status="is-success" icon="fas fa-check-circle" %}
 
-## Étape 4 — Tout combiner
+## Tout combiner
 
 Assemble maintenant le bouton, la LED et le joystick dans un seul programme : la LED s'allume quand le bouton externe est pressé, et s'éteint quand on appuie sur le bouton du joystick.
 
@@ -323,13 +323,13 @@ void loop() {
 
 ## Résultat attendu
 
-Le moniteur série (115200 bauds) doit afficher en continu la direction détectée du joystick. Presser le bouton externe allume la LED ; appuyer sur le bouton du joystick l'éteint. Chaque brique (bouton, LED, joystick) fonctionne indépendamment des deux autres — c'est ce découplage qui permet de les combiner sans conflit.
+Le moniteur série (115200 bauds) doit afficher en continu la direction détectée du joystick. Presser le bouton externe allume la LED ; appuyer sur le bouton du joystick l'éteint. Chaque brique (bouton, LED, joystick) fonctionne indépendamment des deux autres - c'est ce découplage qui permet de les combiner sans conflit.
 
 ## Pour aller plus loin
 
 - Ajoute un **anti-rebond logiciel** propre (avec un timestamp `millis()`) au lieu du `delay()` utilisé ici, pour ne jamais bloquer la boucle `loop()`.
 - Utilise `map()` pour convertir les valeurs `0-4095` du joystick en pourcentage `0-100` ou en angle `0-180`.
-- Concept [GPIO & monde numérique](/workshops/microcontroleur/concepts/gpio-monde-numerique/) — niveaux logiques, pull-up/pull-down, calcul de résistance de LED en détail.
-- Concept [ADC & PWM](/workshops/microcontroleur/concepts/adc-pwm/) — résolution de l'ADC, échantillonnage, PWM en sortie.
+- Concept [GPIO & monde numérique](/workshops/microcontroleur/concepts/gpio-monde-numerique/) - niveaux logiques, pull-up/pull-down, calcul de résistance de LED en détail.
+- Concept [ADC & PWM](/workshops/microcontroleur/concepts/adc-pwm/) - résolution de l'ADC, échantillonnage, PWM en sortie.
 - Tutoriel [Servomoteurs](/docs/tutorials/electronics/servomotor/) pour piloter une sortie PWM à la suite de ce tutoriel.
 - Tutoriel [Port série avec l'Arduino IDE](/docs/tutorials/electronics/arduino-port-serie/) pour aller plus loin dans la lecture et le tracé de données.
