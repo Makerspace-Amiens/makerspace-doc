@@ -64,14 +64,10 @@ Vous y trouverez les concepts fondamentaux d'un microcontrôleur (architecture d
 
 | Phase | Volume | Résultat |
 |----|---|---|
-| CM | 4,5h | Carte mentale du µC : archi, GPIO, ADC/PWM, bus, chaîne de dev |
+| CM | 4,5h | µC : archi, GPIO, ADC/PWM, bus, chaîne de dev |
 | TD | 10,5h | **Pong 2 joueurs** local sur ESP32-S3 + écran SPI |
 | Projet | binômes | **Snake multijoueur** (console + navigateur) + PCB KiCad soudé |
 
-## Fil conducteur pédagogique
-
-Chaque notion est incarnée par une démo physique (LED, bouton, joystick affichant 0–4095 au projecteur). Un **schéma-bloc unique** (CPU / Flash / RAM / périphériques) est tracé dès le premier cours et ré-affiché à chaque chapitre en surlignant la brique du jour.
-
 ## Pourquoi ce projet ?
 
-Le mini-jeu type Gameboy est le fil rouge de l'atelier : simple à comprendre, riche à implémenter. Les TD construisent progressivement **Pong** (un périphérique ajouté par séance) ; le projet introduit **Snake** sur une mécanique neuve, et ajoute le multijoueur asymétrique navigateur/console. La machine à états finis (FSM), pour gérer les écrans menu/partie/fin, prépare directement les états réseau du projet.
+Le mini-jeu type Gameboy est le fil rouge de l'atelier : simple à comprendre, riche à implémenter. Les TD construisent progressivement **Pong** (un périphérique ajouté par séance) le projet introduit **Snake** sur une mécanique neuve, et ajoute le multijoueur asymétrique dans le navigateur. La machine à états finis (FSM), pour gérer les écrans menu/partie/fin, prépare directement les états réseau du projet.
