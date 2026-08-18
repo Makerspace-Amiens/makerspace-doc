@@ -8,3 +8,5 @@ _site/
 vendor/
 documentation-website/
 .DS_Store
+.claude
+.gitignore
