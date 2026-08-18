@@ -144,6 +144,78 @@ La fréquence est suffisamment élevée (typiquement 1–50 kHz) pour que l'œil
 
 $$V_{moyen} = V_{max} \times \frac{\text{duty cycle}}{100}$$
 
+<div class="box">
+  <p class="title is-5">Démonstrateur PWM</p>
+  <div class="field">
+    <label class="label" for="pwm-duty">Rapport cyclique : <span id="pwm-duty-val">50</span> %</label>
+    <input type="range" id="pwm-duty" min="0" max="100" value="50" step="1" style="width:100%;" oninput="drawPwm()">
+  </div>
+  <p class="mb-3">
+    Tension moyenne : <strong><span id="pwm-avg">1.65</span> V</strong> sur 3,3 V
+    &nbsp;·&nbsp; <code>analogWrite</code> : <strong><span id="pwm-val">128</span></strong> / 255
+  </p>
+  <canvas id="pwm-canvas" height="180" style="width:100%; border:1px solid #d4d4d8; border-radius:6px;"></canvas>
+</div>
+
+<script>
+(function () {
+  function drawPwm() {
+    var duty = parseInt(document.getElementById('pwm-duty').value, 10);
+    document.getElementById('pwm-duty-val').textContent = duty;
+    document.getElementById('pwm-avg').textContent = (duty / 100 * 3.3).toFixed(2);
+    document.getElementById('pwm-val').textContent = Math.round(duty / 100 * 255);
+
+    var c = document.getElementById('pwm-canvas');
+    var w = c.clientWidth || 600;
+    var h = c.height;
+    c.width = w;
+    var ctx = c.getContext('2d');
+    ctx.clearRect(0, 0, w, h);
+
+    var left = 34, right = w - 12, top = 22, bottom = h - 22;
+    var plotW = right - left;
+
+    // repères 0 V et 3,3 V
+    ctx.strokeStyle = '#e4e4e7'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(left, top); ctx.lineTo(right, top); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(left, bottom); ctx.lineTo(right, bottom); ctx.stroke();
+    ctx.fillStyle = '#71717a'; ctx.font = '12px sans-serif';
+    ctx.fillText('3,3 V', 2, top + 4);
+    ctx.fillText('0 V', 10, bottom + 4);
+
+    // tension moyenne (ligne pointillée)
+    var avgY = bottom - (duty / 100) * (bottom - top);
+    ctx.strokeStyle = '#3b82f6'; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(left, avgY); ctx.lineTo(right, avgY); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#3b82f6';
+    ctx.fillText('moyenne', right - 62, avgY - 5);
+
+    // signal PWM (3 périodes)
+    var periods = 3, pw = plotW / periods, hiW = pw * duty / 100;
+    ctx.strokeStyle = '#ef2e31'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (var p = 0; p < periods; p++) {
+      var x0 = left + p * pw, xHi = x0 + hiW, x1 = x0 + pw;
+      var startY = duty > 0 ? top : bottom;
+      if (p === 0) ctx.moveTo(x0, startY); else ctx.lineTo(x0, startY);
+      if (duty > 0 && duty < 100) {
+        ctx.lineTo(xHi, top); ctx.lineTo(xHi, bottom); ctx.lineTo(x1, bottom);
+      } else if (duty >= 100) {
+        ctx.lineTo(x1, top);
+      } else {
+        ctx.lineTo(x1, bottom);
+      }
+    }
+    ctx.stroke();
+  }
+  window.drawPwm = drawPwm;
+  document.addEventListener('DOMContentLoaded', drawPwm);
+  window.addEventListener('resize', drawPwm);
+  drawPwm();
+})();
+</script>
+
 ### PWM sur ESP32-S3 avec Arduino
 
 ```cpp
