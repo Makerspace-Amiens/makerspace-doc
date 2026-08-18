@@ -9,7 +9,7 @@ component_toc: true
 doc_header: true
 type: tutorial
 
-title: GPIO sur ESP32 - bouton, LED et joystick
+title: Bouton, LED et joystick
 subtitle: Lire une entrée numérique, piloter une sortie, puis lire un joystick analogique
 description: Découvrir en pratique les broches GPIO d'un ESP32 en lisant un bouton externe, en pilotant une LED, puis en lisant les axes d'un joystick analogique via l'ADC.
 author: Alban Petit
