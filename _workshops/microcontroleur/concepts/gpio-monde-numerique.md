@@ -43,6 +43,20 @@ Sur l'ESP32-S3 (logique **3,3 V**) :
 | LOW | 0 V | `0` / `false` / `LOW` |
 | HIGH | 3,3 V | `1` / `true` / `HIGH` |
 
+### Les seuils logiques de l'ESP32-S3
+
+En entrée, une broche ne bascule pas exactement à 0 V ou 3,3 V : elle compare la tension lue à deux **seuils**, et entre les deux l'état est indéterminé. La datasheet de l'ESP32-S3 (alimenté en 3,3 V) donne :
+
+| Seuil | Valeur | Interprétation |
+|---|---|---|
+| $V_{IL}$ (entrée LOW max) | ≤ 0,25 × VDD ≈ **0,8 V** | En dessous : lu comme `LOW` |
+| Zone indéterminée | ~0,8 V à ~2,5 V | À éviter : lecture imprévisible |
+| $V_{IH}$ (entrée HIGH min) | ≥ 0,75 × VDD ≈ **2,5 V** | Au-dessus : lu comme `HIGH` |
+
+Tout ce qui est sous ~0,8 V vaut `0`, tout ce qui dépasse ~2,5 V vaut `1`. Cette zone grise au milieu explique pourquoi une entrée **flottante** (voir plus bas) donne des lectures erratiques : sa tension traîne dans cette plage indéterminée.
+
+En **sortie**, la puce garantit à l'inverse des niveaux francs : proche de 0 V pour `LOW` ($V_{OL}$) et proche de 3,3 V pour `HIGH` ($V_{OH}$).
+
 {% include message.html title="Attention : 3,3 V, pas 5 V" message="Les GPIO de l'ESP32-S3 supportent **3,3 V maximum**. Une broche mise en sortie produit 3,3 V - pas 5 V comme sur Arduino Uno. Un signal 5 V appliqué en entrée peut endommager la puce." status="is-danger" icon="fas fa-exclamation-triangle" %}
 
 ## GPIO - General Purpose Input/Output
@@ -70,6 +84,45 @@ Calcul de la résistance pour une LED rouge (Vf, la tension de seuil de la LED, 
 $$R = \frac{V_{alim} - V_f}{I} = \frac{3{,}3 - 2}{0{,}01} = 130\ \Omega$$
 
 Valeur normalisée : **150 Ω** (série E12).
+
+<div class="box">
+  <p class="title is-5">Calculateur de résistance série pour LED</p>
+  <div class="field">
+    <label class="label">Tension d'alimentation V<sub>alim</sub> (V)</label>
+    <input class="input" type="number" id="led-valim" value="3.3" step="0.1">
+  </div>
+  <div class="field">
+    <label class="label">Tension de seuil de la LED V<sub>f</sub> (V)</label>
+    <input class="input" type="number" id="led-vf" value="2" step="0.1">
+  </div>
+  <div class="field">
+    <label class="label">Courant souhaité I (mA)</label>
+    <input class="input" type="number" id="led-i" value="10" step="1">
+  </div>
+  <button class="button is-primary" onclick="calcLedResistor()">Calculer</button>
+  <p class="mt-3 is-size-5" id="led-result"><strong>R &asymp; 130 &Omega;</strong> &nbsp; valeur E12 conseill&eacute;e : <strong>150 &Omega;</strong></p>
+</div>
+
+<script>
+function calcLedResistor() {
+  var valim = parseFloat(document.getElementById('led-valim').value);
+  var vf    = parseFloat(document.getElementById('led-vf').value);
+  var i     = parseFloat(document.getElementById('led-i').value) / 1000; // mA -> A
+  var out   = document.getElementById('led-result');
+  if (isNaN(valim) || isNaN(vf) || !(i > 0) || valim <= vf) {
+    out.innerHTML = "Vérifie les valeurs : V<sub>alim</sub> doit être supérieure à V<sub>f</sub>, et I positif.";
+    return;
+  }
+  var r = (valim - vf) / i;
+  var e12 = [];
+  [10,12,15,18,22,27,33,39,47,56,68,82].forEach(function(b){ e12.push(b, b*10, b*100, b*1000); });
+  e12.sort(function(a,b){ return a - b; });
+  var norm = e12.find(function(v){ return v >= r; }) || e12[e12.length - 1];
+  out.innerHTML = "<strong>R &asymp; " + r.toFixed(0) + " &Omega;</strong> &nbsp; valeur E12 conseillée : <strong>" + norm + " &Omega;</strong>";
+}
+</script>
+
+{% include message.html title="Calculateur en ligne" message="Pour une version en ligne (et d'autres calculs d'électronique), voir le [calculateur de résistance série pour LED de DigiKey](https://www.digikey.fr/fr/resources/conversion-calculators/conversion-calculator-led-series-resistor)." status="is-info" icon="fas fa-calculator" %}
 
 ### Push-pull vs open-drain - deux façons de piloter une sortie
 
@@ -114,7 +167,7 @@ flowchart TD
   C -->|"Oui - via une résistance de rappel"| F["Tension définie et stable\nLOW ou HIGH garanti au repos"]
 ```
 
-Une broche en haute impédance n'a presque aucune résistance interne : la moindre interférence électromagnétique environnante (un câble voisin, le secteur 50 Hz, ta propre main qui s'approche) suffit à faire basculer sa lecture - d'où le terme « flottant » : rien ne fixe sa tension à une valeur précise.
+Une broche en [**haute impédance**](https://fr.wikipedia.org/wiki/Haute_imp%C3%A9dance) n'a presque aucune résistance interne : la moindre interférence électromagnétique environnante (un câble voisin, le secteur 50 Hz, ta propre main qui s'approche) suffit à faire basculer sa lecture d'où le terme « flottant » : rien ne fixe sa tension à une valeur précise.
 
 ### La solution : résistance de rappel
 
@@ -230,7 +283,9 @@ Malgré la souplesse de la GPIO matrix, certaines broches ont un **rôle réserv
 | Courant max par broche | 40 mA (recommandé : ≤ 12 mA) |
 | Tension max en entrée | **3,3 V** |
 
-Ne jamais connecter une charge inductive (moteur, relais - une charge qui stocke de l'énergie magnétique et renvoie des pics de tension à la coupure) directement sur un GPIO - toujours utiliser un transistor ou un **driver** (circuit de puissance intermédiaire).
+{% include message.html title="Ne jamais connecter une charge inductive" message="Ne jamais connecter une charge inductiv, moteur, relais, une charge qui stocke de l'énergie magnétique et renvoie des pics de tension à la coupure) directement sur un GPIO toujours utiliser un transistor ou un **driver** (circuit de puissance intermédiaire)." status="is-warning" icon="fas fa-exclamation-triangle" %}
+
+
 
 ## Connecter un composant 5 V - l'adaptation de niveau
 
