@@ -63,13 +63,13 @@ Le CPU exécute un **cycle fetch–decode–execute** en continu :
 2. **Decode** la décoder
 3. **Execute** l'exécuter (calcul, accès mémoire, écriture registre)
 
-Ce cycle est cadencé par l'**horloge** : l'ESP32-S3 tourne à **240 MHz**, soit 240 millions de cycles par seconde. Un `digitalWrite()` prend quelques cycles ; une multiplication quelques dizaines.
+Ce cycle est cadencé par l'**horloge** : l'ESP32-S3 tourne à **240 MHz**, soit 240 millions de cycles par seconde. Un `digitalWrite()` prend quelques cycles, une multiplication quelques dizaines, et établir une connexion Wi-Fi en réclame plusieurs centaines de millions.
 
-L'ESP32-S3 possède **deux cœurs** (deux unités de calcul quasi indépendantes, capables de travailler en parallèle) Xtensa LX7. Dans le cadre Arduino-ESP32, le code `setup()`/`loop()` tourne sur le cœur 1 ; le cœur 0 gère le Wi-Fi en arrière-plan.
+L'ESP32-S3 possède **deux cœurs** (deux unités de calcul quasi indépendantes, capables de travailler en parallèle) Xtensa LX7. Dans le cadre Arduino-ESP32, le code principal `setup()`/`loop()` tourne sur le cœur 1 ; le cœur 0 gère le Wi-Fi en arrière-plan.
 
 ### Ce que fait vraiment le CPU : calculer ou transférer
 
-Au fond, un CPU ne sait faire que deux choses : **des calculs** et **des transferts de données**. Tout programme, aussi complexe soit-il, se ramène à cette combinaison combiner deux nombres, ou déplacer un octet d'une case vers une autre.
+Au fond, un CPU ne sait faire que deux choses : **des calculs** et **des transferts de données**. Tout programme, aussi complexe soit-il, se ramène à cette combinaison : combiner deux nombres, ou déplacer un octet d'une case vers une autre.
 
 Les calculs sont réalisés par l'**ALU** (*Arithmetic Logic Unit*, unité arithmétique et logique), le cœur mathématique du CPU. Elle prend deux nombres en entrée et produit :
 
@@ -78,7 +78,7 @@ Les calculs sont réalisés par l'**ALU** (*Arithmetic Logic Unit*, unité arith
 
 À chaque opération, l'ALU met aussi à jour quelques **drapeaux d'état** (*flags*) qui résument le résultat sans qu'on ait à le relire : est-il **nul** (*zero*) ? **négatif** ? y a-t-il eu une **retenue** (*carry*) ou un **dépassement** de capacité (*overflow*) ? Ce sont ces drapeaux que le CPU consulte pour décider quoi faire ensuite - c'est exactement ce qui se cache derrière un `if (a > b)` en C : une soustraction, puis la lecture d'un drapeau.
 
-Pour travailler vite, l'ALU ne pioche pas directement dans la RAM : elle passe par une poignée de **registres internes** au CPU - à ne pas confondre avec les registres de périphériques vus plus bas des cases ultra-rapides où sont posés les opérandes le temps du calcul.
+Pour travailler vite, l'ALU ne pioche pas directement dans la RAM : elle passe par une poignée de **registres internes** au CPU - à ne pas confondre avec les registres de périphériques vus plus bas - des cases ultra-rapides où sont posés les opérandes le temps du calcul.
 
 ## L'horloge - cadencer et économiser l'énergie
 
@@ -114,48 +114,6 @@ const char msg[] PROGMEM = "Hello";
 int compteur = 0;
 ```
 
-### Harvard ou Von Neumann ?
-
-Deux grandes familles d'architectures décrivent *comment* le CPU accède au programme et aux données :
-
-- **Von Neumann** : instructions et données partagent la **même** mémoire et le même bus. Simple, mais le CPU ne peut pas lire une instruction et une donnée au même instant.
-- **Harvard** : instructions et données empruntent des **chemins séparés**, donc lisibles en parallèle - plus rapide.
-
-Le cœur Xtensa LX7 de l'ESP32-S3 suit une architecture **Harvard modifiée** : les bus d'instructions et de données sont distincts, mais la Flash est « mappée » en mémoire via un cache, ce qui donne au programmeur l'illusion d'un espace unifié. Retiens surtout l'idée : le **programme** (Flash) et les **données** (RAM) vivent dans des espaces séparés.
-
-## Le bus - l'autoroute de données partagée
-
-Le CPU, les mémoires et les périphériques ne sont pas reliés deux à deux par des fils dédiés : ils partagent un **bus**, un faisceau de pistes communes sur lequel tout le monde est branché. On y distingue en général trois faisceaux :
-
-- un **bus d'adresses** : le CPU y place l'adresse de la case qu'il veut lire ou écrire ;
-- un **bus de données** : la valeur y transite dans un sens ou dans l'autre ;
-- un **bus de contrôle** : quelques signaux qui précisent « je lis » ou « j'écris ».
-
-Comme la ligne est partagée, une règle absolue s'impose : **un seul composant a le droit de "parler" (imposer une tension) à la fois**. Si deux périphériques poussaient une valeur en même temps sur le bus de données - l'un forçant un 0, l'autre un 1 - on obtiendrait un court-circuit.
-
-Pour l'éviter, chaque composant se branche au bus via des **sorties trois états** : en plus de 0 et 1, elles disposent d'un état de **haute impédance** (*high-Z*) qui les déconnecte électriquement de la ligne. À tout instant, un seul émetteur est actif ; tous les autres sont en haute impédance, à l'écoute. C'est le bus d'adresses qui orchestre ce ballet : l'adresse émise par le CPU **sélectionne** le seul composant autorisé à répondre.
-
-```mermaid
-flowchart TB
-  CPU["CPU\n(pilote le bus)"]
-  BUS["Bus partagé - adresses · données · contrôle"]
-  RAM["RAM"]
-  PA["Périph. A\n(émetteur actif)"]
-  PB["Périph. B\n(haute impédance)"]
-  CPU --- BUS
-  BUS --- RAM
-  BUS --- PA
-  BUS --- PB
-```
-
-## Les registres - interface logiciel/matériel
-
-Chaque périphérique est contrôlé via des **registres** : des cases mémoire à des adresses fixes. Écrire dans un registre allume une LED ; lire un registre retourne l'état d'un bouton.
-
-Comment une adresse retrouve-t-elle la bonne case ? Un circuit appelé **décodeur d'adresse** compare l'adresse présente sur le bus et n'active que la cellule correspondante ; toutes les autres restent en haute impédance. Le mécanisme est identique pour une case de RAM et pour un registre de périphérique : dans l'espace d'adressage du CPU, écrire une variable en mémoire et allumer une LED se ressemblent beaucoup - c'est la même opération « poser une valeur à telle adresse ».
-
-Arduino abstrait tout ça : `digitalWrite(LED, HIGH)` écrit dans le bon registre sans que tu aies à connaître son adresse. Mais derrière, c'est toujours un accès registre.
-
 ## Périphériques - le glossaire
 
 Un microcontrôleur embarque une collection de circuits spécialisés, chacun désigné par un acronyme. En voici les plus courants :
@@ -171,6 +129,65 @@ Un microcontrôleur embarque une collection de circuits spécialisés, chacun d�
 | **Watchdog** | *Chien de garde* | Compteur qui redémarre le microcontrôleur si le programme se bloque et oublie de le réinitialiser à temps |
 
 {% include message.html title="Pas de DAC sur l'ESP32-S3" message="Contrairement à l'ESP32 d'origine, l'ESP32-S3 n'a pas de DAC (Digital to Analog Converter) matériel. Pour produire un signal analogique variable, il faut passer par du PWM filtré ou une puce externe." status="is-warning" icon="fas fa-exclamation-triangle" %}
+
+### Des périphériques spécifiques à chaque puce
+
+Les périphériques ci-dessus (GPIO, ADC, timers, DMA…) se retrouvent sur presque tous les microcontrôleurs. Mais chaque famille de puces ajoute ses **blocs spécialisés** : ce sont eux qui font sa personnalité et son domaine de prédilection, et qui distinguent un µC « connecté » d'un µC « multimédia » ou « bas coût ».
+
+| Périphérique spécialisé | Rôle | Exemples de puces |
+|---|---|---|
+| **Wi-Fi / Bluetooth** | Radio 2,4 GHz intégrée pour le sans-fil et l'IoT | ESP32, ESP32-S3, RP2040-W |
+| **Interface caméra** (DVP / LCD_CAM) | Capture d'un flux vidéo depuis un capteur d'image | ESP32-S3, ESP32-CAM |
+| **Codec vidéo matériel** | Décodage/encodage accéléré (JPEG, H.264) | SoC applicatifs (ESP32-P4, i.MX…) |
+| **Audio** (I2S, codec) | Entrée/sortie de son numérique (micro, haut-parleur) | ESP32-S3, STM32 audio |
+| **USB natif** (OTG) | Jouer le rôle de périphérique ou d'hôte USB | ESP32-S3, RP2040, STM32 |
+| **Accélérateur cryptographique** | Chiffrement câblé en matériel (AES, SHA, RSA) : rapide et économe | ESP32-S3, STM32 « crypto » |
+| **Accélérateur IA / DSP** | Traitement du signal ou inférence de réseaux de neurones | ESP32-S3 (instructions vectorielles), ESP32-P4 |
+| **Capteur tactile capacitif** | Détecte le toucher sur une piste conductrice, sans bouton mécanique | ESP32, ESP32-S3 |
+
+{% include message.html title="Le S3 est orienté « connecté + IA légère »" message="L'ESP32-S3 embarque Wi-Fi, Bluetooth 5 LE, USB natif, interface caméra/écran (LCD_CAM), audio I2S, accélérateur cryptographique et des instructions vectorielles pour l'IA embarquée. À l'inverse, un microcontrôleur bas coût (ATtiny, STM32 d'entrée de gamme) se limite souvent aux périphériques universels du tableau précédent." status="is-info" icon="fas fa-info-circle" %}
+
+## Le bus - l'autoroute de données partagée
+
+Le CPU, les mémoires et les périphériques ne sont pas reliés deux à deux par des fils dédiés : ils partagent un **bus**, un faisceau de pistes communes sur lequel tout le monde est branché. On y distingue en général trois faisceaux :
+
+- un **bus d'adresses** : le CPU y place l'adresse de la case qu'il veut lire ou écrire ;
+- un **bus de données** : la valeur y transite dans un sens ou dans l'autre ;
+- un **bus de contrôle** : quelques signaux qui précisent « je lis » ou « j'écris ».
+
+Comme la ligne est partagée, une règle absolue s'impose : **un seul composant a le droit de "parler" (imposer une tension) à la fois**. Si deux périphériques poussaient une valeur en même temps sur le bus de données - l'un forçant un 0, l'autre un 1 - on obtiendrait un court-circuit.
+
+Pour l'éviter, chaque composant se branche au bus via des **sorties trois états** : en plus de 0 et 1, elles disposent d'un état de [**haute impédance**](https://fr.wikipedia.org/wiki/Haute_imp%C3%A9dance) (*high-Z*) qui les déconnecte électriquement de la ligne. À tout instant, un seul émetteur est actif ; tous les autres sont en haute impédance, à l'écoute. C'est le bus d'adresses qui orchestre ce ballet : l'adresse émise par le CPU **sélectionne** le seul composant autorisé à répondre.
+
+```mermaid
+flowchart TB
+  CPU["CPU\n(pilote le bus)"]
+  BUS["Bus partagé - adresses · données · contrôle"]
+  RAM["RAM"]
+  PA["Périph. A\n(émetteur actif)"]
+  PB["Périph. B\n(haute impédance)"]
+  CPU --- BUS
+  BUS --- RAM
+  BUS --- PA
+  BUS --- PB
+```
+
+### Harvard ou Von Neumann ?
+
+Deux grandes familles d'architectures décrivent *comment* le CPU accède au programme et aux données :
+
+- **Von Neumann** : instructions et données partagent la **même** mémoire et le même bus. Simple, mais le CPU ne peut pas lire une instruction et une donnée au même instant.
+- **Harvard** : instructions et données empruntent des **chemins séparés**, donc lisibles en parallèle - plus rapide.
+
+Le cœur Xtensa LX7 de l'ESP32-S3 suit une architecture **Harvard modifiée** : les bus d'instructions et de données sont distincts, mais la Flash est « mappée » en mémoire via un cache, ce qui donne au programmeur l'illusion d'un espace unifié. Retiens surtout l'idée : le **programme** (Flash) et les **données** (RAM) vivent dans des espaces séparés.
+
+## Les registres - interface logiciel/matériel
+
+Chaque périphérique est contrôlé via des **registres** : des cases mémoire à des adresses fixes. Écrire dans un registre allume une LED ; lire un registre retourne l'état d'un bouton.
+
+Comment une adresse retrouve-t-elle la bonne case ? Un circuit appelé **décodeur d'adresse** compare l'adresse présente sur le bus et n'active que la cellule correspondante ; toutes les autres restent en [**haute impédance**](https://fr.wikipedia.org/wiki/Haute_imp%C3%A9dance). Le mécanisme est identique pour une case de RAM et pour un registre de périphérique : dans l'espace d'adressage du CPU, écrire une variable en mémoire et allumer une LED se ressemblent beaucoup - c'est la même opération « poser une valeur à telle adresse ».
+
+Arduino abstrait tout ça : `digitalWrite(LED, HIGH)` écrit dans le bon registre sans que tu aies à connaître son adresse. Mais derrière, c'est toujours un accès registre.
 
 ## Le déroulement d'un programme
 
