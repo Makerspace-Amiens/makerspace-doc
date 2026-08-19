@@ -302,6 +302,124 @@
   border-radius: $radius;
 }
 
+// ── Onglets (include content-tabs.html) ─────────────────────────────────────
+// Sélecteurs à 2 classes (.tab-group .tabs a) pour battre la règle globale
+// .content a (même spécificité, chargée après Bulma dans app.scss).
+// Une seule carte (bordure unique) : bandeau d'onglets + contenu, pas deux
+// blocs séparés qui donnent une impression de mise en page flottante.
+
+.tab-group {
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: $radius;
+  background: var(--card-bg);
+  overflow: hidden;
+
+  .tabs {
+    margin-bottom: 0;
+    background: var(--bg-subtle);
+    border-bottom: 1px solid var(--border);
+
+    ul {
+      display: flex;
+      gap: 0.375rem;
+      margin: 0;
+      border-bottom: none;
+      padding: 0.5rem 0.5rem 0;
+    }
+
+    li {
+      margin-bottom: 0;
+    }
+
+    li a {
+      display: inline-block;
+      color: var(--fg-muted);
+      text-decoration: none;
+      cursor: pointer;
+      background: transparent;
+      border: 1px solid transparent;
+      border-bottom: none;
+      border-radius: $radius-small $radius-small 0 0;
+      padding: 0.5em 1.1em;
+
+      &:hover { color: $primary; }
+    }
+
+    // L'onglet actif se détache par un contour et "touche" la carte de
+    // contenu juste en dessous (même couleur de fond + léger décalage vers
+    // le bas pour recouvrir la ligne de séparation du bandeau).
+    li.is-active a {
+      position: relative;
+      top: 1px;
+      color: $primary;
+      font-weight: 600;
+      background: var(--card-bg);
+      border-color: var(--border);
+    }
+  }
+
+  .tab-contents {
+    padding: 1.25rem 1.5rem;
+
+    p:last-child { margin-bottom: 0; }
+  }
+}
+
+// ── Snippet Markdown copiable (include code-snippet.html) ──────────────────
+// Sélecteur à 2 classes (.code-snippet .code-snippet-body pre) pour battre
+// pre:not(.highlight pre) défini plus haut dans _syntax.scss.
+
+.code-snippet {
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: $radius;
+  overflow: hidden;
+
+  summary {
+    cursor: pointer;
+    padding: 0.75em 1.25em;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--fg-muted);
+    background: var(--bg-subtle);
+
+    &:hover { color: $primary; }
+  }
+
+  &[open] summary {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .code-snippet-body {
+    position: relative;
+
+    pre { margin: 0; }
+  }
+
+  .code-snippet-copy {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 1;
+    padding: 0.375em 0.75em;
+    font-size: 0.8125rem;
+    color: #e4e4e7;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: $radius-small;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+
+    &:hover { background: rgba(255, 255, 255, 0.16); }
+
+    &.is-copied {
+      background: rgba(34, 197, 94, 0.25);
+      border-color: rgba(34, 197, 94, 0.4);
+    }
+  }
+}
+
 // ── Diagrammes Mermaid ───────────────────────────────────────────────────────
 // Le bloc ```mermaid``` est transformé en <div class="mermaid"> par
 // _includes/mermaid-include.html. On centre le SVG rendu et on autorise le

@@ -1,0 +1,26 @@
+<details class="code-snippet">
+  <summary>{{ include.label | default: "Copier le code Markdown" }}</summary>
+  <div class="code-snippet-body">
+    <button type="button" class="code-snippet-copy">Copier</button>
+    <pre><code>{{ include.content | escape }}</code></pre>
+  </div>
+</details>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".code-snippet-copy").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const code = btn.closest(".code-snippet-body").querySelector("code");
+      navigator.clipboard.writeText(code.textContent).then(() => {
+        const original = btn.textContent;
+        btn.textContent = "Copié !";
+        btn.classList.add("is-copied");
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.classList.remove("is-copied");
+        }, 1500);
+      });
+    });
+  });
+});
+</script>

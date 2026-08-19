@@ -6,7 +6,7 @@
 {% if include.tab_title5 %}{% assign tab_titles = tab_titles | push: include.tab_title5 %}{% endif %}
 
 <div class="tab-group" id="{{ include.id | default: 'tabs' }}">
-  <div class="tabs is-boxed">
+  <div class="tabs">
     <ul>
       {% for title in tab_titles %}
         <li class="{% if forloop.first %}is-active{% endif %}" data-tab-index="{{ forloop.index0 }}">
