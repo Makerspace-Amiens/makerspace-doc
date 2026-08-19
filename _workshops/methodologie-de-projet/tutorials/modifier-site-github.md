@@ -55,7 +55,7 @@ avant d'installer Ruby en local (voir le tutoriel suivant).
 {% include step-tuto.html
   greyBackground=true
   title="Étape 4 — Committer"
-  content="En bas de la page : un champ pour le titre du commit (résumé court), un champ optionnel pour la description. Choisissez **Commit directly to the `main` branch** pour une modification simple, ou **Create a new branch and start a pull request** si vous voulez une relecture — voir [Utiliser les Pull Requests](/workshops/methodologie-de-projet/tutorials/pull-requests-relecture/). Cliquez sur **Commit changes**." %}
+  content="En bas de la page : un champ pour le titre du commit (résumé court), un champ optionnel pour la description. Choisissez **Commit directly to the `main` branch** pour une modification simple, ou **Create a new branch and start a pull request** si vous voulez une relecture — voir [Utiliser les Pull Requests](/docs/how-to-guides/pull-requests-et-conflits-git/). Cliquez sur **Commit changes**." %}
 
 ## Vérifier la publication
 

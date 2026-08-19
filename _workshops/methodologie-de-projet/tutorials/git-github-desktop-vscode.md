@@ -60,7 +60,7 @@ graph LR
   **Fetch** regarde ce qui a changé sans encore rien télécharger, **Pull**
   télécharge et applique les changements.
 
-{% include message.html title="Pourquoi pas juste Google Drive ?" message="Un dossier partagé écrase les fichiers sans prévenir en cas de modification simultanée. Git garde chaque version dans l'historique et prévient explicitement en cas de conflit — voir [Résoudre un conflit Git](/workshops/methodologie-de-projet/tutorials/resoudre-conflit-git/)." status="is-info" icon="fas fa-info-circle" %}
+{% include message.html title="Pourquoi pas juste Google Drive ?" message="Un dossier partagé écrase les fichiers sans prévenir en cas de modification simultanée. Git garde chaque version dans l'historique et prévient explicitement en cas de conflit — voir [Résoudre un conflit Git](/docs/how-to-guides/pull-requests-et-conflits-git/)." status="is-info" icon="fas fa-info-circle" %}
 
 ## Avec GitHub Desktop
 
@@ -100,7 +100,7 @@ si vous éditez déjà votre code ou votre documentation dedans.
 
 | Symptôme | Cause probable | Solution |
 |---|---|---|
-| "Push" échoue avec une erreur de rejet | Quelqu'un d'autre a push avant vous, votre historique local est en retard | Faites **Fetch origin** puis **Pull**, réglez les conflits éventuels ([voir le tutoriel dédié](/workshops/methodologie-de-projet/tutorials/resoudre-conflit-git/)), puis repush |
+| "Push" échoue avec une erreur de rejet | Quelqu'un d'autre a push avant vous, votre historique local est en retard | Faites **Fetch origin** puis **Pull**, réglez les conflits éventuels ([voir le guide dédié](/docs/how-to-guides/pull-requests-et-conflits-git/)), puis repush |
 | Un fichier que vous ne voulez pas suivre apparaît dans Changes | Fichier généré ou temporaire non exclu | Ajoutez-le à `.gitignore` |
 | Le bouton Commit reste grisé | Aucun message de commit écrit, ou aucun fichier staged | Vérifiez les deux |
 

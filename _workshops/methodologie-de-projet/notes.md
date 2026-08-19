@@ -377,6 +377,53 @@ lecture seule. Ajouté :
   KiCanvas/model-viewer) : fichier HTML autonome, simple lien suffit.
   Lien croisé posé vers `documenter-assemblage-montage.md`.
 
+### Fusion PR + conflits en guide "Utilisation avancée" (2026-08-19, suite 5)
+
+À la demande de l'utilisateur : les tutoriels #6 ("Utiliser les Pull
+Requests") et #7 ("Résoudre un conflit Git") ont été **fusionnés en un
+seul guide** `_docs/how-to-guides/pull-requests-et-conflits-git.md`
+(`type: how-to`), au motif que ce sont des compétences avancées, pas
+attendues de la plupart des équipes étudiantes.
+
+**Point important découvert en cours de route** : la section "Guides
+pratiques" générée automatiquement sur la page d'atelier (depuis la
+liste `how_to_guides:` du front matter) a un sous-titre fixe codé dans
+`_layouts/project-home.html` : *"Résolvez un problème précis, étape par
+étape."* — ça ne correspond PAS au sens voulu ici ("aller plus loin une
+fois les bases acquises"). Modifier ce layout affecterait tous les
+ateliers du site, hors de portée pour ce changement. **Solution
+retenue** : ce guide n'est **pas** ajouté à `how_to_guides:` — il est
+seulement présenté dans une vraie section `## Utilisation avancée` écrite
+à la main dans le corps de `index.md` de l'atelier, où le cadrage est
+entièrement sous contrôle. **Pattern à réutiliser** si d'autres contenus
+"avancés/optionnels" sont ajoutés plus tard : ne pas les mettre dans
+`how_to_guides:`, les lister dans une section prose dédiée à la place.
+
+Anciens fichiers `tutorials/pull-requests-relecture.md` et
+`tutorials/resoudre-conflit-git.md` supprimés. Toutes les références
+croisées mises à jour (`git-github-desktop-vscode.md`,
+`modifier-site-github.md`) vers la nouvelle URL du guide. Le plan compte
+désormais **16 tutoriels + 2 guides pratiques** (au lieu de 17 tutoriels
++ 1 guide). Vérifié : build propre, 28 liens internes uniques, tous
+résolvent, aucune trace des anciennes URLs.
+
+### Retour utilisateur : la section "Utilisation avancée" annulée (2026-08-19, suite 6)
+
+L'utilisateur ne voyait pas la section custom (souci de cache
+navigateur/scroll — le serveur `make serve` servait pourtant bien la
+bonne version, vérifié via `curl`) et a tranché : **pas de section
+"Utilisation avancée" séparée**, le guide `pull-requests-et-conflits-git`
+va directement dans `how_to_guides:` comme le guide PI. Fait :
+- Ajouté `/docs/how-to-guides/pull-requests-et-conflits-git/` à
+  `how_to_guides:` dans `index.md`.
+- Section `## Utilisation avancée` retirée du corps de `index.md`.
+- Le sous-titre du guide lui-même ("Utilisation avancée de Git — pas
+  indispensable pour tous les projets") reste affiché sur sa carte dans
+  "Guides pratiques" — ça garde le cadrage "pas obligatoire" même sans
+  section dédiée.
+
+Vérifié en local et sur le serveur `make serve` en cours d'exécution.
+
 ### Prochaine étape de contenu
 
 **Le contenu textuel des 9 concepts + 17 tutoriels + 1 guide PI est

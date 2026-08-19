@@ -116,6 +116,17 @@ brique. Une Issue sans assignee est une tâche que personne ne fera.
 | Personne ne sait qui fait quoi | Issues créées sans Assignee | Prenez l'habitude d'assigner à la création, pas après |
 | Trop d'Issues ouvertes, illisible | Granularité trop fine ou tâches jamais fermées | Fermez les Issues terminées, regroupez les micro-tâches |
 
+## Aller plus loin, utilisation avancée
+
+Ce qui précède suffit pour la plupart des équipes. Si votre équipe
+grandit ou que plusieurs personnes travaillent souvent sur les mêmes
+fichiers, le guide
+[Utiliser les Pull Requests et résoudre un conflit Git](/docs/how-to-guides/pull-requests-et-conflits-git/)
+va plus loin : faire relire son travail avant de le fusionner dans
+`main`, et s'en sortir proprement quand deux modifications se
+percutent. Pas une étape obligatoire — seulement si le besoin s'en fait
+sentir.
+
 ## Exercice
 
 En équipe : créez une Issue par tâche restante sur votre projet (précise,
