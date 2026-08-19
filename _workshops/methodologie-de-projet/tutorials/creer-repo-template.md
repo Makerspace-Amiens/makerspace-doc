@@ -28,8 +28,6 @@ hardwares:
     link: ""
 ---
 
-{% include message.html title="Captures d'écran à venir" message="Ce tutoriel décrit précisément chaque écran, mais les captures elles-mêmes ne sont pas encore intégrées. Suivez les libellés exacts des boutons mentionnés — l'interface GitHub correspond à ce qui est décrit ci-dessous." status="is-info" icon="fas fa-camera" %}
-
 {% include message.html title="Le repo existe peut-être déjà" message="Souvent, votre encadrant a déjà créé le repo de votre équipe depuis le template. Dans ce cas, la partie « Créer le repo » ci-dessous ne vous concerne pas — passez directement à [Récupérer le repo sur votre ordinateur](#récupérer-le-repo-sur-votre-ordinateur)." status="is-warning" icon="fas fa-exclamation-triangle" %}
 
 ## Le vocabulaire, avant de commencer
@@ -74,12 +72,13 @@ modifier librement, sans jamais affecter l'original.
   greyBackground=true
   title="Étape 1 — Ouvrir le template"
   content="Rendez-vous sur [github.com/Makerspace-Amiens/template-project](https://github.com/Makerspace-Amiens/template-project) dans votre navigateur. Vous arrivez sur une page qui liste les fichiers du repo (dossiers `docs/`, `project/`, fichier `README.md`...) — c'est le contenu que vous allez copier."
-  image="hero.png" %}
+  image="step1-use-this-template.png" %}
 
 {% include step-tuto.html
   greyBackground=true
   title="Étape 2 — Cliquer sur « Use this template »"
-  content="En haut de la page, à droite, un bouton vert **Use this template**. Cliquez dessus, puis choisissez **Create a new repository** dans le petit menu qui apparaît (pas les autres options)." %}
+  content="En haut de la page, à droite, un bouton vert **Use this template**. Cliquez dessus, puis choisissez **Create a new repository** dans le petit menu qui apparaît (pas les autres options)."
+  image="step1b-menu-use-this-template.png" %}
 
 {% include step-tuto.html
   greyBackground=true
@@ -91,12 +90,14 @@ modifier librement, sans jamais affecter l'original.
 - **Description** (optionnel) : une phrase résumant le projet.
 - **Public / Private** : laissez **Public**, sélectionné par défaut, sauf si votre référent vous demande explicitement le contraire.
 
-Une fois rempli, cliquez sur le bouton vert **Create repository** en bas de la page." %}
+Une fois rempli, cliquez sur le bouton vert **Create repository** en bas de la page."
+  image="step2-formulaire-creation.png" %}
 
 {% include step-tuto.html
   greyBackground=true
   title="Étape 4 — Vérifier"
-  content="Vous êtes redirigé vers votre nouveau repo — l'URL dans la barre d'adresse contient maintenant votre compte et le nom que vous avez choisi, pas « Makerspace-Amiens/template-project ». Les mêmes fichiers que le template y apparaissent (`docs/`, `project/`, `README.md`)." %}
+  content="Vous êtes redirigé vers votre nouveau repo — l'URL dans la barre d'adresse contient maintenant votre compte et le nom que vous avez choisi, pas « Makerspace-Amiens/template-project ». Les mêmes fichiers que le template y apparaissent (`docs/`, `project/`, `README.md`)."
+  image="step3-repo-cree.png" %}
 
 ## Récupérer le repo sur votre ordinateur
 
@@ -104,11 +105,15 @@ Une fois rempli, cliquez sur le bouton vert **Create repository** en bas de la p
 
 Cliquez dessus pour le sélectionner. En bas de la fenêtre, un champ **Local path** indique où le dossier sera enregistré sur votre ordinateur — vous pouvez changer l'emplacement avec le bouton **Choose...**, ou laisser la valeur par défaut.
 
-Cliquez sur le bouton bleu **Clone**. Une barre de progression s'affiche, puis GitHub Desktop ouvre automatiquement votre repo une fois terminé.{% endcapture %}
+Cliquez sur le bouton bleu **Clone**. Une barre de progression s'affiche, puis GitHub Desktop ouvre automatiquement votre repo une fois terminé.
+
+Vous ne trouvez pas votre repo dans la liste ? Sur la page de votre repo sur GitHub.com, le bouton vert **Code** ouvre un panneau avec l'URL à copier (onglet **Local**) — utile aussi si vous clonez en ligne de commande.{% endcapture %}
 {% include step-tuto.html
   greyBackground=true
   title="Étape 5 — Cloner avec GitHub Desktop"
-  content=step_clone %}
+  content=step_clone
+  image="step4-clone-github-desktop.png"
+  image_2="step3b-code-clone-url.png" %}
 
 {% include message.html title="Vous préférez la ligne de commande ?" message="Ouvrez un terminal, placez-vous dans le dossier où vous voulez travailler, puis :
 
@@ -121,14 +126,17 @@ L'URL exacte se trouve sur la page de votre repo, bouton vert **Code**, onglet *
 
 ## Ouvrir le dossier dans VSCode
 
-{% include step-tuto.html
-  greyBackground=true
-  title="Étape 6 — Ouvrir dans un éditeur"
-  content="Dans GitHub Desktop, menu **Repository** puis **Open in Visual Studio Code** (si VSCode n'apparaît pas, installez-le d'abord depuis [code.visualstudio.com](https://code.visualstudio.com), puis relancez GitHub Desktop).
+{% capture step_open_editor %}Dans GitHub Desktop, menu **Repository** puis **Open in Visual Studio Code** (si VSCode n'apparaît pas, installez-le d'abord depuis [code.visualstudio.com](https://code.visualstudio.com), puis relancez GitHub Desktop). Juste après le clone, GitHub Desktop s'ouvre directement sur votre repo, sans modification locale — c'est normal.
 
 Sans passer par GitHub Desktop : ouvrez VSCode, `File > Open Folder`, et sélectionnez le dossier que vous venez de cloner.
 
-Vous devriez voir, dans l'explorateur de fichiers à gauche : un dossier `docs/` (le site de documentation) et un dossier `project/` (vos futurs fichiers de projet)." %}
+Vous devriez voir, dans l'explorateur de fichiers à gauche : un dossier `docs/` (le site de documentation) et un dossier `project/` (vos futurs fichiers de projet).{% endcapture %}
+{% include step-tuto.html
+  greyBackground=true
+  title="Étape 6 — Ouvrir dans un éditeur"
+  content=step_open_editor
+  image="step5-github-desktop-post-clone.png"
+  image_2="step6-dossier-ouvert-vscode.png" %}
 
 ## Vérifier que tout est en ordre
 

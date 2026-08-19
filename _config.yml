@@ -57,3 +57,4 @@ exclude:
   - scripts/
   - _workshops/microcontroleur/note.md
   - _workshops/methodologie-de-projet/notes.md
+  - _workshops/methodologie-de-projet/screenshots-checklist.md
