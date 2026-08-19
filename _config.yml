@@ -52,6 +52,8 @@ exclude:
   - Gemfile.lock
   - Makefile
   - CONTRIBUTING.md
+  - CLAUDE.md
   - "*.sh"
   - scripts/
   - _workshops/microcontroleur/note.md
+  - _workshops/methodologie-de-projet/notes.md
