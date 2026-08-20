@@ -24,6 +24,21 @@ layout: default
     {% endfor %}
   {% endif %}
 {% endfor %}
+{% comment %} Collecter les projets qui référencent cette page via leurs concepts {% endcomment %}
+{% assign _referencing_concept_projects = '' | split: '' %}
+{% assign _seen_concept_slugs = '' | split: '' %}
+{% for proj in _all_docs %}
+  {% if proj.concepts %}
+    {% for c_url in proj.concepts %}
+      {% if c_url == page.url %}
+        {% unless _seen_concept_slugs contains proj.project_slug %}
+          {% assign _referencing_concept_projects = _referencing_concept_projects | push: proj %}
+          {% assign _seen_concept_slugs = _seen_concept_slugs | push: proj.project_slug %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
 {% assign _in_project = false %}
 {% if _referencing_projects.size > 0 %}{% assign _in_project = true %}{% endif %}
 
@@ -386,6 +401,12 @@ layout: default
     {% for _proj in _referencing_projects %}
     <div class="column is-12 px-0 pt-project-sidebar" data-project="{{ _proj.project_slug }}" style="display:none">
       {% include project-tutos.html forced_project=_proj %}
+    </div>
+    {% endfor %}
+
+    {% for _proj in _referencing_concept_projects %}
+    <div class="column is-12 px-0 pt-project-sidebar" data-project="{{ _proj.project_slug }}" style="display:none">
+      {% include project-tutos.html forced_project=_proj list="concepts" item_label="Concept" %}
     </div>
     {% endfor %}
 

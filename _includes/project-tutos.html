@@ -6,6 +6,8 @@
 
 {% comment %} Trouver le projet parent — utilise forced_project si fourni par l'include {% endcomment %}
 {% assign all_docs = site.docs | concat: site.workshops %}
+{% assign _list_name = include.list | default: 'tutorials' %}
+{% assign _item_label = include.item_label | default: 'Étape' %}
 {% if include.forced_project %}
   {% assign current_project = include.forced_project %}
 {% else %}
@@ -26,7 +28,7 @@
 {% assign project_slug = '' %}
 {% if current_project %}
   {% assign project_slug = current_project.project_slug %}
-  {% for tuto_url in current_project.tutorials %}
+  {% for tuto_url in current_project[_list_name] %}
     {% assign found = all_docs | where: 'url', tuto_url | first %}
     {% if found %}{% assign project_tutos = project_tutos | push: found %}{% endif %}
   {% endfor %}
@@ -60,7 +62,7 @@
 
     <div class="pt-progress-wrap">
       <span class="pt-progress-label">
-        Étape {{ current_step }} / {{ project_tutos.size }}
+        {{ _item_label }} {{ current_step }} / {{ project_tutos.size }}
       </span>
       <div class="pt-progress-bar">
         <div class="pt-progress-fill" style="width:{{ progress_pct }}%"></div>
