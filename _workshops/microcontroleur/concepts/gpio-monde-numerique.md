@@ -283,9 +283,7 @@ Malgré la souplesse de la GPIO matrix, certaines broches ont un **rôle réserv
 | Courant max par broche | 40 mA (recommandé : ≤ 12 mA) |
 | Tension max en entrée | **3,3 V** |
 
-{% include message.html title="Ne jamais connecter une charge inductive" message="Ne jamais connecter une charge inductiv, moteur, relais, une charge qui stocke de l'énergie magnétique et renvoie des pics de tension à la coupure) directement sur un GPIO toujours utiliser un transistor ou un **driver** (circuit de puissance intermédiaire)." status="is-warning" icon="fas fa-exclamation-triangle" %}
-
-
+{% include message.html title="Ne jamais connecter une charge inductive" message="Ne jamais connecter une charge inductive (moteur, relais - une charge qui stocke de l'énergie magnétique et renvoie des pics de tension à la coupure) directement sur un GPIO : toujours utiliser un transistor ou un **driver** (circuit de puissance intermédiaire)." status="is-warning" icon="fas fa-exclamation-triangle" %}
 
 ## Connecter un composant 5 V - l'adaptation de niveau
 
@@ -313,7 +311,6 @@ Les GPIO de l'ESP32-S3 sont en logique 3,3 V : appliquer 5 V sur une entrée peu
 
 ## Pour aller plus loin
 
-- [Piloter les GPIO de l'ESP32](/docs/tutorials/electronics/esp32-gpio/)
 - [Entrées : boutons & joystick](/workshops/microcontroleur/tutorials/entrees-boutons-joystick/)
 
 ## Résumé

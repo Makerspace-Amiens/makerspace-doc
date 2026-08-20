@@ -34,12 +34,22 @@ hardwares:
   - label: Module joystick analogique (2 axes + bouton)
     link: ""
 
-todo: 70
+todo: 90
 ---
 
 ## Entrées : boutons + joystick + série
 
 Ce tutoriel ajoute les **entrées** du montage Pong : les deux boutons du joueur 1, et le joystick du joueur 2 (qui sert aussi de bouton START/RETRY pour le menu du jeu). Le câblage posé ici est **figé** - il ne change plus jusqu'au projet.
+
+### Numérique vs analogique, en un coup d'œil
+
+Ce tutoriel manipule les deux natures de signal qu'une broche sait lire : le **tout-ou-rien** des boutons et la **valeur continue** du joystick.
+
+| | Numérique | Analogique |
+|---|---|---|
+| Valeurs possibles | 2 (`LOW` / `HIGH`) | continues (0 à 3,3 V) |
+| Fonction Arduino | `digitalRead` | `analogRead` (ADC) |
+| Exemple ici | les boutons | les axes du joystick |
 
 ### Câblage figé de l'atelier
 

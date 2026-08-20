@@ -27,7 +27,6 @@ tutorials:
   - /docs/tutorials/software/vscode-platformio/installation-vscode/
   - /docs/tutorials/software/vscode-platformio/installation-platformio/
   - /workshops/microcontroleur/tutorials/toolchain-blink/
-  - /docs/tutorials/electronics/esp32-gpio/
   - /workshops/microcontroleur/tutorials/entrees-boutons-joystick/
   - /docs/tutorials/electronics/ecran-spi-game-loop/
   - /workshops/microcontroleur/tutorials/collisions-fsm-pong/
