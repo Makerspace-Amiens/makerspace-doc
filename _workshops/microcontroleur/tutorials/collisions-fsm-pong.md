@@ -26,7 +26,7 @@ softwares:
   - label: PlatformIO IDE (extension VSCode)
     link: /docs/references/software/platformIO/
 
-todo: 70
+todo: 90
 ---
 
 ## Collisions, score et machine à états

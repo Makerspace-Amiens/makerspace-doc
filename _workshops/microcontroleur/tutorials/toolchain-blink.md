@@ -33,7 +33,7 @@ hardwares:
   - label: Câble USB-C data (pas uniquement charge)
     link: ""
 
-todo: 70
+todo: 90
 ---
 
 Ce tutoriel a pour but de vérifier que **chacun** a une chaîne de développement fonctionnelle avant d'attaquer la suite des aventures sur les microcontrôleurs. Chaque TD suivant ajoutera un périphérique au même montage : le câblage posé ici ne bougera plus.
