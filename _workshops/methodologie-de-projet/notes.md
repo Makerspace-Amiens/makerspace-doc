@@ -148,30 +148,32 @@ conception, absente du plan initial).
     critères concrets (README, doc à jour, choix tracés, limites connues,
     licence), comparatif README minimal vs transmissible.
 
-### Tutoriels (`tutorials/`, dans l'ordre)
+### Tutoriels (`tutorials/`, dans l'ordre — **à jour au 2026-08-20**, voir `index.md` pour la source de vérité)
 
 1. Créer son repo depuis le template et le cloner
-2. Git, GitHub Desktop et VSCode *(porté + enrichi depuis
-   `template-project/docs/premiers-pas/introduction_git_github.md`)*
-3. Syntaxe Markdown *(porté depuis
-   `template-project/docs/premiers-pas/markdown_cheatsheet.md`)*
+2. Git, GitHub Desktop et VSCode
+3. Syntaxe Markdown
 4. Rédiger un README de projet efficace
 5. Gérer son projet avec GitHub — Issues, Projects, répartition des tâches
-6. Utiliser les Pull Requests pour la relecture
-7. Résoudre un conflit Git (merge conflict)
-8. Tenir un journal de bord / compte-rendu
-9. Modifier son site Jekyll depuis l'interface GitHub *(porté depuis
-   `template-project/docs/premiers-pas/modifier_mon_site.md`)*
-10. Construire son site Jekyll en local *(porté depuis
-    `.../modifier_mon_site_avance.md`)*
-11. Documenter une carte électronique
-12. Documenter un système mécanique
-13. Documenter son code / firmware
-14. Documenter l'assemblage / le montage
-15. Documenter les tests et résultats
-16. Créer le poster et la vidéo de présentation *(le template a déjà des
-    placeholders vides `poster.jpg` / `intro_amiens.mp4` dans `docs/index.md`)*
-17. Checklist de clôture de projet
+6. Modifier son site Jekyll depuis l'interface GitHub *(inclut désormais
+   "Activer la publication" : Settings > Pages > Source GitHub Actions,
+   carte About, Social preview — ajouté le 2026-08-20)*
+7. Construire son site Jekyll en local
+8. Tenir un journal de bord / compte-rendu *(placé après le setup complet
+   du repo — décision utilisateur du 2026-08-20, deux réordonnancements :
+   d'abord après "Modifier son site", puis après "Construire en local"
+   aussi)*
+9. Documenter une carte électronique
+10. Documenter un système mécanique
+11. Documenter son code / firmware
+12. Documenter l'assemblage / le montage
+13. Documenter les tests et résultats
+14. Créer le poster et la vidéo de présentation
+15. Checklist de clôture de projet
+
+*(Les anciens #6/#7 "Utiliser les Pull Requests" / "Résoudre un conflit
+Git" ont été fusionnés en un guide pratique séparé, voir plus haut —
+d'où la renumérotation.)*
 
 ## État d'avancement
 

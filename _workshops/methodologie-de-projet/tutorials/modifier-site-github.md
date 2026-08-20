@@ -9,8 +9,8 @@ component_toc: true
 doc_header: true
 
 title: Modifier son site Jekyll depuis l'interface GitHub
-subtitle: Éditer votre documentation sans rien installer
-description: Modifier une page du site de documentation directement depuis le navigateur, sans configurer Git ni Jekyll en local.
+subtitle: Activer votre site, puis l'éditer sans rien installer
+description: Activer la publication GitHub Pages de votre site, puis modifier une page directement depuis le navigateur, sans configurer Git ni Jekyll en local.
 author: Adrien Bracq
 
 time: 1
@@ -29,6 +29,34 @@ hardwares:
 ---
 
 {% include message.html title="Captures d'écran à venir" message="Les libellés de boutons ci-dessous correspondent à l'interface actuelle de GitHub." status="is-info" icon="fas fa-camera" %}
+
+## Activer la publication (à faire une seule fois)
+
+{% include message.html title="Sans cette étape, rien ne se publie" message="Le template configure déjà le nécessaire, mais GitHub doit être explicitement autorisé à publier votre site — sans ça, docs/ reste un simple dossier de fichiers, jamais un site en ligne. À faire une fois pour toutes, dès la création de votre repo." status="is-warning" icon="fas fa-exclamation-triangle" %}
+
+{% include step-tuto.html
+  greyBackground=true
+  title="Étape 0.1 — Activer GitHub Pages"
+  content="Sur votre repo, **Settings** (onglet en haut), puis **Pages** dans le menu de gauche. Sous **Build and deployment > Source**, choisissez **GitHub Actions** (pas « Deploy from a branch »)."
+  image="activer-pages-settings.png" %}
+
+{% include step-tuto.html
+  greyBackground=true
+  title="Étape 0.2 — Vérifier que ça build"
+  content="Onglet **Actions** de votre repo : un workflow se lance automatiquement. Attendez la coche verte ✅ (comptez 1 à 2 minutes) — si elle est rouge ❌, ouvrez le run pour voir l'erreur. Une fois vert, votre site est en ligne à l'adresse indiquée dans **Settings > Pages**." %}
+
+{% include step-tuto.html
+  greyBackground=true
+  title="Étape 0.3 — Mettre à jour le « About »"
+  content="Sur la page d'accueil de votre repo, la carte **About** (à droite) est vide par défaut. Cliquez sur l'icône d'engrenage ⚙️ à côté de son titre : cochez **Use your GitHub Pages website** (le lien de votre site apparaît alors dans cette carte, visible par n'importe qui arrivant sur le repo), et profitez-en pour remplir le champ **Description** avec la phrase qui résume votre projet."
+  image="about-vide.png"
+  image_2="edit-repository-details.png" %}
+
+{% include step-tuto.html
+  greyBackground=true
+  title="Étape 0.4 — Image de prévisualisation (optionnel)"
+  content="Toujours dans **Settings > General**, tout en bas : **Social preview**. Uploadez une image (1280×640px recommandé) — c'est ce qui s'affiche en aperçu quand le lien de votre repo est partagé (Discord, réseaux sociaux...). La même image que celle utilisée en tête de votre [README](/workshops/methodologie-de-projet/tutorials/readme-efficace/) fonctionne très bien ici."
+  image="social-preview.png" %}
 
 ## Le moyen le plus rapide de documenter
 

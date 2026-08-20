@@ -31,9 +31,9 @@ tutorials:
   - /workshops/methodologie-de-projet/tutorials/syntaxe-markdown/
   - /workshops/methodologie-de-projet/tutorials/readme-efficace/
   - /workshops/methodologie-de-projet/tutorials/gerer-projet-github/
-  - /workshops/methodologie-de-projet/tutorials/journal-de-bord/
   - /workshops/methodologie-de-projet/tutorials/modifier-site-github/
   - /workshops/methodologie-de-projet/tutorials/construire-site-local/
+  - /workshops/methodologie-de-projet/tutorials/journal-de-bord/
   - /workshops/methodologie-de-projet/tutorials/documenter-carte-electronique/
   - /workshops/methodologie-de-projet/tutorials/documenter-systeme-mecanique/
   - /workshops/methodologie-de-projet/tutorials/documenter-code-firmware/

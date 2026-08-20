@@ -33,7 +33,7 @@ Dossier cible : `_workshops/methodologie-de-projet/tutorials/creer-repo-template
 5. GitHub Desktop après clone, menu **Repository > Open in Visual Studio Code** visible → `step5-open-in-vscode.png`
 6. VSCode avec le dossier ouvert, `docs/` et `project/` visibles dans l'explorateur → `step6-dossier-ouvert-vscode.png`
 
-## 2. Git, GitHub Desktop et VSCode
+## 2. Git, GitHub Desktop et VSCode ✅ FAIT (2026-08-20 — 11 captures, tutoriel restructuré avec des étapes supplémentaires : stage séparé côté VSCode, vérification dans l'historique côté GitHub Desktop, zooms sur les boutons Push/Sync)
 
 Dossier cible : `_workshops/methodologie-de-projet/tutorials/git-github-desktop-vscode/`
 
@@ -61,6 +61,10 @@ Dossier cible : `_workshops/methodologie-de-projet/tutorials/journal-de-bord/`
 ## 5. Modifier son site Jekyll depuis l'interface GitHub
 
 Dossier cible : `_workshops/methodologie-de-projet/tutorials/modifier-site-github/`
+
+**Section "Activer la publication" ✅ FAIT (2026-08-20)** — 4 captures
+intégrées : `activer-pages-settings.png` (Settings > Pages), `about-vide.png`
++ `edit-repository-details.png` (carte About), `social-preview.png`.
 
 17. Fichier `.md` affiché sur GitHub avec l'icône crayon (✏️) visible en haut à droite → `step1-icone-crayon.png`
 18. Éditeur Markdown de GitHub ouvert, en train de modifier du texte → `step2-editeur-github.png`
