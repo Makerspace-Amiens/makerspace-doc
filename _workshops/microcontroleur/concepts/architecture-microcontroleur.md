@@ -59,9 +59,9 @@ image="functional-block-diagram.png" %}
 
 Le CPU exécute un **cycle fetch–decode–execute** en continu :
 
-1. **Fetch** lire l'instruction suivante en Flash
-2. **Decode** la décoder
-3. **Execute** l'exécuter (calcul, accès mémoire, écriture registre)
+1. **Fetch** - lire l'instruction suivante en Flash
+2. **Decode** - la décoder
+3. **Execute** - l'exécuter (calcul, accès mémoire, écriture registre)
 
 Ce cycle est cadencé par l'**horloge** : l'ESP32-S3 tourne à **240 MHz**, soit 240 millions de cycles par seconde. Un `digitalWrite()` prend quelques cycles, une multiplication quelques dizaines, et établir une connexion Wi-Fi en réclame plusieurs centaines de millions.
 
@@ -104,7 +104,7 @@ C'est ce qui permet à un capteur sans fil de tenir des mois, voire des années,
 | **Contenu** | Programme compilé, constantes | Variables, pile (mémoire des appels de fonctions) et heap (allocation dynamique) |
 | **Persistance** | Oui (survit à un reset) | Non (perdu à l'extinction) |
 | **Vitesse** | Plus lente | Très rapide |
-| **Taille ESP32-S3** | 8 Mo (externe) | 512 Ko interne |
+| **Taille ESP32-S3** | 16 Mo (externe) | 512 Ko interne |
 
 ```cpp
 // En Flash (programme + constantes)
@@ -236,7 +236,7 @@ Le mot-clé **`IRAM_ATTR`** demande au compilateur de placer la fonction d'inter
 |---|---|
 | CPU | Xtensa LX7 dual-core **32 bits**, 240 MHz |
 | RAM | 512 Ko SRAM + 8 Mo PSRAM (RAM externe supplémentaire) en option |
-| Flash | 8 Mo (externe via SPI) |
+| Flash | 16 Mo (externe via SPI) |
 | GPIO | 45 broches (dont 20 ADC-capable) |
 | Tension logique | **3,3 V** (≠ 5 V des Arduino classiques) |
 | Connectivité | Wi-Fi 802.11 b/g/n + Bluetooth 5 |

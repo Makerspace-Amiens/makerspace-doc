@@ -16,15 +16,15 @@ difficulty: 1
 todo: 90
 
 prerequisites:
-  - label: Architecture d'un microcontrôleur
-    link: /workshops/microcontroleur/concepts/architecture-microcontroleur/
+  - label: Qu'est-ce qu'un microcontrôleur ?
+    link: /workshops/microcontroleur/concepts/qu-est-ce-qu-un-microcontroleur/
 ---
 
 ## Du clavier à la LED
 
-Tu sais maintenant de quoi un microcontrôleur est fait et comment il parle au monde. Reste la question la plus concrète : quand tu écris du code et que tu cliques sur « Téléverser », que se passe-t-il *réellement* entre ton clavier et la LED qui se met à clignoter ?
+Tu sais ce qu'est un microcontrôleur et à quoi il sert. Mais entre le code que tu écris et la LED qui se met à clignoter, il se passe beaucoup de choses : quand tu cliques sur « Téléverser », que se passe-t-il *réellement* ?
 
-Ce concept suit ce voyage de bout en bout - du texte que tu tapes jusqu'aux électrons qui parcourent la puce.
+Ce concept suit ce voyage de bout en bout - du texte que tu tapes jusqu'aux électrons qui parcourent la puce. Les concepts suivants ouvriront ensuite le capot pour voir comment elle est faite à l'intérieur.
 
 **À la fin de ce concept, tu sauras :**
 
