@@ -15,11 +15,11 @@ subtitle: De l'architecture au jeu embarqué
 
 concepts:
   - /workshops/microcontroleur/concepts/qu-est-ce-qu-un-microcontroleur/
+  - /workshops/microcontroleur/concepts/du-materiel-au-logiciel/
   - /workshops/microcontroleur/concepts/architecture-microcontroleur/
   - /workshops/microcontroleur/concepts/gpio-monde-numerique/
   - /workshops/microcontroleur/concepts/adc-pwm/
   - /workshops/microcontroleur/concepts/bus-communication/
-  - /workshops/microcontroleur/concepts/du-materiel-au-logiciel/
   - /workshops/microcontroleur/concepts/machine-etats-finis/
   - /docs/concepts/capteurs/
 
