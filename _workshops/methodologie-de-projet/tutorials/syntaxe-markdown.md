@@ -35,6 +35,88 @@ langage de balisage léger, en texte brut, qui se transforme automatiquement
 en pages web mises en forme. Pas besoin de connaître le HTML : quelques
 symboles suffisent.
 
+### Un texte qui reste lisible même non converti
+
+Markdown a été créé en 2004 par John Gruber, avec l'aide d'Aaron Swartz,
+avec un objectif précis :
+qu'un texte écrit en Markdown reste **lisible et compréhensible tel quel**,
+même sans être transformé en page web — contrairement au HTML.
+
+{% capture tab_html %}
+
+```html
+<h2>Objectifs</h2>
+<p>Concevoir un robot capable de trier <strong>3 catégories</strong>
+de déchets, pour une démonstration au Forum des Sciences.</p>
+<ul>
+  <li>Plastique</li>
+  <li>Verre</li>
+  <li>Métal</li>
+</ul>
+```
+
+{% endcapture %}
+
+{% capture tab_md %}
+
+```markdown
+## Objectifs
+
+Concevoir un robot capable de trier **3 catégories** de déchets, pour
+une démonstration au Forum des Sciences.
+
+- Plastique
+- Verre
+- Métal
+```
+
+{% endcapture %}
+
+{% include content-tabs.html
+  id="html-vs-markdown"
+  tab_title1="❌ HTML"
+  tab_title2="✅ Markdown"
+  tab1=tab_html
+  tab2=tab_md
+%}
+
+Le même contenu, mais le Markdown se lit directement — pas besoin de
+mentalement retirer des balises pour comprendre le texte.
+
+### Pourquoi pas Word ou Google Docs
+
+- **Fichier texte brut** : Git le suit comme n'importe quel fichier de
+  code, avec un historique clair ligne par ligne — essayez de faire un
+  diff lisible sur un `.docx` pour voir la différence.
+- **Pas de format propriétaire** : un `.md` s'ouvre avec absolument
+  n'importe quel éditeur de texte, sur n'importe quel système, encore
+  dans 20 ans. Un `.docx` dépend de Word (ou d'un logiciel compatible)
+  pour rester lisible.
+- **Vit au même endroit que le reste du projet** : la documentation
+  versionnée dans le même repo que le code et les fichiers CAO, pas
+  perdue dans un Drive à part — ça rejoint directement
+  [Documenter au fil de l'eau](/workshops/methodologie-de-projet/concepts/documenter-au-fil-de-leau/).
+
+### Où vous le retrouverez, au-delà de ce projet
+
+Markdown n'est pas propre à ce site — c'est devenu une sorte de langue
+commune de la documentation technique :
+
+- **GitHub et GitLab** : README, Issues, Pull Requests, commentaires —
+  tout ce que vous avez déjà écrit dans les tutoriels précédents.
+- **Discord et Slack** : la mise en forme des messages (`**gras**`,
+  `*italique*`, `` `code` ``) reprend en grande partie la syntaxe Markdown.
+- **Notion, Obsidian** et la plupart des outils de prise de notes récents.
+- **Les générateurs de sites statiques** : ce site tourne sous Jekyll,
+  mais Hugo, Docusaurus ou MkDocs (très utilisés pour la documentation
+  technique en entreprise) fonctionnent sur le même principe.
+- **Jupyter Notebook et R Markdown**, en recherche scientifique, pour
+  mélanger texte explicatif et code exécutable.
+- **Reddit, Stack Overflow** et une bonne partie des forums techniques.
+
+Apprendre Markdown maintenant, c'est une compétence directement
+réutilisable bien au-delà de cet atelier.
+
 ## Les bases
 
 ### Titres
@@ -170,13 +252,36 @@ C'est le format utilisé pour la plupart des gabarits de cet atelier — voir
 par exemple le tableau de jalons dans
 [Gérer le temps et les jalons](/workshops/methodologie-de-projet/concepts/gerer-temps-jalons/).
 
-## Aller plus loin sur ce site
+## Aller plus loin sur le site Jekyll de votre projet
 
-Ce site Jekyll ajoute quelques extras au Markdown standard : des blocs
-d'alerte colorés (`message.html`), des onglets comparatifs
-(`content-tabs.html`, celui utilisé sur cette page même), des diagrammes
-Mermaid (blocs ` ```mermaid! `). Vous n'en aurez pas besoin pour l'essentiel
-de votre documentation, mais ils existent si utile.
+Le site Jekyll de votre projet (dossier `docs/` de votre repo) est basé
+sur le thème [Just the Docs](https://just-the-docs.com), qui ajoute quelques
+extras utiles au Markdown standard, directement utilisables dans vos
+pages. Ça vaut le coup de parcourir sa documentation pour voir toutes
+les possibilités — deux exemples pour donner envie :
+
+**Un encart coloré**, sans écrire de HTML : ajoutez `{: .note }`,
+`{: .warning }` ou `{: .important }` juste après un paragraphe ou une
+citation.
+
+```markdown
+{: .warning }
+> N'oubliez jamais de tester votre robot avant la démonstration.
+```
+
+C'est exactement ce que fait déjà `docs/premiers-pas/modifier_mon_site_avance.md`
+dans votre template (`{: .note-title }`) — aucune configuration
+supplémentaire à faire, ça fonctionne directement dans votre projet.
+
+**Un lien transformé en bouton** : ajoutez `{: .btn }` après un lien.
+
+```markdown
+[Voir le projet sur Onshape](https://cad.onshape.com/...){: .btn .btn-blue }
+```
+
+Le bouton "Notre projet sur Onshape" de la page d'accueil de votre
+template utilise déjà cette syntaxe — ouvrez `docs/index.md` pour voir
+l'exemple réel.
 
 ## Exercice
 
