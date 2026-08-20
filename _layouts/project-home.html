@@ -131,7 +131,7 @@
         </div>
         <div class="ph-resource-grid">
           {% for doc in concepts %}
-          <a href="{{ doc.url | relative_url }}" class="ph-resource-card">
+          <a href="{{ doc.url | relative_url }}?project={{ page.project_slug }}" class="ph-resource-card">
             <div class="ph-resource-icon"><i class="fas fa-lightbulb"></i></div>
             <div class="ph-resource-body">
               <span class="ph-resource-title">{{ doc.title }}</span>

@@ -460,6 +460,62 @@ layout: default
               </nav>
             {% endif %}
 
+            {% comment %} Prev / next navigation for project concepts {% endcomment %}
+            {% assign _concept_proj = nil %}
+            {% for proj in _all_docs %}
+              {% if proj.concepts and _concept_proj == nil %}
+                {% for c_url in proj.concepts %}
+                  {% if c_url == page.url %}{% assign _concept_proj = proj %}{% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+            {% if _concept_proj %}
+              {% assign all_concepts = '' | split: '' %}
+              {% for c_url in _concept_proj.concepts %}
+                {% assign found = _all_docs | where: 'url', c_url | first %}
+                {% if found %}{% assign all_concepts = all_concepts | push: found %}{% endif %}
+              {% endfor %}
+              {% assign prev_concept = nil %}
+              {% assign next_concept = nil %}
+              {% assign found_current = false %}
+              {% for c in all_concepts %}
+                {% if found_current and next_concept == nil %}
+                  {% assign next_concept = c %}
+                {% endif %}
+                {% if c.url == page.url %}
+                  {% assign found_current = true %}
+                {% endif %}
+                {% unless found_current %}
+                  {% assign prev_concept = c %}
+                {% endunless %}
+              {% endfor %}
+
+              <nav class="tuto-nav" style="display:none">
+                <div class="tuto-nav-prev">
+                  {% if prev_concept %}
+                  <a href="{{ prev_concept.url | relative_url }}" class="tuto-nav-btn" data-base-url="{{ prev_concept.url | relative_url }}">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>
+                      <small>Précédent</small>
+                      {{ prev_concept.title }}
+                    </span>
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="tuto-nav-next">
+                  {% if next_concept %}
+                  <a href="{{ next_concept.url | relative_url }}" class="tuto-nav-btn tuto-nav-btn--next" data-base-url="{{ next_concept.url | relative_url }}">
+                    <span>
+                      <small>Suivant</small>
+                      {{ next_concept.title }}
+                    </span>
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                  {% endif %}
+                </div>
+              </nav>
+            {% endif %}
+
         </div>
 
         {% if page.component_toc %}
@@ -471,7 +527,7 @@ layout: default
     </div>
 </div>
 
-{% if _in_project %}
+{% if _in_project or _concept_proj %}
 <script>
 (function () {
   var slug = new URLSearchParams(window.location.search).get('project');
