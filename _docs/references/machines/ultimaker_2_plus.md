@@ -6,7 +6,8 @@ hero_darken: true
 image: "ultimaker_2_plus.jpg"
 component_toc: true
 doc_header: true
-type: equipment
+# Archivée : machine hors service, retirée de la liste /equipment/.
+# Remettre "type: equipment" pour la faire réapparaître.
 tag: additive-manufacturing
 
 title: Ultimaker 2+
