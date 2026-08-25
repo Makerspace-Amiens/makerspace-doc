@@ -1,0 +1,15 @@
+{% comment %}
+  safety-banner.html - bannière de sécurité rouge, à placer en haut d'un tutoriel machine.
+  Paramètres :
+    machine : (optionnel) nom de la machine, ex. "xTool P3"
+    link    : (optionnel) URL vers les consignes de sécurité (fiche machine ou ancre)
+  Exemple :
+    {% include safety-banner.html machine="xTool P3" link="/docs/references/machines/xtool-p3/" %}
+{% endcomment %}
+{% if include.link %}<a class="safety-banner" href="{{ include.link | relative_url }}">{% else %}<div class="safety-banner">{% endif %}
+  <span class="safety-banner-icon"><i class="fas fa-triangle-exclamation fa-2x"></i></span>
+  <span class="safety-banner-body">
+    <strong>Avant d'utiliser {% if include.machine %}la {{ include.machine }}{% else %}cette machine{% endif %}, lisez les consignes de sécurité.</strong>
+    {% if include.link %}<span class="safety-banner-cta">Consignes de sécurité&nbsp;<i class="fas fa-arrow-right"></i></span>{% endif %}
+  </span>
+{% if include.link %}</a>{% else %}</div>{% endif %}
