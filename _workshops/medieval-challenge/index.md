@@ -19,7 +19,7 @@ specials:
   - /workshops/medieval-challenge/concepts/medieval-challenge/tournament/
 tutorials:
   - /docs/tutorials/production/imprimer-une-piece/
-  - /docs/tutorials/production/laser-cut/
+  - /docs/tutorials/production/laser-cut-makeblock/
 how_to_guides:
   - /docs/how-to-guides/integrer_insert/
   - /docs/how-to-guides/tuto-vis/

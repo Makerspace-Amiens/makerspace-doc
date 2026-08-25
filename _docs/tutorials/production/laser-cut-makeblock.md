@@ -7,8 +7,9 @@ image: Icon.png
 component_toc: true
 doc_header: true
 tags: medieval-challenge
+type: tutorial
 
-title: Découper au laser
+title: Découper au laser - MakeBlock et LaserBox
 subtitle: Comment découper sa première pièce au laser
 description: Dans ce tutoriel, vous apprendrez à découper votre première pièce en utilisant le logiciel LaserBox.
 
@@ -24,9 +25,7 @@ softwares:
 author: Adrien BRACQ
 ---
 
-## Découpe d'une pièce
-
-### Introduction
+## Introduction
 
 Ce **tutoriel d'initiation** vous guidera de l'**exportation** de votre modèle depuis **OnShape** jusqu'à la **fin de la découpe**, en vous aidant à éviter les erreurs courantes.
 
@@ -40,11 +39,7 @@ Si vous avez déjà un fichier **.DXF** ou **.SVG**, rendez-vous à l'**étape 2
 
 {% include message.html title="Contraintes dimensionnelles" message="**Dans votre conception**, n'oubliez pas de prendre en compte la **surface de découpe maximale** : **49cm x 29cm**." status="is-warning" dismissable="true" icon="fas fa-triangle-exclamation" %}
 
-### 1 - Exportation du plan
-
-![1 - Exportation du plan](Flat_Benchy.png)
-
-Pour découper une plaque au laser, il vous faut extraire **une des faces de votre pièce** qui servira de **plan de découpe**.
+{% include step-tuto.html greyBackground=true title="1 - Exportation du plan" content="Pour découper une plaque au laser, il vous faut extraire **une des faces de votre pièce** qui servira de **plan de découpe**." image="Flat_Benchy.png" %}
 
 Sélectionnez la face et **clique droit** sur cette dernière.
 
@@ -64,11 +59,7 @@ Cliquez finalement sur le **bouton** ![Bouton Export](Export_Button.png)
 
 Placez ensuite le fichier téléchargé dans votre **clé USB**.
 
-### 2 - Préparation et vérification
-
-![2 - Préparation et vérification](LaserBox_Context.png)
-
-Rendez-vous maintenant au **MécaLab**. Cet espace est dédié à l'**usinage**, **perçage** et **découpe** de divers matériaux.
+{% include step-tuto.html greyBackground=true title="2 - Préparation et vérification" content="Rendez-vous maintenant au **MécaLab**. Cet espace est dédié à l'**usinage**, **perçage** et **découpe** de divers matériaux." image="LaserBox_Context.png" %}
 
 La **découpeuse laser** se trouve au **fond à droite de la pièce**.
 
@@ -155,9 +146,7 @@ Voici la **liste des matériaux** et du **nom du réglage** à choisir :
 | Acrylique 3mm               | 3mm Acrylique     |
 | Acrylique 5mm               | 5mm Acrylique     |
 
-### 3 - Découpe
-
-![3 - Découpe](Laserbox_Validation.png)
+{% include step-tuto.html greyBackground=true title="3 - Découpe" content="Envoyez la découpe depuis Laserbox, puis lancez l'opération sur la machine." image="Laserbox_Validation.png" %}
 
 Vous pouvez maintenant **envoyer la découpe** en cliquant sur le **bouton démarrer** ![Bouton démarrer](Laserbox_Send_Button.png) **en haut à droite**.
 
