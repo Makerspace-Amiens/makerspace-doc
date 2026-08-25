@@ -30,6 +30,8 @@ todo: 80
 
 Ce tutoriel explique comment utiliser la découpeuse laser **xTool P3** et son logiciel, de la mise en marche jusqu'à la récupération des pièces, en respectant les consignes de sécurité.
 
+{% include safety-banner.html machine="xTool P3" link="/docs/references/machines/xtool-p3/#sécurité" %}
+
 {% include step-tuto.html
 greyBackground=true
 title="1 - Mise en marche"
