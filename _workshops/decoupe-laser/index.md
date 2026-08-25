@@ -16,6 +16,8 @@ tutorials:
   - /docs/tutorials/software/inkscape/inkscape-premiere-piece/
   - /docs/tutorials/software/inkscape/inkscape-marque-page/
   - /docs/tutorials/production/laser-cut-makeblock/
+  - /docs/tutorials/production/laser-cut-xtool-p3/
+  - /docs/tutorials/production/laser-cut-xtool-f2/
 software:
   - /docs/references/software/onshape/
   - /docs/references/software/inkscape/
