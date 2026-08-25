@@ -35,101 +35,47 @@ Contrairement à l'**impression 3D**, la **découpe laser** travaille sur un seu
 
 {% include message.html title="Contraintes dimensionnelles" message="**Dans votre conception**, n'oubliez pas de prendre en compte la **surface de découpe maximale** : **49 cm x 29 cm**." status="is-warning" dismissable="true" icon="fas fa-triangle-exclamation" %}
 
-{% include step-tuto.html
-greyBackground=true
-title="1 - Exporter le plan de découpe"
-content="Pour découper une plaque au laser, il faut extraire **une des faces de votre pièce** qui servira de **plan de découpe**.
+{% include step-tuto.html greyBackground=true title="1 - Repérer la face à découper" content="Identifiez la face de votre pièce qui servira de **plan de découpe**." image="Flat_Benchy.png" %}
 
-Sélectionnez la face voulue et faites un **clic droit** dessus.
+{% include step-tuto.html greyBackground=false title="2 - Clic droit sur la face" content="Sélectionnez la face voulue et faites un **clic droit** dessus." image="Right_Click_On_Face.png" %}
 
-![Clic droit sur une face](Right_Click_On_Face.png)
+{% include step-tuto.html greyBackground=true title="3 - Exporter en DXF" content="Cliquez sur **Export as DXF/DWG...**" image="Flat_Benchy_DXF.png" %}
 
-Cliquez sur **Export as DXF/DWG...**
+{% include step-tuto.html greyBackground=false title="4 - Régler et valider l'export" content="Entrez un **nom de fichier cohérent**, choisissez **DXF** dans le menu **Format**, validez avec le bouton **Export**, puis placez le fichier sur votre **clé USB**." image="Export_Window.png" %}
 
-![Menu d'export DXF](Flat_Benchy_DXF.png)
+{% include step-tuto.html greyBackground=true title="5 - Se rendre au MécaLab" content="La découpeuse laser se trouve au **fond à droite** du **MécaLab**, l'espace dédié à l'usinage, au perçage et à la découpe." image="LaserBox_Context.png" %}
 
-Dans la fenêtre, entrez un **nom de fichier cohérent**, choisissez **DXF** dans le menu **Format**, puis validez avec le bouton **Export**.
+{% include step-tuto.html greyBackground=false title="6 - Sortir le tuyau d'évacuation" content="**Ouvrez la fenêtre** et sortez le **tuyau d'évacuation des fumées**." image="Exhaust_Pipe.png" %}
 
-![Fenêtre d'exportation](Export_Window.png)
+{% include step-tuto.html greyBackground=true title="7 - Allumer la découpeuse" content="Allumez la découpeuse : l'interrupteur est à l'**arrière droite** de la machine." image="Power_Switch.png" %}
 
-Placez enfin le fichier téléchargé sur votre **clé USB**."
-image="Flat_Benchy.png" %}
+{% include step-tuto.html greyBackground=false title="8 - Allumer le PC" content="Si le **PC** est éteint, allumez-le avec le bouton à l'**arrière de l'écran**. Pour ouvrir la session, demandez à un **fab manager**." image="Power_Button_PC.png" %}
 
-{% include step-tuto.html
-greyBackground=false
-title="2 - Allumer la découpeuse"
-content="Rendez-vous au **MécaLab**, l'espace dédié à l'**usinage**, au **perçage** et à la **découpe**. La découpeuse laser se trouve au **fond à droite** de la pièce.
-
-**Ouvrez la fenêtre** et sortez le **tuyau d'évacuation des fumées**.
-
-![Tuyau d'évacuation des fumées](Exhaust_Pipe.png)
-
-**Allumez** la découpeuse : l'interrupteur est à l'**arrière droite** de la machine.
-
-![Interrupteur de la découpeuse](Power_Switch.png)
-
-Si le **PC** est éteint, allumez-le avec le bouton à l'**arrière de l'écran**. Pour ouvrir la session, demandez à un **fab manager**.
-
-![Bouton d'allumage du PC](Power_Button_PC.png)"
-image="LaserBox_Context.png" %}
-
-{% include step-tuto.html
-greyBackground=true
-title="3 - Choisir et placer le matériau"
-content="Sélectionnez votre matériau sur les étagères :
-
-- **1re étagère** : contreplaqué **3 mm** (plaques neuves à gauche, chutes à droite).
-- **2e étagère** : contreplaqué **5 mm**.
-- **En bas** : plaques en acrylique.
-
-Vérifiez d'abord si une **chute** convient ; sinon, prenez une **plaque neuve**. Ici, nous prenons du **contreplaqué 3 mm**.
-
-![Plaque dans la LaserBox](Plank_In_Laserbox.png)
-
-Ouvrez le **capot**, positionnez la plaque, puis refermez en **accompagnant la fermeture** jusqu'au bout. Branchez enfin votre **clé USB** dans l'embase devant l'écran.
-
-![Port USB](USB_Port.png)"
-image="Material_Shelf.png" %}
+{% include step-tuto.html greyBackground=true title="9 - Choisir le matériau" content="Sur les étagères : contreplaqué **3 mm** (neuves à gauche, chutes à droite), contreplaqué **5 mm**, et **acrylique** en bas. Privilégiez une **chute** si elle convient. Ici, nous prenons du **contreplaqué 3 mm**." image="Material_Shelf.png" %}
 
 {% include message.html title="Conseil" message="Pour tester un **assemblage**, commencez par un **prototype en carton** : cela permet de **valider vos dimensions** tout en **économisant de la matière**. Le carton se trouve sur le dessus de l'armoire." status="is-info" dismissable="true" icon="fas fa-lightbulb" %}
 
-{% include step-tuto.html
-greyBackground=false
-title="4 - Créer le projet dans LaserBox"
-content="Sur le PC, ouvrez le logiciel **Laserbox** depuis la barre des tâches.
+{% include step-tuto.html greyBackground=false title="10 - Placer la plaque" content="Ouvrez le **capot**, positionnez la plaque, puis refermez en **accompagnant la fermeture** jusqu'au bout." image="Plank_In_Laserbox.png" %}
 
-![Icône Laserbox](Laserbox_Icon.png)
+{% include step-tuto.html greyBackground=true title="11 - Brancher la clé USB" content="Branchez votre **clé USB** dans l'embase devant l'écran." image="USB_Port.png" %}
 
-Dans le menu d'accueil, cliquez sur le **+** pour créer un nouveau projet.
+{% include step-tuto.html greyBackground=false title="12 - Ouvrir Laserbox" content="Sur le PC, ouvrez le logiciel **Laserbox** depuis la barre des tâches. Le **menu d'accueil** s'affiche." image="Laserbox_Welcome.png" %}
 
-![Créer un nouveau projet](New_Project.png)
+{% include step-tuto.html greyBackground=true title="13 - Créer un projet" content="Cliquez sur le **+** pour créer un nouveau projet." image="New_Project.png" %}
 
-![Format de la page](Benchy_Size_Box.png)
+{% include step-tuto.html greyBackground=false title="14 - Définir le format" content="Réglez le format de la page selon votre plaque." image="Benchy_Size_Box.png" %}
 
-Sur la page vide, cliquez sur **Importer** (en haut à gauche) et choisissez votre **fichier .DXF**.
+{% include step-tuto.html greyBackground=true title="15 - Importer le fichier" content="Cliquez sur **Importer** (en haut à gauche) et choisissez votre **fichier .DXF** dans l'explorateur." image="Folder_Import.png" %}
 
-![Bouton Importer](Folder_Import.png)
+{% include step-tuto.html greyBackground=false title="16 - Voir le modèle importé" content="Votre modèle apparaît au milieu du plateau." image="New_Page.png" %}
 
-Votre modèle apparaît alors au milieu du plateau.
+{% include step-tuto.html greyBackground=true title="17 - Passer en mode surface plane" content="Cliquez sur le **mode surface plane**." image="Laserbox_Flat_Surface_Mode.png" %}
 
-![Modèle importé](New_Page.png)"
-image="Laserbox_Welcome.png" %}
+{% include step-tuto.html greyBackground=false title="18 - Vérifier l'aperçu caméra" content="Vous voyez maintenant l'**aperçu caméra** du plateau de découpe." image="Benchy_Trace.png" %}
 
-{% include step-tuto.html
-greyBackground=true
-title="5 - Positionner et régler le matériau"
-content="Cliquez sur le **mode surface plane**.
+{% include step-tuto.html greyBackground=true title="19 - Positionner le modèle" content="**Déplacez** votre modèle pour le **positionner sur votre plaque**." image="Move_Model.gif" %}
 
-![Mode surface plane](Laserbox_Flat_Surface_Mode.png)
-
-Vous voyez maintenant l'**aperçu caméra** du plateau. **Déplacez** votre modèle pour le **positionner sur la plaque**.
-
-![Déplacer le modèle](Move_Model.gif)
-
-Sélectionnez ensuite le **matériau** dans le volet déroulant en haut à gauche (voir le tableau des réglages ci-dessous).
-
-![Liste des matériaux](Material_List.png)"
-image="Benchy_Trace.png" %}
+{% include step-tuto.html greyBackground=false title="20 - Sélectionner le matériau" content="Sélectionnez le **matériau** dans le volet déroulant en haut à gauche (voir le tableau des réglages ci-dessous)." image="Material_List.png" %}
 
 | **Matériau** | **Réglage** |
 |---|---|
@@ -139,23 +85,13 @@ image="Benchy_Trace.png" %}
 | Acrylique 3mm | 3mm Acrylique |
 | Acrylique 5mm | 5mm Acrylique |
 
-{% include step-tuto.html
-greyBackground=false
-title="6 - Lancer la découpe"
-content="Envoyez la découpe avec le **bouton démarrer** (en haut à droite).
+{% include step-tuto.html greyBackground=true title="21 - Envoyer la découpe" content="Cliquez sur le **bouton démarrer** (en haut à droite)." image="Laserbox_Send_Button.png" %}
 
-![Bouton démarrer](Laserbox_Send_Button.png)
+{% include step-tuto.html greyBackground=false title="22 - Valider l'envoi" content="Une **fenêtre de validation** s'ouvre : cliquez sur **Envoyer**." image="Laserbox_Validation.png" %}
 
-Une **fenêtre de validation** s'ouvre : cliquez sur **Envoyer**.
+{% include step-tuto.html greyBackground=true title="23 - Lancer sur la machine" content="Attendez le **BIP** sonore, puis appuyez sur le **bouton supérieur** de la découpeuse pour **lancer l'opération**." image="Cut_Button.png" %}
 
-![Fenêtre d'envoi](Laserbox_Send.png)
-
-![Bouton de découpe](Cut_Button.png)
-
-Attendez le **BIP** sonore, puis appuyez sur le **bouton supérieur** de la découpeuse pour **lancer l'opération**.
-
-![Découpe en cours](Cutting.gif)"
-image="Laserbox_Validation.png" %}
+{% include step-tuto.html greyBackground=false title="24 - Découpe en cours" content="La découpe démarre. Restez attentif jusqu'à la fin de l'opération." image="Cutting.gif" %}
 
 Bravo ! Vous savez maintenant **découper une pièce au laser**.
 
