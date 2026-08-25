@@ -24,7 +24,7 @@ tutorials:
   - /docs/tutorials/software/onshape/onshape-premier-assemblage/
   - /docs/tutorials/software/inkscape/inkscape-premiere-piece/
   - /docs/tutorials/software/inkscape/inkscape-marque-page/
-  - /docs/tutorials/production/laser-cut/
+  - /docs/tutorials/production/laser-cut-makeblock/
 how_to_guides:
   - /docs/how-to-guides/3d-printing-design-rules/
   - /docs/how-to-guides/3d-printing-insert/
