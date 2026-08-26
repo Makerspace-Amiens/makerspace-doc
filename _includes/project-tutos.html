@@ -36,9 +36,11 @@
 {% comment %} L'ordre vient de la liste tutorials: du projet — pas de sort {% endcomment %}
 
 {% assign current_step = 0 %}
+{% assign current_tuto = nil %}
 {% for tuto in project_tutos %}
   {% if tuto.url == page.url %}
     {% assign current_step = forloop.index %}
+    {% assign current_tuto = tuto %}
   {% endif %}
 {% endfor %}
 
@@ -46,7 +48,10 @@
 
 {% assign project_label = current_project.title | default: project_slug | replace: '-', ' ' | capitalize %}
 
-<div class="pt-banner">
+{% assign _others_count = project_tutos.size | minus: 1 %}
+{% assign _item_label_lc = _item_label | downcase %}
+
+<div class="pt-banner" x-data="{ expanded: false }">
 
   {{/*  ── Top bar ─────────────────────────────────────────── */}}
   <div class="pt-topbar">
@@ -67,11 +72,64 @@
       <div class="pt-progress-bar">
         <div class="pt-progress-fill" style="width:{{ progress_pct }}%"></div>
       </div>
+      <button
+        type="button"
+        class="pt-toggle"
+        x-on:click="expanded = !expanded"
+        :class="{ 'is-open': expanded }"
+        :aria-expanded="expanded.toString()"
+        aria-label="Afficher ou masquer la liste complète des étapes"
+      >
+        <i class="fas fa-chevron-down"></i>
+      </button>
     </div>
   </div>
 
+  {{/*  ── Current step (visible only when collapsed) ────────── */}}
+  {% if current_tuto %}
+  <a href="{{ current_tuto.url | relative_url }}?project={{ current_project.project_slug }}"
+     class="pt-step pt-step-current is-active"
+     x-show="!expanded">
+
+    <span class="pt-step-num">{{ current_step }}</span>
+
+    <div class="pt-step-body">
+      <span class="pt-step-title">{{ current_tuto.title }}</span>
+      {% if current_tuto.subtitle %}
+        <span class="pt-step-sub">{{ current_tuto.subtitle | truncate: 60 }}</span>
+      {% endif %}
+    </div>
+
+    <div class="pt-step-meta">
+      {% if current_tuto.time %}
+        <span class="pt-step-time">
+          <i class="fas fa-clock"></i> {{ current_tuto.time }}h
+        </span>
+      {% endif %}
+      {% if current_tuto.difficulty %}
+        <span class="pt-step-diff">
+          {% for i in (1..current_tuto.difficulty) %}<i class="fas fa-circle"></i>{% endfor %}
+          {% assign rem = 3 | minus: current_tuto.difficulty %}
+          {% if rem > 0 %}{% for i in (1..rem) %}<i class="far fa-circle"></i>{% endfor %}{% endif %}
+        </span>
+      {% endif %}
+    </div>
+
+  </a>
+  {% endif %}
+
+  {{/*  ── Hint bar (visible only when collapsed) ─────────────── */}}
+  {% if _others_count > 0 %}
+  <button type="button" class="pt-steps-hint" x-show="!expanded" x-cloak x-on:click="expanded = !expanded">
+    <span>
+      Voir {% if _others_count == 1 %}l'autre {{ _item_label_lc }}{% else %}les {{ _others_count }} autres {{ _item_label_lc }}s{% endif %}
+    </span>
+    <i class="fas fa-chevron-down"></i>
+  </button>
+  {% endif %}
+
   {{/*  ── Steps list ──────────────────────────────────────── */}}
-  <div class="pt-steps">
+  <div class="pt-steps" x-show="expanded" x-cloak x-transition>
     {% for tuto in project_tutos %}
       {% assign step_n = forloop.index %}
       {% assign is_current = false %}

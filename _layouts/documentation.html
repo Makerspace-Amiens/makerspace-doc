@@ -39,6 +39,21 @@ layout: default
     {% endfor %}
   {% endif %}
 {% endfor %}
+{% comment %} Collecter les projets qui référencent cette page via leurs specials {% endcomment %}
+{% assign _referencing_special_projects = '' | split: '' %}
+{% assign _seen_special_slugs = '' | split: '' %}
+{% for proj in _all_docs %}
+  {% if proj.specials %}
+    {% for s_url in proj.specials %}
+      {% if s_url == page.url %}
+        {% unless _seen_special_slugs contains proj.project_slug %}
+          {% assign _referencing_special_projects = _referencing_special_projects | push: proj %}
+          {% assign _seen_special_slugs = _seen_special_slugs | push: proj.project_slug %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
 {% assign _in_project = false %}
 {% if _referencing_projects.size > 0 %}{% assign _in_project = true %}{% endif %}
 
@@ -410,6 +425,12 @@ layout: default
     </div>
     {% endfor %}
 
+    {% for _proj in _referencing_special_projects %}
+    <div class="column is-12 px-0 pt-project-sidebar" data-project="{{ _proj.project_slug }}" style="display:none">
+      {% include project-tutos.html forced_project=_proj list="specials" item_label="Module" %}
+    </div>
+    {% endfor %}
+
     <div class="columns is-multiline doc-body-row {% if page.doc_header and _in_project == false %}mt-6{% endif %}">
 
         {% if page.component_toc %}
@@ -537,6 +558,62 @@ layout: default
               </nav>
             {% endif %}
 
+            {% comment %} Prev / next navigation for project specials {% endcomment %}
+            {% assign _special_proj = nil %}
+            {% for proj in _all_docs %}
+              {% if proj.specials and _special_proj == nil %}
+                {% for s_url in proj.specials %}
+                  {% if s_url == page.url %}{% assign _special_proj = proj %}{% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+            {% if _special_proj %}
+              {% assign all_specials = '' | split: '' %}
+              {% for s_url in _special_proj.specials %}
+                {% assign found = _all_docs | where: 'url', s_url | first %}
+                {% if found %}{% assign all_specials = all_specials | push: found %}{% endif %}
+              {% endfor %}
+              {% assign prev_special = nil %}
+              {% assign next_special = nil %}
+              {% assign found_current = false %}
+              {% for s in all_specials %}
+                {% if found_current and next_special == nil %}
+                  {% assign next_special = s %}
+                {% endif %}
+                {% if s.url == page.url %}
+                  {% assign found_current = true %}
+                {% endif %}
+                {% unless found_current %}
+                  {% assign prev_special = s %}
+                {% endunless %}
+              {% endfor %}
+
+              <nav class="tuto-nav" style="display:none">
+                <div class="tuto-nav-prev">
+                  {% if prev_special %}
+                  <a href="{{ prev_special.url | relative_url }}" class="tuto-nav-btn" data-base-url="{{ prev_special.url | relative_url }}">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>
+                      <small>Précédent</small>
+                      {{ prev_special.title }}
+                    </span>
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="tuto-nav-next">
+                  {% if next_special %}
+                  <a href="{{ next_special.url | relative_url }}" class="tuto-nav-btn tuto-nav-btn--next" data-base-url="{{ next_special.url | relative_url }}">
+                    <span>
+                      <small>Suivant</small>
+                      {{ next_special.title }}
+                    </span>
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                  {% endif %}
+                </div>
+              </nav>
+            {% endif %}
+
         </div>
 
         {% if page.component_toc %}
@@ -548,7 +625,7 @@ layout: default
     </div>
 </div>
 
-{% if _in_project or _concept_proj %}
+{% if _in_project or _concept_proj or _special_proj %}
 <script>
 (function () {
   var slug = new URLSearchParams(window.location.search).get('project');
