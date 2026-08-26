@@ -1,7 +1,7 @@
 ---
 ---
 {%- assign total_docs      = site.docs      | size -%}
-{%- assign total_workshops = site.workshops  | size -%}
+{%- assign total_workshops = site.workshops | where: "layout", "project-home" | size -%}
 {%- assign total_ressources = site.ressources | size -%}
 {%- assign gallery = site.data.home_gallery -%}
 
