@@ -92,6 +92,25 @@ image="FirstLayerTooFar.png" %}
 
 {% include step-tuto.html
 greyBackground = true
+title = "Adhésion au Plateau (La Pièce ne Colle Pas)"
+content="
+L'adhésion au plateau désigne la capacité de la première couche à rester solidement collée à la surface d'impression pendant toute la durée de l'impression. Lorsqu'elle est insuffisante, la pièce se décolle en cours d'impression : elle se déplace avec la buse, se détache complètement, ou vous retrouvez un amas de filament (« spaghettis ») au lieu de votre objet. Contrairement au **warping** (déformation), où seuls les coins se soulèvent, un défaut d'adhésion empêche la première couche de tenir dès le départ. C'est l'une des causes d'échec les plus fréquentes en impression 3D.
+
+**Solutions**
+
+- **Nettoyez le plateau.** Les traces de doigts (graisse) sont la cause n°1. Nettoyez la surface à l'alcool isopropylique (IPA) avant chaque impression, et manipulez le plateau par les bords. Pour les plateaux PEI texturés, un lavage occasionnel à l'eau tiède et au liquide vaisselle restaure l'adhérence.
+- **Vérifiez le nivellement et l'offset Z.** Une première couche mal réglée est la cause mécanique principale. Reportez-vous aux sections **Première Couche Trop Proche** et **Première Couche Trop Éloignée** ci-dessus : la buse doit « écraser » légèrement la première couche contre le plateau, sans être trop proche.
+- **Augmentez la température du plateau.** Utilisez la température recommandée pour votre matériau (généralement 55–65 °C pour le PLA, 90–110 °C pour l'ABS/ASA, 70–80 °C pour le PETG) et augmentez-la de 5 à 10 °C si la pièce se décolle.
+- **Ralentissez la première couche.** Une vitesse de première couche réduite (15–25 mm/s) laisse au plastique le temps de bien s'étaler et d'adhérer.
+- **Réduisez ou désactivez le ventilateur sur la première couche.** La plupart des matériaux adhèrent mieux si le refroidissement de la pièce est coupé pendant les toutes premières couches.
+- **Utilisez la bonne surface et le bon adhésif.** Selon le matériau, un bâton de colle, une laque, ou un adhésif spécifique améliore nettement l'accroche. Assurez-vous que la surface d'impression est adaptée au filament utilisé.
+- **Ajoutez une bordure (brim) ou un raft.** Une bordure augmente la surface de contact avec le plateau, particulièrement utile pour les pièces à faible surface d'appui ou aux angles pointus.
+- **Augmentez la largeur/le débit de la première couche.** Une première couche légèrement plus large ou avec un flux un peu plus élevé écrase davantage de matière contre le plateau et renforce l'accroche.
+"
+image="bed-adhesion.jpg" %}
+
+{% include step-tuto.html
+greyBackground = true
 title = "Séparation des Couches"
 content="
 La séparation des couches se produit lorsque les couches d'une pièce ne se lient pas solidement et que les forces de rétrécissement lors du refroidissement suffisent à rompre la liaison entre les couches. Cela est beaucoup plus courant avec des matériaux ayant des facteurs de rétrécissement élevés lorsqu'ils refroidissent, comme l'ASA, l'ABS, le Nylon, etc.
