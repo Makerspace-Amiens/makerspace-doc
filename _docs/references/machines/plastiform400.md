@@ -17,3 +17,5 @@ external_link: https://alton.nl/fr/le-thermoform-400.html
 
 todo: 100
 ---
+
+{% include safety-banner.html machine="Thermoform 400" link="/workshops/certification-securite/modules/thermoformage/" %}

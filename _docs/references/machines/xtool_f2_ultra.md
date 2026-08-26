@@ -36,6 +36,8 @@ access_level: 1
 todo: 10
 ---
 
+{% include safety-banner.html machine="xTool F2 Ultra" link="/workshops/certification-securite/modules/laser/" %}
+
 ## Présentation
 
 Graveuse laser galvo à double tête : laser MOPA infrarouge 60W (gravure

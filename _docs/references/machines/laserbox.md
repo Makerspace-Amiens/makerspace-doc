@@ -19,6 +19,8 @@ external_link: https://www.makeblock.com/laserbox-video
 todo: 100
 ---
 
+{% include safety-banner.html machine="Laserbox" link="/workshops/certification-securite/modules/laser/" %}
+
 ## Présentation
 
 ## Possibilités et limitations

@@ -40,6 +40,8 @@ access_level: 0
 todo: 100
 ---
 
+{% include safety-banner.html machine="Bambulab X1C" link="/workshops/certification-securite/modules/impression-3d-fdm/" %}
+
 La Bambulab X1C est une imprimante 3D avancée, destinée aux projets de haute précision. Elle offre une stabilité et une fiabilité qui en font un choix populaire parmi les utilisateurs professionnels.
 
 ## Caractéristiques principales

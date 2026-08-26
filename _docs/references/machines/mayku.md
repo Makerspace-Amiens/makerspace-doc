@@ -18,6 +18,8 @@ external_link: https://mayku.me
 todo: 100
 ---
 
+{% include safety-banner.html machine="Mayku" link="/workshops/certification-securite/modules/thermoformage/" %}
+
 ## Présentation
 
 ## Possibilités et limitations

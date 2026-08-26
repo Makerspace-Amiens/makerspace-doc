@@ -18,6 +18,8 @@ external_link: https://www.weller-tools.com/professional/EUR/fr/Professionnel/Te
 todo: 100
 ---
 
+{% include safety-banner.html machine="Weller WT 1010" link="/workshops/certification-securite/modules/soudure/" %}
+
 ## Présentation
 
 ## Possibilités et limitations

@@ -19,6 +19,8 @@ external_link: https://eu.snapmaker.com
 todo: 100
 ---
 
+{% include safety-banner.html machine="SnapMaker 2.0 A350T (module fraisage)" link="/workshops/certification-securite/modules/cnc/" %}
+
 ## Présentation
 
 ## Possibilités et limitations

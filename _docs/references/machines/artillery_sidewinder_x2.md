@@ -40,6 +40,8 @@ access_level: 0
 todo: 100
 ---
 
+{% include safety-banner.html machine="Artillery Sidewinder X2" link="/workshops/certification-securite/modules/impression-3d-fdm/" %}
+
 L'Artillery Sidewinder X2 est une imprimante 3D FDM offrant un grand volume d'impression, adaptée aux projets de grande envergure.
 
 ## Caractéristiques principales

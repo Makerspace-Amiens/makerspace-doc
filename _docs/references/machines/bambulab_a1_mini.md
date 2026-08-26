@@ -38,6 +38,8 @@ access_level: 0
 todo: 100
 ---
 
+{% include safety-banner.html machine="Bambulab A1 Mini" link="/workshops/certification-securite/modules/impression-3d-fdm/" %}
+
 La Bambulab A1 Mini est une imprimante 3D FDM compacte, conçue pour des projets de petite taille tout en offrant des fonctionnalités avancées. Elle est idéale pour les utilisateurs cherchant une solution rapide et efficace sans encombrement.
 
 ## Caractéristiques principales

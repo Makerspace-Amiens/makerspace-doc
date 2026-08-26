@@ -38,6 +38,8 @@ access_level: 0
 todo: 100
 ---
 
+{% include safety-banner.html machine="Bambulab P1P" link="/workshops/certification-securite/modules/impression-3d-fdm/" %}
+
 La Bambulab P1P est une imprimante 3D rapide, conçue pour le prototypage et les impressions nécessitant des délais courts. Elle se distingue par sa vitesse et ses capacités de mise en réseau.
 
 ## Caractéristiques principales

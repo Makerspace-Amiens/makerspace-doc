@@ -17,6 +17,8 @@ author: Raphael Peru
 todo: 30
 ---
 
+{% include safety-banner.html machine="xTool P3" link="/workshops/certification-securite/modules/laser/" %}
+
 ## Présentation de la xTool P3
 
 La xTool P3 est une machine de découpe et de gravure laser CO₂ destinée aux projets de fabrication numérique. Dotée d’un laser CO₂ de 80 W, elle permet de travailler sur une large gamme de matériaux et convient aussi bien aux makers qu’aux petites séries de production.
@@ -154,6 +156,8 @@ La xTool P3 produit des fumées, des particules fines et des composés organique
 - En cas de doute sur un matériau, demandez l’avis d’un responsable avant utilisation.
 - Prenez garde à ne pas déposer d’objet sur les zones surlignées en rouge afin d’éviter d’endommager le couvercle et la machine.
 - Évitez de poser des objets sur les zones orange par sécurité, même si rien ne semble se produire au premier abord.
+
+Cette machine fait partie du [module de certification Découpe laser](/workshops/certification-securite/modules/laser/) : sa validation est obligatoire avant toute utilisation en autonomie.
 
 ## Usage recommandé
 

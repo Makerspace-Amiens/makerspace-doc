@@ -40,6 +40,8 @@ access_level: 0
 todo: 100
 ---
 
+{% include safety-banner.html machine="Artillery Genius Pro" link="/workshops/certification-securite/modules/impression-3d-fdm/" %}
+
 L'Artillery Genius Pro est une imprimante 3D FDM (Fused Deposition Modeling) qui succède à la Genius, en apportant des améliorations notables pour optimiser l'expérience utilisateur.
 
 ## Caractéristiques principales

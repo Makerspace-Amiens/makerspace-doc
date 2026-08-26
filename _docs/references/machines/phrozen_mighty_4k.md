@@ -33,6 +33,8 @@ access_level: 1
 todo: 100
 ---
 
+{% include safety-banner.html machine="Phrozen Sonic Mighty 4K" link="/workshops/certification-securite/modules/resine/" %}
+
 La Phrozen Sonic Mighty 4K est une imprimante 3D résine LCD, idéale pour les impressions de haute précision et de grande résolution. Elle est adaptée pour des impressions complexes et détaillées.
 
 ## Caractéristiques principales
