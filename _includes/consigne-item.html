@@ -1,0 +1,18 @@
+{% comment %}
+  consigne-item.html — ligne de consigne avec icône, pour les listes
+  « à faire » / « à ne jamais faire » des fiches de sécurité.
+
+  Paramètres :
+    type    : do | dont — détermine l'icône et la couleur (do par défaut)
+    content : texte de la consigne (Markdown accepté)
+
+  Exemple :
+    {% include consigne-item.html type="dont" content="Ne jamais laisser la découpe sans surveillance." %}
+{% endcomment %}
+{% assign _type = include.type | default: "do" %}
+<div class="consigne-item consigne-item--{{ _type }}">
+  <span class="consigne-item-icon">
+    {% if _type == "dont" %}<i class="fas fa-ban"></i>{% else %}<i class="fas fa-check"></i>{% endif %}
+  </span>
+  <div class="consigne-item-content">{{ include.content | markdownify }}</div>
+</div>

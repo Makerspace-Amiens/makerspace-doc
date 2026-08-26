@@ -1,0 +1,55 @@
+// =============================================================================
+// _consigne-item.scss — Liste de consignes « à faire / à ne jamais faire »
+// =============================================================================
+
+.consigne-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.consigne-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: 8px;
+  background: var(--bg-subtle);
+
+  &--do {
+    .consigne-item-icon {
+      color: $success;
+      background: rgba($success, 0.14);
+    }
+  }
+
+  &--dont {
+    .consigne-item-icon {
+      color: $danger;
+      background: rgba($danger, 0.12);
+    }
+  }
+}
+
+.consigne-item-icon {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  margin-top: 0.0625rem;
+}
+
+.consigne-item-content {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--fg);
+
+  p:last-child { margin-bottom: 0; }
+}
