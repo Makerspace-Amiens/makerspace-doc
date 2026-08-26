@@ -1,0 +1,29 @@
+{% comment %}
+  epi-item.html — puce EPI (équipement de protection individuelle) avec
+  pictogramme, pour les listes "EPI et équipements requis" des fiches de
+  sécurité. À assembler en rangée dans un conteneur .epi-list.
+
+  Paramètres :
+    icon  : classe Font Awesome pour le pictogramme (voir suggestions ci-dessous)
+    label : nom de l'EPI, ex. "Gants nitrile"
+    link  : (optionnel) URL vers plus d'info sur cet EPI
+
+  Exemple :
+    <div class="epi-list">
+      {% include epi-item.html icon="fas fa-mitten" label="Gants nitrile" %}
+      {% include epi-item.html icon="fas fa-glasses" label="Lunettes de protection" %}
+    </div>
+
+  Suggestions d'icônes courantes (Font Awesome Free 6, gratuites) :
+    Gants            fas fa-mitten
+    Lunettes         fas fa-glasses
+    Masque (FFP2...) fas fa-head-side-mask
+    Casque           fas fa-hard-hat
+    Protection auditive  fas fa-ear-listen
+    Tablier / blouse fas fa-vest
+    Chaussures fermées   fas fa-shoe-prints
+{% endcomment %}
+{% if include.link %}<a href="{{ include.link }}" class="epi-item">{% else %}<span class="epi-item">{% endif %}
+  <span class="epi-item-icon"><i class="{{ include.icon | default: 'fas fa-shield-halved' }}"></i></span>
+  <span class="epi-item-label">{{ include.label }}</span>
+{% if include.link %}</a>{% else %}</span>{% endif %}

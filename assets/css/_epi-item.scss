@@ -1,0 +1,52 @@
+// =============================================================================
+// _epi-item.scss — Puces EPI (équipement de protection individuelle)
+// =============================================================================
+
+.epi-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-bottom: 1.5rem;
+}
+
+.epi-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem 0.375rem 0.375rem;
+  border-radius: 9999px;
+  background: rgba($info, 0.08);
+  border: 1px solid rgba($info, 0.2);
+  text-decoration: none !important;
+  color: var(--fg);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+a.epi-item {
+  cursor: pointer;
+
+  &:hover {
+    background: rgba($info, 0.14);
+    border-color: rgba($info, 0.35);
+  }
+}
+
+.epi-item-icon {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: rgba($info, 0.16);
+  color: $info;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+}
+
+.epi-item-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--fg-strong);
+  white-space: nowrap;
+}
