@@ -1,0 +1,106 @@
+// =============================================================================
+// _risk-item.scss — Encart risque coloré avec pictogramme (fiches sécurité)
+// =============================================================================
+
+.risk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  background: var(--card-bg);
+  margin-bottom: 1rem;
+
+  &--faible {
+    border-left-color: $success;
+
+    .risk-item-icon {
+      color: $success;
+      background: rgba($success, 0.12);
+    }
+
+    .risk-item-badge {
+      color: #15803d;
+      background: rgba($success, 0.14);
+    }
+  }
+
+  &--modere {
+    border-left-color: $warning;
+
+    .risk-item-icon {
+      color: $warning;
+      background: rgba($warning, 0.14);
+    }
+
+    .risk-item-badge {
+      color: #b45309;
+      background: rgba($warning, 0.16);
+    }
+  }
+
+  &--eleve {
+    border-left-color: $danger;
+
+    .risk-item-icon {
+      color: $danger;
+      background: rgba($danger, 0.12);
+    }
+
+    .risk-item-badge {
+      color: #b91c1c;
+      background: rgba($danger, 0.12);
+    }
+  }
+}
+
+.risk-item-icon {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.risk-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.risk-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.risk-item-title {
+  font-weight: 600;
+  color: var(--fg-strong);
+  margin: 0;
+}
+
+.risk-item-badge {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.1875rem 0.5625rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.risk-item-content {
+  margin-top: 0.375rem;
+  color: var(--fg-muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+
+  p:last-child { margin-bottom: 0; }
+}

@@ -1,0 +1,25 @@
+{% comment %}
+  risk-item.html — encart risque coloré avec pictogramme, pour les fiches
+  de sécurité (modules Certification Sécurité et au-delà si utile ailleurs).
+
+  Paramètres :
+    level   : faible | modere | eleve — détermine la couleur et le badge
+    icon    : classe Font Awesome pour le pictogramme, ex. "fas fa-fire"
+    title   : intitulé court du risque
+    content : description du risque (Markdown accepté)
+
+  Exemple :
+    {% include risk-item.html level="eleve" icon="fas fa-fire" title="Incendie pendant la découpe" content="..." %}
+{% endcomment %}
+{% assign _level = include.level | default: "modere" %}
+{% capture _level_label %}{% case _level %}{% when "faible" %}Risque faible{% when "eleve" %}Risque élevé{% else %}Risque modéré{% endcase %}{% endcapture %}
+<div class="risk-item risk-item--{{ _level }}">
+  <span class="risk-item-icon"><i class="{{ include.icon | default: 'fas fa-triangle-exclamation' }}"></i></span>
+  <div class="risk-item-body">
+    <div class="risk-item-head">
+      <p class="risk-item-title">{{ include.title }}</p>
+      <span class="risk-item-badge">{{ _level_label }}</span>
+    </div>
+    <div class="risk-item-content">{{ include.content | markdownify }}</div>
+  </div>
+</div>
