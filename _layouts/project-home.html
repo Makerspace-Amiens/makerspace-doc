@@ -131,7 +131,7 @@
         </div>
         <div class="ph-resource-grid">
           {% for doc in concepts %}
-          <a href="{{ doc.url | relative_url }}?project={{ page.project_slug }}" class="ph-resource-card">
+          <a href="{% if doc.external_link %}{{ doc.external_link }}{% else %}{{ doc.url | relative_url }}?project={{ page.project_slug }}{% endif %}" class="ph-resource-card"{% if doc.external_link %} target="_blank" rel="noopener"{% endif %}>
             <div class="ph-resource-icon"><i class="fas fa-lightbulb"></i></div>
             <div class="ph-resource-body">
               <span class="ph-resource-title">{{ doc.title }}</span>
@@ -242,7 +242,7 @@
         <p class="ph-resource-group-label">Matériel & Composants</p>
         <div class="ph-resource-grid">
           {% for doc in hardware %}
-          <a href="{{ doc.url | relative_url }}" class="ph-resource-card">
+          <a href="{% if doc.external_link %}{{ doc.external_link }}{% else %}{{ doc.url | relative_url }}{% endif %}" class="ph-resource-card"{% if doc.external_link %} target="_blank" rel="noopener"{% endif %}>
             <div class="ph-resource-icon"><i class="fas fa-microchip"></i></div>
             <div class="ph-resource-body">
               <span class="ph-resource-title">{{ doc.title }}</span>
@@ -258,7 +258,7 @@
         <p class="ph-resource-group-label" {% if hardware.size > 0 %}style="margin-top:1.5rem"{% endif %}>Logiciels & Outils</p>
         <div class="ph-resource-grid">
           {% for doc in software %}
-          <a href="{{ doc.url | relative_url }}" class="ph-resource-card">
+          <a href="{% if doc.external_link %}{{ doc.external_link }}{% else %}{{ doc.url | relative_url }}{% endif %}" class="ph-resource-card"{% if doc.external_link %} target="_blank" rel="noopener"{% endif %}>
             <div class="ph-resource-icon"><i class="fas fa-code"></i></div>
             <div class="ph-resource-body">
               <span class="ph-resource-title">{{ doc.title }}</span>
@@ -274,7 +274,7 @@
         <p class="ph-resource-group-label" {% if hardware.size > 0 or software.size > 0 %}style="margin-top:1.5rem"{% endif %}>Références</p>
         <div class="ph-resource-grid">
           {% for doc in ressources %}
-          <a href="{{ doc.url | relative_url }}" class="ph-resource-card">
+          <a href="{% if doc.external_link %}{{ doc.external_link }}{% else %}{{ doc.url | relative_url }}{% endif %}" class="ph-resource-card"{% if doc.external_link %} target="_blank" rel="noopener"{% endif %}>
             <div class="ph-resource-icon"><i class="fas fa-file-alt"></i></div>
             <div class="ph-resource-body">
               <span class="ph-resource-title">{{ doc.title }}</span>
