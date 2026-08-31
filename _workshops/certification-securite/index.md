@@ -4,7 +4,9 @@ layout: project-home
 permalink: /workshops/certification-securite/
 type: workshop
 kind: course
+image: /workshops/certification-securite/hero.jpg
 project_slug: certification-securite
+project_image: /workshops/certification-securite/hero.jpg
 project_tags:
   - Sécurité
 description: "Ce que vous devez savoir avant d'utiliser chaque machine du MakerSpace, indépendamment des cours suivis."
