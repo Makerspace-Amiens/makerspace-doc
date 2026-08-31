@@ -1,0 +1,85 @@
+{% comment %}
+  === Prérequis Include ===
+  Affiche un encart « Prérequis » listant une ou plusieurs pages à consulter
+  avant de commencer, sous forme de cartes-liens compactes.
+
+  ===================================
+  🧭 UTILISATION
+  ===================================
+
+  {% include prerequisites.html items="/docs/concepts/capteurs/,/docs/references/hardware/servomotor/" %}
+    → Affiche les pages listées, dans l'ordre exact fourni.
+
+  {% include prerequisites.html
+      title="Prérequis"
+      description="Consultez d'abord ces pages :"
+      items="/docs/concepts/capteurs/"
+  %}
+
+  ===================================
+  ⚙️ PARAMÈTRES
+  ===================================
+    items       → (requis) URLs internes séparées par des virgules, ordre strict.
+    title       → titre de l'encart (défaut : « Prérequis »).
+    description → phrase d'introduction (défaut : une phrase générique).
+
+  Les URLs sont résolues dans toutes les collections du site
+  (pages, docs, workshops, ressources) — cross-referencing autorisé.
+{% endcomment %}
+
+{% assign prereq_title = include.title | default: "Prérequis" %}
+{% assign prereq_desc = include.description | default: "Avant de commencer, consultez la ou les pages suivantes :" %}
+
+{% assign manual_items = include.items | default: "" | split: "," %}
+{% assign selected_items = "" | split: "" %}
+
+{% for path in manual_items %}
+  {% assign path = path | strip %}
+  {% assign doc = site.pages | where: "url", path | first %}
+  {% if doc == nil %}{% assign doc = site.docs | where: "url", path | first %}{% endif %}
+  {% if doc == nil %}{% assign doc = site.workshops | where: "url", path | first %}{% endif %}
+  {% if doc == nil %}{% assign doc = site.ressources | where: "url", path | first %}{% endif %}
+  {% if doc %}{% assign selected_items = selected_items | push: doc %}{% endif %}
+{% endfor %}
+
+<div class="prerequisites box mb-5">
+  <div class="media-content mb-3">
+    <span class="icon-text">
+      <span class="icon has-text-danger"><i class="fas fa-graduation-cap fa-lg"></i></span>
+      <span class="title is-5 mb-0">{{ prereq_title }}</span>
+    </span>
+    <p class="subtitle is-6 has-text-grey mt-1 mb-0">{{ prereq_desc }}</p>
+  </div>
+
+  {% if selected_items.size > 0 %}
+    <div class="columns is-multiline">
+      {% for item in selected_items %}
+        <div class="column is-6-tablet is-4-desktop">
+          <a href="{{ item.url | relative_url }}" class="card-link">
+            <div class="card">
+              {% if item.image %}
+                {% assign image_first_char = item.image | slice: 0, 1 %}
+                {% if item.image contains '://' or image_first_char == '/' %}
+                  {% assign prereq_image_url = item.image | relative_url %}
+                {% else %}
+                  {% capture prereq_image_url %}{{ site.baseurl }}{{ item.url }}{{ item.image }}{% endcapture %}
+                {% endif %}
+                <div class="card-image">
+                  <figure class="image is-fullwidth fixed-image">
+                    <img src="{{ prereq_image_url }}" alt="{{ item.title }}" />
+                  </figure>
+                </div>
+              {% endif %}
+              <div class="card-content" style="background-color: {{ item.background_color | default: '#FFFFFF' }}">
+                <p class="title is-6 mb-1">{{ item.title }}</p>
+                <p class="subtitle is-7 has-text-grey">{{ item.subtitle | truncate: 60 }}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p><em>Aucune page de prérequis trouvée pour « {{ include.items }} ».</em></p>
+  {% endif %}
+</div>
