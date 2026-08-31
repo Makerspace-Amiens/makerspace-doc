@@ -1,5 +1,5 @@
 ---
-title: Initiation Conception Prototypage
+title: Conception assistée par ordinateur
 layout: project-home
 permalink: /workshops/initiation-conception-prototypage/
 project_slug: fab-additive
