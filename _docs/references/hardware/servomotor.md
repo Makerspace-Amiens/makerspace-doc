@@ -89,12 +89,3 @@ Câblage :
 Condensateurs de découplage :
 
 - Il est recommandé d'ajouter des condensateurs sur l'alimentation pour stabiliser la tension et filtrer les variations causées par les pics de courant lorsque les servos démarrent ou changent de direction brusquement.
-
----
-
-{%
-  include card_collections.html
-  title="Pour aller plus loin"
-  description="Trouvez d'autres tutoriels en lien avec le projet"
-  type="hardware"
-%}
