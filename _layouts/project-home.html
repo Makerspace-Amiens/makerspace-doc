@@ -11,6 +11,7 @@
 {%- assign hardware  = '' | split: '' -%}
 {%- assign software  = '' | split: '' -%}
 {%- assign specials  = '' | split: '' -%}
+{%- assign prereqs   = '' | split: '' -%}
 
 {%- comment %} Tutoriels : liste ordonnée depuis le frontmatter du projet ─── {% endcomment -%}
 {%- for tuto_url in page.tutorials -%}
@@ -46,6 +47,12 @@
 {%- for url in page.concepts -%}
   {%- assign found = all_docs | where: 'url', url | first -%}
   {%- if found -%}{%- assign concepts = concepts | push: found -%}{%- endif -%}
+{%- endfor -%}
+
+{%- comment %} Prérequis : autres ateliers à suivre avant celui-ci ─── {% endcomment -%}
+{%- for url in page.prerequisites -%}
+  {%- assign found = all_docs | where: 'url', url | first -%}
+  {%- if found -%}{%- assign prereqs = prereqs | push: found -%}{%- endif -%}
 {%- endfor -%}
 
 {%- comment %} Section spéciale (ex: ottolympiades) : liste depuis le frontmatter du projet ─── {% endcomment -%}
@@ -112,6 +119,35 @@
         </div>
         <div class="content ph-presentation">
           {{ content }}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ══ PRÉREQUIS ════════════════════════════════════════════════════════ -->
+    {% if prereqs.size > 0 %}
+    <section class="ph-section">
+      <div class="container">
+        <div class="ph-section-header">
+          <div>
+            <h2 class="ph-section-title">
+              <i class="fas fa-flag-checkered"></i> Prérequis
+            </h2>
+            <p class="ph-section-sub">Des ateliers à suivre avant de se lancer dans celui-ci.</p>
+          </div>
+        </div>
+        <div class="ph-resource-grid">
+          {% for doc in prereqs %}
+          <a href="{% if doc.external_link %}{{ doc.external_link }}{% else %}{{ doc.url | relative_url }}{% endif %}" class="ph-resource-card"{% if doc.external_link %} target="_blank" rel="noopener"{% endif %}>
+            <div class="ph-resource-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="ph-resource-body">
+              <span class="ph-resource-title">{{ doc.title }}</span>
+              {% assign prereq_sub = doc.description | default: doc.subtitle %}
+              {% if prereq_sub != nil and prereq_sub != '' %}<span class="ph-resource-sub">{{ prereq_sub }}</span>{% endif %}
+            </div>
+            {% if doc.external_link %}<i class="fas fa-external-link-alt ph-resource-ext"></i>{% endif %}
+          </a>
+          {% endfor %}
         </div>
       </div>
     </section>

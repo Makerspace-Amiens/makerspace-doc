@@ -12,6 +12,8 @@ project_tags:
   - Machines That Draws
 description: "Découvrez les ressources, tutoriels et supports de cours pour concevoir et fabriquer votre machine qui dessine !"
 
+prerequisites:
+  - /workshops/initiation-conception-prototypage/
 concepts:
   - /docs/concepts/capteurs/
 tutorials:

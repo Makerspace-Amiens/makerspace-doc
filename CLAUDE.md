@@ -109,6 +109,8 @@ project_tags:
 description: "Une phrase de présentation pour le hero et les cartes."
 subtitle: Accroche courte
 
+prerequisites:
+  - /workshops/<autre-slug>/
 concepts:
   - /docs/concepts/capteurs/
 tutorials:
@@ -126,6 +128,8 @@ ressources:
 ```
 
 Toutes les listes acceptent des URLs internes d'autres collections (cross-referencing autorisé). Le layout `project-home` cherche les pages dans `site.docs | concat: site.workshops` — l'URL doit correspondre exactement au `url` généré par Jekyll (tester avec trailing slash).
+
+`prerequisites:` (optionnel) liste les **autres ateliers à suivre avant celui-ci** (URLs `/workshops/<slug>/`). Ils s'affichent dans une section **Prérequis** en haut de la page (juste avant Concepts). Utile pour chaîner un atelier thématique (`kind: course`) en amont d'un projet, ex. « Conception assistée par ordinateur » avant « Machine That Draws ».
 
 ### Champ `kind` — projet vs thématique
 
