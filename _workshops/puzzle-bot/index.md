@@ -3,6 +3,7 @@ title: Puzzle Bot
 layout: project-home
 permalink: /workshops/puzzle-bot/
 type: workshop
+kind: project
 image: /workshops/puzzle-bot/puzzle-bot.jpg
 project_slug: puzzle-bot
 project_image: /workshops/puzzle-bot/puzzle-bot.jpg

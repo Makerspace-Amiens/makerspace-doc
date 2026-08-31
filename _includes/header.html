@@ -33,7 +33,9 @@
                               projets récents.
                             {%- endcomment -%}
                             {% if item.link == "/workshops/" %}
-                                {% assign dropdown_items = site.workshops | where: "layout", "project-home" | sort: "title" %}
+                                {% assign workshops_all = site.workshops | where: "layout", "project-home" | sort: "title" %}
+                                {% assign workshops_projects = workshops_all | where: "kind", "project" %}
+                                {% assign workshops_courses = workshops_all | where: "kind", "course" %}
                             {% else %}
                                 {% assign dropdown_items = item.dropdown %}
                             {% endif %}
@@ -45,16 +47,38 @@
                                     {{- item.name -}}
                                 </a>
                                 <div class="navbar-dropdown">
-                                    {% for subitem in dropdown_items %}
-                                        {% assign sub_link = subitem.link | default: subitem.permalink %}
-                                        {% assign sub_name = subitem.title | default: subitem.name %}
-                                        <a
-                                            href="{{ sub_link | relative_url }}"
-                                            class="navbar-item {% if sub_link == page.url %}is-active{% endif %}"
-                                        >
-                                            {{- sub_name -}}
-                                        </a>
-                                    {% endfor %}
+                                    {% if item.link == "/workshops/" %}
+                                        <div class="navbar-item has-text-weight-semibold is-size-7 has-text-grey is-uppercase">Projets</div>
+                                        {% for subitem in workshops_projects %}
+                                            <a
+                                                href="{{ subitem.permalink | relative_url }}"
+                                                class="navbar-item {% if subitem.permalink == page.url %}is-active{% endif %}"
+                                            >
+                                                {{- subitem.title -}}
+                                            </a>
+                                        {% endfor %}
+                                        <hr class="navbar-divider">
+                                        <div class="navbar-item has-text-weight-semibold is-size-7 has-text-grey is-uppercase">Thématiques</div>
+                                        {% for subitem in workshops_courses %}
+                                            <a
+                                                href="{{ subitem.permalink | relative_url }}"
+                                                class="navbar-item {% if subitem.permalink == page.url %}is-active{% endif %}"
+                                            >
+                                                {{- subitem.title -}}
+                                            </a>
+                                        {% endfor %}
+                                    {% else %}
+                                        {% for subitem in dropdown_items %}
+                                            {% assign sub_link = subitem.link | default: subitem.permalink %}
+                                            {% assign sub_name = subitem.title | default: subitem.name %}
+                                            <a
+                                                href="{{ sub_link | relative_url }}"
+                                                class="navbar-item {% if sub_link == page.url %}is-active{% endif %}"
+                                            >
+                                                {{- sub_name -}}
+                                            </a>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
                             </div>
                         {% else %}

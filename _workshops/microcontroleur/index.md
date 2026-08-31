@@ -3,6 +3,7 @@ title: Microcontrôleurs
 layout: project-home
 permalink: /workshops/microcontroleur/
 type: workshop
+kind: course
 image: /workshops/microcontroleur/tutorials/toolchain-blink/uc.webp
 project_slug: microcontroleur
 project_image: /workshops/microcontroleur/tutorials/toolchain-blink/uc.webp

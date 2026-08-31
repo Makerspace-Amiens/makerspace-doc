@@ -6,6 +6,7 @@ project_slug: fab-additive
 project_image: /assets/images/projects/fab-additive.jpg
 image: /assets/images/projects/fab-additive.jpg
 type: workshop
+kind: course
 subtitle: Ressources pour la fabrication additive au MakerSpace - UniLaSalle Amiens
 project_tags:
   - Impression 3D

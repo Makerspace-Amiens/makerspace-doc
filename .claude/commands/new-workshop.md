@@ -26,6 +26,7 @@ title: <Nom de l'atelier>
 layout: project-home
 permalink: /workshops/<slug>/
 type: workshop
+kind: project          # project = projet à fabriquer | course = thématique/parcours
 image: /workshops/<slug>/hero.jpg
 project_slug: <slug>
 project_image: /workshops/<slug>/hero.jpg

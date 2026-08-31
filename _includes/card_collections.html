@@ -113,6 +113,20 @@
   {% for item in sorted_items %}
     {% assign type_match = false %}
     {% assign tag_match = true %}
+    {% assign kind_match = true %}
+
+    {%- comment -%}
+      === Filtrage KIND (égalité stricte) ===
+      Distingue les ateliers "project" des "course" sur /workshops/.
+      Si aucun kind spécifié → tout passe.
+    {%- endcomment -%}
+    {% if include.kind %}
+      {% if item.kind == include.kind %}
+        {% assign kind_match = true %}
+      {% else %}
+        {% assign kind_match = false %}
+      {% endif %}
+    {% endif %}
 
     {%- comment -%}
       === 2. Filtrage TYPE (OU logique)
@@ -178,7 +192,7 @@
       {% endif %}
     {% endif %}
 
-    {% if include.items or (type_match and tag_match and path_match) %}
+    {% if include.items or (type_match and tag_match and path_match and kind_match) %}
       <div class="column is-4-desktop is-6-tablet" data-category="{{ item_category }}">
         {% if item.external_link %}
           <a href="{{ item.external_link }}" class="card-link">

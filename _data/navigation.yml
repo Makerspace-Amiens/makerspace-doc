@@ -2,7 +2,7 @@
   link: /informations/
 - name: Materiel
   link: /equipment/
-- name: Thématiques
+- name: Ateliers
   link: /workshops/
   dropdown: true
 - name: Documentation

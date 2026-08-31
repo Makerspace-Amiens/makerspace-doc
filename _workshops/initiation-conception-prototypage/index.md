@@ -6,6 +6,7 @@ project_slug: fab-additive
 project_image: /assets/images/projects/fab-additive.jpg
 image: /assets/images/projects/fab-additive.jpg
 type: workshop
+kind: course
 subtitle: 
 project_tags:
   - Impression 3D

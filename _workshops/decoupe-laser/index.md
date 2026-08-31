@@ -6,6 +6,7 @@ project_slug: decoupe-laser
 project_image: /workshops/decoupe-laser/hero.png
 image: /workshops/decoupe-laser/hero.png
 type: workshop
+kind: course
 subtitle: Ressources pour la découpe et la gravure laser au MakerSpace - UniLaSalle Amiens
 project_tags:
   - Découpe laser

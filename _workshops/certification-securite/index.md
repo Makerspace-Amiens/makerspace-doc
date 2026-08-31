@@ -3,6 +3,7 @@ title: Certification Sécurité
 layout: project-home
 permalink: /workshops/certification-securite/
 type: workshop
+kind: course
 project_slug: certification-securite
 project_tags:
   - Sécurité

@@ -3,6 +3,7 @@ title: Méthodologie de projet
 layout: project-home
 permalink: /workshops/methodologie-de-projet/
 type: workshop
+kind: course
 image: /workshops/methodologie-de-projet/hero.jpg
 project_slug: methodologie-de-projet
 project_image: /workshops/methodologie-de-projet/hero.jpg

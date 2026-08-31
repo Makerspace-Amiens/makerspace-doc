@@ -6,6 +6,7 @@ project_slug: machines-that-draws
 project_image: /assets/images/projects/machines-that-draws.png
 image: /assets/images/projects/machines-that-draws.png
 type: workshop
+kind: project
 subtitle: Concevez et fabriquez votre machine qui dessine !
 project_tags:
   - Machines That Draws

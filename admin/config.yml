@@ -269,6 +269,13 @@ collections:
       - {label: Sous-titre, name: subtitle, widget: string, required: false}
       - {label: Layout, name: layout, widget: hidden, default: collection}
       - {label: Type, name: type, widget: hidden, default: workshop}
+      - label: Nature
+        name: kind
+        widget: select
+        default: project
+        options:
+          - {label: "Projet (à fabriquer)", value: project}
+          - {label: "Thématique (parcours)", value: course}
       - {label: Image, name: image, widget: image, required: false}
       - {label: Image du hero, name: hero_image, widget: image, required: false}
       - {label: Image de presentation, name: about_image, widget: image, required: false}

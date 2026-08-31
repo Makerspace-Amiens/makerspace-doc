@@ -3,6 +3,7 @@ title: Carte contrôleur Machine That Draws
 layout: project-home
 permalink: /workshops/stepper-controller-board/
 type: workshop
+kind: project
 image: /workshops/stepper-controller-board/hero.png
 project_slug: stepper-controller-board
 project_image: /workshops/stepper-controller-board/hero.png

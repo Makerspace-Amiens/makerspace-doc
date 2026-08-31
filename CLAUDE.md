@@ -100,6 +100,7 @@ title: Nom du projet
 layout: project-home
 permalink: /workshops/<slug>/
 type: workshop
+kind: project          # project = projet à fabriquer | course = thématique/parcours
 image: /workshops/<slug>/hero.jpg
 project_slug: <slug>
 project_image: /workshops/<slug>/hero.jpg
@@ -126,11 +127,22 @@ ressources:
 
 Toutes les listes acceptent des URLs internes d'autres collections (cross-referencing autorisé). Le layout `project-home` cherche les pages dans `site.docs | concat: site.workshops` — l'URL doit correspondre exactement au `url` généré par Jekyll (tester avec trailing slash).
 
+### Champ `kind` — projet vs thématique
+
+Le champ `kind` distingue les deux natures d'ateliers, sur la page `/workshops/` (deux sections **Projets** / **Thématiques**) et dans le dropdown de la navbar (deux groupes) :
+
+| Valeur | Nature | Exemples |
+|---|---|---|
+| `project` | Projet guidé à concevoir et fabriquer de A à Z | `otto-mks`, `machines-that-draws`, `puzzle-bot` |
+| `course` | Parcours thématique pour se former à un domaine/une technique | `fab-additive`, `decoupe-laser`, `microcontroleur` |
+
+Le filtre est porté par l'include `card_collections.html` (paramètre `kind="project"` / `kind="course"`). Tout `index.md` d'atelier **doit** avoir un `kind` — sans lui, l'atelier n'apparaît dans aucune des deux sections.
+
 ---
 
-## Navbar — dropdown Thématiques
+## Navbar — dropdown Ateliers
 
-Le dropdown est **généré dynamiquement** depuis `site.workshops | where: "layout", "project-home"`, trié alphabétiquement. Ne pas modifier la liste dans `_data/navigation.yml` — tout atelier avec `layout: project-home` apparaît automatiquement.
+Le dropdown est **généré dynamiquement** depuis `site.workshops | where: "layout", "project-home"`, trié alphabétiquement et **scindé en deux groupes** (Projets / Thématiques) selon le champ `kind`. Ne pas modifier la liste dans `_data/navigation.yml` — tout atelier avec `layout: project-home` apparaît automatiquement dans le groupe correspondant à son `kind`.
 
 ---
 

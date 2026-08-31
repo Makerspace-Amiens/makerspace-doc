@@ -3,6 +3,7 @@ title: Otto MKS
 layout: project-home
 permalink: /workshops/otto-mks/
 type: workshop
+kind: project
 image: /workshops/otto-mks/concepts/informations/otto-mks.jpg
 project_slug: otto-mks
 project_image: /workshops/otto-mks/concepts/informations/otto-mks.jpg
