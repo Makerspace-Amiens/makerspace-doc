@@ -12,9 +12,17 @@ project_tags:
 description: "Découvrez les ressources, tutoriels et supports de cours pour concevoir et fabriquer votre machine qui dessine !"
 
 concepts:
-  - 
+  - /docs/concepts/capteurs/
 tutorials:
   - /workshops/machines-that-draws/tutorials/discover-the-project/
+  - /workshops/machines-that-draws/tutorials/machines-types/
+  - /docs/tutorials/software/onshape/onshape-installation/
+  - /docs/tutorials/software/onshape/onshape-premiere-piece/
+  - /docs/tutorials/software/onshape/onshape-premiere-piece-laser/
+  - /docs/tutorials/software/onshape/onshape-premier-assemblage/
+  - /docs/tutorials/software/onshape/onshape-premier-mini-projet/
+  - /docs/tutorials/electronics/arduino-port-serie/
+  - /workshops/machines-that-draws/tutorials/grbl-servo/
 how_to_guides:
   - 
 hardware:
@@ -108,4 +116,3 @@ La **Journée des Projets** est un événement phare où vous aurez l’occasion
 - **Collaborez efficacement** : Communiquez au sein de votre équipe et répartissez bien les tâches.
 - **Soyez curieux** : Explorez les ressources disponibles, cherchez des inspirations en ligne, et expérimentez.
 - **Profitez du MakerSpace** : Utilisez les équipements et demandez conseil si vous avez des doutes.
-
