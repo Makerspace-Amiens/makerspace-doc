@@ -37,26 +37,26 @@ Dossier cible : `_workshops/methodologie-de-projet/tutorials/creer-repo-template
 
 Dossier cible : `_workshops/methodologie-de-projet/tutorials/git-github-desktop-vscode/`
 
-7. GitHub Desktop, onglet **Changes** avec des fichiers modifiés listés → `step1-changes-github-desktop.png`
-8. GitHub Desktop, champ de message de commit rempli, bouton **Commit to main** → `step2-commit-github-desktop.png`
-9. GitHub Desktop, bouton **Push origin** → `step3-push-github-desktop.png`
-10. VSCode, panneau **Source Control** ouvert avec des fichiers modifiés → `step4-source-control-vscode.png`
-11. VSCode, message de commit tapé + bouton **Sync Changes** visible → `step5-sync-vscode.png`
+1. GitHub Desktop, onglet **Changes** avec des fichiers modifiés listés → `step1-changes-github-desktop.png`
+2. GitHub Desktop, champ de message de commit rempli, bouton **Commit to main** → `step2-commit-github-desktop.png`
+3. GitHub Desktop, bouton **Push origin** → `step3-push-github-desktop.png`
+4. VSCode, panneau **Source Control** ouvert avec des fichiers modifiés → `step4-source-control-vscode.png`
+5. VSCode, message de commit tapé + bouton **Sync Changes** visible → `step5-sync-vscode.png`
 
 ## 3. Gérer son projet avec GitHub
 
 Dossier cible : `_workshops/methodologie-de-projet/tutorials/gerer-projet-github/`
 
-12. Page GitHub, onglet **Issues**, bouton **New issue** → `step1-new-issue.png`
-13. Formulaire de création d'Issue rempli (titre précis + description + Assignee) → `step2-issue-remplie.png`
-14. Onglet **Projects**, bouton **New project**, choix du modèle **Board** → `step3-new-project.png`
-15. Un Project avec ses 3 colonnes (Todo/In Progress/Done) et au moins une carte Issue liée → `step4-project-kanban.png`
+ 1. Page GitHub, onglet **Issues**, bouton **New issue** → `step1-new-issue.png`
+ 2. Formulaire de création d'Issue rempli (titre précis + description + Assignee) → `step2-issue-remplie.png`
+ 3. Onglet **Projects**, bouton **New project**, choix du modèle **Board** → `step3-new-project.png`
+ 4. Un Project avec ses 3 colonnes (Todo/In Progress/Done) et au moins une carte Issue liée → `step4-project-kanban.png`
 
 ## 4. Tenir un journal de bord
 
 Dossier cible : `_workshops/methodologie-de-projet/tutorials/journal-de-bord/`
 
-16. **(optionnel)** Fichier `docs/journal.md` ouvert dans VSCode avec une entrée remplie → `step1-journal-vscode.png`
+ 1. **(optionnel)** Fichier `docs/journal.md` ouvert dans VSCode avec une entrée remplie → `step1-journal-vscode.png`
 
 ## 5. Modifier son site Jekyll depuis l'interface GitHub
 
@@ -64,43 +64,44 @@ Dossier cible : `_workshops/methodologie-de-projet/tutorials/modifier-site-githu
 
 **Section "Activer la publication" ✅ FAIT (2026-08-20)** — 4 captures
 intégrées : `activer-pages-settings.png` (Settings > Pages), `about-vide.png`
+
 + `edit-repository-details.png` (carte About), `social-preview.png`.
 
-17. Fichier `.md` affiché sur GitHub avec l'icône crayon (✏️) visible en haut à droite → `step1-icone-crayon.png`
-18. Éditeur Markdown de GitHub ouvert, en train de modifier du texte → `step2-editeur-github.png`
-19. Onglet **Preview** de l'éditeur GitHub montrant le rendu → `step3-preview-github.png`
-20. Bas de page : champ message de commit + choix **Commit directly to main** vs **Create a new branch** → `step4-commit-github.png`
-21. **(optionnel)** Onglet **Actions** du repo montrant un build en cours/terminé → `step5-actions-build.png`
+ 1. Fichier `.md` affiché sur GitHub avec l'icône crayon (✏️) visible en haut à droite → `step1-icone-crayon.png`
+ 2. Éditeur Markdown de GitHub ouvert, en train de modifier du texte → `step2-editeur-github.png`
+ 3. Onglet **Preview** de l'éditeur GitHub montrant le rendu → `step3-preview-github.png`
+ 4. Bas de page : champ message de commit + choix **Commit directly to main** vs **Create a new branch** → `step4-commit-github.png`
+ 5. **(optionnel)** Onglet **Actions** du repo montrant un build en cours/terminé → `step5-actions-build.png`
 
 ## 6. Construire son site Jekyll en local
 
 Dossier cible : `_workshops/methodologie-de-projet/tutorials/construire-site-local/`
 
-22. **(optionnel)** Terminal après `bundle install` réussi (dernières lignes de sortie) → `step1-bundle-install.png`
-23. Terminal après `bundle exec jekyll serve`, ligne "Server running..." visible → `step2-jekyll-serve.png`
-24. Navigateur sur `http://localhost:4000` montrant le site qui tourne → `step3-site-local.png`
+ 1. **(optionnel)** Terminal après `bundle install` réussi (dernières lignes de sortie) → `step1-bundle-install.png`
+ 2. Terminal après `bundle exec jekyll serve`, ligne "Server running..." visible → `step2-jekyll-serve.png`
+ 3. Navigateur sur `http://localhost:4000` montrant le site qui tourne → `step3-site-local.png`
 
 ## 7. Documenter une carte électronique
 
 Dossier cible : `_workshops/methodologie-de-projet/tutorials/documenter-carte-electronique/`
 
-25. KiCad Eeschema, menu **Fichier > Tracer...** ouvert, format **SVG** sélectionné → `step1-plot-svg-kicad.png`
-26. KiCad, menu **Outils > Générer une nomenclature...** ouvert → `step2-generer-bom.png`
-27. **(optionnel, avancé)** Plugin and Content Manager de KiCad, recherche "Interactive Html Bom" → `step3-pcm-ihb.png`
-28. **(optionnel, avancé)** Résultat du plugin InteractiveHtmlBom ouvert dans un navigateur (PCB + BOM liés) → `step4-ihb-resultat.png`
+ 1. KiCad Eeschema, menu **Fichier > Tracer...** ouvert, format **SVG** sélectionné → `step1-plot-svg-kicad.png`
+ 2. KiCad, menu **Outils > Générer une nomenclature...** ouvert → `step2-generer-bom.png`
+ 3. **(optionnel, avancé)** Plugin and Content Manager de KiCad, recherche "Interactive Html Bom" → `step3-pcm-ihb.png`
+ 4. **(optionnel, avancé)** Résultat du plugin InteractiveHtmlBom ouvert dans un navigateur (PCB + BOM liés) → `step4-ihb-resultat.png`
 
 ## 8. Documenter un système mécanique
 
 Dossier cible : `_workshops/methodologie-de-projet/tutorials/documenter-systeme-mecanique/`
 
-29. FreeCAD, une vue 3D bien cadrée d'une pièce/assemblage → `step1-vue-freecad.png`
-30. FreeCAD, menu **Outils > Enregistrer une image...** ouvert → `step2-save-picture-freecad.png`
+ 1. FreeCAD, une vue 3D bien cadrée d'une pièce/assemblage → `step1-vue-freecad.png`
+ 2. FreeCAD, menu **Outils > Enregistrer une image...** ouvert → `step2-save-picture-freecad.png`
 
 ## 9. Documenter l'assemblage et le montage
 
 Dossier cible : `_workshops/methodologie-de-projet/tutorials/documenter-assemblage-montage/`
 
-31. **(optionnel)** Une vraie photo d'étape de montage (prise au smartphone, pas depuis l'écran) → `step1-exemple-montage.jpg`
+ 1. **(optionnel)** Une vraie photo d'étape de montage (prise au smartphone, pas depuis l'écran) → `step1-exemple-montage.jpg`
 
 ## 10. Checklist de clôture de projet / Poster et vidéo
 

@@ -107,7 +107,6 @@ status="is-warning" %}
 
 Nous allons donc voir par la suite comment améliorer la lecture du port série dans le cas d'un grand nombre de données et d'une fréquence d'envoi importante.
 
-
 ## 2 - TelePlot
 
 [![](teleplot-logo.png)](https://github.com/nesnes/teleplot-vscode)

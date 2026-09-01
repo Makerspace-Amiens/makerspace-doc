@@ -238,7 +238,7 @@ void setup() {
   tab2=tab6
 %}
 
-{% include message.html title="Toujours nommer le langage" message="Après les trois backticks d'ouverture, précisez le langage (```cpp, ```python, ```bash...) : ça active la coloration syntaxique et c'est une règle de style de ce site." status="is-info" icon="fas fa-info-circle" %}
+{% include message.html title="Toujours nommer le langage" message="Après les trois backticks d'ouverture, précisez le langage (```cpp,```python, ```bash...) : ça active la coloration syntaxique et c'est une règle de style de ce site." status="is-info" icon="fas fa-info-circle" %}
 
 ### Tableaux
 

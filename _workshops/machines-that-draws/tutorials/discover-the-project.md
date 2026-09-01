@@ -19,7 +19,7 @@ difficulty: 1
 todo: 80
 ---
 
-{% include step-tuto.html image="team.png" greyBackground = false title = "Étape 1 : Formation de l’équipe" content="La première étape consiste à **former une équipe** de **4 étudiants** avec des compétences **complémentaires** pour maximiser vos chances de succès. Analysez vos **points forts** et ceux de vos camarades pour **répartir les rôles** de manière équilibrée : **responsable mécanique**, **responsable électronique**, **responsable logiciel**... 
+{% include step-tuto.html image="team.png" greyBackground = false title = "Étape 1 : Formation de l’équipe" content="La première étape consiste à **former une équipe** de **4 étudiants** avec des compétences **complémentaires** pour maximiser vos chances de succès. Analysez vos **points forts** et ceux de vos camarades pour **répartir les rôles** de manière équilibrée : **responsable mécanique**, **responsable électronique**, **responsable logiciel**...
 
 N’oubliez pas de définir un **cadre de travail clair** dès le début, en établissant des **règles de communication** et en choisissant des **outils collaboratifs** comme **Trello** ou **Teams** pour organiser vos tâches." %}
 

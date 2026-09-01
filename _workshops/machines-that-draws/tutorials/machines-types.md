@@ -24,55 +24,54 @@ Nous vous encourageons également à effectuer des recherches complémentaires s
 
 ---
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 title="Traceur à alimentation continue"
 content="
-Un traceur à alimentation continue est une machine capable de dessiner ou d’imprimer sur un support en rouleau. Elle est couramment utilisée pour les plans d’architecture ou les impressions longues, car elle permet de produire des dessins sans limite de longueur. Le support est déplacé sous la tête de dessin grâce à des rouleaux motorisés. Ce type de machine convient bien pour des travaux répétitifs nécessitant de grandes surfaces." 
+Un traceur à alimentation continue est une machine capable de dessiner ou d’imprimer sur un support en rouleau. Elle est couramment utilisée pour les plans d’architecture ou les impressions longues, car elle permet de produire des dessins sans limite de longueur. Le support est déplacé sous la tête de dessin grâce à des rouleaux motorisés. Ce type de machine convient bien pour des travaux répétitifs nécessitant de grandes surfaces."
 image="traceur-alimentation-continue-1.png"
 image_2="traceur-alimentation-continue-2.png"
 image_3="traceur-alimentation-continue-3.png"
 image_4="traceur-alimentation-continue-4.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 title="Machine Cartesienne"
-content="Les machines cartésiennes fonctionnent en utilisant un système de coordonnées X, Y (et parfois Z). Une tête de dessin se déplace sur des axes perpendiculaires pour atteindre n'importe quel point dans une zone de travail rectangulaire. C’est le système de base pour de nombreuses imprimantes 3D et traceurs CNC. Elles sont simples à construire et offrent une précision élevée, ce qui les rend idéales pour les projets nécessitant des dessins techniques ou détaillés." 
+content="Les machines cartésiennes fonctionnent en utilisant un système de coordonnées X, Y (et parfois Z). Une tête de dessin se déplace sur des axes perpendiculaires pour atteindre n'importe quel point dans une zone de travail rectangulaire. C’est le système de base pour de nombreuses imprimantes 3D et traceurs CNC. Elles sont simples à construire et offrent une précision élevée, ce qui les rend idéales pour les projets nécessitant des dessins techniques ou détaillés."
 image="machine-cartesienne-1.png"
 image_2="machine-cartesienne-2.png"
 image_3="machine-cartesienne-3.png"
 image_4="machine-cartesienne-4.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 title="Core XY"
-content="Le système Core XY est une variation sophistiquée des machines cartésiennes, utilisant deux moteurs pour déplacer la tête de dessin simultanément sur les axes X et Y. Cela permet un mouvement plus rapide et fluide, tout en réduisant les vibrations, ce qui améliore la qualité des dessins. Si vous êtes intéréssé par l'optimisation des performances mécaniques, vous pourriez trouver ce concept particulièrement intéressant." 
+content="Le système Core XY est une variation sophistiquée des machines cartésiennes, utilisant deux moteurs pour déplacer la tête de dessin simultanément sur les axes X et Y. Cela permet un mouvement plus rapide et fluide, tout en réduisant les vibrations, ce qui améliore la qualité des dessins. Si vous êtes intéréssé par l'optimisation des performances mécaniques, vous pourriez trouver ce concept particulièrement intéressant."
 image="core-xy-1.png"
 image_2="core-xy-2.png"
 image_3="core-xy-3.png"
 image_4="core-xy-4.png" %}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 title="Traceur Mobile"
-content="Un traceur mobile est une machine capable de se déplacer librement sur une surface pour dessiner, comme un robot ou une machine à roues. Ce type de machine est souvent utilisé pour dessiner de grands motifs sur le sol ou sur d'autres surfaces planes. Ces traceurs sont compacts, mobiles et peuvent offrir des possibilités créatives uniques, notamment pour des œuvres d’art interactives ou surdimensionnées." 
+content="Un traceur mobile est une machine capable de se déplacer librement sur une surface pour dessiner, comme un robot ou une machine à roues. Ce type de machine est souvent utilisé pour dessiner de grands motifs sur le sol ou sur d'autres surfaces planes. Ces traceurs sont compacts, mobiles et peuvent offrir des possibilités créatives uniques, notamment pour des œuvres d’art interactives ou surdimensionnées."
 image="traceur-mobile-1.png"
 image_2="traceur-mobile-2.png"
 image_3="traceur-mobile-3.png"%}
 
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 title="Machine polaire verticale"
-content="Les machines polaires verticales, comme les traceurs muraux (DrawWall), dessinent sur des surfaces verticales en utilisant deux moteurs placés en haut qui déplacent une tête de dessin suspendue. Ce type de machine est idéal pour réaliser des fresques murales ou des dessins à grande échelle. Leur mécanique simple mais innovante offre un large champ d'exploration pour des projets artistiques ou décoratifs." 
+content="Les machines polaires verticales, comme les traceurs muraux (DrawWall), dessinent sur des surfaces verticales en utilisant deux moteurs placés en haut qui déplacent une tête de dessin suspendue. Ce type de machine est idéal pour réaliser des fresques murales ou des dessins à grande échelle. Leur mécanique simple mais innovante offre un large champ d'exploration pour des projets artistiques ou décoratifs."
 image="machine-polaire-verticale-1.png"
 image_2="machine-polaire-verticale-2.png"
 image_3="machine-polaire-verticale-3.png"%}
 
-
-{% include step-tuto.html 
+{% include step-tuto.html
 greyBackground = true
 title="Machine à bras articulé"
-content="Ces machines de dessin utilisent un ou plusieurs bras mécaniques pour déplacer un outil de dessin, comme un stylo, sur une surface. Les mouvements des bras permettent de tracer des courbes, des lignes et des motifs complexes. Ce type de conception est inspiré des robots manipulateurs industriels, offrant une flexibilité et une originalité dans la manière de dessiner. Les machines à bras articulés sont parfaites pour explorer les concepts de cinématique et de contrôle motorisé. " 
+content="Ces machines de dessin utilisent un ou plusieurs bras mécaniques pour déplacer un outil de dessin, comme un stylo, sur une surface. Les mouvements des bras permettent de tracer des courbes, des lignes et des motifs complexes. Ce type de conception est inspiré des robots manipulateurs industriels, offrant une flexibilité et une originalité dans la manière de dessiner. Les machines à bras articulés sont parfaites pour explorer les concepts de cinématique et de contrôle motorisé. "
 image="bras-articule-1.gif"
 image_2="bras-articule-2.png"
 image_3="bras-articule-3.png"

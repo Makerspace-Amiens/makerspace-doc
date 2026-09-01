@@ -111,7 +111,9 @@ Le dossier `vendor/` est déjà ignoré par Git (voir `.gitignore`), ça ne poll
 {% include step-tuto.html
   greyBackground=true
   title="jekyll serve"
-  content="```bash
+  content="
+
+```bash
 bundle exec jekyll serve
 ```
 

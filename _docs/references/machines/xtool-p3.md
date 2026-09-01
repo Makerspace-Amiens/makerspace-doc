@@ -23,7 +23,6 @@ todo: 30
 
 La xTool P3 est une machine de découpe et de gravure laser CO₂ destinée aux projets de fabrication numérique. Dotée d’un laser CO₂ de 80 W, elle permet de travailler sur une large gamme de matériaux et convient aussi bien aux makers qu’aux petites séries de production.
 
-
 ## Caractéristiques principales
 
 - **Puissance laser :** CO₂ 80 W

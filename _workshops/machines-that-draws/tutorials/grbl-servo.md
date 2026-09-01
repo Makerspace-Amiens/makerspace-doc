@@ -35,19 +35,20 @@ Ce comportement indique généralement que les **paramètres d’impulsion (PWM)
 La librairie **GRBL originale** est conçue pour contrôler une **fraiseuse à commande numérique**.  
 **Une commande GCODE** est donc dédiée au **contrôle de la fraiseuse** (broche ou spindle) :
 
-{% include message.html 
+{% include message.html
 message="**M3 S1000**  
+
 - **M3** → démarre la broche
-- **S1000** → définit la vitesse de rotation (par exemple ici 1000 tr/min)" 
+- **S1000** → définit la vitesse de rotation (par exemple ici 1000 tr/min)"
 
 status="is-info" %}
 
 **GRBL-Servo** détourne l'usage de cette commande, en la réassignant au contrôle d'un servomoteur.  
 
-{% include message.html 
+{% include message.html
 message="**M3 S0** → Le servo va en position **0°**  
 
-**M3 S255** → Le servo va en position **180°**" 
+**M3 S255** → Le servo va en position **180°**"
 status="is-info" %}
 
 ## L'origine du problème
@@ -59,8 +60,8 @@ L'**information** envoyée par le microcontrôleur au servo est **mal interprét
 
 Pour **corriger ce réglage**, il faut modifier les **fichiers de configuration** dans la **librairie GRBL-Servo** :
 
-{% include message.html 
-message="**Passez cette étape** si la librairie est déjà installée" 
+{% include message.html
+message="**Passez cette étape** si la librairie est déjà installée"
 
 status="is-warning" %}
 
@@ -69,11 +70,11 @@ status="is-warning" %}
 {% include step-tuto.html image="spindle_control.png" greyBackground = false title = "Ouvrir spindle_control.c" content="Dans le **dossier grbl**, **trouvez** et **ouvrez** le fichier **spindle_control.c** dans un éditeur de texte."%}
 
 {% include step-tuto.html image="edit_lines.png" greyBackground = false title = "Éditer les valeurs" content="Localisez les lignes suivantes :  
- 
+
 **#define RC_SERVO_SHORT      7**  
 **#define RC_SERVO_LONG       17**  
 
-Conformément à la [**documentation fournie**](https://www.feetechrc.com/6v-32kg-analog-steering-gear.html) par le **fabricant**, les servos **FS5103B** ont une plage de **durées d'impulsion** de **600→2400 μsec**. 
+Conformément à la [**documentation fournie**](https://www.feetechrc.com/6v-32kg-analog-steering-gear.html) par le **fabricant**, les servos **FS5103B** ont une plage de **durées d'impulsion** de **600→2400 μsec**.
 
 Remplacez donc par :
 
@@ -87,7 +88,7 @@ Ouvrez le fichier d'upload de GRBL-Servo **File → Examples → grbl → grblUp
 Cliquez finalement sur ![alt text](upload.png) pour uploader le firmware sur votre Arduino !
 "%}
 
-{% include message.html 
-message="Bien joué ! Votre servo devrait maintenant fonctionner normalement !" 
+{% include message.html
+message="Bien joué ! Votre servo devrait maintenant fonctionner normalement !"
 
 status="is-info" %}

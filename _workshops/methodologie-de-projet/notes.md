@@ -322,7 +322,7 @@ j'avais écrit dans `documenter-carte-electronique.md` et
   directement, seulement SVG/PDF/DXF/PS).
 - Méthode avancée optionnelle = activer KiCanvas/model-viewer via le vrai
   point d'extension documenté de Just the Docs : `docs/_includes/head_custom.html`
-  (vérifié via recherche web — https://just-the-docs.com/docs/customization/).
+  (vérifié via recherche web — <https://just-the-docs.com/docs/customization/>).
   KiCanvas nécessite de télécharger `kicanvas.js` et l'auto-héberger (pas
   de CDN en alpha) ; model-viewer est disponible via CDN unpkg directement.
 - `poster-video-presentation.md` avait la même erreur (`youtube.html`
@@ -340,6 +340,7 @@ occurrence dans tout l'atelier** (grep systématique).
 
 **Explicite / pas-à-pas pour débutants complets** (demande explicite de
 l'utilisateur — étudiants jeunes, n'ont souvent jamais fait ça) :
+
 - `creer-repo-template.md` **entièrement réécrit** : glossaire en tête
   (repo, template, cloner, GitHub Desktop), étape 0 d'installation de
   GitHub Desktop ajoutée, chaque étape beaucoup plus détaillée (ce qu'on
@@ -370,6 +371,7 @@ d'erreur factuelle connue dedans à ce stade.
 `documenter-carte-electronique.md` enrichi : confirmé (doc officielle
 KiCanvas) que KiCanvas ne fait ni BOM ni export, visualiseur strict
 lecture seule. Ajouté :
+
 - Génération BOM native KiCad (**Outils > Générer une nomenclature**,
   export CSV) comme méthode de base.
 - Section "Pour aller plus loin" : plugin **InteractiveHtmlBom**
@@ -406,7 +408,7 @@ Anciens fichiers `tutorials/pull-requests-relecture.md` et
 croisées mises à jour (`git-github-desktop-vscode.md`,
 `modifier-site-github.md`) vers la nouvelle URL du guide. Le plan compte
 désormais **16 tutoriels + 2 guides pratiques** (au lieu de 17 tutoriels
-+ 1 guide). Vérifié : build propre, 28 liens internes uniques, tous
+et 1 guide). Vérifié : build propre, 28 liens internes uniques, tous
 résolvent, aucune trace des anciennes URLs.
 
 ### Retour utilisateur : la section "Utilisation avancée" annulée (2026-08-19, suite 6)
@@ -416,6 +418,7 @@ navigateur/scroll — le serveur `make serve` servait pourtant bien la
 bonne version, vérifié via `curl`) et a tranché : **pas de section
 "Utilisation avancée" séparée**, le guide `pull-requests-et-conflits-git`
 va directement dans `how_to_guides:` comme le guide PI. Fait :
+
 - Ajouté `/docs/how-to-guides/pull-requests-et-conflits-git/` à
   `how_to_guides:` dans `index.md`.
 - Section `## Utilisation avancée` retirée du corps de `index.md`.
@@ -430,7 +433,7 @@ Vérifié en local et sur le serveur `make serve` en cours d'exécution.
 
 **Le contenu textuel des 9 concepts + 17 tutoriels + 1 guide PI est
 complet** (2026-08-19). Il ne reste, côté contenu nouveau, que le concept
-#10 "Structurer un projet" (arborescence), volontairement en attente.
+n°10 "Structurer un projet" (arborescence), volontairement en attente.
 
 **Priorité 1 : relecture par l'utilisateur** de tout ce qui a été écrit en
 son absence (concepts + tutoriels) — rien n'a encore été relu sur le fond
@@ -489,10 +492,8 @@ Le `make serve` ne fonctionnait pas sur le poste de travail
 
 ### Commandes de référence
 
-```bash
-source ~/.bashrc    # si un terminal ne voit pas `bundle`
-make serve
-```
+    source ~/.bashrc    # si un terminal ne voit pas `bundle`
+    make serve
 
 Puis vérifier dans le navigateur : `http://localhost:4000/workshops/methodologie-de-projet/`.
 

@@ -80,11 +80,13 @@ marge — voir [Gérer le temps et les jalons](/workshops/methodologie-de-projet
 {% capture snippet_checklist %}## Checklist de clôture
 
 ### Cadrage et méthode
+
 - [ ] Cahier des charges à jour
 - [ ] Choix techniques tracés
 - [ ] Journal de bord complet
 
 ### Documentation des briques
+
 - [ ] Électronique
 - [ ] Mécanique
 - [ ] Code/firmware
@@ -92,12 +94,14 @@ marge — voir [Gérer le temps et les jalons](/workshops/methodologie-de-projet
 - [ ] Résultats de tests
 
 ### Transmissibilité
+
 - [ ] README complet
 - [ ] Licence choisie
 - [ ] Test de l'étranger total fait
 - [ ] Limites connues documentées
 
 ### Présentation
+
 - [ ] Poster prêt
 - [ ] Vidéo prête
 {% endcapture %}

@@ -52,6 +52,7 @@ Garde ce schéma en tête : il sert de carte mentale pour tout l'atelier. Chaque
 | **RAM** | Variables, pile d'appels (volatile) | Lecture/écriture rapide |
 | **Périphériques** | GPIO, ADC, UART, SPI, I2C, PWM… | Via **registres** |
 | **Bus** | Relie CPU ↔ mémoires ↔ périphériques | Transparent pour le code Arduino |
+
 "
 image="functional-block-diagram.png" %}
 
