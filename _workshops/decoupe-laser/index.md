@@ -12,10 +12,9 @@ project_tags:
   - Découpe laser
 description: "Découvrez les ressources, tutoriels et fiches machines pour comprendre et pratiquer la découpe et la gravure laser au MakerSpace."
 
+prerequisites:
+  - /workshops/cao/
 tutorials:
-  - /docs/tutorials/software/onshape/onshape-premiere-piece-laser/
-  - /docs/tutorials/software/inkscape/inkscape-premiere-piece/
-  - /docs/tutorials/software/inkscape/inkscape-marque-page/
   - /docs/tutorials/production/laser-cut-makeblock/
   - /docs/tutorials/production/laser-cut-xtool-p3/
   - /docs/tutorials/production/laser-cut-xtool-f2/

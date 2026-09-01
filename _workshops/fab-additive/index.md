@@ -12,6 +12,8 @@ project_tags:
   - Impression 3D
 description: "Découvrez les ressources, tutoriels et supports de cours pour comprendre et pratiquer la fabrication additive au MakerSpace."
 
+prerequisites:
+  - /workshops/cao/
 concepts:
   - /docs/concepts/3d-print-introduction/
   - /docs/concepts/3d-print-introduction-slides/

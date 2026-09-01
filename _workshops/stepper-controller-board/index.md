@@ -4,9 +4,9 @@ layout: project-home
 permalink: /workshops/stepper-controller-board/
 type: workshop
 kind: project
-image: /workshops/stepper-controller-board/hero.png
+image: /workshops/stepper-controller-board/logo.png
 project_slug: stepper-controller-board
-project_image: /workshops/stepper-controller-board/hero.png
+project_image: /workshops/stepper-controller-board/logo.png
 project_tags:
   - Électronique
   - KiCad
@@ -14,6 +14,8 @@ project_tags:
 description: "Concevez et fabriquez une carte électronique dédiée pour piloter les moteurs pas-à-pas de votre Machine that draws, avec ESP32, lecteur SD et écran OLED."
 author: Alban Petit
 
+prerequisites:
+  - /workshops/machines-that-draws/
 tutorials:
   - /docs/tutorials/software/kicad/installation-kicad/
   - /docs/tutorials/software/vscode-platformio/installation-vscode-platformio/

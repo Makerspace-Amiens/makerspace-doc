@@ -2,9 +2,9 @@
 title: Conception assistée par ordinateur
 layout: project-home
 permalink: /workshops/cao/
-project_slug: fab-additive
-project_image: /assets/images/projects/fab-additive.jpg
-image: /assets/images/projects/fab-additive.jpg
+project_slug: cao
+project_image: /workshops/cao/hero.webp
+image: /workshops/cao/hero.webp
 type: workshop
 kind: course
 subtitle: 
