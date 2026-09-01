@@ -25,6 +25,7 @@ tutorials:
   - /docs/tutorials/software/onshape/onshape-premier-assemblage/
   - /docs/tutorials/software/onshape/onshape-premier-mini-projet/
   - /docs/tutorials/electronics/arduino-port-serie/
+  - /docs/tutorials/electronics/servomotor/
   - /workshops/machines-that-draws/tutorials/grbl-servo/
 how_to_guides:
   - 
