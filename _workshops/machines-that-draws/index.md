@@ -13,7 +13,7 @@ project_tags:
 description: "Découvrez les ressources, tutoriels et supports de cours pour concevoir et fabriquer votre machine qui dessine !"
 
 prerequisites:
-  - /workshops/initiation-conception-prototypage/
+  - /workshops/cao/
 concepts:
   - /docs/concepts/capteurs/
 tutorials:

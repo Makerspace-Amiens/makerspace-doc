@@ -18,7 +18,7 @@ compatibilities-os: win,mac,lin
 
 prerequisites:
   - label: Bases de la CAO
-    link: /workshops/initiation-conception-prototypage/tutorials/drawings-training/
+    link: /workshops/cao/tutorials/drawings-training/
 
 softwares:
   - label: OnShape
