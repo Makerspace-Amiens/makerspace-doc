@@ -9,8 +9,8 @@ component_toc: true
 doc_header: true
 type: tutorial
 
-title: Servomoteurs
-subtitle: Piloter un servomoteur pour le robot
+title: Piloter un servomoteur avec Arduino
+subtitle: Installer la bibliothèque puis commander un servo en position
 description: Installer la bibliothèque ESP32Servo puis piloter un ou plusieurs servomoteurs en position, avec l'Arduino IDE ou PlatformIO.
 author: Adrien BRACQ & Rémi LACOMBE
 
@@ -29,6 +29,8 @@ softwares:
     link: /docs/references/software/arduino-ide/
   - label: PlatformIO IDE (extension VSCode)
     link: /docs/references/software/platformIO/
+  - label: Bibliothèque Servo / ESP32Servo
+    link: /docs/references/software/servo-library/
 
 hardwares:
   - label: XIAO ESP32
@@ -37,19 +39,13 @@ hardwares:
     link: /docs/references/hardware/servomotor/
 ---
 
-## Rappels sur les servomoteurs
-
-- **Qu’est-ce qu’un servomoteur ?** :
-  Un servomoteur est un moteur électrique qui permet de contrôler des mouvements précis en termes de position, de vitesse et d'accélération. Très populaire en robotique, il est utilisé pour des applications nécessitant un contrôle précis, comme les bras robotiques, les voitures télécommandées, ou les systèmes de caméra motorisée.
-
-- **Fonctionnement de base :** :
-  Les servomoteurs se contrôlent grâce à un signal PWM (Pulse Width Modulation). En fonction de la largeur de l’impulsion, ils adoptent une position spécifique (généralement entre 0° et 180°).
+Dans ce tutoriel, vous allez **installer la bibliothèque** puis **piloter un servomoteur en position** depuis l'Arduino IDE ou PlatformIO.
 
 {% include message.html
-title="Information"
-message="Une description technique du fonctionnement d'un servomoteur est disponible [sur la page dédiée](../../ressources/servomotor)"
+title="Avant de commencer"
+message="Pour comprendre **comment fonctionne** un servomoteur (moteur, signal PWM, alimentation), consultez la référence [Le Servomoteur](/docs/references/hardware/servomotor/). Le détail des fonctions de code est regroupé dans la référence [Bibliothèque Servo / ESP32Servo](/docs/references/software/servo-library/)."
 status="is-info"
-icon="fas fa-info" %}
+icon="fas fa-info-circle" %}
 
 ## Installer la bibliothèque Servo
 
@@ -85,79 +81,17 @@ icon="fas fa-info-circle" %}
 
 Cette bibliothèque fonctionne exactement comme la bibliothèque Arduino classique **Servo**, mais elle est spécialement adaptée aux microcontrôleurs de type ESP32.
 
-## Fonctionnement de la bibliothèque Servo (ou ESP32Servo pour ESP32)
+## Piloter votre premier servomoteur
 
-La bibliothèque Servo (ou ESP32Servo dans le cas de l'ESP32) permet de contrôler facilement des servomoteurs en générant des signaux PWM (Pulse Width Modulation). Ces signaux déterminent la position du servomoteur en ajustant la largeur de l'impulsion envoyée.
+En pratique, deux fonctions suffisent pour démarrer : `attach(pin)` pour lier le servo à une broche, et `write(angle)` pour lui donner une position entre 0° et 180°.
 
-### Concepts de Base
+{% include message.html
+title="Toutes les fonctions"
+message="Le détail des fonctions (`attach`, `write`, `writeMicroseconds`, `detach`) et les différences entre `Servo` et `ESP32Servo` sont regroupés dans la référence [Bibliothèque Servo / ESP32Servo](/docs/references/software/servo-library/)."
+status="is-info"
+icon="fas fa-info-circle" %}
 
-**PWM et Position du Servomoteur :**
-
-- Le signal PWM est une impulsion électrique périodique.
-- La largeur de l'impulsion détermine l'angle de rotation du servomoteur :
-  - Une impulsion de 1 ms (~1000 µs) positionne le servo à 0°.
-  - Une impulsion de 1,5 ms (~1500 µs) positionne le servo au milieu (90°).
-  - Une impulsion de 2 ms (~2000 µs) positionne le servo à 180°.
-- Ces impulsions sont envoyées toutes les 20 ms (fréquence de 50 Hz).
-
-**Simplification avec la Bibliothèque :** La bibliothèque Servo gère automatiquement la génération des signaux PWM en fonction de l’angle que vous spécifiez dans le code. Cela vous évite de configurer manuellement les timers ou d’écrire un code complexe.
-
----
-
-### Fonctions Principales de la Bibliothèque
-
-Voici les principales fonctions de la bibliothèque et leur utilisation :
-
-#### `Servo.attach(pin)`
-
-- Lie un servomoteur à une broche spécifique de votre microcontrôleur.
-
-     ```cpp
-     Servo monServo;
-     monServo.attach(9); // Attache un servomoteur à la broche D9
-     ```
-
-#### `Servo.write(angle)`
-
-- Positionne le servomoteur à un angle précis (entre 0° et 180°).
-
-     ```cpp
-     monServo.write(90); // Place le servo à 90°
-     ```
-
-#### `Servo.writeMicroseconds(value)`
-
-- Permet un contrôle plus précis en envoyant directement une largeur d'impulsion (en microsecondes).
-
-     ```cpp
-     monServo.writeMicroseconds(1500); // Impulsion pour 90° (position médiane)
-     ```
-
-#### `Servo.detach()`
-
-- Déconnecte le servomoteur de la broche, libérant ainsi les ressources.
-
-     ```cpp
-     monServo.detach(); // Libère la broche utilisée par le servomoteur
-     ```
-
----
-
-### Différences entre Servo (Arduino) et ESP32Servo
-
-1. **Support matériel :**
-   - Arduino utilise les **timers matériels** intégrés pour générer les signaux PWM.
-   - ESP32 utilise le module **LEDC (PWM LED Controller)**, qui permet une gestion avancée et des signaux stables.
-
-2. **Broches compatibles :**
-   - Sur Arduino, seules les broches PWM spécifiques peuvent être utilisées.
-   - Sur ESP32, presque toutes les broches peuvent générer un signal PWM, sauf celles réservées (RX/TX, GPIO0, etc.).
-
----
-
-### Exemple Pratique : Contrôler un Servomoteur
-
-Voici un exemple simple pour comprendre comment utiliser la bibliothèque Servo :
+Voici un exemple simple qui fait aller le servo de 0° à 180° en boucle :
 
 ```cpp
 #include <ESP32Servo.h>

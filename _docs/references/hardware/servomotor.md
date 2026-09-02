@@ -89,3 +89,9 @@ Câblage :
 Condensateurs de découplage :
 
 - Il est recommandé d'ajouter des condensateurs sur l'alimentation pour stabiliser la tension et filtrer les variations causées par les pics de courant lorsque les servos démarrent ou changent de direction brusquement.
+
+{% include message.html
+title="Passer à la pratique"
+message="Pour piloter un servomoteur depuis du code, suivez le tutoriel [Piloter un servomoteur avec Arduino](/docs/tutorials/electronics/servomotor/) et sa référence [Bibliothèque Servo / ESP32Servo](/docs/references/software/servo-library/)."
+status="is-success"
+icon="fas fa-arrow-right" %}
