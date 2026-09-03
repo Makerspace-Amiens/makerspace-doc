@@ -1,0 +1,341 @@
+<div class="box" id="vernier-trainer">
+  <div class="tabs is-toggle is-fullwidth">
+    <ul>
+      <li class="is-active" data-mode="demo"><a>Démonstration</a></li>
+      <li data-mode="quiz"><a>Entraînement</a></li>
+    </ul>
+  </div>
+
+  <div id="vernier-svg-wrap" style="overflow-x:auto;">
+    <svg id="vernier-svg" viewBox="0 0 760 210" xmlns="http://www.w3.org/2000/svg"></svg>
+  </div>
+
+  <div id="vernier-demo-controls">
+    <div class="field">
+      <label class="label">Position de la mâchoire</label>
+      <input id="vernier-slider" type="range" min="0" max="2100" step="1" value="1235">
+    </div>
+    <div class="buttons are-small">
+      <button class="button" type="button" data-step="-100">− 1 mm</button>
+      <button class="button" type="button" data-step="-10">− 0,1 mm</button>
+      <button class="button" type="button" data-step="-1">− 0,01 mm</button>
+      <button class="button" type="button" data-step="1">+ 0,01 mm</button>
+      <button class="button" type="button" data-step="10">+ 0,1 mm</button>
+      <button class="button" type="button" data-step="100">+ 1 mm</button>
+    </div>
+    <div class="notification is-info is-light" id="vernier-reading-panel"></div>
+  </div>
+
+  <div id="vernier-quiz-controls" style="display:none;">
+    <p class="mb-3">Une mesure aléatoire est réglée sur le dessin. Lisez-la comme vous le feriez sur un vrai pied à coulisse, puis vérifiez votre réponse.</p>
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link" type="button" id="vernier-quiz-new">Nouvelle mesure</button>
+      </div>
+      <div class="control">
+        <input class="input" type="number" step="0.01" id="vernier-quiz-input" placeholder="Votre lecture (mm)">
+      </div>
+      <div class="control">
+        <button class="button is-primary" type="button" id="vernier-quiz-check">Vérifier</button>
+      </div>
+    </div>
+    <div class="notification is-light" id="vernier-quiz-feedback" style="display:none;"></div>
+  </div>
+</div>
+
+<style>
+  #vernier-svg { width: 100%; max-width: 760px; height: auto; touch-action: none; display: block; margin: 0 auto 1rem; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
+  .vernier-tick-main { stroke: #363636; stroke-width: 1; }
+  .vernier-tick-main-cm { stroke: #363636; stroke-width: 1.5; }
+  .vernier-label-main { font-size: 11px; fill: #363636; text-anchor: middle; font-family: inherit; }
+  .vernier-body-main { fill: #f5f5f5; stroke: #b5b5b5; }
+  .vernier-jaw-fixed { fill: #d8d8d8; stroke: #6b6b6b; stroke-width: 1; }
+  .vernier-jaw-moving { fill: rgba(50, 115, 220, 0.25); stroke: #3273dc; stroke-width: 1; }
+  .vernier-body-vernier { fill: rgba(50, 115, 220, 0.12); stroke: #3273dc; }
+  .vernier-tick-vernier { stroke: #3273dc; stroke-width: 1; }
+  .vernier-tick-vernier.aligned { stroke: #ef2e31; stroke-width: 2.5; }
+  .vernier-label-vernier { font-size: 10px; fill: #3273dc; text-anchor: middle; font-family: inherit; }
+  .vernier-label-vernier.aligned { fill: #ef2e31; font-weight: bold; }
+  .vernier-zero-line { stroke: #ef2e31; stroke-width: 1; stroke-dasharray: 3,2; }
+  .vernier-drag-handle { fill: transparent; cursor: grab; }
+  .vernier-drag-handle:active { cursor: grabbing; }
+  #vernier-quiz-input { max-width: 200px; }
+</style>
+
+<script>
+(function () {
+  const root = document.getElementById('vernier-trainer');
+  const RANGE_MM = 30;
+  const PPM = 20;
+  const MARGIN = 40;
+  // The two scales share a single horizontal meeting line (CY): main scale
+  // ticks hang down to exactly this line, vernier ticks rise up to exactly
+  // this line — no overlap, they just touch end to end. So at the position
+  // where a vernier line and a main line coincide in x, the two tick
+  // segments butt up into one continuous straight line instead of two
+  // separate marks. That visual coincidence is the whole point of a vernier
+  // and the reason the two scales must meet rather than sit apart or overlap
+  // (overlapping would thicken the aligned line instead of just extending it).
+  const CY = 120;
+  const OVERLAP = 0;
+  const MAIN_BODY_TOP = CY - 50;
+  const VERNIER_BODY_BOTTOM = CY + 45;
+  const MAX_V = RANGE_MM - 9;
+
+  const svg = document.getElementById('vernier-svg');
+  svg.setAttribute('viewBox', '0 0 ' + (MARGIN * 2 + RANGE_MM * PPM) + ' 250');
+
+  const NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  function xFor(mm) { return MARGIN + mm * PPM; }
+
+  // --- Jaws: on a real caliper the big flat-faced jaws (external
+  // measurement) hang below the beam, and only a small pointed pair (internal
+  // measurement) sits above it — not the other way round. One fixed at 0 mm,
+  // one riding with the vernier, facing each other; the gap between their
+  // inner faces is exactly the measured value, same quantity read on the
+  // scales in between.
+  const INNER_JAW_BASE_Y = MAIN_BODY_TOP;
+  const INNER_JAW_TIP_Y = MAIN_BODY_TOP - 25;
+  const INNER_JAW_WIDTH = 9;
+  const INNER_JAW_TIP_WIDTH = 1.5;
+  const OUTER_JAW_BASE_Y = VERNIER_BODY_BOTTOM;
+  const OUTER_JAW_TIP_Y = VERNIER_BODY_BOTTOM + 65;
+  const OUTER_JAW_WIDTH = 24;
+  const OUTER_JAW_TIP_WIDTH = 8;
+  function jawPoints(faceX, dir, baseY, tipY, width, tipWidth) {
+    // Inner (measuring) face stays a straight vertical line for the full
+    // height; only the outer edge tapers, in one diagonal, from the base
+    // width down to a narrow flat tip — a plain blade silhouette, not a
+    // pointed flag.
+    const baseOuterX = faceX + dir * width;
+    const tipOuterX = faceX + dir * tipWidth;
+    return [
+      [faceX, baseY], [baseOuterX, baseY],
+      [tipOuterX, tipY], [faceX, tipY]
+    ].map(function (p) { return p.join(','); }).join(' ');
+  }
+
+  // --- Static main scale (drawn once) ---
+  const mainGroup = el('g', {});
+  // Colour always tracks the physical piece — grey never moves, blue always
+  // does — same as the lower jaw. What's reversed for internal-diameter
+  // reading is which way the tip points: outward for the lower (external)
+  // jaws, inward/toward the other jaw for these upper ones (dir flipped to
+  // +1), since that's genuinely where the internal tip is mounted on the
+  // blade.
+  mainGroup.appendChild(el('polygon', {
+    points: jawPoints(xFor(0), 1, INNER_JAW_BASE_Y, INNER_JAW_TIP_Y, INNER_JAW_WIDTH, INNER_JAW_TIP_WIDTH),
+    class: 'vernier-jaw-fixed'
+  }));
+  // End cap: now that the inner jaw's bulk points inward (rightward) instead
+  // of filling the left margin, that margin is empty. Close it off with a
+  // small block, flush against both the jaw (at MARGIN) and the main body
+  // (at CY) so it reads as the same fixed piece — same class, touching on
+  // both sides, not spanning the full margin.
+  const CAP_LEFT = 6;
+  const CAP_TOP = INNER_JAW_BASE_Y;
+  mainGroup.appendChild(el('rect', {
+    x: CAP_LEFT, y: CAP_TOP, width: MARGIN - CAP_LEFT, height: CY - CAP_TOP, class: 'vernier-jaw-fixed'
+  }));
+  // On the fixed side there is no vernier-plate rect to bridge CY down to
+  // VERNIER_BODY_BOTTOM (only the moving carriage has that), so this jaw
+  // starts right at CY, flush against the main scale, instead of floating
+  // below a gap.
+  mainGroup.appendChild(el('polygon', {
+    points: jawPoints(xFor(0), -1, CY, OUTER_JAW_TIP_Y, OUTER_JAW_WIDTH, OUTER_JAW_TIP_WIDTH),
+    class: 'vernier-jaw-fixed'
+  }));
+  mainGroup.appendChild(el('rect', {
+    x: MARGIN, y: MAIN_BODY_TOP, width: RANGE_MM * PPM, height: CY - MAIN_BODY_TOP, class: 'vernier-body-main'
+  }));
+  for (let i = 0; i <= RANGE_MM; i++) {
+    const x = xFor(i);
+    const isCm = i % 10 === 0;
+    const isHalf = i % 5 === 0;
+    const h = isCm ? 34 : (isHalf ? 20 : 14);
+    mainGroup.appendChild(el('line', {
+      x1: x, y1: CY - h, x2: x, y2: CY + OVERLAP,
+      class: isCm ? 'vernier-tick-main-cm' : 'vernier-tick-main'
+    }));
+    if (isCm) {
+      const label = el('text', { x: x, y: CY - h - 8, class: 'vernier-label-main' });
+      label.textContent = (i / 10);
+      mainGroup.appendChild(label);
+    }
+  }
+  const capLabel = el('text', { x: MARGIN + RANGE_MM * PPM + 4, y: MAIN_BODY_TOP + 16, class: 'vernier-label-main', style: 'text-anchor:start; fill:#7a7a7a;' });
+  capLabel.textContent = 'cm';
+  mainGroup.appendChild(capLabel);
+  svg.appendChild(mainGroup);
+
+  const vernierGroup = el('g', {});
+  svg.appendChild(vernierGroup);
+
+  function decompose(V) {
+    const tenth = Math.round(V * 10);
+    const mm = Math.floor(tenth / 10);
+    const k = tenth - mm * 10;
+    return { mm: mm, k: k, value: tenth / 10 };
+  }
+
+  let currentV = 0;
+  let quizMode = false;
+  let quizTarget = null;
+  let quizAnswered = false;
+
+  function render(V, reveal) {
+    currentV = Math.max(0, Math.min(MAX_V, V));
+    const d = decompose(currentV);
+
+    while (vernierGroup.firstChild) vernierGroup.removeChild(vernierGroup.firstChild);
+
+    // dashed line marking the vernier zero (what you read on the main scale)
+    vernierGroup.appendChild(el('line', {
+      x1: xFor(currentV), y1: MAIN_BODY_TOP - 10, x2: xFor(currentV), y2: VERNIER_BODY_BOTTOM + 10,
+      class: 'vernier-zero-line'
+    }));
+
+    // vernier body (draggable), with its jaws riding along. Inner jaw tip
+    // points inward (dir -1, toward the fixed side) instead of outward —
+    // see the comment by the fixed inner jaw above — but stays blue like
+    // the rest of this moving piece.
+    vernierGroup.appendChild(el('polygon', {
+      points: jawPoints(xFor(currentV), -1, INNER_JAW_BASE_Y, INNER_JAW_TIP_Y, INNER_JAW_WIDTH, INNER_JAW_TIP_WIDTH),
+      class: 'vernier-jaw-moving'
+    }));
+    vernierGroup.appendChild(el('polygon', {
+      points: jawPoints(xFor(currentV), 1, OUTER_JAW_BASE_Y, OUTER_JAW_TIP_Y, OUTER_JAW_WIDTH, OUTER_JAW_TIP_WIDTH),
+      class: 'vernier-jaw-moving'
+    }));
+    vernierGroup.appendChild(el('rect', {
+      x: xFor(currentV), y: CY, width: 9 * PPM, height: VERNIER_BODY_BOTTOM - CY, class: 'vernier-body-vernier'
+    }));
+
+    for (let k = 0; k <= 10; k++) {
+      const x = xFor(currentV + k * 0.9);
+      const aligned = reveal && k === d.k;
+      // Rises from just past CY (crossing into the main scale's tick zone) so
+      // that, at the aligned division, this segment lines up with the main
+      // tick above it into what reads as one continuous straight line.
+      vernierGroup.appendChild(el('line', {
+        x1: x, y1: CY - OVERLAP, x2: x, y2: CY + (aligned ? 24 : 18),
+        class: 'vernier-tick-vernier' + (aligned ? ' aligned' : '')
+      }));
+      const label = el('text', {
+        x: x, y: CY + 34,
+        class: 'vernier-label-vernier' + (aligned ? ' aligned' : '')
+      });
+      label.textContent = k;
+      vernierGroup.appendChild(label);
+    }
+
+    // draggable hit area (invisible, larger than the visible body for easier grabbing)
+    const handle = el('rect', {
+      x: xFor(currentV) - 6, y: MAIN_BODY_TOP, width: 9 * PPM + 12, height: VERNIER_BODY_BOTTOM - MAIN_BODY_TOP,
+      class: 'vernier-drag-handle'
+    });
+    handle.addEventListener('pointerdown', onDragStart);
+    vernierGroup.appendChild(handle);
+
+    if (reveal) updateReadingPanel(d);
+  }
+
+  function updateReadingPanel(d) {
+    const panel = document.getElementById('vernier-reading-panel');
+    panel.innerHTML =
+      '<strong>Partie entière (règle fixe) :</strong> ' + d.mm + ' mm — ' +
+      '<strong>Division du vernier alignée :</strong> ' + d.k + ' &rarr; ' +
+      '<strong>Lecture : ' + d.value.toFixed(2) + ' mm</strong>';
+  }
+
+  // --- Dragging ---
+  let dragStartX = null;
+  let dragStartV = 0;
+  function onDragStart(e) {
+    if (quizMode) return;
+    e.preventDefault(); // stop the browser from starting a text selection while dragging
+    dragStartX = e.clientX;
+    dragStartV = currentV;
+    // Capture on the SVG root (stable element) rather than the handle rect,
+    // which gets destroyed and recreated on every render() call while dragging.
+    svg.setPointerCapture(e.pointerId);
+    document.addEventListener('pointermove', onDragMove);
+    document.addEventListener('pointerup', onDragEnd);
+  }
+  function onDragMove(e) {
+    if (dragStartX === null) return;
+    const deltaMm = (e.clientX - dragStartX) / PPM;
+    const newV = Math.round((dragStartV + deltaMm) * 100) / 100;
+    document.getElementById('vernier-slider').value = Math.round(newV * 100);
+    render(newV, true);
+  }
+  function onDragEnd() {
+    dragStartX = null;
+    document.removeEventListener('pointermove', onDragMove);
+    document.removeEventListener('pointerup', onDragEnd);
+  }
+
+  // --- Demo controls ---
+  const slider = document.getElementById('vernier-slider');
+  slider.addEventListener('input', function () {
+    render(slider.value / 100, true);
+  });
+  root.querySelectorAll('#vernier-demo-controls .buttons .button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const step = parseInt(btn.getAttribute('data-step'), 10);
+      let v = Math.round(parseInt(slider.value, 10) + step);
+      v = Math.max(0, Math.min(MAX_V * 100, v));
+      slider.value = v;
+      render(v / 100, true);
+    });
+  });
+
+  // --- Mode tabs ---
+  root.querySelectorAll('.tabs.is-toggle li').forEach(function (li) {
+    li.addEventListener('click', function () {
+      root.querySelectorAll('.tabs.is-toggle li').forEach(function (x) { x.classList.remove('is-active'); });
+      li.classList.add('is-active');
+      quizMode = li.getAttribute('data-mode') === 'quiz';
+      document.getElementById('vernier-demo-controls').style.display = quizMode ? 'none' : '';
+      document.getElementById('vernier-quiz-controls').style.display = quizMode ? '' : 'none';
+      if (quizMode) newQuizQuestion();
+      else render(slider.value / 100, true);
+    });
+  });
+
+  // --- Quiz mode ---
+  function newQuizQuestion() {
+    quizAnswered = false;
+    quizTarget = Math.round((Math.random() * MAX_V * 100)) / 100;
+    document.getElementById('vernier-quiz-input').value = '';
+    document.getElementById('vernier-quiz-feedback').style.display = 'none';
+    render(quizTarget, false);
+  }
+  document.getElementById('vernier-quiz-new').addEventListener('click', newQuizQuestion);
+  document.getElementById('vernier-quiz-check').addEventListener('click', function () {
+    if (quizTarget === null || quizAnswered) return;
+    const input = document.getElementById('vernier-quiz-input');
+    const guess = parseFloat(input.value);
+    const feedback = document.getElementById('vernier-quiz-feedback');
+    const d = decompose(quizTarget);
+    feedback.style.display = '';
+    if (!isNaN(guess) && Math.abs(guess - d.value) <= 0.05) {
+      feedback.className = 'notification is-success is-light';
+      feedback.innerHTML = '✅ Correct ! La mesure était ' + d.value.toFixed(2) + ' mm.';
+    } else {
+      feedback.className = 'notification is-danger is-light';
+      feedback.innerHTML = '❌ Pas tout à fait. La mesure était <strong>' + d.value.toFixed(2) + ' mm</strong> (' + d.mm + ' mm sur la règle + division ' + d.k + ' du vernier).';
+    }
+    quizAnswered = true;
+    render(quizTarget, true);
+  });
+
+  // init
+  render(slider.value / 100, true);
+})();
+</script>
